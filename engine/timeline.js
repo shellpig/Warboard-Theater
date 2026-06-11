@@ -20,6 +20,7 @@ export function compileTimeline(eventsDef, battle) {
       title: ch.title,
       date_display: ch.date_display,
       durationMin: ch.duration_min,
+      clockStartMin: parseClock(ch.clock_start),
       start: cursor,
       len: ch.playback_sec,
     });
@@ -194,6 +195,14 @@ export function compileTimeline(eventsDef, battle) {
       }
       return found;
     },
+    // 模擬時刻(當日分鐘數,跨夜取模):章節 clock_start + 章內經過分鐘;
+    // 未定義 clock_start 的章節(如跨多日的鋪陳章)回傳 null
+    clockAt(p) {
+      const ch = chapters[chapterIndexAt(p)];
+      if (ch?.clockStartMin == null) return null;
+      const f = Math.min(Math.max((p - ch.start) / ch.len, 0), 1);
+      return (ch.clockStartMin + f * ch.durationMin) % 1440;
+    },
     // 畫面時間字串:目前章節內最後一個 time_display,否則章節 date_display
     timeDisplayAt(p) {
       const ci = chapterIndexAt(p);
@@ -209,6 +218,13 @@ export function compileTimeline(eventsDef, battle) {
 
 function lastVal(keys) {
   return keys[keys.length - 1].v;
+}
+
+// "HH:MM" → 當日分鐘數;格式不符回傳 null
+function parseClock(s) {
+  const m = typeof s === "string" ? /^(\d{1,2}):(\d{2})$/.exec(s) : null;
+  if (!m) return null;
+  return +m[1] * 60 + +m[2];
 }
 
 // 線性插值取值:keys 依 p 遞增;數值或 [x, z] 皆可

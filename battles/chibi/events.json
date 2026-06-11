@@ -149,6 +149,7 @@
       },
       "duration_min": 600,
       "playback_sec": 150,
+      "clock_start": "20:00",
       "date_display": { "zh-TW": "決戰之夜", "zh-CN": "决战之夜", "en": "Night of the Decisive Battle", "ja": "決戦の夜" },
       "events": [
         {
@@ -284,6 +285,7 @@
       },
       "duration_min": 720,
       "playback_sec": 60,
+      "clock_start": "05:00",
       "date_display": { "zh-TW": "翌日", "zh-CN": "翌日", "en": "The Next Day", "ja": "翌日" },
       "events": [
         {

@@ -306,6 +306,35 @@ export function createUI({ labels, hud, card, battle, units, terrain, camera, re
     }
   }
 
+  // --- 模擬時刻面板(右上):時辰 + HH:MM 持續走動;
+  //     無 clock_start 的章節(跨多日)退回 time_display 粗刻度 ---
+  const timePanel = document.getElementById("time-panel");
+  const tpDate = document.createElement("div");
+  tpDate.className = "tp-date";
+  const tpClock = document.createElement("div");
+  tpClock.className = "tp-clock";
+  timePanel.append(tpDate, tpClock);
+  let lastTpText = "";
+
+  function updateTimePanel(p, ci) {
+    const cm = timeline.clockAt(p);
+    let clockText;
+    if (cm != null) {
+      const hh = Math.floor(cm / 60);
+      const mm = Math.floor(cm % 60);
+      const shichen = t("shichen")[Math.floor(((hh + 1) % 24) / 2)];
+      clockText = `${shichen} ${String(hh).padStart(2, "0")}:${String(mm).padStart(2, "0")}`;
+    } else {
+      clockText = pick(timeline.timeDisplayAt(p));
+    }
+    const dateText = pick(timeline.chapters[ci].date_display);
+    const key = `${dateText}|${clockText}`;
+    if (key === lastTpText) return;
+    lastTpText = key;
+    tpDate.textContent = dateText === clockText ? "" : dateText;
+    tpClock.textContent = clockText;
+  }
+
   // --- 片頭 title screen:首次播放(或 seek)前顯示 ---
   const titleScreen = document.getElementById("title-screen");
   {
@@ -488,7 +517,8 @@ export function createUI({ labels, hud, card, battle, units, terrain, camera, re
       chapterBtns.forEach((b, i) => b.classList.toggle("active", i === ci));
     }
 
-    // war-meter
+    // 模擬時刻面板與 war-meter
+    updateTimePanel(p, ci);
     updateWarMeter(p);
 
     // 片頭:首次播放或 seek 後淡出(不再重現,重看由結算畫面觸發)

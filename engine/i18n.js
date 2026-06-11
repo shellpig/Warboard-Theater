@@ -39,6 +39,7 @@ const DICT = {
     record_mode: "錄影模式(隱藏介面、鎖 16:9)",
     record_hint: "已進入錄影模式,按 H 鍵退出",
     sound: "音效",
+    shichen: ["子時", "丑時", "寅時", "卯時", "辰時", "巳時", "午時", "未時", "申時", "酉時", "戌時", "亥時"],
   },
   "zh-CN": {
     brand: "战局剧场",
@@ -67,6 +68,7 @@ const DICT = {
     record_mode: "录影模式(隐藏界面、锁 16:9)",
     record_hint: "已进入录影模式,按 H 键退出",
     sound: "音效",
+    shichen: ["子时", "丑时", "寅时", "卯时", "辰时", "巳时", "午时", "未时", "申时", "酉时", "戌时", "亥时"],
   },
   "en": {
     brand: "Warboard Theater",
@@ -95,6 +97,7 @@ const DICT = {
     record_mode: "Recording mode (hide UI, lock 16:9)",
     record_hint: "Recording mode on — press H to exit",
     sound: "Sound",
+    shichen: ["Hour of the Rat", "Hour of the Ox", "Hour of the Tiger", "Hour of the Rabbit", "Hour of the Dragon", "Hour of the Snake", "Hour of the Horse", "Hour of the Goat", "Hour of the Monkey", "Hour of the Rooster", "Hour of the Dog", "Hour of the Pig"],
   },
   "ja": {
     brand: "戦局シアター",
@@ -123,6 +126,7 @@ const DICT = {
     record_mode: "録画モード(UI非表示・16:9固定)",
     record_hint: "録画モード中 ─ Hキーで終了",
     sound: "効果音",
+    shichen: ["子の刻", "丑の刻", "寅の刻", "卯の刻", "辰の刻", "巳の刻", "午の刻", "未の刻", "申の刻", "酉の刻", "戌の刻", "亥の刻"],
   },
 };
 

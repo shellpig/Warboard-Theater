@@ -323,20 +323,20 @@ body.menu #status-msg {
   position: absolute;
   left: 24px;
   bottom: 112px;
-  max-width: 520px;
+  max-width: 780px;
   display: flex;
   align-items: flex-end;
-  gap: 12px;
+  gap: 18px;
   background: var(--panel);
-  border-left: 3px solid var(--accent);
+  border-left: 4px solid var(--accent);
   border-radius: 4px;
-  padding: 10px 16px;
+  padding: 15px 24px;
   backdrop-filter: blur(3px);
 }
 
 #event-card .card-portrait {
-  width: 66px;
-  height: 88px; /* 3:4 直式胸像 */
+  width: 99px;
+  height: 132px; /* 3:4 直式胸像 */
   object-fit: cover;
   object-position: top;
   border-radius: 3px;
@@ -348,46 +348,46 @@ body.menu #status-msg {
 }
 
 #event-card .card-speaker {
-  font-size: 11px;
+  font-size: 16px;
   letter-spacing: 0.18em;
   opacity: 0.85;
-  border-left: 2px solid #888;
-  padding-left: 6px;
-  margin-bottom: 3px;
+  border-left: 3px solid #888;
+  padding-left: 9px;
+  margin-bottom: 4px;
 }
 
 #event-card .card-title {
-  font-size: 16px;
+  font-size: 24px;
   font-weight: 600;
   letter-spacing: 0.08em;
   color: var(--accent);
 }
 
 #event-card .card-desc {
-  margin-top: 4px;
-  font-size: 13px;
+  margin-top: 6px;
+  font-size: 19px;
   line-height: 1.6;
   opacity: 0.9;
 }
 
 #event-card .card-quote {
-  margin-top: 7px;
-  padding-top: 6px;
+  margin-top: 10px;
+  padding-top: 9px;
   border-top: 1px solid rgba(255, 255, 255, 0.14);
-  font-size: 12px;
+  font-size: 18px;
   line-height: 1.5;
   color: #d8c9a8;
 }
 
 #event-card .quote-source {
-  margin-left: 8px;
-  font-size: 11px;
+  margin-left: 12px;
+  font-size: 16px;
   opacity: 0.6;
 }
 
 #event-card .quote-trans {
-  margin-top: 2px;
-  font-size: 11px;
+  margin-top: 3px;
+  font-size: 16px;
   opacity: 0.65;
 }
 
@@ -635,6 +635,37 @@ body.cinema .cine-bar {
 
 #war-meter .wm-seg {
   height: 100%;
+}
+
+/* 模擬時刻面板(右上):時辰 + HH:MM */
+#time-panel {
+  position: absolute;
+  top: 64px;
+  right: 24px;
+  min-width: 132px;
+  text-align: right;
+  background: var(--panel);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  padding: 8px 14px;
+  backdrop-filter: blur(2px);
+}
+
+#time-panel .tp-date {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  opacity: 0.75;
+}
+
+#time-panel .tp-date:empty {
+  display: none;
+}
+
+#time-panel .tp-clock {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  font-variant-numeric: tabular-nums;
 }
 
 /* ===== 片頭 title screen ===== */
