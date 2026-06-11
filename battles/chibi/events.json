@@ -174,7 +174,6 @@
           "type": "narration",
           "speaker": "huanggai",
           "title": { "zh-TW": "黃蓋出發", "zh-CN": "黄盖出发", "en": "Huang Gai Sets Out", "ja": "黄蓋、出撃" },
-          "camera_hint": "overview",
           "desc": {
             "zh-TW": "黃蓋領二十艘火船,滿載薪草膏油,外覆青布,趁東南風直撲曹軍水寨。",
             "zh-CN": "黄盖领二十艘火船,满载薪草膏油,外覆青布,趁东南风直扑曹军水寨。",
