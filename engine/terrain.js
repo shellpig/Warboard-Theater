@@ -49,7 +49,10 @@ export function buildTerrain(scene, def) {
     return s - Math.floor(s);
   };
 
-  const geo = new THREE.PlaneGeometry(sizeX, sizeZ, 320, 200);
+  // 地形向外延伸 25% 每邊(render mesh = 1.5×),避免使用者看到邊界空曠
+  const renderX = sizeX * 1.5;
+  const renderZ = sizeZ * 1.5;
+  const geo = new THREE.PlaneGeometry(renderX, renderZ, 480, 300);
   geo.rotateX(-Math.PI / 2);
   const pos = geo.attributes.position;
   const colors = new Float32Array(pos.count * 3);
@@ -72,7 +75,7 @@ export function buildTerrain(scene, def) {
     geo,
     new THREE.MeshStandardMaterial({
       vertexColors: true,
-      map: groundTexture(sizeX, sizeZ, waterLevel, heightAt),
+      map: groundTexture(renderX, renderZ, waterLevel, heightAt),
       roughness: 1,
       metalness: 0,
     })
@@ -80,7 +83,7 @@ export function buildTerrain(scene, def) {
   scene.add(ground);
 
   const water = new THREE.Mesh(
-    new THREE.PlaneGeometry(sizeX, sizeZ).rotateX(-Math.PI / 2),
+    new THREE.PlaneGeometry(renderX, renderZ).rotateX(-Math.PI / 2),
     new THREE.MeshStandardMaterial({
       color: 0x35596d,
       transparent: true,

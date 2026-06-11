@@ -20,8 +20,8 @@ export function createScene(container) {
     1,
     12000
   );
-  // z = 南:相機自南側上方望向戰場中心,畫面上方為北
-  camera.position.set(0, 1040, 1680);
+  // 斜角俯視:自東南側望向戰場中心,地圖呈菱形感
+  camera.position.set(900, 1040, 1500);
 
   const controls = new OrbitControls(camera, renderer.domElement);
   controls.target.set(0, 0, 0);
@@ -29,7 +29,7 @@ export function createScene(container) {
   controls.dampingFactor = 0.08;
   controls.maxPolarAngle = Math.PI * 0.49;
   controls.minDistance = 120;
-  controls.maxDistance = 5200;
+  controls.maxDistance = 2800;
 
   const hemi = new THREE.HemisphereLight(0xcfe0ee, 0x55503f, 0.9);
   scene.add(hemi);
