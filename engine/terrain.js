@@ -19,6 +19,12 @@ export function buildTerrain(scene, def) {
       const dz = z - h.z;
       y += h.height * Math.exp(-(dx * dx + dz * dz) / h.sigma2);
     }
+    // 兩岸背景陸地底板:距河道 350 外平滑升起,確保延伸區為連續大陸而非孤島
+    const bankDist = Math.abs(z) - 350;
+    if (bankDist > 0) {
+      const bankFloor = Math.min(15, bankDist / 25);
+      y = Math.max(y, bankFloor);
+    }
     return y;
   }
 

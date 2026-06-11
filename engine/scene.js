@@ -29,7 +29,7 @@ export function createScene(container) {
   controls.dampingFactor = 0.08;
   controls.maxPolarAngle = Math.PI * 0.49;
   controls.minDistance = 120;
-  controls.maxDistance = 2800;
+  controls.maxDistance = 2400;
 
   const hemi = new THREE.HemisphereLight(0xcfe0ee, 0x55503f, 0.9);
   scene.add(hemi);
