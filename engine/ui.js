@@ -376,7 +376,7 @@ export function createUI({ labels, hud, card, battle, units, terrain, camera, re
       clock.play();
       audio.unlock?.();
     });
-    titleScreen.append(h1, sub, metaLine, factionRow, startBtn);
+    titleScreen.append(metaLine, h1, sub, factionRow, startBtn);
   }
   let titleShown = true;
 

@@ -107,6 +107,22 @@
       { "name": { "zh-TW": "赤壁磯", "zh-CN": "赤壁矶", "en": "Red Cliffs", "ja": "赤壁" }, "pos": [-200, 600], "type": "shore" },
       { "name": { "zh-TW": "南屏山", "zh-CN": "南屏山", "en": "Mt. Nanping", "ja": "南屏山" }, "pos": [-620, 800], "type": "mountain" },
       { "name": { "zh-TW": "華容道", "zh-CN": "华容道", "en": "Huarong Trail", "ja": "華容道" }, "pos": [900, -760], "type": "road" }
+    ],
+    "forests": [
+      { "pos": [-840, -720], "radius": 480 },
+      { "pos": [160,  -800], "radius": 420 },
+      { "pos": [960,  -680], "radius": 460 },
+      { "pos": [-760,  860], "radius": 500 },
+      { "pos": [240,   920], "radius": 480 },
+      { "pos": [1000,  840], "radius": 460 },
+      { "pos": [-220,  660], "radius": 200 },
+      { "pos": [-620,  800], "radius": 280 }
+    ],
+    "camps": [
+      { "pos": [400, -500], "radius": 190 }
+    ],
+    "roads": [
+      { "points": [[350, -460], [560, -580], [760, -680], [960, -760], [1160, -840]], "width": 38 }
     ]
   },
   "units": [
