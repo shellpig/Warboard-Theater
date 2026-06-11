@@ -43,8 +43,12 @@
           "camera_hint": "overview"
         },
         { "t": 0, "type": "status", "unit": "cao_camp", "badge": "camp" },
+        { "t": 200, "t_end": 700, "type": "move", "unit": "wenpin_fleet", "to": [-280, -210] },
+        { "t": 300, "t_end": 800, "type": "move", "unit": "maozhi_fleet", "to": [160, -240] },
         { "t": 0, "type": "status", "unit": "strawboat_fleet", "opacity": 0 },
         { "t": 0, "type": "status", "unit": "guanyu_force", "opacity": 0 },
+        { "t": 0, "type": "status", "unit": "zhaoyun_force", "opacity": 0 },
+        { "t": 0, "type": "status", "unit": "zhangfei_force", "opacity": 0 },
         {
           "t": 1300,
           "time_display": { "zh-TW": "數日後", "zh-CN": "数日后", "en": "Days later", "ja": "数日後" },
@@ -58,6 +62,8 @@
             "ja": "蔣幹が降伏勧告に江を渡るが、周瑜は計を逆手に取り、偽の密書をその手に持ち帰らせ、曹軍水軍都督の蔡瑁・張允を葬り去る。"
           }
         },
+        { "t": 1500, "t_end": 1800, "type": "move", "unit": "ganling_fleet", "to": [-360, 250] },
+        { "t": 1600, "t_end": 1900, "type": "move", "unit": "handan_fleet", "to": [-140, 300] },
         { "t": 2250, "type": "status", "unit": "strawboat_fleet", "opacity": 1 },
         { "t": 2250, "t_end": 2450, "type": "move", "unit": "strawboat_fleet", "to": [-120, -140] },
         {
@@ -85,6 +91,9 @@
         },
         { "t": 2520, "t_end": 2720, "type": "move", "unit": "strawboat_fleet", "to": [-400, 340] },
         { "t": 2760, "type": "status", "unit": "strawboat_fleet", "opacity": 0 },
+        { "t": 2900, "t_end": 3200, "type": "move", "unit": "ganling_fleet", "to": [-420, 270] },
+        { "t": 3100, "t_end": 3400, "type": "move", "unit": "liubei_army", "to": [940, 500] },
+        { "t": 3500, "t_end": 3800, "type": "move", "unit": "handan_fleet", "to": [-80, 310] },
         {
           "t": 4300,
           "time_display": { "zh-TW": "隆冬", "zh-CN": "隆冬", "en": "Deep winter", "ja": "真冬" },
@@ -103,6 +112,10 @@
             "ja": "黄蓋は自ら杖刑を受けて偽りの降伏文書を密かに送り、龐統はさらに連環の計を献じる。曹軍の戦船はことごとく鉄鎖で繋がれ、平地のごとく安定した。"
           }
         },
+        { "t": 4500, "t_end": 4900, "type": "move", "unit": "zhouyu_fleet", "to": [-200, 340] },
+        { "t": 4800, "t_end": 5100, "type": "move", "unit": "ganling_fleet", "to": [-440, 260] },
+        { "t": 5200, "t_end": 5600, "type": "move", "unit": "huanggai_fleet", "to": [-300, 360] },
+        { "t": 5600, "t_end": 5900, "type": "move", "unit": "handan_fleet", "to": [-60, 320] },
         {
           "t": 6400,
           "time_display": { "zh-TW": "十一月二十日", "zh-CN": "十一月二十日", "en": "20th day, 11th month", "ja": "十一月二十日" },
@@ -122,7 +135,8 @@
               "en": "That night the southeast wind rose in force; the banners streamed toward the northwest.",
               "ja": "その夜、東南の風が強く起こり、旗は西北へなびいた。"
             }
-          }
+          },
+          "fx": { "kind": "ring", "pos": [-620, 800] }
         },
         { "t": 6400, "type": "camera", "pos": [-620, 800] },
         {
@@ -160,6 +174,7 @@
           "type": "narration",
           "speaker": "huanggai",
           "title": { "zh-TW": "黃蓋出發", "zh-CN": "黄盖出发", "en": "Huang Gai Sets Out", "ja": "黄蓋、出撃" },
+          "camera_hint": "overview",
           "desc": {
             "zh-TW": "黃蓋領二十艘火船,滿載薪草膏油,外覆青布,趁東南風直撲曹軍水寨。",
             "zh-CN": "黄盖领二十艘火船,满载薪草膏油,外覆青布,趁东南风直扑曹军水寨。",
@@ -167,7 +182,9 @@
             "ja": "黄蓋は薪草と膏油を満載し青布で覆った二十艘の火船を率い、東南の風に乗って曹軍水寨へ直進する。"
           }
         },
-        { "t": 0, "t_end": 130, "type": "move", "unit": "huanggai_fleet", "to": [-100, -140] },
+        { "t": 0, "t_end": 100, "type": "move", "unit": "wenpin_fleet", "to": [-80, -220] },
+        { "t": 0, "t_end": 100, "type": "move", "unit": "maozhi_fleet", "to": [120, -250] },
+        { "t": 70, "t_end": 130, "type": "move", "unit": "huanggai_fleet", "to": [-100, -140], "camera_hint": "overview" },
         { "t": 60, "time_display": { "zh-TW": "二更", "zh-CN": "二更", "en": "Second watch", "ja": "二更" }, "type": "defect", "unit": "huanggai_fleet" },
         {
           "t": 60,
@@ -215,16 +232,18 @@
           "t": 150,
           "t_end": 360,
           "type": "engage",
-          "units": ["huanggai_fleet", "cao_fleet"],
-          "losses": { "cao_fleet": 41300, "huanggai_fleet": 1637 }
+          "units": ["huanggai_fleet", "cao_fleet", "wenpin_fleet", "maozhi_fleet"],
+          "losses": { "cao_fleet": 41300, "huanggai_fleet": 1637, "wenpin_fleet": 1700, "maozhi_fleet": 2000 }
         },
         { "t": 170, "t_end": 320, "type": "move", "unit": "zhouyu_fleet", "to": [-40, 60] },
+        { "t": 170, "t_end": 280, "type": "move", "unit": "ganling_fleet", "to": [-220, 160] },
+        { "t": 170, "t_end": 280, "type": "move", "unit": "handan_fleet", "to": [-60, 100] },
         {
           "t": 180,
           "t_end": 360,
           "type": "engage",
-          "units": ["zhouyu_fleet"],
-          "losses": { "zhouyu_fleet": 26637 }
+          "units": ["zhouyu_fleet", "ganling_fleet", "handan_fleet"],
+          "losses": { "zhouyu_fleet": 12200, "ganling_fleet": 6400, "handan_fleet": 7300 }
         },
         {
           "t": 180,
@@ -264,6 +283,8 @@
           "badge": "withdraw"
         },
         { "t": 480, "t_end": 600, "type": "move", "unit": "cao_camp", "to": [640, -640], "attrition": 8.75 },
+        { "t": 480, "t_end": 600, "type": "move", "unit": "zhangliao_force", "to": [500, -580], "attrition": 5 },
+        { "t": 480, "t_end": 600, "type": "move", "unit": "xuhuang_force", "to": [540, -580], "attrition": 5 },
         {
           "t": 480,
           "type": "narration",
@@ -305,13 +326,21 @@
         },
         { "t": 0, "t_end": 600, "type": "move", "unit": "cao_camp", "to": [900, -760] },
         { "t": 0, "t_end": 240, "type": "status", "unit": "cao_camp", "attrition": 14.375 },
+        { "t": 0, "t_end": 500, "type": "move", "unit": "zhangliao_force", "to": [860, -720] },
+        { "t": 0, "t_end": 600, "type": "status", "unit": "zhangliao_force", "attrition": 8 },
+        { "t": 0, "t_end": 500, "type": "move", "unit": "xuhuang_force", "to": [900, -740] },
+        { "t": 0, "t_end": 600, "type": "status", "unit": "xuhuang_force", "attrition": 8 },
         { "t": 60, "t_end": 360, "type": "move", "unit": "liubei_army", "to": [860, -580] },
+        { "t": 140, "type": "status", "unit": "zhaoyun_force", "opacity": 1 },
+        { "t": 140, "t_end": 200, "type": "move", "unit": "zhaoyun_force", "to": [800, -680] },
+        { "t": 200, "type": "status", "unit": "zhangfei_force", "opacity": 1 },
+        { "t": 200, "t_end": 260, "type": "move", "unit": "zhangfei_force", "to": [1000, -720] },
         {
           "t": 240,
           "t_end": 420,
           "type": "engage",
-          "units": ["cao_camp"],
-          "losses": { "cao_camp": 53170 }
+          "units": ["cao_camp", "zhaoyun_force", "zhangfei_force"],
+          "losses": { "cao_camp": 53170, "zhaoyun_force": 2900, "zhangfei_force": 3000 }
         },
         {
           "t": 240,

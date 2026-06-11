@@ -116,7 +116,7 @@
       "type": "fleet",
       "label": { "zh-TW": "曹軍連環船隊", "zh-CN": "曹军连环船队", "en": "Cao's Chained Fleet", "ja": "曹軍連環船団" },
       "spawn": [0, -240],
-      "troops": 100000
+      "troops": 63000
     },
     {
       "id": "cao_camp",
@@ -124,7 +124,7 @@
       "type": "infantry",
       "label": { "zh-TW": "烏林本陣", "zh-CN": "乌林本阵", "en": "Wulin Main Camp", "ja": "烏林本陣" },
       "spawn": [400, -520],
-      "troops": 100000
+      "troops": 68000
     },
     {
       "id": "zhouyu_fleet",
@@ -132,7 +132,7 @@
       "type": "fleet",
       "label": { "zh-TW": "周瑜水軍", "zh-CN": "周瑜水军", "en": "Zhou Yu's Navy", "ja": "周瑜水軍" },
       "spawn": [-160, 360],
-      "troops": 28000
+      "troops": 13500
     },
     {
       "id": "huanggai_fleet",
@@ -148,7 +148,7 @@
       "type": "infantry",
       "label": { "zh-TW": "劉備軍本隊", "zh-CN": "刘备军本队", "en": "Liu Bei's Main Force", "ja": "劉備軍本隊" },
       "spawn": [1000, 520],
-      "troops": 14400
+      "troops": 7900
     },
     {
       "id": "strawboat_fleet",
@@ -166,6 +166,70 @@
       "label": { "zh-TW": "關羽伏兵", "zh-CN": "关羽伏兵", "en": "Guan Yu's Ambush", "ja": "関羽の伏兵" },
       "spawn": [1040, -720],
       "troops": 5000
+    },
+    {
+      "id": "wenpin_fleet",
+      "faction": "wei",
+      "type": "fleet",
+      "label": { "zh-TW": "文聘前軍", "zh-CN": "文聘前军", "en": "Wenpin's Vanguard Fleet", "ja": "文聘前軍" },
+      "spawn": [-180, -200],
+      "troops": 17000
+    },
+    {
+      "id": "maozhi_fleet",
+      "faction": "wei",
+      "type": "fleet",
+      "label": { "zh-TW": "毛玠・于禁水軍", "zh-CN": "毛玠・于禁水军", "en": "Maoji & Yu Jin's Navy", "ja": "毛玠・于禁水軍" },
+      "spawn": [240, -260],
+      "troops": 20000
+    },
+    {
+      "id": "zhangliao_force",
+      "faction": "wei",
+      "type": "infantry",
+      "label": { "zh-TW": "張遼隊", "zh-CN": "张辽队", "en": "Zhang Liao's Force", "ja": "張遼隊" },
+      "spawn": [300, -500],
+      "troops": 16000
+    },
+    {
+      "id": "xuhuang_force",
+      "faction": "wei",
+      "type": "infantry",
+      "label": { "zh-TW": "徐晃隊", "zh-CN": "徐晃队", "en": "Xu Huang's Force", "ja": "徐晃隊" },
+      "spawn": [560, -540],
+      "troops": 16000
+    },
+    {
+      "id": "ganling_fleet",
+      "faction": "wu",
+      "type": "fleet",
+      "label": { "zh-TW": "甘寧隊", "zh-CN": "甘宁队", "en": "Gan Ning's Squadron", "ja": "甘寧隊" },
+      "spawn": [-440, 280],
+      "troops": 6800
+    },
+    {
+      "id": "handan_fleet",
+      "faction": "wu",
+      "type": "fleet",
+      "label": { "zh-TW": "韓當・周泰隊", "zh-CN": "韩当・周泰队", "en": "Han Dang & Zhou Tai's Fleet", "ja": "韓当・周泰隊" },
+      "spawn": [-60, 320],
+      "troops": 7700
+    },
+    {
+      "id": "zhaoyun_force",
+      "faction": "shu",
+      "type": "infantry",
+      "label": { "zh-TW": "趙雲伏兵", "zh-CN": "赵云伏兵", "en": "Zhao Yun's Ambush", "ja": "趙雲の伏兵" },
+      "spawn": [740, -640],
+      "troops": 3200
+    },
+    {
+      "id": "zhangfei_force",
+      "faction": "shu",
+      "type": "infantry",
+      "label": { "zh-TW": "張飛伏兵", "zh-CN": "张飞伏兵", "en": "Zhang Fei's Ambush", "ja": "張飛の伏兵" },
+      "spawn": [960, -710],
+      "troops": 3300
     }
   ]
 }

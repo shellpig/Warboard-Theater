@@ -61,7 +61,7 @@ with sync_playwright() as p:
     page.wait_for_timeout(1200)
     assert "show" in cls(page, "#end-screen")
     end_text = page.locator("#end-screen").inner_text()
-    for s in ["孫劉聯軍勝利", "交戰時間", "雙方損失", "重新觀看", "−132,473"]:
+    for s in ["孫劉聯軍勝利", "交戰時間", "雙方損失", "重新觀看", "−107,573"]:
         assert s in end_text, end_text
     page.screenshot(path=".verify_shots/p5_end.png")
     print("end card OK")
