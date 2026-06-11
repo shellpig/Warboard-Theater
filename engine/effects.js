@@ -38,7 +38,7 @@ export function createEffects(scene, { timeline, clock, terrain }) {
   const glows = timeline.burns.map(() => null);
   const lights = [];
   for (let i = 0; i < LIGHT_POOL; i++) {
-    const l = new THREE.PointLight(0xff7733, 0, 900, 2);
+    const l = new THREE.PointLight(0xff7733, 0, 1800, 2);
     scene.add(l);
     lights.push(l);
   }
@@ -68,7 +68,7 @@ export function createEffects(scene, { timeline, clock, terrain }) {
   }
 
   function emitBurn(b, idx, a, dt) {
-    const spread = b.unit ? 52 : 36;
+    const spread = b.unit ? 34 : 24;
     // 火焰
     acc[idx * 2] += dt * 520 * b.intensity;
     let n = Math.min(Math.floor(acc[idx * 2]), 90);
@@ -134,7 +134,7 @@ export function createEffects(scene, { timeline, clock, terrain }) {
     const flick = 0.85 + 0.15 * Math.sin(now * 9 + idx * 2.1) * Math.sin(now * 4.7 + idx);
     g.visible = true;
     g.position.set(a.x, terrain.waterLevel + 0.6, a.z);
-    const s = 240 * Math.sqrt(b.intensity) * flick;
+    const s = 156 * Math.sqrt(b.intensity) * flick;
     g.scale.set(s, 1, s);
     g.material.opacity = 0.4 * Math.min(b.intensity, 1.2) * flick;
   }
@@ -170,11 +170,11 @@ export function createEffects(scene, { timeline, clock, terrain }) {
       const dur = 1.1 + r(1) * 0.5;
       const s = (p - t0) / dur;
       if (s <= 0 || s >= 1) continue;
-      const sx = from[0] + (r(2) - 0.5) * 90;
-      const sz = from[1] + (r(3) - 0.5) * 60;
-      const ex = to[0] + (r(4) - 0.5) * 70;
-      const ez = to[1] + (r(5) - 0.5) * 50;
-      const arc = 35 + r(6) * 40;
+      const sx = from[0] + (r(2) - 0.5) * 180;
+      const sz = from[1] + (r(3) - 0.5) * 120;
+      const ex = to[0] + (r(4) - 0.5) * 140;
+      const ez = to[1] + (r(5) - 0.5) * 100;
+      const arc = 55 + r(6) * 60;
       const px = sx + (ex - sx) * s;
       const pz = sz + (ez - sz) * s;
       const py = y0 + (y1 - y0) * s + Math.sin(Math.PI * s) * arc;
@@ -201,7 +201,7 @@ export function createEffects(scene, { timeline, clock, terrain }) {
       const r = (k) => hash01(seed + i * 5 + k);
       const theta = r(0) * Math.PI * 2;
       const phi = Math.acos(2 * r(1) - 1);
-      const rad = (30 + r(2) * 45) * ease;
+      const rad = (20 + r(2) * 30) * ease;
       shots.add(
         at[0] + Math.sin(phi) * Math.cos(theta) * rad,
         y + Math.abs(Math.cos(phi)) * rad * 0.7,

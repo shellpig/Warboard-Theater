@@ -1,14 +1,14 @@
 {
   "_note": "Phase 5:四語補齊(zh-TW 為準,en/ja 譯文待使用者人工校對);quote 原文任何語系皆顯示漢文,en/ja 附譯文小字",
   "atmosphere": [
-    { "chapter": "prelude", "t": 0, "sky": "#8fa3b8", "fog": [1300, 3600], "sun": 1.35, "sun_color": "#f3e6cf", "ambient": 0.85, "water": "#35596d" },
+    { "chapter": "prelude", "t": 0, "sky": "#8fa3b8", "fog": [2600, 7200], "sun": 1.35, "sun_color": "#f3e6cf", "ambient": 0.85, "water": "#35596d" },
     { "chapter": "prelude", "t": 5400, "sky": "#7b8aa3", "sun": 1.0 },
-    { "chapter": "prelude", "t": 7200, "sky": "#3c4a64", "fog": [1100, 3200], "sun": 0.55, "sun_color": "#e8c9a0", "ambient": 0.58, "water": "#2a4154" },
-    { "chapter": "fire_attack", "t": 30, "sky": "#121826", "fog": [800, 2400], "sun": 0.22, "sun_color": "#8fa6c8", "ambient": 0.34, "water": "#141f2b" },
+    { "chapter": "prelude", "t": 7200, "sky": "#3c4a64", "fog": [2200, 6400], "sun": 0.55, "sun_color": "#e8c9a0", "ambient": 0.58, "water": "#2a4154" },
+    { "chapter": "fire_attack", "t": 30, "sky": "#121826", "fog": [1600, 4800], "sun": 0.22, "sun_color": "#8fa6c8", "ambient": 0.34, "water": "#141f2b" },
     { "chapter": "fire_attack", "t": 200, "sky": "#241624", "ambient": 0.4 },
     { "chapter": "fire_attack", "t": 600, "sky": "#2a3147", "sun": 0.35, "ambient": 0.42, "water": "#1a2736" },
-    { "chapter": "huarong", "t": 40, "sky": "#54688a", "fog": [1000, 3000], "sun": 0.85, "sun_color": "#ffd9ae", "ambient": 0.6, "water": "#31506a" },
-    { "chapter": "huarong", "t": 720, "sky": "#93abc0", "fog": [1400, 3800], "sun": 1.5, "sun_color": "#fff0d8", "ambient": 0.9, "water": "#35596d" }
+    { "chapter": "huarong", "t": 40, "sky": "#54688a", "fog": [2000, 6000], "sun": 0.85, "sun_color": "#ffd9ae", "ambient": 0.6, "water": "#31506a" },
+    { "chapter": "huarong", "t": 720, "sky": "#93abc0", "fog": [2800, 7600], "sun": 1.5, "sun_color": "#fff0d8", "ambient": 0.9, "water": "#35596d" }
   ],
   "chapters": [
     {
@@ -19,6 +19,7 @@
         "en": "Ch. 1 — Wind on the River",
         "ja": "第一章 江上に風起こる"
       },
+      "bgm": "assets/bgm/prelude.mp3",
       "duration_min": 7200,
       "playback_sec": 90,
       "date_display": {
@@ -58,7 +59,7 @@
           }
         },
         { "t": 2250, "type": "status", "unit": "strawboat_fleet", "opacity": 1 },
-        { "t": 2250, "t_end": 2450, "type": "move", "unit": "strawboat_fleet", "to": [-60, -70] },
+        { "t": 2250, "t_end": 2450, "type": "move", "unit": "strawboat_fleet", "to": [-120, -140] },
         {
           "t": 2450,
           "time_display": { "zh-TW": "又三日・大霧", "zh-CN": "又三日・大雾", "en": "Three days on — heavy fog", "ja": "さらに三日・濃霧" },
@@ -82,7 +83,7 @@
           "fx": { "kind": "volley", "from": "cao_fleet", "to": "strawboat_fleet", "count": 240 },
           "camera_hint": "follow"
         },
-        { "t": 2520, "t_end": 2720, "type": "move", "unit": "strawboat_fleet", "to": [-200, 170] },
+        { "t": 2520, "t_end": 2720, "type": "move", "unit": "strawboat_fleet", "to": [-400, 340] },
         { "t": 2760, "type": "status", "unit": "strawboat_fleet", "opacity": 0 },
         {
           "t": 4300,
@@ -123,7 +124,7 @@
             }
           }
         },
-        { "t": 6400, "type": "camera", "pos": [-310, 400] },
+        { "t": 6400, "type": "camera", "pos": [-620, 800] },
         {
           "t": 7050,
           "time_display": { "zh-TW": "是夜", "zh-CN": "是夜", "en": "That night", "ja": "その夜" },
@@ -147,6 +148,7 @@
         "en": "Ch. 2 — The Burning of Red Cliffs",
         "ja": "第二章 赤壁炎上"
       },
+      "bgm": "assets/bgm/fire_attack.mp3",
       "duration_min": 600,
       "playback_sec": 150,
       "clock_start": "20:00",
@@ -165,7 +167,7 @@
             "ja": "黄蓋は薪草と膏油を満載し青布で覆った二十艘の火船を率い、東南の風に乗って曹軍水寨へ直進する。"
           }
         },
-        { "t": 0, "t_end": 130, "type": "move", "unit": "huanggai_fleet", "to": [-50, -70] },
+        { "t": 0, "t_end": 130, "type": "move", "unit": "huanggai_fleet", "to": [-100, -140] },
         { "t": 60, "time_display": { "zh-TW": "二更", "zh-CN": "二更", "en": "Second watch", "ja": "二更" }, "type": "defect", "unit": "huanggai_fleet" },
         {
           "t": 60,
@@ -185,7 +187,7 @@
           "unit": "cao_fleet",
           "fx": { "kind": "explosion", "unit": "cao_fleet" }
         },
-        { "t": 130, "type": "fire", "pos": [0, -120], "intensity": 1.4 },
+        { "t": 130, "type": "fire", "pos": [0, -240], "intensity": 1.4 },
         { "t": 130, "type": "status", "unit": "huanggai_fleet", "badge": "idle" },
         {
           "t": 130,
@@ -207,8 +209,8 @@
             }
           }
         },
-        { "t": 165, "type": "fire", "pos": [55, -105], "intensity": 0.9 },
-        { "t": 200, "type": "fire", "pos": [-55, -135], "intensity": 0.9 },
+        { "t": 165, "type": "fire", "pos": [110, -210], "intensity": 0.9 },
+        { "t": 200, "type": "fire", "pos": [-110, -270], "intensity": 0.9 },
         {
           "t": 150,
           "t_end": 360,
@@ -216,7 +218,7 @@
           "units": ["huanggai_fleet", "cao_fleet"],
           "losses": { "cao_fleet": 41300, "huanggai_fleet": 1637 }
         },
-        { "t": 170, "t_end": 320, "type": "move", "unit": "zhouyu_fleet", "to": [-20, 30] },
+        { "t": 170, "t_end": 320, "type": "move", "unit": "zhouyu_fleet", "to": [-40, 60] },
         {
           "t": 180,
           "t_end": 360,
@@ -239,7 +241,7 @@
           "fx": { "kind": "volley", "from": "zhouyu_fleet", "to": "cao_fleet", "count": 180 }
         },
         { "t": 360, "type": "rout", "unit": "cao_fleet" },
-        { "t": 360, "t_end": 520, "type": "move", "unit": "cao_fleet", "to": [160, -210], "attrition": 133.125 },
+        { "t": 360, "t_end": 520, "type": "move", "unit": "cao_fleet", "to": [320, -420], "attrition": 133.125 },
         {
           "t": 360,
           "time_display": { "zh-TW": "四更", "zh-CN": "四更", "en": "Fourth watch", "ja": "四更" },
@@ -261,7 +263,7 @@
           "unit": "cao_camp",
           "badge": "withdraw"
         },
-        { "t": 480, "t_end": 600, "type": "move", "unit": "cao_camp", "to": [320, -320], "attrition": 8.75 },
+        { "t": 480, "t_end": 600, "type": "move", "unit": "cao_camp", "to": [640, -640], "attrition": 8.75 },
         {
           "t": 480,
           "type": "narration",
@@ -283,6 +285,7 @@
         "en": "Epilogue — Huarong Trail",
         "ja": "終章 華容道"
       },
+      "bgm": "assets/bgm/huarong.mp3",
       "duration_min": 720,
       "playback_sec": 60,
       "clock_start": "05:00",
@@ -300,9 +303,9 @@
             "ja": "夜明け、曹操の残兵は雨の中、華容の小道を進む。人馬は飢え疲れ、泥濘に足を取られた。"
           }
         },
-        { "t": 0, "t_end": 600, "type": "move", "unit": "cao_camp", "to": [450, -380] },
+        { "t": 0, "t_end": 600, "type": "move", "unit": "cao_camp", "to": [900, -760] },
         { "t": 0, "t_end": 240, "type": "status", "unit": "cao_camp", "attrition": 14.375 },
-        { "t": 60, "t_end": 360, "type": "move", "unit": "liubei_army", "to": [430, -290] },
+        { "t": 60, "t_end": 360, "type": "move", "unit": "liubei_army", "to": [860, -580] },
         {
           "t": 240,
           "t_end": 420,
@@ -357,7 +360,7 @@
             }
           }
         },
-        { "t": 550, "t_end": 580, "type": "move", "unit": "guanyu_force", "to": [520, -300] },
+        { "t": 550, "t_end": 580, "type": "move", "unit": "guanyu_force", "to": [1040, -600] },
         {
           "t": 700,
           "time_display": { "zh-TW": "日暮", "zh-CN": "日暮", "en": "Dusk", "ja": "日暮れ" },

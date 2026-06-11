@@ -51,7 +51,7 @@ async function boot() {
   const director = createDirector({ camera, controls, units, timeline, clock, terrain });
   const effects = createEffects(scene, { timeline, clock, terrain });
   const atmosphere = createAtmosphere({ scene, lights, water: terrain.water }, events.atmosphere, timeline.chapters);
-  const audio = createAudio({ timeline, clock });
+  const audio = createAudio({ timeline, clock, battle });
   const ui = createUI({
     labels,
     hud: document.getElementById("hud"),

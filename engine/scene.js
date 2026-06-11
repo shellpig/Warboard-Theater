@@ -12,24 +12,24 @@ export function createScene(container) {
 
   const scene = new THREE.Scene();
   scene.background = new THREE.Color(0x93abc0);
-  scene.fog = new THREE.Fog(0x93abc0, 1500, 3800);
+  scene.fog = new THREE.Fog(0x93abc0, 3000, 7600);
 
   const camera = new THREE.PerspectiveCamera(
     50,
     container.clientWidth / container.clientHeight,
     1,
-    6000
+    12000
   );
   // z = 南:相機自南側上方望向戰場中心,畫面上方為北
-  camera.position.set(0, 520, 840);
+  camera.position.set(0, 1040, 1680);
 
   const controls = new OrbitControls(camera, renderer.domElement);
   controls.target.set(0, 0, 0);
   controls.enableDamping = true;
   controls.dampingFactor = 0.08;
   controls.maxPolarAngle = Math.PI * 0.49;
-  controls.minDistance = 60;
-  controls.maxDistance = 2600;
+  controls.minDistance = 120;
+  controls.maxDistance = 5200;
 
   const hemi = new THREE.HemisphereLight(0xcfe0ee, 0x55503f, 0.9);
   scene.add(hemi);

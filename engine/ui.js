@@ -131,7 +131,10 @@ export function createUI({ labels, hud, card, battle, units, terrain, camera, re
 
   const playBtn = document.createElement("button");
   playBtn.id = "play-btn";
-  playBtn.addEventListener("click", () => clock.toggle());
+  playBtn.addEventListener("click", () => {
+    clock.toggle();
+    audio.unlock?.();
+  });
 
   const track = document.createElement("div");
   track.id = "tl-track";
@@ -351,7 +354,10 @@ export function createUI({ labels, hud, card, battle, units, terrain, camera, re
     const startBtn = document.createElement("button");
     startBtn.className = "start-btn";
     startBtn.textContent = `▶ ${t("start_show")}`;
-    startBtn.addEventListener("click", () => clock.play());
+    startBtn.addEventListener("click", () => {
+      clock.play();
+      audio.unlock?.();
+    });
     titleScreen.append(h1, sub, metaLine, startBtn);
   }
   let titleShown = true;
@@ -427,6 +433,7 @@ export function createUI({ labels, hud, card, battle, units, terrain, camera, re
     if (e.code === "Space") {
       e.preventDefault();
       clock.toggle();
+      audio.unlock?.();
     } else if (e.code === "ArrowRight") {
       clock.seek(clock.time + SKIP_SEC);
     } else if (e.code === "ArrowLeft") {

@@ -1,16 +1,23 @@
-// audio:Web Audio 全合成音效(無音檔)
+// audio:Web Audio 合成音效 + 章節 BGM
 // - 環境:帶通噪音(江風水聲)恆常低音量,慢速 LFO 起伏
 // - 火焰:低通噪音迴圈,音量 = 當前燃燒強度總和(timeline.burns)+ 隨機劈啪爆點
 // - 一次性:volley 箭雨嘯聲 / explosion 爆響(正常播放跨越事件時刻時觸發,seek 大跳不觸發)
+// - BGM:chapter.bgm 音檔循環播放,章節切換時 crossfade
 // AudioContext 於首次使用者手勢(pointerdown / keydown)建立並 resume(瀏覽器 autoplay 政策)
 
-export function createAudio({ timeline, clock }) {
+const BGM_VOLUME = 0.28;
+const BGM_FADE_SEC = 1.4;
+
+export function createAudio({ timeline, clock, battle }) {
   let ctx = null;
   let master = null;
   let fireGain = null;
   let noiseBuf = null;
   let muted = false;
   let prevP = clock.time;
+  let unlocked = false;
+  let currentBgm = null; // { src, el, gain, playing }
+  const fadingBgms = [];
 
   function makeNoise(seconds) {
     const buf = ctx.createBuffer(1, ctx.sampleRate * seconds, ctx.sampleRate);
@@ -56,10 +63,81 @@ export function createAudio({ timeline, clock }) {
 
   function unlock() {
     init();
+    unlocked = true;
     if (ctx.state === "suspended") ctx.resume();
+    syncBgm();
   }
   window.addEventListener("pointerdown", unlock);
   window.addEventListener("keydown", unlock);
+
+  function resolveBgm(src) {
+    if (!src) return "";
+    if (/^(https?:|data:|\/)/.test(src)) return src;
+    return `battles/${battle.id}/${src}`;
+  }
+
+  function makeBgm(src) {
+    const el = new Audio(src);
+    el.loop = true;
+    el.preload = "auto";
+    el.volume = 0;
+    return { src, el, gain: 0, playing: false };
+  }
+
+  function tryPlay(track) {
+    if (!track || track.playing) return;
+    track.playing = true;
+    const promise = track.el.play();
+    if (promise?.catch) {
+      promise.catch(() => {
+        track.playing = false;
+      });
+    }
+  }
+
+  function stopTrack(track) {
+    track.el.pause();
+    track.el.currentTime = 0;
+    track.playing = false;
+  }
+
+  function wantsBgm() {
+    return unlocked && (clock.playing || (clock.time > 0 && clock.time < timeline.total));
+  }
+
+  function syncBgm() {
+    const ch = timeline.chapters[timeline.chapterIndexAt(clock.time)];
+    const src = resolveBgm(ch?.bgm);
+    if (!src) return;
+    if (currentBgm?.src === src) {
+      if (wantsBgm()) tryPlay(currentBgm);
+      return;
+    }
+    if (currentBgm) fadingBgms.push(currentBgm);
+    currentBgm = makeBgm(src);
+    if (wantsBgm()) tryPlay(currentBgm);
+  }
+
+  function updateBgm(dt) {
+    syncBgm();
+    const target = wantsBgm() && !muted ? BGM_VOLUME : 0;
+    const k = Math.min(1, dt / BGM_FADE_SEC);
+    if (currentBgm) {
+      if (wantsBgm()) tryPlay(currentBgm);
+      currentBgm.gain += (target - currentBgm.gain) * k;
+      currentBgm.el.volume = Math.max(0, Math.min(1, currentBgm.gain));
+      if (!wantsBgm() && currentBgm.gain < 0.001) stopTrack(currentBgm);
+    }
+    for (let i = fadingBgms.length - 1; i >= 0; i--) {
+      const tr = fadingBgms[i];
+      tr.gain += (0 - tr.gain) * k;
+      tr.el.volume = Math.max(0, Math.min(1, tr.gain));
+      if (tr.gain < 0.001) {
+        stopTrack(tr);
+        fadingBgms.splice(i, 1);
+      }
+    }
+  }
 
   // 短促劈啪爆點(火焰燃燒中隨機觸發)
   function crackle(intensity) {
@@ -129,6 +207,7 @@ export function createAudio({ timeline, clock }) {
 
   function update(dt) {
     const p = clock.time;
+    updateBgm(dt);
     if (!ctx || ctx.state !== "running") {
       prevP = p;
       return;
@@ -164,5 +243,6 @@ export function createAudio({ timeline, clock }) {
       muted = v;
       if (master) master.gain.setTargetAtTime(v ? 0 : 1, ctx.currentTime, 0.05);
     },
+    unlock,
   };
 }

@@ -4,12 +4,12 @@
 import * as THREE from "three";
 import { pick } from "./i18n.js";
 
-const BOX_GEO = new THREE.BoxGeometry(4, 3, 4);
-const HULL_GEO = new THREE.BoxGeometry(6, 3, 18);
-const DECK_GEO = new THREE.BoxGeometry(4, 2.5, 8);
-const SAIL_GEO = new THREE.PlaneGeometry(7, 9);
-const POLE_GEO = new THREE.CylinderGeometry(0.25, 0.25, 1, 6);
-const FLAG_GEO = new THREE.PlaneGeometry(11, 6.5);
+const BOX_GEO = new THREE.BoxGeometry(2.6, 2, 2.6);
+const HULL_GEO = new THREE.BoxGeometry(4, 2, 12);
+const DECK_GEO = new THREE.BoxGeometry(2.6, 1.6, 5.2);
+const SAIL_GEO = new THREE.PlaneGeometry(4.5, 6);
+const POLE_GEO = new THREE.CylinderGeometry(0.16, 0.16, 1, 6);
+const FLAG_GEO = new THREE.PlaneGeometry(7, 4.2);
 
 export function createUnits(scene, battle, terrain) {
   const { heightAt, waterLevel } = terrain;
@@ -30,7 +30,7 @@ export function createUnits(scene, battle, terrain) {
       snapToGround = buildInfantry(group, def, colorHex, heightAt, materials);
     }
 
-    const poleH = def.type === "fleet" ? 26 : 20;
+    const poleH = def.type === "fleet" ? 17 : 13;
     const flagGroup = buildFlag(poleH, colorHex, pick(faction.name).charAt(0) || "?", materials);
     group.add(flagGroup);
 
@@ -69,7 +69,7 @@ export function createUnits(scene, battle, terrain) {
 
 function buildInfantry(group, def, colorHex, heightAt, materials) {
   const n = THREE.MathUtils.clamp(Math.round(Math.sqrt((def.troops || 5000) / 1600)), 3, 8);
-  const gap = 7;
+  const gap = 4.5;
   const mat = new THREE.MeshStandardMaterial({ color: colorHex, roughness: 0.9 });
   materials.push(mat);
   const mesh = new THREE.InstancedMesh(BOX_GEO, mat, n * n);
@@ -110,8 +110,8 @@ function buildFleet(group, def, colorHex, waterLevel, materials) {
   const sails = new THREE.InstancedMesh(SAIL_GEO, sailMat, count);
   const m = new THREE.Matrix4();
   for (let i = 0; i < count; i++) {
-    const dx = ((i % cols) - (cols - 1) / 2) * 24;
-    const dz = (Math.floor(i / cols) - (rows - 1) / 2) * 30;
+    const dx = ((i % cols) - (cols - 1) / 2) * 14;
+    const dz = (Math.floor(i / cols) - (rows - 1) / 2) * 18;
     m.makeTranslation(dx, waterLevel + 0.8, dz);
     hulls.setMatrixAt(i, m);
     m.makeTranslation(dx, waterLevel + 3.2, dz);
@@ -135,7 +135,7 @@ function buildFlag(poleH, colorHex, char, materials) {
   pole.scale.y = poleH;
   pole.position.set(0, poleH / 2, 0);
   const flag = new THREE.Mesh(FLAG_GEO, flagMat);
-  flag.position.set(5.6, poleH - 3.5, 0);
+  flag.position.set(3.5, poleH - 2.5, 0);
   flagGroup.add(pole, flag);
   return flagGroup;
 }

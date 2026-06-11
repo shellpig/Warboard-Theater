@@ -18,6 +18,7 @@ export function compileTimeline(eventsDef, battle) {
     chapters.push({
       id: ch.id,
       title: ch.title,
+      bgm: ch.bgm,
       date_display: ch.date_display,
       durationMin: ch.duration_min,
       clockStartMin: parseClock(ch.clock_start),

@@ -88,25 +88,25 @@
     "ja": "東南の風起こり、黄蓋の火船が連環の船陣に突入"
   },
   "terrain": {
-    "size": [1200, 800],
+    "size": [2400, 1600],
     "water_level": 0,
     "hills": [
-      { "pos": [-420, -360], "radius": 380, "height": 38 },
-      { "pos": [80, -400], "radius": 400, "height": 34 },
-      { "pos": [480, -340], "radius": 360, "height": 42 },
-      { "pos": [200, -250], "radius": 140, "height": 18 },
-      { "pos": [-380, 430], "radius": 380, "height": 46 },
-      { "pos": [120, 460], "radius": 400, "height": 40 },
-      { "pos": [500, 420], "radius": 360, "height": 48 },
-      { "pos": [-110, 330], "radius": 110, "height": 55 },
-      { "pos": [-310, 400], "radius": 150, "height": 50 }
+      { "pos": [-840, -720], "radius": 760, "height": 38 },
+      { "pos": [160, -800], "radius": 800, "height": 34 },
+      { "pos": [960, -680], "radius": 720, "height": 42 },
+      { "pos": [400, -500], "radius": 280, "height": 18 },
+      { "pos": [-760, 860], "radius": 760, "height": 46 },
+      { "pos": [240, 920], "radius": 800, "height": 40 },
+      { "pos": [1000, 840], "radius": 720, "height": 48 },
+      { "pos": [-220, 660], "radius": 220, "height": 55 },
+      { "pos": [-620, 800], "radius": 300, "height": 50 }
     ],
     "landmarks": [
-      { "name": { "zh-TW": "烏林", "zh-CN": "乌林", "en": "Wulin", "ja": "烏林" }, "pos": [200, -250], "type": "camp" },
+      { "name": { "zh-TW": "烏林", "zh-CN": "乌林", "en": "Wulin", "ja": "烏林" }, "pos": [400, -500], "type": "camp" },
       { "name": { "zh-TW": "長江", "zh-CN": "长江", "en": "Yangtze River", "ja": "長江" }, "pos": [0, 0], "type": "river" },
-      { "name": { "zh-TW": "赤壁磯", "zh-CN": "赤壁矶", "en": "Red Cliffs", "ja": "赤壁" }, "pos": [-100, 300], "type": "shore" },
-      { "name": { "zh-TW": "南屏山", "zh-CN": "南屏山", "en": "Mt. Nanping", "ja": "南屏山" }, "pos": [-310, 400], "type": "mountain" },
-      { "name": { "zh-TW": "華容道", "zh-CN": "华容道", "en": "Huarong Trail", "ja": "華容道" }, "pos": [450, -380], "type": "road" }
+      { "name": { "zh-TW": "赤壁磯", "zh-CN": "赤壁矶", "en": "Red Cliffs", "ja": "赤壁" }, "pos": [-200, 600], "type": "shore" },
+      { "name": { "zh-TW": "南屏山", "zh-CN": "南屏山", "en": "Mt. Nanping", "ja": "南屏山" }, "pos": [-620, 800], "type": "mountain" },
+      { "name": { "zh-TW": "華容道", "zh-CN": "华容道", "en": "Huarong Trail", "ja": "華容道" }, "pos": [900, -760], "type": "road" }
     ]
   },
   "units": [
@@ -115,7 +115,7 @@
       "faction": "wei",
       "type": "fleet",
       "label": { "zh-TW": "曹軍連環船隊", "zh-CN": "曹军连环船队", "en": "Cao's Chained Fleet", "ja": "曹軍連環船団" },
-      "spawn": [0, -120],
+      "spawn": [0, -240],
       "troops": 100000
     },
     {
@@ -123,7 +123,7 @@
       "faction": "wei",
       "type": "infantry",
       "label": { "zh-TW": "烏林本陣", "zh-CN": "乌林本阵", "en": "Wulin Main Camp", "ja": "烏林本陣" },
-      "spawn": [200, -260],
+      "spawn": [400, -520],
       "troops": 100000
     },
     {
@@ -131,7 +131,7 @@
       "faction": "wu",
       "type": "fleet",
       "label": { "zh-TW": "周瑜水軍", "zh-CN": "周瑜水军", "en": "Zhou Yu's Navy", "ja": "周瑜水軍" },
-      "spawn": [-80, 180],
+      "spawn": [-160, 360],
       "troops": 28000
     },
     {
@@ -139,7 +139,7 @@
       "faction": "wu",
       "type": "fleet",
       "label": { "zh-TW": "黃蓋船隊", "zh-CN": "黄盖船队", "en": "Huang Gai's Squadron", "ja": "黄蓋船団" },
-      "spawn": [-140, 190],
+      "spawn": [-280, 380],
       "troops": 2000
     },
     {
@@ -147,7 +147,7 @@
       "faction": "shu",
       "type": "infantry",
       "label": { "zh-TW": "劉備軍本隊", "zh-CN": "刘备军本队", "en": "Liu Bei's Main Force", "ja": "劉備軍本隊" },
-      "spawn": [500, 260],
+      "spawn": [1000, 520],
       "troops": 14400
     },
     {
@@ -156,7 +156,7 @@
       "type": "fleet",
       "count": 20,
       "label": { "zh-TW": "孔明草船隊", "zh-CN": "孔明草船队", "en": "Kongming's Straw Boats", "ja": "孔明の草船隊" },
-      "spawn": [-200, 170],
+      "spawn": [-400, 340],
       "troops": 600
     },
     {
@@ -164,7 +164,7 @@
       "faction": "shu",
       "type": "infantry",
       "label": { "zh-TW": "關羽伏兵", "zh-CN": "关羽伏兵", "en": "Guan Yu's Ambush", "ja": "関羽の伏兵" },
-      "spawn": [520, -360],
+      "spawn": [1040, -720],
       "troops": 5000
     }
   ]

@@ -10,8 +10,9 @@ At conversation start, read in this layered order. Ignore `舊文件/`.
 
 **Layer 1 — 必讀（建立全貌）：**
 1. `AGENTS.md`（本檔）
-5. `規格書.md`
-6. `git log --oneline -10`（近期變更）
+2. `規格書.md`
+3. `已知問題.md`
+4. `git log --oneline -10`（近期變更）
 
 **Layer 2 — 實作 / 測試文件：**
 
@@ -31,7 +32,7 @@ Only modify files when user explicitly requests fix, implement, or commit. Verif
 
 ## 重要通用規則
 
-當使用者要求「驗證」時，只能進行檢查、讀檔、執行測試、啟動本機服務與回報結果。
+當使用者要求「驗證」時，只能進行code review、檢查、讀檔、執行測試、啟動本機服務與回報結果。
 
 除非使用者明確要求「修」、「修改」、「commit」或「提交」，否則不得：
 

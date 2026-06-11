@@ -49,7 +49,7 @@ export function buildTerrain(scene, def) {
     return s - Math.floor(s);
   };
 
-  const geo = new THREE.PlaneGeometry(sizeX, sizeZ, 240, 160);
+  const geo = new THREE.PlaneGeometry(sizeX, sizeZ, 320, 200);
   geo.rotateX(-Math.PI / 2);
   const pos = geo.attributes.position;
   const colors = new Float32Array(pos.count * 3);
@@ -97,8 +97,8 @@ export function buildTerrain(scene, def) {
 
 // 程序化貼圖:細顆粒噪點 + 濕岸線壓暗(與頂點色相乘)
 function groundTexture(sizeX, sizeZ, waterLevel, heightAt) {
-  const W = 768;
-  const H = 512;
+  const W = 1024;
+  const H = 682;
   const cv = document.createElement("canvas");
   cv.width = W;
   cv.height = H;
