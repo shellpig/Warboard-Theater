@@ -348,9 +348,27 @@ export function createUI({ labels, hud, card, battle, units, terrain, camera, re
     sub.textContent = pick(battle.subtitle);
     const metaLine = document.createElement("div");
     metaLine.className = "meta-line";
-    metaLine.textContent = [pick(battle.date_display), pick(battle.duration_label)]
-      .filter(Boolean)
-      .join("・");
+    metaLine.textContent = pick(battle.date_display);
+    const factionRow = document.createElement("div");
+    factionRow.className = "ts-factions";
+    for (const ws of wmSides) {
+      const bFactions = battle.factions.filter((f) => f.side === ws.side);
+      const box = document.createElement("div");
+      box.className = "ts-faction-box";
+      box.style.borderLeftColor = ws.factions[0]?.color || "#888";
+      const sideNameEl = document.createElement("div");
+      sideNameEl.className = "ts-side-name";
+      sideNameEl.textContent = ws.names;
+      const cmdrEl = document.createElement("div");
+      cmdrEl.className = "ts-commanders";
+      cmdrEl.textContent = bFactions.flatMap((f) => (f.commanders || []).slice(0, 1).map((c) => pick(c.name))).join("・");
+      const troopsEl = document.createElement("div");
+      troopsEl.className = "ts-troops";
+      const total = ws.factions.reduce((sum, f) => sum + f.unitIds.reduce((a, id) => a + timeline.troopsAt(id, 0), 0), 0);
+      troopsEl.textContent = `約 ${total.toLocaleString()}`;
+      box.append(sideNameEl, cmdrEl, troopsEl);
+      factionRow.appendChild(box);
+    }
     const startBtn = document.createElement("button");
     startBtn.className = "start-btn";
     startBtn.textContent = `▶ ${t("start_show")}`;
@@ -358,7 +376,7 @@ export function createUI({ labels, hud, card, battle, units, terrain, camera, re
       clock.play();
       audio.unlock?.();
     });
-    titleScreen.append(h1, sub, metaLine, startBtn);
+    titleScreen.append(h1, sub, metaLine, factionRow, startBtn);
   }
   let titleShown = true;
 

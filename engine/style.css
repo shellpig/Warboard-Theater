@@ -598,16 +598,16 @@ body.cinema .cine-bar {
   transform: translateX(-50%);
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 20px;
   background: var(--panel);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 4px;
-  padding: 5px 14px;
+  padding: 8px 22px;
   backdrop-filter: blur(2px);
 }
 
 #war-meter .wm-side {
-  font-size: 11px;
+  font-size: 16px;
   line-height: 1.35;
   white-space: nowrap;
   opacity: 0.9;
@@ -619,14 +619,14 @@ body.cinema .cine-bar {
 
 #war-meter .wm-side .wm-num {
   display: block;
-  font-size: 14px;
+  font-size: 22px;
   font-weight: 600;
   opacity: 1;
 }
 
 #war-meter .wm-bar {
-  width: 190px;
-  height: 8px;
+  width: 380px;
+  height: 12px;
   display: flex;
   gap: 1px;
   border-radius: 4px;
@@ -691,43 +691,90 @@ body.cinema .cine-bar {
 
 #title-screen h1 {
   margin: 0;
-  font-size: 46px;
+  font-size: 82px;
   letter-spacing: 0.3em;
   text-indent: 0.3em; /* 平衡 letter-spacing 尾端空隙 */
-  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.8);
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.85);
 }
 
 #title-screen .sub {
-  font-size: 17px;
+  font-size: 26px;
   opacity: 0.85;
   letter-spacing: 0.12em;
 }
 
 #title-screen .meta-line {
-  font-size: 13px;
+  font-size: 17px;
   opacity: 0.6;
   letter-spacing: 0.18em;
 }
 
 #title-screen .start-btn,
 #end-screen .replay-btn {
-  margin-top: 18px;
+  margin-top: 28px;
   font: inherit;
-  font-size: 16px;
+  font-size: 22px;
   letter-spacing: 0.22em;
   text-indent: 0.22em;
-  padding: 10px 38px;
+  padding: 14px 64px;
   background: transparent;
   color: var(--accent);
   border: 1px solid var(--accent);
   border-radius: 4px;
   cursor: pointer;
-  transition: background 0.25s;
+  transition: background 0.25s, color 0.25s;
 }
 
-#title-screen .start-btn:hover,
+#title-screen .start-btn {
+  background: var(--accent);
+  color: #0c0f14;
+}
+
+#title-screen .start-btn:hover {
+  background: #d4b270;
+  color: #0c0f14;
+}
+
 #end-screen .replay-btn:hover {
   background: rgba(201, 168, 106, 0.14);
+}
+
+/* 片頭陣營比較 */
+.ts-factions {
+  display: flex;
+  gap: 24px;
+  margin: 8px 0 4px;
+}
+
+.ts-faction-box {
+  min-width: 160px;
+  padding: 14px 20px;
+  background: rgba(12, 16, 24, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-left: 4px solid #888;
+  border-radius: 4px;
+  backdrop-filter: blur(3px);
+}
+
+.ts-side-name {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  margin-bottom: 6px;
+}
+
+.ts-commanders {
+  font-size: 16px;
+  opacity: 0.8;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+
+.ts-troops {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.04em;
 }
 
 /* ===== 結算 end card ===== */
