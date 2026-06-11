@@ -1,0 +1,143 @@
+{
+  "id": "chibi",
+  "title": { "zh-TW": "赤壁之戰", "zh-CN": "赤壁之战", "en": "Battle of Red Cliffs", "ja": "赤壁の戦い" },
+  "subtitle": {
+    "zh-TW": "火燒連環 ─ 三分天下的一夜",
+    "zh-CN": "火烧连环 ─ 三分天下的一夜",
+    "en": "The Night of Fire That Split the Land in Three",
+    "ja": "連環の船を焼く ─ 天下三分の一夜"
+  },
+  "year": "208",
+  "date_display": { "zh-TW": "建安十三年冬", "zh-CN": "建安十三年冬", "en": "Winter, 208 CE", "ja": "建安十三年冬" },
+  "duration_label": { "zh-TW": "約一夜", "zh-CN": "约一夜", "en": "About one night", "ja": "約一夜" },
+  "narrative_basis": { "zh-TW": "三國演義", "zh-CN": "三国演义", "en": "Romance of the Three Kingdoms", "ja": "三国志演義" },
+  "factions": [
+    {
+      "id": "wei",
+      "side": "north",
+      "name": { "zh-TW": "曹操軍", "zh-CN": "曹操军", "en": "Cao Cao's Army", "ja": "曹操軍" },
+      "color": "#2c4a8c",
+      "commanders": [
+        {
+          "id": "caocao",
+          "name": { "zh-TW": "曹操", "zh-CN": "曹操", "en": "Cao Cao", "ja": "曹操" },
+          "portrait": "assets/commander_caocao.png"
+        }
+      ],
+      "strength": {
+        "zh-TW": "號稱 800,000(實約 200,000)",
+        "zh-CN": "号称 800,000(实约 200,000)",
+        "en": "Claimed 800,000 (about 200,000 in fact)",
+        "ja": "号する80万(実数約20万)"
+      }
+    },
+    {
+      "id": "wu",
+      "side": "south",
+      "name": { "zh-TW": "孫吳軍", "zh-CN": "孙吴军", "en": "Sun Wu's Army", "ja": "孫呉軍" },
+      "color": "#c0392b",
+      "commanders": [
+        {
+          "id": "zhouyu",
+          "name": { "zh-TW": "周瑜", "zh-CN": "周瑜", "en": "Zhou Yu", "ja": "周瑜" },
+          "portrait": "assets/commander_zhouyu.png"
+        },
+        {
+          "id": "huanggai",
+          "name": { "zh-TW": "黃蓋", "zh-CN": "黄盖", "en": "Huang Gai", "ja": "黄蓋" },
+          "portrait": "assets/commander_huanggai.png"
+        }
+      ],
+      "strength": { "zh-TW": "約 30,000", "zh-CN": "约 30,000", "en": "About 30,000", "ja": "約3万" }
+    },
+    {
+      "id": "shu",
+      "side": "south",
+      "name": { "zh-TW": "劉備軍", "zh-CN": "刘备军", "en": "Liu Bei's Army", "ja": "劉備軍" },
+      "color": "#2e8b57",
+      "commanders": [
+        {
+          "id": "zhugeliang",
+          "name": { "zh-TW": "諸葛亮", "zh-CN": "诸葛亮", "en": "Zhuge Liang", "ja": "諸葛亮" },
+          "portrait": "assets/commander_zhugeliang.png"
+        },
+        {
+          "id": "liubei",
+          "name": { "zh-TW": "劉備", "zh-CN": "刘备", "en": "Liu Bei", "ja": "劉備" },
+          "portrait": "assets/commander_liubei.png"
+        }
+      ],
+      "strength": { "zh-TW": "約 20,000", "zh-CN": "约 20,000", "en": "About 20,000", "ja": "約2万" }
+    }
+  ],
+  "result": {
+    "zh-TW": "孫劉聯軍勝利",
+    "zh-CN": "孙刘联军胜利",
+    "en": "Sun-Liu allied victory",
+    "ja": "孫劉連合軍の勝利"
+  },
+  "terrain": {
+    "size": [1200, 800],
+    "water_level": 0,
+    "hills": [
+      { "pos": [-420, -360], "radius": 380, "height": 38 },
+      { "pos": [80, -400], "radius": 400, "height": 34 },
+      { "pos": [480, -340], "radius": 360, "height": 42 },
+      { "pos": [200, -250], "radius": 140, "height": 18 },
+      { "pos": [-380, 430], "radius": 380, "height": 46 },
+      { "pos": [120, 460], "radius": 400, "height": 40 },
+      { "pos": [500, 420], "radius": 360, "height": 48 },
+      { "pos": [-110, 330], "radius": 110, "height": 55 },
+      { "pos": [-310, 400], "radius": 150, "height": 50 }
+    ],
+    "landmarks": [
+      { "name": { "zh-TW": "烏林", "zh-CN": "乌林", "en": "Wulin", "ja": "烏林" }, "pos": [200, -250], "type": "camp" },
+      { "name": { "zh-TW": "長江", "zh-CN": "长江", "en": "Yangtze River", "ja": "長江" }, "pos": [0, 0], "type": "river" },
+      { "name": { "zh-TW": "赤壁磯", "zh-CN": "赤壁矶", "en": "Red Cliffs", "ja": "赤壁" }, "pos": [-100, 300], "type": "shore" },
+      { "name": { "zh-TW": "南屏山", "zh-CN": "南屏山", "en": "Mt. Nanping", "ja": "南屏山" }, "pos": [-310, 400], "type": "mountain" },
+      { "name": { "zh-TW": "華容道", "zh-CN": "华容道", "en": "Huarong Trail", "ja": "華容道" }, "pos": [450, -380], "type": "road" }
+    ]
+  },
+  "units": [
+    {
+      "id": "cao_fleet",
+      "faction": "wei",
+      "type": "fleet",
+      "label": { "zh-TW": "曹軍連環船隊", "zh-CN": "曹军连环船队", "en": "Cao's Chained Fleet", "ja": "曹軍連環船団" },
+      "spawn": [0, -120],
+      "troops": 100000
+    },
+    {
+      "id": "cao_camp",
+      "faction": "wei",
+      "type": "infantry",
+      "label": { "zh-TW": "烏林本陣", "zh-CN": "乌林本阵", "en": "Wulin Main Camp", "ja": "烏林本陣" },
+      "spawn": [200, -260],
+      "troops": 100000
+    },
+    {
+      "id": "zhouyu_fleet",
+      "faction": "wu",
+      "type": "fleet",
+      "label": { "zh-TW": "周瑜水軍", "zh-CN": "周瑜水军", "en": "Zhou Yu's Navy", "ja": "周瑜水軍" },
+      "spawn": [-80, 180],
+      "troops": 30000
+    },
+    {
+      "id": "huanggai_fleet",
+      "faction": "wu",
+      "type": "fleet",
+      "label": { "zh-TW": "黃蓋船隊", "zh-CN": "黄盖船队", "en": "Huang Gai's Squadron", "ja": "黄蓋船団" },
+      "spawn": [-140, 190],
+      "troops": 2000
+    },
+    {
+      "id": "liubei_army",
+      "faction": "shu",
+      "type": "infantry",
+      "label": { "zh-TW": "劉備軍本隊", "zh-CN": "刘备军本队", "en": "Liu Bei's Main Force", "ja": "劉備軍本隊" },
+      "spawn": [500, 260],
+      "troops": 20000
+    }
+  ]
+}

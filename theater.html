@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Warboard Theater</title>
+  <link rel="stylesheet" href="engine/style.css" />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body class="theater">
+  <div id="stage"></div>
+  <div id="overlay">
+    <div id="labels"></div>
+    <header id="topbar">
+      <a id="back-link" class="btn"></a>
+      <div id="battle-title">
+        <h1></h1>
+        <p></p>
+      </div>
+      <div id="lang-slot"></div>
+    </header>
+    <div id="status-msg"></div>
+  </div>
+  <script type="module" src="engine/main.js"></script>
+</body>
+</html>

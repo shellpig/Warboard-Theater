@@ -1,0 +1,18 @@
+{
+  "battles": [
+    {
+      "id": "chibi",
+      "title": { "zh-TW": "赤壁之戰", "zh-CN": "赤壁之战", "en": "Battle of Red Cliffs", "ja": "赤壁の戦い" },
+      "year": "208",
+      "poster": "battles/chibi/assets/poster_bg.jpg",
+      "status": "ready"
+    },
+    {
+      "id": "guandu",
+      "title": { "zh-TW": "官渡之戰", "zh-CN": "官渡之战", "en": "Battle of Guandu", "ja": "官渡の戦い" },
+      "year": "200",
+      "poster": "",
+      "status": "coming_soon"
+    }
+  ]
+}

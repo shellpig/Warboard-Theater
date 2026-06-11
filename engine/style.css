@@ -1,0 +1,268 @@
+:root {
+  --bg: #0c0f14;
+  --panel: rgba(12, 16, 24, 0.78);
+  --text: #e8e3d5;
+  --accent: #c9a86a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Georgia, "Noto Serif TC", "Microsoft JhengHei", serif;
+}
+
+.lang-switcher {
+  background: rgba(10, 14, 20, 0.8);
+  color: var(--text);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 4px 8px;
+  border-radius: 4px;
+  pointer-events: auto;
+}
+
+/* ===== 節目單(index) ===== */
+
+body.menu #site-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 36px 40px 8px;
+}
+
+body.menu #site-header h1 {
+  margin: 0;
+  font-size: 30px;
+  letter-spacing: 0.18em;
+}
+
+body.menu #site-header p {
+  margin: 6px 0 0;
+  font-size: 14px;
+  opacity: 0.65;
+  letter-spacing: 0.1em;
+}
+
+#grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 26px;
+  padding: 28px 40px 60px;
+}
+
+.card {
+  position: relative;
+  width: 230px;
+  aspect-ratio: 2 / 3;
+  border-radius: 10px;
+  overflow: hidden;
+  background: linear-gradient(160deg, #27364a, #101720);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.card.ready:hover {
+  transform: scale(1.04);
+  border-color: var(--accent);
+  box-shadow: 0 8px 40px rgba(201, 168, 106, 0.18);
+}
+
+.card .poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card .shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 45%, rgba(5, 8, 12, 0.92));
+}
+
+.card .meta {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 14px 16px;
+}
+
+.card .meta h2 {
+  margin: 0 0 4px;
+  font-size: 20px;
+}
+
+.card .meta .year {
+  color: var(--accent);
+  font-size: 13px;
+  letter-spacing: 0.12em;
+}
+
+.card.coming {
+  opacity: 0.45;
+}
+
+.badge-soon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 2px 8px;
+  font-size: 12px;
+  border-radius: 4px;
+}
+
+/* ===== 推演頁(theater) ===== */
+
+body.theater {
+  overflow: hidden;
+}
+
+#stage {
+  position: fixed;
+  inset: 0;
+}
+
+#stage canvas {
+  display: block;
+}
+
+#overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+#topbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 12px 18px 26px;
+  background: linear-gradient(180deg, rgba(5, 8, 12, 0.85), transparent);
+}
+
+#topbar .btn {
+  pointer-events: auto;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 4px 12px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+#topbar .btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+#battle-title {
+  flex: 1;
+  min-width: 0;
+}
+
+#battle-title h1 {
+  margin: 0;
+  font-size: 18px;
+  letter-spacing: 0.1em;
+}
+
+#battle-title p {
+  margin: 2px 0 0;
+  font-size: 12px;
+  opacity: 0.7;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#status-msg {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 15px;
+  letter-spacing: 0.2em;
+  opacity: 0.8;
+}
+
+body.menu #status-msg {
+  position: static;
+  transform: none;
+  padding: 0 40px;
+}
+
+/* 部隊名牌 */
+.unit-plate {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: var(--panel);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-left: 3px solid #888;
+  padding: 4px 9px;
+  border-radius: 3px;
+  white-space: nowrap;
+  backdrop-filter: blur(2px);
+  will-change: transform;
+}
+
+.unit-plate .name {
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.unit-plate .troops {
+  opacity: 0.75;
+  font-size: 11px;
+}
+
+/* 地名標籤 */
+.landmark {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 12px;
+  letter-spacing: 0.25em;
+  color: rgba(238, 232, 214, 0.85);
+  text-shadow: 0 1px 4px #000;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.landmark.river {
+  color: #9cc4d8;
+  font-style: italic;
+}
+
+.landmark.mountain::before {
+  content: "▲ ";
+}
+
+.landmark.camp::before {
+  content: "⚑ ";
+}
+
+.landmark.shore {
+  color: #d8b88e;
+}
+
+.landmark.road,
+.landmark.village {
+  color: #cbb9a0;
+}

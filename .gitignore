@@ -1,2 +1,5 @@
 .idea/
 .claude/
+.venv/
+.verify_phase1.py
+.verify_shots/

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>戰局劇場 Warboard Theater</title>
+  <link rel="stylesheet" href="engine/style.css" />
+</head>
+<body class="menu">
+  <header id="site-header">
+    <div>
+      <h1 id="brand"></h1>
+      <p id="tagline"></p>
+    </div>
+    <div id="lang-slot"></div>
+  </header>
+  <main id="grid"></main>
+  <p id="status-msg"></p>
+
+  <script type="module">
+    import { initI18n, getLang, t, pick, createLangSwitcher } from "./engine/i18n.js";
+
+    initI18n();
+    document.title = `${t("brand")} Warboard Theater`;
+    document.getElementById("brand").textContent = t("brand");
+    document.getElementById("tagline").textContent = t("tagline");
+    document.getElementById("lang-slot").appendChild(createLangSwitcher());
+
+    const grid = document.getElementById("grid");
+    const statusMsg = document.getElementById("status-msg");
+
+    try {
+      const res = await fetch("battles/manifest.json");
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const manifest = await res.json();
+
+      for (const b of manifest.battles) {
+        const ready = b.status === "ready";
+        const card = document.createElement(ready ? "a" : "div");
+        card.className = `card ${ready ? "ready" : "coming"}`;
+        if (ready) card.href = `theater.html?battle=${b.id}&lang=${getLang()}`;
+
+        if (b.poster) {
+          const img = document.createElement("img");
+          img.className = "poster";
+          img.alt = "";
+          img.src = b.poster;
+          img.addEventListener("error", () => img.remove());
+          card.appendChild(img);
+        }
+
+        const shade = document.createElement("div");
+        shade.className = "shade";
+        card.appendChild(shade);
+
+        const meta = document.createElement("div");
+        meta.className = "meta";
+        const h2 = document.createElement("h2");
+        h2.textContent = pick(b.title);
+        const year = document.createElement("div");
+        year.className = "year";
+        year.textContent = b.year;
+        meta.append(h2, year);
+        card.appendChild(meta);
+
+        if (!ready) {
+          const badge = document.createElement("div");
+          badge.className = "badge-soon";
+          badge.textContent = t("coming_soon");
+          card.appendChild(badge);
+        }
+
+        grid.appendChild(card);
+      }
+    } catch (err) {
+      console.error(err);
+      statusMsg.textContent = t("load_error");
+    }
+  </script>
+</body>
+</html>
