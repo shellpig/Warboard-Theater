@@ -6,7 +6,7 @@ import { t, pick, getLang } from "./i18n.js";
 const SPEEDS = [0.5, 1, 2, 4];
 const SKIP_SEC = 5; // ←→ 跳時間(全域播放秒)
 
-export function createUI({ labels, hud, card, battle, units, terrain, camera, renderer, timeline, clock, director }) {
+export function createUI({ labels, hud, card, battle, units, terrain, camera, renderer, timeline, clock, director, audio }) {
   const tracked = [];
 
   // --- 部隊名牌 ---
@@ -175,8 +175,220 @@ export function createUI({ labels, hud, card, battle, units, terrain, camera, re
     return b;
   });
 
-  bar.append(playBtn, track, timeLabel, speedGroup);
+  // --- 控制列附加鍵:音效 / 電影模式(letterbox)/ 錄影模式 ---
+  const toast = document.getElementById("toast");
+  let toastTimer = 0;
+  function showToast(msg) {
+    toast.textContent = msg;
+    toast.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove("show"), 3000);
+  }
+
+  const extraGroup = document.createElement("div");
+  extraGroup.id = "extra-group";
+
+  const muteBtn = document.createElement("button");
+  muteBtn.className = "x-btn";
+  muteBtn.textContent = "🔊";
+  muteBtn.title = t("sound");
+  muteBtn.addEventListener("click", () => {
+    audio.setMuted(!audio.muted);
+    muteBtn.textContent = audio.muted ? "🔇" : "🔊";
+  });
+
+  const cinemaBtn = document.createElement("button");
+  cinemaBtn.className = "x-btn";
+  cinemaBtn.textContent = "▭";
+  cinemaBtn.title = t("cinema_mode");
+  cinemaBtn.addEventListener("click", () => {
+    const on = document.body.classList.toggle("cinema");
+    cinemaBtn.classList.toggle("active", on);
+  });
+
+  const recordBtn = document.createElement("button");
+  recordBtn.className = "x-btn";
+  recordBtn.textContent = "🎬";
+  recordBtn.title = t("record_mode");
+  recordBtn.addEventListener("click", () => setRecord(true));
+
+  function setRecord(on) {
+    document.body.classList.toggle("record", on);
+    window.dispatchEvent(new Event("resize")); // 鎖 16:9 改變 stage 尺寸,通知 renderer
+    if (on) showToast(t("record_hint"));
+  }
+
+  extraGroup.append(muteBtn, cinemaBtn, recordBtn);
+
+  bar.append(playBtn, track, timeLabel, speedGroup, extraGroup);
   hud.append(chapterRow, bar);
+
+  // --- 電影感顆粒:程序化噪點貼圖(一次生成,CSS steps 動畫抖動) ---
+  {
+    const cv = document.createElement("canvas");
+    cv.width = cv.height = 128;
+    const ctx2d = cv.getContext("2d");
+    const img = ctx2d.createImageData(128, 128);
+    for (let i = 0; i < img.data.length; i += 4) {
+      const v = Math.random() * 255;
+      img.data[i] = img.data[i + 1] = img.data[i + 2] = v;
+      img.data[i + 3] = 255;
+    }
+    ctx2d.putImageData(img, 0, 0);
+    document.getElementById("grain").style.backgroundImage = `url(${cv.toDataURL()})`;
+  }
+
+  // --- war-meter:雙方(side)總兵力 + 各陣營色比例條 ---
+  const factionSide = {};
+  for (const f of battle.factions || []) factionSide[f.id] = f.side;
+  const sideOrder = [...new Set((battle.factions || []).map((f) => f.side))];
+  const wmSides = sideOrder.map((side) => {
+    const factions = battle.factions.filter((f) => f.side === side);
+    return {
+      side,
+      factions: factions.map((f) => ({
+        color: f.color,
+        unitIds: (battle.units || []).filter((u) => u.faction === f.id).map((u) => u.id),
+      })),
+      names: factions.map((f) => pick(f.name)).join("・"),
+    };
+  });
+
+  const wm = document.getElementById("war-meter");
+  let wmSegs = [];
+  let wmNums = [];
+  if (wmSides.length === 2) {
+    const mk = (cls, names) => {
+      const el = document.createElement("div");
+      el.className = `wm-side ${cls}`;
+      const num = document.createElement("span");
+      num.className = "wm-num";
+      el.append(names, num);
+      return { el, num };
+    };
+    const left = mk("left", wmSides[0].names);
+    const right = mk("right", wmSides[1].names);
+    const barEl = document.createElement("div");
+    barEl.className = "wm-bar";
+    for (const s of wmSides) {
+      for (const f of s.factions) {
+        const seg = document.createElement("div");
+        seg.className = "wm-seg";
+        seg.style.background = f.color;
+        barEl.appendChild(seg);
+        wmSegs.push({ seg, f });
+      }
+    }
+    wm.append(left.el, barEl, right.el);
+    wmNums = [left.num, right.num];
+  } else {
+    wm.style.display = "none";
+  }
+
+  let wmLastTotals = [-1, -1];
+  function updateWarMeter(p) {
+    if (wmSides.length !== 2) return;
+    let grand = 0;
+    const sideTotals = [0, 0];
+    for (const { f } of wmSegs) {
+      f._cur = 0;
+      for (const id of f.unitIds) f._cur += timeline.troopsAt(id, p);
+      grand += f._cur;
+    }
+    wmSides.forEach((s, i) => {
+      for (const f of s.factions) sideTotals[i] += f._cur;
+    });
+    if (sideTotals[0] === wmLastTotals[0] && sideTotals[1] === wmLastTotals[1]) return;
+    wmLastTotals = sideTotals;
+    wmNums.forEach((n, i) => (n.textContent = sideTotals[i].toLocaleString()));
+    for (const { seg, f } of wmSegs) {
+      seg.style.width = grand > 0 ? `${(f._cur / grand) * 100}%` : "0%";
+    }
+  }
+
+  // --- 片頭 title screen:首次播放(或 seek)前顯示 ---
+  const titleScreen = document.getElementById("title-screen");
+  {
+    const h1 = document.createElement("h1");
+    h1.textContent = pick(battle.title);
+    const sub = document.createElement("div");
+    sub.className = "sub";
+    sub.textContent = pick(battle.subtitle);
+    const metaLine = document.createElement("div");
+    metaLine.className = "meta-line";
+    metaLine.textContent = [pick(battle.date_display), pick(battle.duration_label)]
+      .filter(Boolean)
+      .join("・");
+    const startBtn = document.createElement("button");
+    startBtn.className = "start-btn";
+    startBtn.textContent = `▶ ${t("start_show")}`;
+    startBtn.addEventListener("click", () => clock.play());
+    titleScreen.append(h1, sub, metaLine, startBtn);
+  }
+  let titleShown = true;
+
+  // --- 結算 end card:勝負、交戰時間、雙方損失、關鍵轉折、重新觀看 ---
+  const endScreen = document.getElementById("end-screen");
+  const initialTotals = wmSides.map((s) =>
+    s.factions.reduce((sum, f) => sum + f.unitIds.reduce((a, id) => a + timeline.troopsAt(id, 0), 0), 0)
+  );
+  const endPanel = document.createElement("div");
+  endPanel.className = "end-panel";
+  endScreen.appendChild(endPanel);
+  let endShown = false;
+
+  function renderEndCard(p) {
+    endPanel.textContent = "";
+    const result = document.createElement("h2");
+    result.className = "end-result";
+    result.textContent = pick(battle.result);
+    endPanel.appendChild(result);
+
+    const row = (label, contentEl) => {
+      const r = document.createElement("div");
+      r.className = "end-row";
+      const lbl = document.createElement("span");
+      lbl.className = "lbl";
+      lbl.textContent = label;
+      r.append(lbl, contentEl);
+      endPanel.appendChild(r);
+    };
+
+    row(t("end_duration"), document.createTextNode(pick(battle.duration_label)));
+
+    const lossWrap = document.createElement("div");
+    lossWrap.className = "end-loss";
+    wmSides.forEach((s, i) => {
+      const cur = s.factions.reduce(
+        (sum, f) => sum + f.unitIds.reduce((a, id) => a + timeline.troopsAt(id, p), 0),
+        0
+      );
+      const side = document.createElement("div");
+      side.className = "side";
+      side.style.borderLeftColor = s.factions[0]?.color || "#888";
+      const name = document.createElement("div");
+      name.textContent = s.names;
+      const num = document.createElement("div");
+      num.className = "num";
+      num.textContent = `−${(initialTotals[i] - cur).toLocaleString()}`;
+      side.append(name, num);
+      lossWrap.appendChild(side);
+    });
+    row(t("end_losses"), lossWrap);
+
+    if (battle.turning_point) {
+      row(t("end_turning"), document.createTextNode(pick(battle.turning_point)));
+    }
+
+    const replayBtn = document.createElement("button");
+    replayBtn.className = "replay-btn";
+    replayBtn.textContent = `↺ ${t("replay")}`;
+    replayBtn.addEventListener("click", () => {
+      clock.seek(0);
+      clock.play();
+    });
+    endPanel.appendChild(replayBtn);
+  }
 
   // --- 鍵盤 ---
   window.addEventListener("keydown", (e) => {
@@ -190,6 +402,8 @@ export function createUI({ labels, hud, card, battle, units, terrain, camera, re
       clock.seek(clock.time + SKIP_SEC);
     } else if (e.code === "ArrowLeft") {
       clock.seek(clock.time - SKIP_SEC);
+    } else if (e.code === "KeyH") {
+      setRecord(!document.body.classList.contains("record"));
     }
   });
 
@@ -272,6 +486,26 @@ export function createUI({ labels, hud, card, battle, units, terrain, camera, re
     if (ci !== lastChapter) {
       lastChapter = ci;
       chapterBtns.forEach((b, i) => b.classList.toggle("active", i === ci));
+    }
+
+    // war-meter
+    updateWarMeter(p);
+
+    // 片頭:首次播放或 seek 後淡出(不再重現,重看由結算畫面觸發)
+    if (titleShown && (clock.playing || p > 0.001)) {
+      titleShown = false;
+      titleScreen.classList.add("hidden");
+    }
+
+    // 結算:抵達終點顯示;seek 離開即收起
+    const atEnd = p >= timeline.total - 1e-3;
+    if (atEnd && !endShown) {
+      endShown = true;
+      renderEndCard(p);
+      endScreen.classList.add("show");
+    } else if (!atEnd && endShown) {
+      endShown = false;
+      endScreen.classList.remove("show");
     }
 
     // 播放鍵與速度鍵狀態

@@ -34,8 +34,22 @@
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const manifest = await res.json();
 
-      for (const b of manifest.battles) {
+      // ready 戰役另載 battle.json 充實卡片(肖像對峙、摘要);失敗則退化為基本卡
+      const details = await Promise.all(
+        manifest.battles.map(async (b) => {
+          if (b.status !== "ready") return null;
+          try {
+            const r = await fetch(`battles/${b.id}/battle.json`);
+            return r.ok ? await r.json() : null;
+          } catch {
+            return null;
+          }
+        })
+      );
+
+      manifest.battles.forEach((b, bi) => {
         const ready = b.status === "ready";
+        const detail = details[bi];
         const card = document.createElement(ready ? "a" : "div");
         card.className = `card ${ready ? "ready" : "coming"}`;
         if (ready) card.href = `theater.html?battle=${b.id}&lang=${getLang()}`;
@@ -53,6 +67,46 @@
         shade.className = "shade";
         card.appendChild(shade);
 
+        // 兩側(按 side)主帥肖像對峙 + 中央 VS;單側多陣營取各陣營首位主帥並列
+        if (detail?.factions?.length) {
+          const sides = [];
+          for (const f of detail.factions) {
+            let s = sides.find((x) => x.side === f.side);
+            if (!s) sides.push((s = { side: f.side, color: f.color, ports: [] }));
+            const c = (f.commanders || [])[0];
+            if (c?.portrait) s.ports.push(`battles/${b.id}/${c.portrait}`);
+          }
+          if (sides.length === 2) {
+            card.style.setProperty("--glow-n", sides[0].color);
+            card.style.setProperty("--glow-s", sides[1].color);
+            const versus = document.createElement("div");
+            versus.className = "versus";
+            const vs = document.createElement("span");
+            vs.className = "vs";
+            vs.textContent = "VS";
+            const groups = sides.map((s) => {
+              const g = document.createElement("div");
+              g.className = "side";
+              for (const src of s.ports) {
+                const img = document.createElement("img");
+                img.alt = "";
+                img.src = src;
+                // 缺圖即移除;任一側全缺則 VS 一併隱藏
+                img.addEventListener("error", () => {
+                  img.remove();
+                  if (groups.some((x) => !x.childElementCount)) vs.style.display = "none";
+                });
+                g.appendChild(img);
+              }
+              return g;
+            });
+            if (groups.every((g) => g.childElementCount)) {
+              versus.append(groups[0], vs, groups[1]);
+              card.appendChild(versus);
+            }
+          }
+        }
+
         const meta = document.createElement("div");
         meta.className = "meta";
         const h2 = document.createElement("h2");
@@ -61,6 +115,14 @@
         year.className = "year";
         year.textContent = b.year;
         meta.append(h2, year);
+        if (detail) {
+          const summary = document.createElement("div");
+          summary.className = "summary";
+          summary.textContent = [pick(detail.duration_label), pick(detail.result)]
+            .filter(Boolean)
+            .join(" ─ ");
+          meta.appendChild(summary);
+        }
         card.appendChild(meta);
 
         if (!ready) {
@@ -71,7 +133,7 @@
         }
 
         grid.appendChild(card);
-      }
+      });
     } catch (err) {
       console.error(err);
       statusMsg.textContent = t("load_error");

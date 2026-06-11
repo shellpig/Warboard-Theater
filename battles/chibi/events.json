@@ -1,5 +1,5 @@
 {
-  "_note": "Phase 4:三章完整 zh-TW 初稿(quote 僅名場面);fx 與 atmosphere 由 effects.js / atmosphere.js 消費;en/ja 譯文於 Phase 5 補齊",
+  "_note": "Phase 5:四語補齊(zh-TW 為準,en/ja 譯文待使用者人工校對);quote 原文任何語系皆顯示漢文,en/ja 附譯文小字",
   "atmosphere": [
     { "chapter": "prelude", "t": 0, "sky": "#8fa3b8", "fog": [1300, 3600], "sun": 1.35, "sun_color": "#f3e6cf", "ambient": 0.85, "water": "#35596d" },
     { "chapter": "prelude", "t": 5400, "sky": "#7b8aa3", "sun": 1.0 },
@@ -13,17 +13,32 @@
   "chapters": [
     {
       "id": "prelude",
-      "title": "第一章 風起江上",
+      "title": {
+        "zh-TW": "第一章 風起江上",
+        "zh-CN": "第一章 风起江上",
+        "en": "Ch. 1 — Wind on the River",
+        "ja": "第一章 江上に風起こる"
+      },
       "duration_min": 7200,
       "playback_sec": 90,
-      "date_display": "建安十三年冬・十一月",
+      "date_display": {
+        "zh-TW": "建安十三年冬・十一月",
+        "zh-CN": "建安十三年冬・十一月",
+        "en": "Winter 208, 11th month",
+        "ja": "建安十三年冬・十一月"
+      },
       "events": [
         {
           "t": 0,
-          "time_display": "十一月初",
+          "time_display": { "zh-TW": "十一月初", "zh-CN": "十一月初", "en": "Early 11th month", "ja": "十一月初め" },
           "type": "narration",
-          "title": "大軍壓境",
-          "desc": "曹操率大軍南下,屯駐烏林,沿江紮下水寨,戰船相連;與南岸孫劉聯軍隔江對峙。",
+          "title": { "zh-TW": "大軍壓境", "zh-CN": "大军压境", "en": "The Host Descends", "ja": "大軍迫る" },
+          "desc": {
+            "zh-TW": "曹操率大軍南下,屯駐烏林,沿江紮下水寨,戰船相連;與南岸孫劉聯軍隔江對峙。",
+            "zh-CN": "曹操率大军南下,屯驻乌林,沿江扎下水寨,战船相连;与南岸孙刘联军隔江对峙。",
+            "en": "Cao Cao leads his host south and encamps at Wulin, raising a riverside naval camp with warships moored line on line, facing the Sun-Liu allies across the Yangtze.",
+            "ja": "曹操は大軍を率いて南下し、烏林に駐屯。江沿いに水寨を築いて戦船を連ね、南岸の孫劉連合軍と長江を挟んで対峙する。"
+          },
           "camera_hint": "overview"
         },
         { "t": 0, "type": "status", "unit": "cao_camp", "badge": "camp" },
@@ -31,22 +46,39 @@
         { "t": 0, "type": "status", "unit": "guanyu_force", "opacity": 0 },
         {
           "t": 1300,
-          "time_display": "數日後",
+          "time_display": { "zh-TW": "數日後", "zh-CN": "数日后", "en": "Days later", "ja": "数日後" },
           "type": "narration",
           "speaker": "zhouyu",
-          "title": "蔣幹盜書",
-          "desc": "蔣幹過江勸降,周瑜將計就計,以偽書借他之手除去曹軍水軍都督蔡瑁、張允。"
+          "title": { "zh-TW": "蔣幹盜書", "zh-CN": "蒋干盗书", "en": "Jiang Gan Steals the Letter", "ja": "蔣幹、書を盗む" },
+          "desc": {
+            "zh-TW": "蔣幹過江勸降,周瑜將計就計,以偽書借他之手除去曹軍水軍都督蔡瑁、張允。",
+            "zh-CN": "蒋干过江劝降,周瑜将计就计,以伪书借他之手除去曹军水军都督蔡瑁、张允。",
+            "en": "Jiang Gan crosses the river to urge surrender. Zhou Yu turns the ploy around: a forged letter, carried back by Jiang Gan, makes Cao Cao execute his naval commanders Cai Mao and Zhang Yun.",
+            "ja": "蔣幹が降伏勧告に江を渡るが、周瑜は計を逆手に取り、偽の密書をその手に持ち帰らせ、曹軍水軍都督の蔡瑁・張允を葬り去る。"
+          }
         },
         { "t": 2250, "type": "status", "unit": "strawboat_fleet", "opacity": 1 },
         { "t": 2250, "t_end": 2450, "type": "move", "unit": "strawboat_fleet", "to": [-60, -70] },
         {
           "t": 2450,
-          "time_display": "又三日・大霧",
+          "time_display": { "zh-TW": "又三日・大霧", "zh-CN": "又三日・大雾", "en": "Three days on — heavy fog", "ja": "さらに三日・濃霧" },
           "type": "narration",
           "speaker": "zhugeliang",
-          "title": "草船借箭",
-          "desc": "大霧鎖江,孔明以二十艘草船逼近曹軍水寨;曹軍不敢出戰,只以亂箭射之,滿載十萬枝箭而還。",
-          "quote": { "text": "霧散時,船兩邊束草上排滿箭枝。", "source": "第四十六回" },
+          "title": { "zh-TW": "草船借箭", "zh-CN": "草船借箭", "en": "Borrowing Arrows with Straw Boats", "ja": "草船借箭" },
+          "desc": {
+            "zh-TW": "大霧鎖江,孔明以二十艘草船逼近曹軍水寨;曹軍不敢出戰,只以亂箭射之,滿載十萬枝箭而還。",
+            "zh-CN": "大雾锁江,孔明以二十艘草船逼近曹军水寨;曹军不敢出战,只以乱箭射之,满载十万枝箭而还。",
+            "en": "In dense fog, Kongming nears Cao's naval camp with twenty straw-lined boats. Fearing a trap, Cao's men dare not sally and loose volleys blindly — the boats return laden with a hundred thousand arrows.",
+            "ja": "濃霧が江を鎖す中、孔明は草束を並べた二十艘の船で曹軍水寨に迫る。曹軍は打って出られず乱箭を浴びせるのみ。船は十万本の矢を満載して帰還した。"
+          },
+          "quote": {
+            "text": "霧散時,船兩邊束草上排滿箭枝。",
+            "source": { "zh-TW": "第四十六回", "zh-CN": "第四十六回", "en": "Chapter 46", "ja": "第四十六回" },
+            "translation": {
+              "en": "When the fog lifted, the straw bundles on both sides of the boats bristled with arrows.",
+              "ja": "霧が晴れると、船の両舷の草束には矢がびっしりと並んでいた。"
+            }
+          },
           "fx": { "kind": "volley", "from": "cao_fleet", "to": "strawboat_fleet", "count": 240 },
           "camera_hint": "follow"
         },
@@ -54,58 +86,100 @@
         { "t": 2760, "type": "status", "unit": "strawboat_fleet", "opacity": 0 },
         {
           "t": 4300,
-          "time_display": "隆冬",
+          "time_display": { "zh-TW": "隆冬", "zh-CN": "隆冬", "en": "Deep winter", "ja": "真冬" },
           "type": "narration",
           "speaker": "huanggai",
-          "title": "苦肉計與連環計",
-          "desc": "黃蓋自請受刑,遣人密送詐降書;龐統又獻連環計,曹軍戰船盡以鐵索相連,穩如平地。"
+          "title": {
+            "zh-TW": "苦肉計與連環計",
+            "zh-CN": "苦肉计与连环计",
+            "en": "The Self-Injury Ruse and the Chain Stratagem",
+            "ja": "苦肉の計と連環の計"
+          },
+          "desc": {
+            "zh-TW": "黃蓋自請受刑,遣人密送詐降書;龐統又獻連環計,曹軍戰船盡以鐵索相連,穩如平地。",
+            "zh-CN": "黄盖自请受刑,遣人密送诈降书;庞统又献连环计,曹军战船尽以铁索相连,稳如平地。",
+            "en": "Huang Gai volunteers for a flogging and secretly sends a letter of feigned surrender; Pang Tong then offers the chain stratagem, and Cao's warships are bound together with iron chains, steady as solid ground.",
+            "ja": "黄蓋は自ら杖刑を受けて偽りの降伏文書を密かに送り、龐統はさらに連環の計を献じる。曹軍の戦船はことごとく鉄鎖で繋がれ、平地のごとく安定した。"
+          }
         },
         {
           "t": 6400,
-          "time_display": "十一月二十日",
+          "time_display": { "zh-TW": "十一月二十日", "zh-CN": "十一月二十日", "en": "20th day, 11th month", "ja": "十一月二十日" },
           "type": "narration",
           "speaker": "zhugeliang",
-          "title": "借東風",
-          "desc": "萬事俱備,只欠東風。孔明於南屏山七星壇祭風,三更時分,東南風大起。",
-          "quote": { "text": "是夜東南風大起,旗腳飄西北。", "source": "第四十九回" }
+          "title": { "zh-TW": "借東風", "zh-CN": "借东风", "en": "Summoning the East Wind", "ja": "東風を借りる" },
+          "desc": {
+            "zh-TW": "萬事俱備,只欠東風。孔明於南屏山七星壇祭風,三更時分,東南風大起。",
+            "zh-CN": "万事俱备,只欠东风。孔明于南屏山七星坛祭风,三更时分,东南风大起。",
+            "en": "All is ready — save the east wind. On Mt. Nanping, Kongming raises the Seven-Star Altar and prays for wind; at the third watch, a great southeast gale rises.",
+            "ja": "万事整い、欠けるは東風のみ。孔明は南屏山に七星壇を築いて風を祈り、三更、東南の風が吹き荒れた。"
+          },
+          "quote": {
+            "text": "是夜東南風大起,旗腳飄西北。",
+            "source": { "zh-TW": "第四十九回", "zh-CN": "第四十九回", "en": "Chapter 49", "ja": "第四十九回" },
+            "translation": {
+              "en": "That night the southeast wind rose in force; the banners streamed toward the northwest.",
+              "ja": "その夜、東南の風が強く起こり、旗は西北へなびいた。"
+            }
+          }
         },
         { "t": 6400, "type": "camera", "pos": [-310, 400] },
         {
           "t": 7050,
-          "time_display": "是夜",
+          "time_display": { "zh-TW": "是夜", "zh-CN": "是夜", "en": "That night", "ja": "その夜" },
           "type": "narration",
-          "title": "箭在弦上",
-          "desc": "東南風急,江面湧動。周瑜傳令諸軍各依調遣,火攻之計,今夜便發。",
+          "title": { "zh-TW": "箭在弦上", "zh-CN": "箭在弦上", "en": "The Arrow on the String", "ja": "矢は弦の上に" },
+          "desc": {
+            "zh-TW": "東南風急,江面湧動。周瑜傳令諸軍各依調遣,火攻之計,今夜便發。",
+            "zh-CN": "东南风急,江面涌动。周瑜传令诸军各依调遣,火攻之计,今夜便发。",
+            "en": "The southeast wind howls and the river churns. Zhou Yu issues his orders to every unit — the fire attack begins this very night.",
+            "ja": "東南の風は急を告げ、江面は波立つ。周瑜は諸軍に下知を伝え、火攻めの計は今夜決行と定めた。"
+          },
           "camera_hint": "overview"
         }
       ]
     },
     {
       "id": "fire_attack",
-      "title": "第二章 火燒赤壁",
+      "title": {
+        "zh-TW": "第二章 火燒赤壁",
+        "zh-CN": "第二章 火烧赤壁",
+        "en": "Ch. 2 — The Burning of Red Cliffs",
+        "ja": "第二章 赤壁炎上"
+      },
       "duration_min": 600,
       "playback_sec": 150,
-      "date_display": "決戰之夜",
+      "date_display": { "zh-TW": "決戰之夜", "zh-CN": "决战之夜", "en": "Night of the Decisive Battle", "ja": "決戦の夜" },
       "events": [
         {
           "t": 0,
-          "time_display": "一更",
+          "time_display": { "zh-TW": "一更", "zh-CN": "一更", "en": "First watch", "ja": "一更" },
           "type": "narration",
           "speaker": "huanggai",
-          "title": "黃蓋出發",
-          "desc": "黃蓋領二十艘火船,滿載薪草膏油,外覆青布,趁東南風直撲曹軍水寨。"
+          "title": { "zh-TW": "黃蓋出發", "zh-CN": "黄盖出发", "en": "Huang Gai Sets Out", "ja": "黄蓋、出撃" },
+          "desc": {
+            "zh-TW": "黃蓋領二十艘火船,滿載薪草膏油,外覆青布,趁東南風直撲曹軍水寨。",
+            "zh-CN": "黄盖领二十艘火船,满载薪草膏油,外覆青布,趁东南风直扑曹军水寨。",
+            "en": "Huang Gai leads twenty fire ships packed with kindling and oil, covered with dark cloth, riding the southeast wind straight for Cao's naval camp.",
+            "ja": "黄蓋は薪草と膏油を満載し青布で覆った二十艘の火船を率い、東南の風に乗って曹軍水寨へ直進する。"
+          }
         },
         { "t": 0, "t_end": 130, "type": "move", "unit": "huanggai_fleet", "to": [-50, -70] },
-        { "t": 60, "time_display": "二更", "type": "defect", "unit": "huanggai_fleet" },
+        { "t": 60, "time_display": { "zh-TW": "二更", "zh-CN": "二更", "en": "Second watch", "ja": "二更" }, "type": "defect", "unit": "huanggai_fleet" },
         {
           "t": 60,
           "type": "narration",
-          "title": "詐降接近",
-          "desc": "曹軍望見船隊打著降旗,皆出寨觀望,指言黃蓋來降,毫無防備。"
+          "title": { "zh-TW": "詐降接近", "zh-CN": "诈降接近", "en": "The False Surrender Draws Near", "ja": "偽降、接近す" },
+          "desc": {
+            "zh-TW": "曹軍望見船隊打著降旗,皆出寨觀望,指言黃蓋來降,毫無防備。",
+            "zh-CN": "曹军望见船队打着降旗,皆出寨观望,指言黄盖来降,毫无防备。",
+            "en": "Seeing the squadron flying surrender banners, Cao's men crowd out of camp to watch, crying that Huang Gai has come to surrender — utterly unguarded.",
+            "ja": "降旗を掲げた船団を望んだ曹軍は、皆寨を出て眺め、「黄蓋が降りに来た」と言い合い、まったく備えを怠った。"
+          }
         },
         {
           "t": 130,
-          "time_display": "三更",
+          "time_display": { "zh-TW": "三更", "zh-CN": "三更", "en": "Third watch", "ja": "三更" },
           "type": "fire",
           "unit": "cao_fleet",
           "fx": { "kind": "explosion", "unit": "cao_fleet" }
@@ -116,9 +190,21 @@
           "t": 130,
           "type": "narration",
           "speaker": "huanggai",
-          "title": "火燒連環船",
-          "desc": "火船一齊點著,撞入曹軍水寨;戰船鐵索相連,無處逃避,火逐風飛,一派通紅。",
-          "quote": { "text": "火趁風威,風助火勢,船如箭發,煙焰漲天。", "source": "第四十九回" }
+          "title": { "zh-TW": "火燒連環船", "zh-CN": "火烧连环船", "en": "Burning the Chained Ships", "ja": "連環の船を焼く" },
+          "desc": {
+            "zh-TW": "火船一齊點著,撞入曹軍水寨;戰船鐵索相連,無處逃避,火逐風飛,一派通紅。",
+            "zh-CN": "火船一齐点着,撞入曹军水寨;战船铁索相连,无处逃避,火逐风飞,一派通红。",
+            "en": "The fire ships ignite as one and crash into Cao's camp. Chained hull to hull, the warships cannot scatter; flames race upon the wind and the whole river glows crimson.",
+            "ja": "火船は一斉に点火して曹軍水寨に突入。鉄鎖で繋がれた戦船は逃れる術もなく、火は風を逐って飛び、あたり一面は紅に染まった。"
+          },
+          "quote": {
+            "text": "火趁風威,風助火勢,船如箭發,煙焰漲天。",
+            "source": { "zh-TW": "第四十九回", "zh-CN": "第四十九回", "en": "Chapter 49", "ja": "第四十九回" },
+            "translation": {
+              "en": "The fire rode the wind's fury, the wind fanned the blaze; ships shot forth like arrows, and smoke and flame filled the sky.",
+              "ja": "火は風の威に乗じ、風は火の勢いを助け、船は矢のごとく走り、煙焔は天に漲った。"
+            }
+          }
         },
         { "t": 165, "type": "fire", "pos": [55, -105], "intensity": 0.9 },
         { "t": 200, "type": "fire", "pos": [-55, -135], "intensity": 0.9 },
@@ -127,32 +213,49 @@
           "t_end": 360,
           "type": "engage",
           "units": ["huanggai_fleet", "cao_fleet"],
-          "losses": { "cao_fleet": 40000 }
+          "losses": { "cao_fleet": 40000, "huanggai_fleet": 1600 }
         },
         { "t": 170, "t_end": 320, "type": "move", "unit": "zhouyu_fleet", "to": [-20, 30] },
         {
           "t": 180,
-          "time_display": "三更過半",
+          "t_end": 360,
+          "type": "engage",
+          "units": ["zhouyu_fleet"],
+          "losses": { "zhouyu_fleet": 26600 }
+        },
+        {
+          "t": 180,
+          "time_display": { "zh-TW": "三更過半", "zh-CN": "三更过半", "en": "Midway through the third watch", "ja": "三更過ぎ" },
           "type": "narration",
           "speaker": "zhouyu",
-          "title": "周瑜總攻",
-          "desc": "周瑜率水軍主力乘勢進擊,箭如飛蝗,鼓聲震天,曹軍水寨全面崩潰。",
+          "title": { "zh-TW": "周瑜總攻", "zh-CN": "周瑜总攻", "en": "Zhou Yu's General Assault", "ja": "周瑜、総攻撃" },
+          "desc": {
+            "zh-TW": "周瑜率水軍主力乘勢進擊,箭如飛蝗,鼓聲震天,曹軍水寨全面崩潰。",
+            "zh-CN": "周瑜率水军主力乘势进击,箭如飞蝗,鼓声震天,曹军水寨全面崩溃。",
+            "en": "Zhou Yu drives the main fleet forward on the tide of fire; arrows fall like locusts, drums shake the heavens, and Cao's naval camp collapses entirely.",
+            "ja": "周瑜は水軍主力を率いて勢いに乗じて進撃。矢は飛蝗のごとく、鼓声は天を震わせ、曹軍水寨は総崩れとなった。"
+          },
           "fx": { "kind": "volley", "from": "zhouyu_fleet", "to": "cao_fleet", "count": 180 }
         },
         { "t": 360, "type": "rout", "unit": "cao_fleet" },
         { "t": 360, "t_end": 520, "type": "move", "unit": "cao_fleet", "to": [160, -210] },
         {
           "t": 360,
-          "time_display": "四更",
+          "time_display": { "zh-TW": "四更", "zh-CN": "四更", "en": "Fourth watch", "ja": "四更" },
           "type": "narration",
-          "title": "曹軍潰走",
-          "desc": "連環船陷於火海,曹操在張遼等護衛下棄船登岸,殘部向烏林潰退。"
+          "title": { "zh-TW": "曹軍潰走", "zh-CN": "曹军溃走", "en": "Cao's Army Routs", "ja": "曹軍、潰走" },
+          "desc": {
+            "zh-TW": "連環船陷於火海,曹操在張遼等護衛下棄船登岸,殘部向烏林潰退。",
+            "zh-CN": "连环船陷于火海,曹操在张辽等护卫下弃船登岸,残部向乌林溃退。",
+            "en": "With the chained fleet engulfed in flames, Cao Cao abandons ship under Zhang Liao's escort, and his shattered troops fall back on Wulin.",
+            "ja": "連環の船は火海に沈み、曹操は張遼らに護られて船を捨てて岸に上がり、残兵は烏林へ潰走した。"
+          }
         },
         { "t": 420, "type": "status", "unit": "cao_fleet", "troops": 20000 },
         { "t": 470, "type": "fire", "unit": "cao_camp", "intensity": 0.7 },
         {
           "t": 480,
-          "time_display": "五更",
+          "time_display": { "zh-TW": "五更", "zh-CN": "五更", "en": "Fifth watch", "ja": "五更" },
           "type": "status",
           "unit": "cao_camp",
           "badge": "withdraw"
@@ -161,24 +264,39 @@
         {
           "t": 480,
           "type": "narration",
-          "title": "棄營北走",
-          "desc": "烏林本陣亦遭火延燒,曹操引殘軍棄營,取小路往華容道而走。"
+          "title": { "zh-TW": "棄營北走", "zh-CN": "弃营北走", "en": "Abandoning Camp Northward", "ja": "営を棄てて北へ" },
+          "desc": {
+            "zh-TW": "烏林本陣亦遭火延燒,曹操引殘軍棄營,取小路往華容道而走。",
+            "zh-CN": "乌林本阵亦遭火延烧,曹操引残军弃营,取小路往华容道而走。",
+            "en": "Fire spreads to the Wulin camp itself. Cao Cao abandons it with his remnants and takes a narrow byway toward the Huarong Trail.",
+            "ja": "烏林の本陣にも火が延び、曹操は残軍を引き連れて営を棄て、間道から華容道へと落ち延びる。"
+          }
         }
       ]
     },
     {
       "id": "huarong",
-      "title": "尾聲 華容道",
+      "title": {
+        "zh-TW": "尾聲 華容道",
+        "zh-CN": "尾声 华容道",
+        "en": "Epilogue — Huarong Trail",
+        "ja": "終章 華容道"
+      },
       "duration_min": 720,
       "playback_sec": 60,
-      "date_display": "翌日",
+      "date_display": { "zh-TW": "翌日", "zh-CN": "翌日", "en": "The Next Day", "ja": "翌日" },
       "events": [
         {
           "t": 0,
-          "time_display": "黎明",
+          "time_display": { "zh-TW": "黎明", "zh-CN": "黎明", "en": "Daybreak", "ja": "黎明" },
           "type": "narration",
-          "title": "敗走華容道",
-          "desc": "天色微明,曹操殘部冒雨穿行華容小道,人馬飢疲,泥濘難行。"
+          "title": { "zh-TW": "敗走華容道", "zh-CN": "败走华容道", "en": "Flight along the Huarong Trail", "ja": "華容道へ敗走" },
+          "desc": {
+            "zh-TW": "天色微明,曹操殘部冒雨穿行華容小道,人馬飢疲,泥濘難行。",
+            "zh-CN": "天色微明,曹操残部冒雨穿行华容小道,人马饥疲,泥泞难行。",
+            "en": "At first light, Cao Cao's battered column struggles through the rain-soaked Huarong path, men and horses starving, mired in mud.",
+            "ja": "夜明け、曹操の残兵は雨の中、華容の小道を進む。人馬は飢え疲れ、泥濘に足を取られた。"
+          }
         },
         { "t": 0, "t_end": 600, "type": "move", "unit": "cao_camp", "to": [450, -380] },
         { "t": 60, "t_end": 360, "type": "move", "unit": "liubei_army", "to": [430, -290] },
@@ -191,35 +309,62 @@
         },
         {
           "t": 240,
-          "time_display": "上午",
+          "time_display": { "zh-TW": "上午", "zh-CN": "上午", "en": "Morning", "ja": "午前" },
           "type": "narration",
           "speaker": "zhugeliang",
-          "title": "三道伏兵",
-          "desc": "孔明早已料定曹操敗走之路:趙雲、張飛接連截殺,曹軍且戰且走,兵力折損大半。"
+          "title": { "zh-TW": "三道伏兵", "zh-CN": "三道伏兵", "en": "Three Ambushes", "ja": "三段の伏兵" },
+          "desc": {
+            "zh-TW": "孔明早已料定曹操敗走之路:趙雲、張飛接連截殺,曹軍且戰且走,兵力折損大半。",
+            "zh-CN": "孔明早已料定曹操败走之路:赵云、张飞接连截杀,曹军且战且走,兵力折损大半。",
+            "en": "Kongming foresaw every road of Cao Cao's flight: Zhao Yun and Zhang Fei strike in turn, and the retreating army fights its way through, losing well over half its strength.",
+            "ja": "孔明は曹操の逃走路を読み切っていた。趙雲・張飛が相次いで襲いかかり、曹軍は戦いながら逃れ、兵力の大半を失った。"
+          }
         },
         { "t": 450, "type": "status", "unit": "guanyu_force", "opacity": 1 },
         {
           "t": 480,
-          "time_display": "午後",
+          "time_display": { "zh-TW": "午後", "zh-CN": "午后", "en": "Afternoon", "ja": "午後" },
           "type": "narration",
           "speaker": "guanyu",
-          "title": "雲長攔路",
-          "desc": "華容道狹處,關雲長提青龍刀、跨赤兔馬,引五百校刀手攔住去路;曹軍皆膽寒。"
+          "title": { "zh-TW": "雲長攔路", "zh-CN": "云长拦路", "en": "Yunchang Bars the Way", "ja": "雲長、道を塞ぐ" },
+          "desc": {
+            "zh-TW": "華容道狹處,關雲長提青龍刀、跨赤兔馬,引五百校刀手攔住去路;曹軍皆膽寒。",
+            "zh-CN": "华容道狭处,关云长提青龙刀、跨赤兔马,引五百校刀手拦住去路;曹军皆胆寒。",
+            "en": "At the narrowest point of the trail stands Guan Yunchang, Green Dragon Blade in hand, astride Red Hare, five hundred swordsmen at his back; Cao's men lose all heart.",
+            "ja": "華容道の隘路に、関雲長が青龍刀を提げ赤兎馬に跨り、五百の校刀手を従えて立ち塞がる。曹軍は皆、胆を冷やした。"
+          }
         },
         {
           "t": 540,
           "type": "narration",
-          "title": "關羽義釋",
-          "desc": "曹操親自哀告,以舊日之恩相求;雲長義重如山,終勒回馬頭,放曹操一行過去。",
-          "quote": { "text": "雲長回身時,曹操已與眾將過去了。", "source": "第五十回" }
+          "title": { "zh-TW": "關羽義釋", "zh-CN": "关羽义释", "en": "Guan Yu's Mercy", "ja": "関羽、義もて見逃す" },
+          "desc": {
+            "zh-TW": "曹操親自哀告,以舊日之恩相求;雲長義重如山,終勒回馬頭,放曹操一行過去。",
+            "zh-CN": "曹操亲自哀告,以旧日之恩相求;云长义重如山,终勒回马头,放曹操一行过去。",
+            "en": "Cao Cao pleads in person, invoking kindness of old. Bound by honor weighty as a mountain, Yunchang at last reins his horse aside and lets Cao Cao's band pass.",
+            "ja": "曹操は自ら旧恩を訴えて哀願する。義の重きこと山のごとき雲長は、ついに馬首を返し、曹操一行を見逃した。"
+          },
+          "quote": {
+            "text": "雲長回身時,曹操已與眾將過去了。",
+            "source": { "zh-TW": "第五十回", "zh-CN": "第五十回", "en": "Chapter 50", "ja": "第五十回" },
+            "translation": {
+              "en": "By the time Yunchang turned back, Cao Cao and his generals had already passed.",
+              "ja": "雲長が振り返ったとき、曹操と諸将はすでに通り過ぎていた。"
+            }
+          }
         },
         { "t": 550, "t_end": 580, "type": "move", "unit": "guanyu_force", "to": [520, -300] },
         {
           "t": 700,
-          "time_display": "日暮",
+          "time_display": { "zh-TW": "日暮", "zh-CN": "日暮", "en": "Dusk", "ja": "日暮れ" },
           "type": "narration",
-          "title": "三分天下",
-          "desc": "曹操敗歸江陵,自此無力南顧;孫權保有江東,劉備進取荊州,鼎足三分之勢自此而成。",
+          "title": { "zh-TW": "三分天下", "zh-CN": "三分天下", "en": "The Land Split in Three", "ja": "天下三分" },
+          "desc": {
+            "zh-TW": "曹操敗歸江陵,自此無力南顧;孫權保有江東,劉備進取荊州,鼎足三分之勢自此而成。",
+            "zh-CN": "曹操败归江陵,自此无力南顾;孙权保有江东,刘备进取荆州,鼎足三分之势自此而成。",
+            "en": "Cao Cao retreats to Jiangling, never again to press south. Sun Quan holds the Southland, Liu Bei takes Jingzhou — and the tripod of the Three Kingdoms is set.",
+            "ja": "曹操は江陵へ敗れ帰り、もはや南下の力はない。孫権は江東を保ち、劉備は荊州を取り、天下三分の鼎立がここに定まった。"
+          },
           "camera_hint": "overview"
         }
       ]

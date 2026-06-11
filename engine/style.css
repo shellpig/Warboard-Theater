@@ -107,6 +107,56 @@ body.menu #site-header p {
   letter-spacing: 0.12em;
 }
 
+.card.ready:hover {
+  box-shadow:
+    -12px 0 36px -8px var(--glow-n, rgba(201, 168, 106, 0.35)),
+    12px 0 36px -8px var(--glow-s, rgba(201, 168, 106, 0.35));
+}
+
+/* 海報主帥對峙:兩側(按 side)肖像 + 中央 VS */
+.card .versus {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 58px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0 8px;
+}
+
+.card .versus .side {
+  display: flex;
+  align-items: flex-end;
+}
+
+.card .versus img {
+  height: 98px;
+  width: auto;
+  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.65));
+}
+
+.card .versus .side img + img {
+  margin-left: -20px; /* 單側多陣營:肖像並列重疊 */
+}
+
+.card .versus .vs {
+  align-self: center;
+  font-size: 15px;
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  text-shadow: 0 1px 6px #000;
+}
+
+.card .meta .summary {
+  margin-top: 3px;
+  font-size: 11.5px;
+  opacity: 0.78;
+  letter-spacing: 0.04em;
+}
+
 .card.coming {
   opacity: 0.45;
 }
@@ -485,4 +535,293 @@ body.menu #status-msg {
 .landmark.road,
 .landmark.village {
   color: #cbb9a0;
+}
+
+/* ===== Phase 5:電影感 overlay(顆粒 + 暗角 + letterbox) ===== */
+
+#cine {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+#vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 52%, rgba(0, 0, 0, 0.55) 100%);
+}
+
+#grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.07;
+  background-repeat: repeat;
+  animation: grain-jitter 0.45s steps(5) infinite;
+}
+
+@keyframes grain-jitter {
+  0% { background-position: 0 0; }
+  20% { background-position: -37px 21px; }
+  40% { background-position: 24px -44px; }
+  60% { background-position: -52px -9px; }
+  80% { background-position: 15px 38px; }
+  100% { background-position: 44px -27px; }
+}
+
+.cine-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 0;
+  background: #000;
+  transition: height 0.7s ease;
+}
+
+.cine-bar.top {
+  top: 0;
+}
+
+.cine-bar.bottom {
+  bottom: 0;
+}
+
+body.cinema .cine-bar {
+  height: 11.5%;
+}
+
+/* ===== war-meter:雙方總兵力 + 比例條 ===== */
+
+#war-meter {
+  position: absolute;
+  top: 64px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--panel);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  padding: 5px 14px;
+  backdrop-filter: blur(2px);
+}
+
+#war-meter .wm-side {
+  font-size: 11px;
+  line-height: 1.35;
+  white-space: nowrap;
+  opacity: 0.9;
+}
+
+#war-meter .wm-side.left {
+  text-align: right;
+}
+
+#war-meter .wm-side .wm-num {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 1;
+}
+
+#war-meter .wm-bar {
+  width: 190px;
+  height: 8px;
+  display: flex;
+  gap: 1px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+#war-meter .wm-seg {
+  height: 100%;
+}
+
+/* ===== 片頭 title screen ===== */
+
+#title-screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-align: center;
+  background: radial-gradient(ellipse at center, rgba(8, 11, 17, 0.5), rgba(5, 8, 12, 0.9));
+  pointer-events: auto;
+  transition: opacity 0.9s;
+}
+
+#title-screen.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#title-screen h1 {
+  margin: 0;
+  font-size: 46px;
+  letter-spacing: 0.3em;
+  text-indent: 0.3em; /* 平衡 letter-spacing 尾端空隙 */
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.8);
+}
+
+#title-screen .sub {
+  font-size: 17px;
+  opacity: 0.85;
+  letter-spacing: 0.12em;
+}
+
+#title-screen .meta-line {
+  font-size: 13px;
+  opacity: 0.6;
+  letter-spacing: 0.18em;
+}
+
+#title-screen .start-btn,
+#end-screen .replay-btn {
+  margin-top: 18px;
+  font: inherit;
+  font-size: 16px;
+  letter-spacing: 0.22em;
+  text-indent: 0.22em;
+  padding: 10px 38px;
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.25s;
+}
+
+#title-screen .start-btn:hover,
+#end-screen .replay-btn:hover {
+  background: rgba(201, 168, 106, 0.14);
+}
+
+/* ===== 結算 end card ===== */
+
+#end-screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(5, 8, 12, 0.66);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s;
+}
+
+#end-screen.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#end-screen .end-panel {
+  background: var(--panel);
+  border: 1px solid rgba(201, 168, 106, 0.4);
+  border-radius: 6px;
+  padding: 30px 46px;
+  text-align: center;
+  min-width: 340px;
+  backdrop-filter: blur(4px);
+}
+
+#end-screen .end-result {
+  margin: 0 0 18px;
+  font-size: 27px;
+  color: var(--accent);
+  letter-spacing: 0.2em;
+  text-indent: 0.2em;
+}
+
+#end-screen .end-row {
+  margin: 9px 0;
+  font-size: 13px;
+}
+
+#end-screen .end-row .lbl {
+  display: block;
+  font-size: 11px;
+  opacity: 0.55;
+  letter-spacing: 0.2em;
+  margin-bottom: 3px;
+}
+
+#end-screen .end-loss {
+  display: flex;
+  justify-content: center;
+  gap: 26px;
+}
+
+#end-screen .end-loss .side {
+  border-left: 3px solid #888;
+  padding-left: 9px;
+  text-align: left;
+}
+
+#end-screen .end-loss .side .num {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* ===== 控制列附加鍵(音效 / 電影 / 錄影)與 toast ===== */
+
+#extra-group {
+  display: flex;
+  gap: 4px;
+}
+
+.x-btn {
+  font-size: 12px;
+  padding: 3px 8px;
+  opacity: 0.7;
+}
+
+.x-btn.active {
+  opacity: 1;
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+#toast {
+  position: absolute;
+  top: 16%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(8, 11, 17, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 4px;
+  padding: 8px 18px;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}
+
+#toast.show {
+  opacity: 1;
+}
+
+/* ===== 錄影模式:隱藏 UI、鎖 16:9 ===== */
+
+body.record {
+  background: #000;
+}
+
+body.record #topbar,
+body.record #hud {
+  display: none;
+}
+
+body.record #stage,
+body.record #overlay {
+  inset: auto;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(100vw, calc(100vh * 16 / 9));
+  height: min(100vh, calc(100vw * 9 / 16));
 }

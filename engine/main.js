@@ -7,6 +7,7 @@ import { compileTimeline, createClock } from "./timeline.js";
 import { createDirector } from "./director.js";
 import { createEffects } from "./effects.js";
 import { createAtmosphere } from "./atmosphere.js";
+import { createAudio } from "./audio.js";
 import { createUI } from "./ui.js";
 
 initI18n();
@@ -50,6 +51,7 @@ async function boot() {
   const director = createDirector({ camera, controls, units, timeline, clock, terrain });
   const effects = createEffects(scene, { timeline, clock, terrain });
   const atmosphere = createAtmosphere({ scene, lights, water: terrain.water }, events.atmosphere, timeline.chapters);
+  const audio = createAudio({ timeline, clock });
   const ui = createUI({
     labels,
     hud: document.getElementById("hud"),
@@ -62,6 +64,7 @@ async function boot() {
     timeline,
     clock,
     director,
+    audio,
   });
 
   statusMsg.textContent = "";
@@ -89,6 +92,7 @@ async function boot() {
     applyTime(clock.time);
     atmosphere.update(clock.time);
     effects.update(step);
+    audio.update(step);
     director.update(step);
     controls.update();
     ui.update();
