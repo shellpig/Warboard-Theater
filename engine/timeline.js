@@ -143,6 +143,7 @@ export function compileTimeline(eventsDef, battle) {
         default:
           console.warn(`timeline: 未知事件 type "${ev.type}"`, ev);
       }
+      applyAttrition(ev, p, pEnd);
     }
   });
 
@@ -214,6 +215,27 @@ export function compileTimeline(eventsDef, battle) {
       return found ?? chapters[ci]?.date_display ?? "";
     },
   };
+
+  // attrition: 每章內模擬分鐘流失量。編譯成 troops 線性 key,維持 seek/倒帶確定性。
+  // 寫法:
+  //   { "attrition": 12, "unit": "cao_camp", "t": 0, "t_end": 240 }
+  //   { "attrition": { "cao_camp": 12, "cao_fleet": 50 }, "t": 0, "t_end": 240 }
+  function applyAttrition(ev, p, pEnd) {
+    if (ev.attrition == null || ev.t_end == null || pEnd <= p) return;
+    const ids =
+      typeof ev.attrition === "number"
+        ? (ev.units || (ev.unit ? [ev.unit] : []))
+        : Object.keys(ev.attrition);
+    for (const id of ids) {
+      const tr = tracks[id];
+      if (!tr) continue;
+      const rate = typeof ev.attrition === "number" ? ev.attrition : ev.attrition[id];
+      if (!(rate > 0)) continue;
+      const start = lerpAt(tr.troops, p);
+      const loss = rate * (ev.t_end - ev.t);
+      tr.troops.push({ p, v: start }, { p: pEnd, v: Math.max(0, start - loss) });
+    }
+  }
 }
 
 function lastVal(keys) {

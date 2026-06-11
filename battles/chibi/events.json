@@ -214,7 +214,7 @@
           "t_end": 360,
           "type": "engage",
           "units": ["huanggai_fleet", "cao_fleet"],
-          "losses": { "cao_fleet": 40000, "huanggai_fleet": 1600 }
+          "losses": { "cao_fleet": 41300, "huanggai_fleet": 1637 }
         },
         { "t": 170, "t_end": 320, "type": "move", "unit": "zhouyu_fleet", "to": [-20, 30] },
         {
@@ -222,7 +222,7 @@
           "t_end": 360,
           "type": "engage",
           "units": ["zhouyu_fleet"],
-          "losses": { "zhouyu_fleet": 26600 }
+          "losses": { "zhouyu_fleet": 26637 }
         },
         {
           "t": 180,
@@ -239,7 +239,7 @@
           "fx": { "kind": "volley", "from": "zhouyu_fleet", "to": "cao_fleet", "count": 180 }
         },
         { "t": 360, "type": "rout", "unit": "cao_fleet" },
-        { "t": 360, "t_end": 520, "type": "move", "unit": "cao_fleet", "to": [160, -210] },
+        { "t": 360, "t_end": 520, "type": "move", "unit": "cao_fleet", "to": [160, -210], "attrition": 133.125 },
         {
           "t": 360,
           "time_display": { "zh-TW": "四更", "zh-CN": "四更", "en": "Fourth watch", "ja": "四更" },
@@ -252,7 +252,7 @@
             "ja": "連環の船は火海に沈み、曹操は張遼らに護られて船を捨てて岸に上がり、残兵は烏林へ潰走した。"
           }
         },
-        { "t": 420, "type": "status", "unit": "cao_fleet", "troops": 20000 },
+        { "t": 520, "type": "status", "unit": "cao_fleet", "troops": 20000 },
         { "t": 470, "type": "fire", "unit": "cao_camp", "intensity": 0.7 },
         {
           "t": 480,
@@ -261,7 +261,7 @@
           "unit": "cao_camp",
           "badge": "withdraw"
         },
-        { "t": 480, "t_end": 600, "type": "move", "unit": "cao_camp", "to": [320, -320] },
+        { "t": 480, "t_end": 600, "type": "move", "unit": "cao_camp", "to": [320, -320], "attrition": 8.75 },
         {
           "t": 480,
           "type": "narration",
@@ -301,13 +301,14 @@
           }
         },
         { "t": 0, "t_end": 600, "type": "move", "unit": "cao_camp", "to": [450, -380] },
+        { "t": 0, "t_end": 240, "type": "status", "unit": "cao_camp", "attrition": 14.375 },
         { "t": 60, "t_end": 360, "type": "move", "unit": "liubei_army", "to": [430, -290] },
         {
           "t": 240,
           "t_end": 420,
           "type": "engage",
           "units": ["cao_camp"],
-          "losses": { "cao_camp": 50000 }
+          "losses": { "cao_camp": 53170 }
         },
         {
           "t": 240,
@@ -322,6 +323,7 @@
             "ja": "孔明は曹操の逃走路を読み切っていた。趙雲・張飛が相次いで襲いかかり、曹軍は戦いながら逃れ、兵力の大半を失った。"
           }
         },
+        { "t": 420, "t_end": 600, "type": "status", "unit": "cao_camp", "attrition": 31.35 },
         { "t": 450, "type": "status", "unit": "guanyu_force", "opacity": 1 },
         {
           "t": 480,
