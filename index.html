@@ -107,23 +107,19 @@
           }
         }
 
-        const meta = document.createElement("div");
-        meta.className = "meta";
-        const h2 = document.createElement("h2");
-        h2.textContent = pick(b.title);
-        const year = document.createElement("div");
-        year.className = "year";
-        year.textContent = b.year;
-        meta.append(h2, year);
-        if (detail) {
-          const summary = document.createElement("div");
-          summary.className = "summary";
-          summary.textContent = [pick(detail.duration_label), pick(detail.result)]
-            .filter(Boolean)
-            .join(" ─ ");
-          meta.appendChild(summary);
-        }
-        card.appendChild(meta);
+        const header = document.createElement("div");
+        header.className = "card-header";
+        const chDate = document.createElement("div");
+        chDate.className = "ch-date";
+        chDate.textContent = detail ? pick(detail.date_display) : b.year;
+        const chTitle = document.createElement("div");
+        chTitle.className = "ch-title";
+        chTitle.textContent = pick(b.title);
+        const chSub = document.createElement("div");
+        chSub.className = "ch-subtitle";
+        chSub.textContent = detail ? pick(detail.subtitle) : "";
+        header.append(chDate, chTitle, chSub);
+        card.appendChild(header);
 
         if (!ready) {
           const badge = document.createElement("div");

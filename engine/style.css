@@ -113,12 +113,44 @@ body.menu #site-header p {
     12px 0 36px -8px var(--glow-s, rgba(201, 168, 106, 0.35));
 }
 
+/* 卡片上方標題區 */
+.card .card-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 14px 12px 52px;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(5, 8, 12, 0.75) 0%, transparent 100%);
+  z-index: 1;
+}
+.card .card-header .ch-date {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  margin-bottom: 5px;
+}
+.card .card-header .ch-title {
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 0.22em;
+  text-indent: 0.22em;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+  margin: 0 0 5px;
+}
+.card .card-header .ch-subtitle {
+  font-size: 10px;
+  opacity: 0.82;
+  letter-spacing: 0.05em;
+  line-height: 1.4;
+}
+
 /* 海報主帥對峙:兩側(按 side)肖像 + 中央 VS */
 .card .versus {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 58px;
+  bottom: 40px;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
