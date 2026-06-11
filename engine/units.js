@@ -1,4 +1,6 @@
 // units:單位生成(infantry 方陣方塊群 / fleet 低面數船隊,instanced)+ 陣營色旗幟
+// 幾何一律以 local origin 建立,世界位置由 setPos(x, z)(即 posAt 取值)驅動;
+// 步兵方陣移動時逐 instance 依 heightAt 貼地,名牌 anchor 隨 setPos 更新。
 import * as THREE from "three";
 import { pick } from "./i18n.js";
 
@@ -19,104 +21,122 @@ export function createUnits(scene, battle, terrain) {
     const faction = factionById[def.faction] || {};
     const colorHex = faction.color || "#888888";
     const group = new THREE.Group();
-    const [sx, sz] = def.spawn;
+    const materials = [];
 
+    let snapToGround = null; // infantry 專用:依世界座標逐 instance 貼地
     if (def.type === "fleet") {
-      buildFleet(group, def, sx, sz, colorHex, waterLevel);
+      buildFleet(group, def, colorHex, waterLevel, materials);
     } else {
-      buildInfantry(group, def, sx, sz, colorHex, heightAt);
+      snapToGround = buildInfantry(group, def, colorHex, heightAt, materials);
     }
 
-    const baseY = def.type === "fleet" ? waterLevel : heightAt(sx, sz);
     const poleH = def.type === "fleet" ? 26 : 20;
-    addFlag(group, sx, baseY, sz, poleH, colorHex, pick(faction.name).charAt(0) || "?");
+    const flagGroup = buildFlag(poleH, colorHex, pick(faction.name).charAt(0) || "?", materials);
+    group.add(flagGroup);
+
+    for (const m of materials) m.transparent = true;
 
     scene.add(group);
-    units.push({
+
+    const anchor = new THREE.Vector3();
+    let lastOpacity = 1;
+    const unit = {
       id: def.id,
       label: pick(def.label),
       troops: def.troops || 0,
       color: colorHex,
       group,
-      anchor: new THREE.Vector3(sx, baseY + poleH + 4, sz),
-    });
+      anchor,
+      setPos(x, z) {
+        group.position.set(x, 0, z);
+        const baseY = def.type === "fleet" ? waterLevel : heightAt(x, z);
+        if (snapToGround) snapToGround(x, z);
+        flagGroup.position.y = baseY;
+        anchor.set(x, baseY + poleH + 4, z);
+      },
+      setOpacity(v) {
+        if (v === lastOpacity) return;
+        lastOpacity = v;
+        for (const m of materials) m.opacity = v;
+        group.visible = v > 0.01;
+      },
+    };
+    unit.setPos(def.spawn[0], def.spawn[1]);
+    units.push(unit);
   }
   return units;
 }
 
-function buildInfantry(group, def, sx, sz, colorHex, heightAt) {
+function buildInfantry(group, def, colorHex, heightAt, materials) {
   const n = THREE.MathUtils.clamp(Math.round(Math.sqrt((def.troops || 5000) / 1600)), 3, 8);
   const gap = 7;
-  const mesh = new THREE.InstancedMesh(
-    BOX_GEO,
-    new THREE.MeshStandardMaterial({ color: colorHex, roughness: 0.9 }),
-    n * n
-  );
-  const m = new THREE.Matrix4();
-  let i = 0;
+  const mat = new THREE.MeshStandardMaterial({ color: colorHex, roughness: 0.9 });
+  materials.push(mat);
+  const mesh = new THREE.InstancedMesh(BOX_GEO, mat, n * n);
+  const offsets = [];
   for (let r = 0; r < n; r++) {
     for (let c = 0; c < n; c++) {
-      const x = sx + (c - (n - 1) / 2) * gap;
-      const z = sz + (r - (n - 1) / 2) * gap;
-      m.makeTranslation(x, heightAt(x, z) + 1.6, z);
-      mesh.setMatrixAt(i++, m);
+      offsets.push([(c - (n - 1) / 2) * gap, (r - (n - 1) / 2) * gap]);
     }
   }
   group.add(mesh);
+
+  const m = new THREE.Matrix4();
+  return function snapToGround(x, z) {
+    for (let i = 0; i < offsets.length; i++) {
+      const [dx, dz] = offsets[i];
+      m.makeTranslation(dx, heightAt(x + dx, z + dz) + 1.6, dz);
+      mesh.setMatrixAt(i, m);
+    }
+    mesh.instanceMatrix.needsUpdate = true;
+  };
 }
 
-function buildFleet(group, def, sx, sz, colorHex, waterLevel) {
+function buildFleet(group, def, colorHex, waterLevel, materials) {
   const count = THREE.MathUtils.clamp(Math.round((def.troops || 8000) / 4000), 3, 24);
   const cols = Math.min(6, count);
   const rows = Math.ceil(count / cols);
-  const hulls = new THREE.InstancedMesh(
-    HULL_GEO,
-    new THREE.MeshStandardMaterial({ color: 0x5a4632, roughness: 0.95 }),
-    count
-  );
-  const decks = new THREE.InstancedMesh(
-    DECK_GEO,
-    new THREE.MeshStandardMaterial({ color: 0x6e5a40, roughness: 0.95 }),
-    count
-  );
-  const sails = new THREE.InstancedMesh(
-    SAIL_GEO,
-    new THREE.MeshStandardMaterial({
-      map: sailTexture(colorHex),
-      side: THREE.DoubleSide,
-      roughness: 1,
-    }),
-    count
-  );
+  const hullMat = new THREE.MeshStandardMaterial({ color: 0x5a4632, roughness: 0.95 });
+  const deckMat = new THREE.MeshStandardMaterial({ color: 0x6e5a40, roughness: 0.95 });
+  const sailMat = new THREE.MeshStandardMaterial({
+    map: sailTexture(colorHex),
+    side: THREE.DoubleSide,
+    roughness: 1,
+  });
+  materials.push(hullMat, deckMat, sailMat);
+  const hulls = new THREE.InstancedMesh(HULL_GEO, hullMat, count);
+  const decks = new THREE.InstancedMesh(DECK_GEO, deckMat, count);
+  const sails = new THREE.InstancedMesh(SAIL_GEO, sailMat, count);
   const m = new THREE.Matrix4();
   for (let i = 0; i < count; i++) {
-    const c = i % cols;
-    const r = Math.floor(i / cols);
-    const x = sx + (c - (cols - 1) / 2) * 24;
-    const z = sz + (r - (rows - 1) / 2) * 30;
-    m.makeTranslation(x, waterLevel + 0.8, z);
+    const dx = ((i % cols) - (cols - 1) / 2) * 24;
+    const dz = (Math.floor(i / cols) - (rows - 1) / 2) * 30;
+    m.makeTranslation(dx, waterLevel + 0.8, dz);
     hulls.setMatrixAt(i, m);
-    m.makeTranslation(x, waterLevel + 3.2, z);
+    m.makeTranslation(dx, waterLevel + 3.2, dz);
     decks.setMatrixAt(i, m);
-    m.makeTranslation(x, waterLevel + 9, z);
+    m.makeTranslation(dx, waterLevel + 9, dz);
     sails.setMatrixAt(i, m);
   }
   group.add(hulls, decks, sails);
 }
 
-function addFlag(group, x, baseY, z, poleH, colorHex, char) {
-  const pole = new THREE.Mesh(
-    POLE_GEO,
-    new THREE.MeshStandardMaterial({ color: 0x3a3128 })
-  );
+// 旗幟子群組:local origin 在地表,setPos 時只調 flagGroup.position.y
+function buildFlag(poleH, colorHex, char, materials) {
+  const flagGroup = new THREE.Group();
+  const poleMat = new THREE.MeshStandardMaterial({ color: 0x3a3128 });
+  const flagMat = new THREE.MeshBasicMaterial({
+    map: flagTexture(colorHex, char),
+    side: THREE.DoubleSide,
+  });
+  materials.push(poleMat, flagMat);
+  const pole = new THREE.Mesh(POLE_GEO, poleMat);
   pole.scale.y = poleH;
-  pole.position.set(x, baseY + poleH / 2, z);
-  const flag = new THREE.Mesh(
-    FLAG_GEO,
-    new THREE.MeshBasicMaterial({ map: flagTexture(colorHex, char), side: THREE.DoubleSide })
-  );
-  flag.position.set(x + 5.6, baseY + poleH - 3.5, z);
-  group.add(pole, flag);
+  pole.position.set(0, poleH / 2, 0);
+  const flag = new THREE.Mesh(FLAG_GEO, flagMat);
+  flag.position.set(5.6, poleH - 3.5, 0);
+  flagGroup.add(pole, flag);
+  return flagGroup;
 }
 
 const flagCache = new Map();

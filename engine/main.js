@@ -3,6 +3,7 @@ import { initI18n, getLang, t, pick, createLangSwitcher } from "./i18n.js";
 import { createScene } from "./scene.js";
 import { buildTerrain } from "./terrain.js";
 import { createUnits } from "./units.js";
+import { compileTimeline, createClock } from "./timeline.js";
 import { createUI } from "./ui.js";
 
 initI18n();
@@ -21,9 +22,13 @@ document.getElementById("lang-slot").appendChild(createLangSwitcher());
 
 async function boot() {
   statusMsg.textContent = t("loading");
-  const res = await fetch(`battles/${battleId}/battle.json`);
-  if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  const battle = await res.json();
+  const [battle, events] = await Promise.all(
+    ["battle.json", "events.json"].map(async (f) => {
+      const res = await fetch(`battles/${battleId}/${f}`);
+      if (!res.ok) throw new Error(`${f}: HTTP ${res.status}`);
+      return res.json();
+    })
+  );
 
   document.title = `${pick(battle.title)} — ${t("brand")}`;
   document.querySelector("#battle-title h1").textContent = pick(battle.title);
@@ -37,11 +42,43 @@ async function boot() {
   const { scene, camera, renderer, controls } = createScene(stage);
   const terrain = buildTerrain(scene, battle.terrain);
   const units = createUnits(scene, battle, terrain);
-  const ui = createUI({ labels, battle, units, terrain, camera, renderer });
+  const timeline = compileTimeline(events, battle);
+  const clock = createClock(timeline.total);
+  const ui = createUI({
+    labels,
+    hud: document.getElementById("hud"),
+    card: document.getElementById("event-card"),
+    battle,
+    units,
+    terrain,
+    camera,
+    renderer,
+    timeline,
+    clock,
+  });
 
   statusMsg.textContent = "";
 
-  renderer.setAnimationLoop(() => {
+  // 單位狀態 = 時間的純函數:每幀以 posAt / opacityAt 套用全場狀態
+  const positions = {};
+  function applyTime(p) {
+    for (const u of units) {
+      const [x, z] = timeline.posAt(u.id, p);
+      const last = positions[u.id];
+      if (!last || last[0] !== x || last[1] !== z) {
+        positions[u.id] = [x, z];
+        u.setPos(x, z);
+      }
+      u.setOpacity(timeline.opacityAt(u.id, p));
+    }
+  }
+
+  let prevMs;
+  renderer.setAnimationLoop((ms) => {
+    const dt = prevMs == null ? 0 : (ms - prevMs) / 1000;
+    prevMs = ms;
+    clock.tick(Math.min(dt, 0.25)); // 分頁切回時避免大步跳躍
+    applyTime(clock.time);
     controls.update();
     ui.update();
     renderer.render(scene, camera);

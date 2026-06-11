@@ -1,0 +1,183 @@
+{
+  "_note": "Phase 2 草稿:zh-TW 初稿、事件涵蓋各 type 以驅動時間軸;完整內容、quote 與 fx 於 Phase 4 補齊",
+  "chapters": [
+    {
+      "id": "prelude",
+      "title": "第一章 風起江上",
+      "duration_min": 7200,
+      "playback_sec": 60,
+      "date_display": "建安十三年冬・十一月",
+      "events": [
+        {
+          "t": 0,
+          "time_display": "十一月初",
+          "type": "narration",
+          "title": "大軍壓境",
+          "desc": "曹操率大軍南下,屯駐烏林,沿江紮下水寨,與南岸孫劉聯軍隔江對峙。"
+        },
+        { "t": 0, "type": "status", "unit": "cao_camp", "badge": "camp" },
+        {
+          "t": 1800,
+          "time_display": "數日後",
+          "type": "narration",
+          "speaker": "zhouyu",
+          "title": "蔣幹盜書",
+          "desc": "蔣幹過江勸降,周瑜將計就計,借他之手除去曹軍水軍都督蔡瑁、張允。"
+        },
+        {
+          "t": 3600,
+          "time_display": "又三日",
+          "type": "narration",
+          "speaker": "zhugeliang",
+          "title": "草船借箭",
+          "desc": "大霧鎖江,孔明以二十艘草船逼近曹軍水寨,滿載十萬枝箭而還。",
+          "quote": { "text": "霧散時,船兩邊束草上排滿箭枝。", "source": "第四十六回" }
+        },
+        {
+          "t": 5400,
+          "time_display": "隆冬",
+          "type": "narration",
+          "speaker": "huanggai",
+          "title": "苦肉計",
+          "desc": "黃蓋自請受刑,遣人密送詐降書;龐統獻連環計,曹軍戰船盡以鐵索相連。"
+        },
+        {
+          "t": 6800,
+          "time_display": "十一月二十日",
+          "type": "narration",
+          "speaker": "zhugeliang",
+          "title": "借東風",
+          "desc": "孔明於南屏山七星壇祭風,三更時分,東南風大起。",
+          "quote": { "text": "是夜東南風大起,旗腳飄西北。", "source": "第四十九回" }
+        }
+      ]
+    },
+    {
+      "id": "fire_attack",
+      "title": "第二章 火燒赤壁",
+      "duration_min": 600,
+      "playback_sec": 150,
+      "date_display": "決戰之夜",
+      "events": [
+        {
+          "t": 0,
+          "time_display": "一更",
+          "type": "narration",
+          "speaker": "huanggai",
+          "title": "黃蓋出發",
+          "desc": "黃蓋領二十艘火船,滿載薪草膏油,趁東南風直撲曹軍水寨。"
+        },
+        { "t": 0, "t_end": 130, "type": "move", "unit": "huanggai_fleet", "to": [-50, -70] },
+        { "t": 60, "time_display": "二更", "type": "defect", "unit": "huanggai_fleet" },
+        {
+          "t": 60,
+          "type": "narration",
+          "title": "詐降接近",
+          "desc": "曹軍望見船隊打著降旗,皆出寨觀望,毫無防備。"
+        },
+        {
+          "t": 130,
+          "time_display": "三更",
+          "type": "fire",
+          "unit": "cao_fleet"
+        },
+        {
+          "t": 130,
+          "type": "narration",
+          "speaker": "huanggai",
+          "title": "火燒連環船",
+          "desc": "火船一齊點著,撞入曹軍水寨;戰船鐵索相連,無處逃避,火逐風飛,一派通紅。",
+          "quote": { "text": "火趁風威,風助火勢,船如箭發,煙焰漲天。", "source": "第四十九回" }
+        },
+        {
+          "t": 150,
+          "t_end": 360,
+          "type": "engage",
+          "units": ["huanggai_fleet", "cao_fleet"],
+          "losses": { "cao_fleet": 40000 }
+        },
+        { "t": 170, "t_end": 320, "type": "move", "unit": "zhouyu_fleet", "to": [-20, 30] },
+        {
+          "t": 180,
+          "time_display": "三更過半",
+          "type": "narration",
+          "speaker": "zhouyu",
+          "title": "周瑜總攻",
+          "desc": "周瑜率水軍主力乘勢進擊,鼓聲震天,曹軍水寨全面崩潰。"
+        },
+        { "t": 360, "type": "rout", "unit": "cao_fleet" },
+        { "t": 360, "t_end": 520, "type": "move", "unit": "cao_fleet", "to": [160, -210] },
+        {
+          "t": 360,
+          "time_display": "四更",
+          "type": "narration",
+          "title": "曹軍潰走",
+          "desc": "連環船陷於火海,曹操在張遼等護衛下棄船登岸,殘部向烏林潰退。"
+        },
+        { "t": 420, "type": "status", "unit": "cao_fleet", "troops": 20000 },
+        {
+          "t": 480,
+          "time_display": "五更",
+          "type": "status",
+          "unit": "cao_camp",
+          "badge": "withdraw"
+        },
+        { "t": 480, "t_end": 600, "type": "move", "unit": "cao_camp", "to": [320, -320] },
+        {
+          "t": 480,
+          "type": "narration",
+          "title": "棄營北走",
+          "desc": "烏林本陣亦遭火延燒,曹操引殘軍棄營,取小路往華容道而走。"
+        }
+      ]
+    },
+    {
+      "id": "huarong",
+      "title": "尾聲 華容道",
+      "duration_min": 720,
+      "playback_sec": 60,
+      "date_display": "翌日",
+      "events": [
+        {
+          "t": 0,
+          "time_display": "黎明",
+          "type": "narration",
+          "title": "敗走華容道",
+          "desc": "天色微明,曹操殘部冒雨穿行華容小道,人馬飢疲,泥濘難行。"
+        },
+        { "t": 0, "t_end": 600, "type": "move", "unit": "cao_camp", "to": [450, -380] },
+        { "t": 60, "t_end": 360, "type": "move", "unit": "liubei_army", "to": [430, -290] },
+        {
+          "t": 240,
+          "t_end": 420,
+          "type": "engage",
+          "units": ["cao_camp"],
+          "losses": { "cao_camp": 50000 }
+        },
+        {
+          "t": 240,
+          "time_display": "上午",
+          "type": "narration",
+          "speaker": "zhugeliang",
+          "title": "三道伏兵",
+          "desc": "趙雲、張飛接連截殺,曹軍且戰且走,兵力折損大半。"
+        },
+        {
+          "t": 540,
+          "time_display": "午後",
+          "type": "narration",
+          "title": "關羽義釋",
+          "desc": "華容道上關羽攔路,曹操求告舊日之情;雲長念恩,放曹操一行過去。",
+          "quote": { "text": "雲長回身時,曹操已與眾將過去了。", "source": "第五十回" }
+        },
+        {
+          "t": 700,
+          "time_display": "日暮",
+          "type": "narration",
+          "title": "三分天下",
+          "desc": "曹操敗歸江陵,自此無力南顧;孫權保有江東,劉備進取荊州,三分之勢自此而成。"
+        }
+      ]
+    }
+  ]
+}

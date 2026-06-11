@@ -21,6 +21,15 @@ const DICT = {
     load_error: "載入失敗",
     troops: "兵力",
     based_on: "本推演依《{src}》敘事",
+    play: "播放",
+    pause: "暫停",
+    badge_advance: "進軍",
+    badge_engage: "交戰",
+    badge_rout: "潰走",
+    badge_defect: "詐降",
+    badge_withdraw: "撤離",
+    badge_camp: "本陣",
+    badge_fire: "起火",
   },
   "zh-CN": {
     brand: "战局剧场",
@@ -31,6 +40,15 @@ const DICT = {
     load_error: "加载失败",
     troops: "兵力",
     based_on: "本推演依《{src}》叙事",
+    play: "播放",
+    pause: "暂停",
+    badge_advance: "进军",
+    badge_engage: "交战",
+    badge_rout: "溃走",
+    badge_defect: "诈降",
+    badge_withdraw: "撤离",
+    badge_camp: "本阵",
+    badge_fire: "起火",
   },
   "en": {
     brand: "Warboard Theater",
@@ -41,6 +59,15 @@ const DICT = {
     load_error: "Failed to load",
     troops: "Troops",
     based_on: "Based on {src}",
+    play: "Play",
+    pause: "Pause",
+    badge_advance: "Advancing",
+    badge_engage: "Engaged",
+    badge_rout: "Routed",
+    badge_defect: "Defecting",
+    badge_withdraw: "Withdrawing",
+    badge_camp: "Camp",
+    badge_fire: "Ablaze",
   },
   "ja": {
     brand: "戦局シアター",
@@ -51,23 +78,25 @@ const DICT = {
     load_error: "読み込みに失敗しました",
     troops: "兵力",
     based_on: "『{src}』に基づく",
+    play: "再生",
+    pause: "一時停止",
+    badge_advance: "進軍",
+    badge_engage: "交戦",
+    badge_rout: "潰走",
+    badge_defect: "偽降",
+    badge_withdraw: "撤退",
+    badge_camp: "本陣",
+    badge_fire: "炎上",
   },
 };
 
 let current = FALLBACK;
 
-// 解析順序:?lang= 參數 → localStorage → navigator → zh-TW
+// 解析順序:?lang= 參數 → localStorage → zh-TW(預設固定,不推測瀏覽器語言)
 export function initI18n() {
   const param = new URLSearchParams(location.search).get("lang");
   const stored = localStorage.getItem(STORAGE_KEY);
-  let lang = param || stored;
-  if (!lang) {
-    const nav = navigator.language || "";
-    if (/^zh-?(TW|HK|Hant)/i.test(nav)) lang = "zh-TW";
-    else if (/^zh/i.test(nav)) lang = "zh-CN";
-    else if (/^ja/i.test(nav)) lang = "ja";
-    else lang = "en";
-  }
+  const lang = param || stored || FALLBACK;
   current = LANGS.includes(lang) ? lang : FALLBACK;
   document.documentElement.lang = current;
   return current;
