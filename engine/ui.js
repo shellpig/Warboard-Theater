@@ -6,7 +6,7 @@ import { t, pick } from "./i18n.js";
 const SPEEDS = [0.5, 1, 2, 4];
 const SKIP_SEC = 5; // ←→ 跳時間(全域播放秒)
 
-export function createUI({ labels, hud, card, battle, units, terrain, camera, renderer, timeline, clock }) {
+export function createUI({ labels, hud, card, battle, units, terrain, camera, renderer, timeline, clock, director }) {
   const tracked = [];
 
   // --- 部隊名牌 ---
@@ -25,6 +25,7 @@ export function createUI({ labels, hud, card, battle, units, terrain, camera, re
     name.appendChild(badge);
     el.append(name, troops);
     el.style.display = "none";
+    el.addEventListener("click", () => director.flyToUnit(u.id)); // 點名牌飛鏡頭
     labels.appendChild(el);
     tracked.push({ el, pos: u.anchor });
     plates.push({ unit: u, el, troopsEl: troops, badgeEl: badge, lastTroops: -1, lastState: "" });

@@ -40,7 +40,19 @@ export function compileTimeline(eventsDef, battle) {
 
   const cards = []; // { p, chapter, ev } narration 字卡
   const timeMarks = []; // { p, chapter, v } time_display 步進
+  const cues = []; // { p, hint, unit } 導播鏡頭指令(Phase 3 director 消費)
   const stateRestores = []; // engage t_end 的狀態還原(編譯完成後統一裁決)
+
+  // camera_hint 省略時導播自行判斷:有單位的戰況事件自動 follow
+  const AUTO_FOLLOW = new Set(["move", "engage", "fire", "rout", "defect"]);
+  function addCue(ev, p) {
+    const unit = ev.unit ?? ev.units?.[0] ?? ev.fx?.to ?? ev.fx?.from ?? null;
+    let hint = ev.camera_hint;
+    if (hint == null && AUTO_FOLLOW.has(ev.type) && unit) hint = "follow";
+    if (hint === "follow" && unit) cues.push({ p, hint, unit });
+    else if (hint === "overview") cues.push({ p, hint, unit: null });
+    // "none" / 無法判斷 → 不動鏡頭
+  }
 
   // --- 事件編譯 ---
   (eventsDef.chapters || []).forEach((ch, ci) => {
@@ -52,6 +64,7 @@ export function compileTimeline(eventsDef, battle) {
       const p = toP(ev.t);
       const pEnd = ev.t_end != null ? toP(ev.t_end) : p;
       if (ev.time_display) timeMarks.push({ p, chapter: ci, v: ev.time_display });
+      addCue(ev, p);
 
       switch (ev.type) {
         case "move": {
@@ -111,7 +124,7 @@ export function compileTimeline(eventsDef, battle) {
         case "narration":
           cards.push({ p, chapter: ci, ev });
           break;
-        case "camera": // Phase 3(導播)處理
+        case "camera": // 純鏡頭指令:cue 已由 addCue 收集(pos 定點運鏡尚未支援)
           break;
         default:
           console.warn(`timeline: 未知事件 type "${ev.type}"`, ev);
@@ -132,6 +145,7 @@ export function compileTimeline(eventsDef, battle) {
   }
   cards.sort((a, b) => a.p - b.p);
   timeMarks.sort((a, b) => a.p - b.p);
+  cues.sort((a, b) => a.p - b.p);
 
   function chapterIndexAt(p) {
     for (let i = chapters.length - 1; i >= 0; i--) {
@@ -143,6 +157,7 @@ export function compileTimeline(eventsDef, battle) {
   return {
     chapters,
     total,
+    cues,
     chapterIndexAt,
     posAt: (id, p) => lerpAt(tracks[id]?.pos, p),
     troopsAt: (id, p) => Math.round(lerpAt(tracks[id]?.troops, p)),

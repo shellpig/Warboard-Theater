@@ -4,6 +4,7 @@ import { createScene } from "./scene.js";
 import { buildTerrain } from "./terrain.js";
 import { createUnits } from "./units.js";
 import { compileTimeline, createClock } from "./timeline.js";
+import { createDirector } from "./director.js";
 import { createUI } from "./ui.js";
 
 initI18n();
@@ -44,6 +45,7 @@ async function boot() {
   const units = createUnits(scene, battle, terrain);
   const timeline = compileTimeline(events, battle);
   const clock = createClock(timeline.total);
+  const director = createDirector({ camera, controls, units, timeline, clock });
   const ui = createUI({
     labels,
     hud: document.getElementById("hud"),
@@ -55,6 +57,7 @@ async function boot() {
     renderer,
     timeline,
     clock,
+    director,
   });
 
   statusMsg.textContent = "";
@@ -79,6 +82,7 @@ async function boot() {
     prevMs = ms;
     clock.tick(Math.min(dt, 0.25)); // 分頁切回時避免大步跳躍
     applyTime(clock.time);
+    director.update(Math.min(dt, 0.25));
     controls.update();
     ui.update();
     renderer.render(scene, camera);

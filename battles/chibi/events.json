@@ -13,7 +13,8 @@
           "time_display": "十一月初",
           "type": "narration",
           "title": "大軍壓境",
-          "desc": "曹操率大軍南下,屯駐烏林,沿江紮下水寨,與南岸孫劉聯軍隔江對峙。"
+          "desc": "曹操率大軍南下,屯駐烏林,沿江紮下水寨,與南岸孫劉聯軍隔江對峙。",
+          "camera_hint": "overview"
         },
         { "t": 0, "type": "status", "unit": "cao_camp", "badge": "camp" },
         {
@@ -176,7 +177,8 @@
           "time_display": "日暮",
           "type": "narration",
           "title": "三分天下",
-          "desc": "曹操敗歸江陵,自此無力南顧;孫權保有江東,劉備進取荊州,三分之勢自此而成。"
+          "desc": "曹操敗歸江陵,自此無力南顧;孫權保有江東,劉備進取荊州,三分之勢自此而成。",
+          "camera_hint": "overview"
         }
       ]
     }

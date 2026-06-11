@@ -212,6 +212,8 @@ body.menu #status-msg {
   position: absolute;
   left: 0;
   top: 0;
+  pointer-events: auto; /* 點名牌飛鏡頭 */
+  cursor: pointer;
   background: var(--panel);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-left: 3px solid #888;
