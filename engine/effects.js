@@ -15,6 +15,7 @@ const LIGHT_POOL = 3;
 const WIND = [-7, -9]; // 東南風:煙向西北飄(x = 東、z = 南)
 const VOLLEY_DUR = 2.4; // 箭雨總時長(播放秒,含齊射散佈)
 const EXPLOSION_DUR = 1.0;
+const RING_DUR = 4.5; // 衝擊環總時長(播放秒)
 
 export function createEffects(scene, { timeline, clock, terrain }) {
   const fire = new ParticlePool(scene, FIRE_MAX, {
@@ -211,6 +212,35 @@ export function createEffects(scene, { timeline, clock, terrain }) {
     }
   }
 
+  function drawRing(shot, p) {
+    const at = shotAnchor(shot, "pos");
+    if (!at) return;
+    const y = Math.max(terrain.heightAt(at[0], at[1]), terrain.waterLevel) + 12;
+    const maxRadius = shot.radius ?? 320;
+    // 兩波同心環:外環稍延遲,製造層次感
+    for (let wave = 0; wave < 2; wave++) {
+      const ws = Math.max(0, Math.min(1, (p - shot.p) / RING_DUR - wave * 0.15));
+      if (ws <= 0 || ws >= 1) continue;
+      const radius = maxRadius * ws;
+      const alpha = (1 - ws) * (wave === 0 ? 0.72 : 0.38);
+      const count = wave === 0 ? 72 : 48;
+      const seed = shot.p * 5.31 + wave * 19;
+      for (let i = 0; i < count; i++) {
+        const angle = (i / count) * Math.PI * 2;
+        const jitter = (hash01(seed + i * 3) - 0.5) * 18 * ws;
+        const r = radius + jitter;
+        const size = (11 + hash01(seed + i * 3 + 1) * 5) * (1 - ws * 0.55);
+        shots.add(
+          at[0] + Math.cos(angle) * r,
+          y + hash01(seed + i * 3 + 2) * 9 * ws,
+          at[1] + Math.sin(angle) * r,
+          size, 0.72, 0.93, 1.0,
+          alpha * (0.6 + hash01(seed + i * 3 + 2) * 0.4)
+        );
+      }
+    }
+  }
+
   let now = 0; // 實際時間累計(火焰閃爍用,暫停時仍持續)
 
   function update(dt) {
@@ -252,6 +282,8 @@ export function createEffects(scene, { timeline, clock, terrain }) {
             });
           }
         }
+      } else if (shot.kind === "ring") {
+        if (p >= shot.p && p <= shot.p + RING_DUR) drawRing(shot, p);
       } else {
         warnOnce(`kind:${shot.kind}`, `effects: 未支援的 fx kind "${shot.kind}",忽略`, shot);
       }
