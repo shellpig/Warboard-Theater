@@ -51,7 +51,11 @@ export function compileTimeline(eventsDef, battle) {
     if (hint == null && AUTO_FOLLOW.has(ev.type) && unit) hint = "follow";
     if (hint === "follow" && unit) cues.push({ p, hint, unit });
     else if (hint === "overview") cues.push({ p, hint, unit: null });
-    // "none" / 無法判斷 → 不動鏡頭
+    else if (ev.type === "camera" && ev.pos) cues.push({ p, hint: "pos", unit: null, pos: ev.pos });
+    else if (ev.type === "camera" && hint !== "none") {
+      console.warn("timeline: camera 事件缺少可用的 camera_hint/pos,鏡頭不動", ev);
+    }
+    // 其餘 "none" / 無法判斷 → 不動鏡頭
   }
 
   // --- 事件編譯 ---
@@ -124,7 +128,7 @@ export function compileTimeline(eventsDef, battle) {
         case "narration":
           cards.push({ p, chapter: ci, ev });
           break;
-        case "camera": // 純鏡頭指令:cue 已由 addCue 收集(pos 定點運鏡尚未支援)
+        case "camera": // 純鏡頭指令:cue(含 pos 定點)已由 addCue 收集
           break;
         default:
           console.warn(`timeline: 未知事件 type "${ev.type}"`, ev);

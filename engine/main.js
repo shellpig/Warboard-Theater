@@ -45,7 +45,7 @@ async function boot() {
   const units = createUnits(scene, battle, terrain);
   const timeline = compileTimeline(events, battle);
   const clock = createClock(timeline.total);
-  const director = createDirector({ camera, controls, units, timeline, clock });
+  const director = createDirector({ camera, controls, units, timeline, clock, terrain });
   const ui = createUI({
     labels,
     hud: document.getElementById("hud"),

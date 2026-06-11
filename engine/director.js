@@ -12,7 +12,7 @@ const FOLLOW_HEIGHT = 170;
 const OVERVIEW_POS = new THREE.Vector3(0, 520, 840);
 const OVERVIEW_TGT = new THREE.Vector3(0, 30, 0);
 
-export function createDirector({ camera, controls, units, timeline, clock }) {
+export function createDirector({ camera, controls, units, timeline, clock, terrain }) {
   const unitById = {};
   for (const u of units) unitById[u.id] = u;
 
@@ -33,15 +33,14 @@ export function createDirector({ camera, controls, units, timeline, clock }) {
   }
 
   // 自目前方位角接近,避免鏡頭翻越戰場
-  function frameUnit(unit) {
-    const tgt = focusOf(unit);
+  function frameTarget(tgt) {
     const dir = camera.position.clone().sub(controls.target);
     dir.y = 0;
     if (dir.lengthSq() < 1) dir.set(0, 0, 1);
     dir.normalize();
     const pos = tgt.clone().addScaledVector(dir, FOLLOW_DIST);
     pos.y = tgt.y + FOLLOW_HEIGHT;
-    return { tgt, pos };
+    return pos;
   }
 
   function beginFly(toTgt, toPos, unit) {
@@ -59,12 +58,20 @@ export function createDirector({ camera, controls, units, timeline, clock }) {
   function flyToUnit(id) {
     const u = unitById[id];
     if (!u) return;
-    const { tgt, pos } = frameUnit(u);
-    beginFly(tgt, pos, u);
+    const tgt = focusOf(u);
+    beginFly(tgt, frameTarget(tgt), u);
+  }
+
+  // 定點運鏡(camera 事件的 pos):飛抵後不跟隨
+  function flyToPos([x, z]) {
+    const y = Math.max(terrain.heightAt(x, z), terrain.waterLevel) + 10;
+    const tgt = new THREE.Vector3(x, y, z);
+    beginFly(tgt, frameTarget(tgt), null);
   }
 
   function applyCue(cue) {
     if (cue.hint === "overview") beginFly(OVERVIEW_TGT.clone(), OVERVIEW_POS.clone(), null);
+    else if (cue.hint === "pos") flyToPos(cue.pos);
     else flyToUnit(cue.unit);
   }
 
@@ -74,9 +81,13 @@ export function createDirector({ camera, controls, units, timeline, clock }) {
     const p = clock.time;
     const cues = timeline.cues;
     if (p < lastP) {
-      // 倒帶:游標重對齊,之後的 cue 可再次觸發
+      // 倒帶:游標重對齊,並清掉舊目標(單位已瞬移,續追會產生漂移);
+      // 鏡頭停在原地,由下一個 cue 重新接管
       cueIdx = 0;
       while (cueIdx < cues.length && cues[cueIdx].p <= p) cueIdx++;
+      fly = null;
+      followUnit = null;
+      state = "idle";
     } else {
       let crossed = null;
       while (cueIdx < cues.length && cues[cueIdx].p <= p) crossed = cues[cueIdx++];
