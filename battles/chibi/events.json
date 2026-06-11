@@ -1,14 +1,14 @@
 {
   "_note": "Phase 5:四語補齊(zh-TW 為準,en/ja 譯文待使用者人工校對);quote 原文任何語系皆顯示漢文,en/ja 附譯文小字",
   "atmosphere": [
-    { "chapter": "prelude", "t": 0, "sky": "#8fa3b8", "fog": [2600, 7200], "sun": 1.35, "sun_color": "#f3e6cf", "ambient": 0.85, "water": "#35596d" },
-    { "chapter": "prelude", "t": 5400, "sky": "#7b8aa3", "sun": 1.0 },
-    { "chapter": "prelude", "t": 7200, "sky": "#3c4a64", "fog": [2200, 6400], "sun": 0.55, "sun_color": "#e8c9a0", "ambient": 0.58, "water": "#2a4154" },
-    { "chapter": "fire_attack", "t": 30, "sky": "#121826", "fog": [1600, 4800], "sun": 0.22, "sun_color": "#8fa6c8", "ambient": 0.34, "water": "#141f2b" },
-    { "chapter": "fire_attack", "t": 200, "sky": "#241624", "ambient": 0.4 },
-    { "chapter": "fire_attack", "t": 600, "sky": "#2a3147", "sun": 0.35, "ambient": 0.42, "water": "#1a2736" },
-    { "chapter": "huarong", "t": 40, "sky": "#54688a", "fog": [2000, 6000], "sun": 0.85, "sun_color": "#ffd9ae", "ambient": 0.6, "water": "#31506a" },
-    { "chapter": "huarong", "t": 720, "sky": "#93abc0", "fog": [2800, 7600], "sun": 1.5, "sun_color": "#fff0d8", "ambient": 0.9, "water": "#35596d" }
+    { "chapter": "prelude", "t": 0, "sky": "#7e95a8", "fog": [2600, 7200], "sun": 1.20, "sun_color": "#f3e6cf", "ambient": 0.55, "water": "#1e3444" },
+    { "chapter": "prelude", "t": 5400, "sky": "#6e7f96", "sun": 0.90 },
+    { "chapter": "prelude", "t": 7200, "sky": "#35435a", "fog": [2200, 6400], "sun": 0.50, "sun_color": "#e8c9a0", "ambient": 0.37, "water": "#182c3c" },
+    { "chapter": "fire_attack", "t": 30, "sky": "#0e1520", "fog": [1600, 4800], "sun": 0.20, "sun_color": "#8fa6c8", "ambient": 0.22, "water": "#0c1520" },
+    { "chapter": "fire_attack", "t": 200, "sky": "#1a1220", "ambient": 0.26 },
+    { "chapter": "fire_attack", "t": 600, "sky": "#242c3e", "sun": 0.32, "ambient": 0.27, "water": "#12202e" },
+    { "chapter": "huarong", "t": 40, "sky": "#4a5c7a", "fog": [2000, 6000], "sun": 0.75, "sun_color": "#ffd9ae", "ambient": 0.38, "water": "#1e3a50" },
+    { "chapter": "huarong", "t": 720, "sky": "#7e95a8", "fog": [2800, 7600], "sun": 1.35, "sun_color": "#fff0d8", "ambient": 0.58, "water": "#1e3444" }
   ],
   "chapters": [
     {
