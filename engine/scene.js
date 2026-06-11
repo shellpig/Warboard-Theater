@@ -11,8 +11,8 @@ export function createScene(container) {
   container.appendChild(renderer.domElement);
 
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x7e95a8);
-  scene.fog = new THREE.Fog(0x7e95a8, 3000, 7600);
+  // 6-B:以 skydome ShaderMaterial 取代純色 scene.background
+  scene.fog = new THREE.FogExp2(new THREE.Color(0xa8bfcc), 0.0004);
 
   const camera = new THREE.PerspectiveCamera(
     50,
@@ -38,11 +38,44 @@ export function createScene(container) {
   sun.position.set(-500, 700, -350);
   scene.add(sun);
 
+  // 天穹:大半球內側 + 天頂/地平線雙色 pow 漸層,fog:false 避免天空自己吃霧
+  const skydome = new THREE.Mesh(
+    new THREE.SphereGeometry(8000, 32, 16),
+    new THREE.ShaderMaterial({
+      side: THREE.BackSide,
+      depthWrite: false,
+      fog: false,
+      uniforms: {
+        uTop:     { value: new THREE.Color(0x7e95a8) },
+        uHorizon: { value: new THREE.Color(0xa8bfcc) },
+      },
+      vertexShader: `
+        varying float vY;
+        void main() {
+          vY = normalize(position).y;
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+        }
+      `,
+      fragmentShader: `
+        uniform vec3 uTop;
+        uniform vec3 uHorizon;
+        varying float vY;
+        void main() {
+          float t = pow(clamp(vY, 0.0, 1.0), 0.5);
+          gl_FragColor = vec4(mix(uHorizon, uTop, t), 1.0);
+        }
+      `,
+    })
+  );
+  skydome.frustumCulled = false;
+  skydome.renderOrder = -1;
+  scene.add(skydome);
+
   window.addEventListener("resize", () => {
     camera.aspect = container.clientWidth / container.clientHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(container.clientWidth, container.clientHeight);
   });
 
-  return { scene, camera, renderer, controls, lights: { hemi, sun } };
+  return { scene, camera, renderer, controls, lights: { hemi, sun }, skydome };
 }
