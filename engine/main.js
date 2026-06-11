@@ -43,14 +43,14 @@ async function boot() {
     .filter(Boolean)
     .join("　");
 
-  const { scene, camera, renderer, controls, lights } = createScene(stage);
+  const { scene, camera, renderer, controls, lights, skydome } = createScene(stage);
   const terrain = buildTerrain(scene, battle.terrain);
   const units = createUnits(scene, battle, terrain);
   const timeline = compileTimeline(events, battle);
   const clock = createClock(timeline.total);
   const director = createDirector({ camera, controls, units, timeline, clock, terrain });
   const effects = createEffects(scene, { timeline, clock, terrain });
-  const atmosphere = createAtmosphere({ scene, lights, water: terrain.water }, events.atmosphere, timeline.chapters);
+  const atmosphere = createAtmosphere({ scene, lights, water: terrain.water, skydome }, events.atmosphere, timeline.chapters);
   const audio = createAudio({ timeline, clock, battle });
   const ui = createUI({
     labels,

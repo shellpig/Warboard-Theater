@@ -1,28 +1,31 @@
-// atmosphere:天色 / 霧 / 光照 / 水色隨模擬時間聯動(赤壁:晝 → 夜 → 黎明)
+// atmosphere:天色 / 霧 / 光照 / 水色隨模擬時間聯動
 //
-// 資料來源:events.json 頂層 "atmosphere" 關鍵幀陣列
-//   { "chapter": "fire_attack", "t": 0, "sky": "#121826", "fog": [800, 2400],
-//     "sun": 0.22, "sun_color": "#8fa6c8", "ambient": 0.32, "water": "#141f2b" }
-// t = 章內分鐘(與事件同制);缺欄位沿用前一關鍵幀(carry-forward),
-// 首關鍵幀之前 / 末關鍵幀之後取端點值;無資料時引擎維持 scene.js 預設。
+// 6-B schema(一次性遷移,不留雙軌):
+//   sky_top / sky_horizon(取代舊 sky)
+//   fog_density(取代舊 fog: [near, far])
+// 範例關鍵幀:
+//   { "chapter": "prelude", "t": 90, "sky_top": "#8aa4b2", "sky_horizon": "#c0d2dc",
+//     "fog_density": 0.0014, "sun": 1.2, "ambient": 0.55, "water": "#1e3444" }
 import * as THREE from "three";
 
-export function createAtmosphere({ scene, lights, water }, defs, chapters) {
+export function createAtmosphere({ scene, lights, water, skydome }, defs, chapters) {
   if (!defs?.length) return { update() {} };
 
+  const skyMat = skydome.material;
   const byId = {};
   for (const ch of chapters) byId[ch.id] = ch;
 
-  // 以場景現值為基底,carry-forward 補滿缺欄位 → 完整關鍵幀
+  // 以場景現值為基底,carry-forward 補滿缺欄位
   let cur = {
-    sky: scene.background.getHex(),
-    fogNear: scene.fog.near,
-    fogFar: scene.fog.far,
-    sun: lights.sun.intensity,
-    sunColor: lights.sun.color.getHex(),
-    ambient: lights.hemi.intensity,
-    water: water.material.color.getHex(),
+    skyTop:     skyMat.uniforms.uTop.value.getHex(),
+    skyHorizon: skyMat.uniforms.uHorizon.value.getHex(),
+    fogDensity: scene.fog.density,
+    sun:        lights.sun.intensity,
+    sunColor:   lights.sun.color.getHex(),
+    ambient:    lights.hemi.intensity,
+    water:      water.material.color.getHex(),
   };
+
   const keys = [];
   for (const d of defs) {
     const ch = byId[d.chapter];
@@ -31,13 +34,13 @@ export function createAtmosphere({ scene, lights, water }, defs, chapters) {
       continue;
     }
     cur = {
-      sky: d.sky != null ? new THREE.Color(d.sky).getHex() : cur.sky,
-      fogNear: d.fog != null ? d.fog[0] : cur.fogNear,
-      fogFar: d.fog != null ? d.fog[1] : cur.fogFar,
-      sun: d.sun ?? cur.sun,
-      sunColor: d.sun_color != null ? new THREE.Color(d.sun_color).getHex() : cur.sunColor,
-      ambient: d.ambient ?? cur.ambient,
-      water: d.water != null ? new THREE.Color(d.water).getHex() : cur.water,
+      skyTop:     d.sky_top     != null ? new THREE.Color(d.sky_top).getHex()     : cur.skyTop,
+      skyHorizon: d.sky_horizon != null ? new THREE.Color(d.sky_horizon).getHex() : cur.skyHorizon,
+      fogDensity: d.fog_density ?? cur.fogDensity,
+      sun:        d.sun ?? cur.sun,
+      sunColor:   d.sun_color != null ? new THREE.Color(d.sun_color).getHex() : cur.sunColor,
+      ambient:    d.ambient ?? cur.ambient,
+      water:      d.water != null ? new THREE.Color(d.water).getHex() : cur.water,
     };
     keys.push({ p: ch.start + (d.t / ch.durationMin) * ch.len, v: cur });
   }
@@ -61,13 +64,20 @@ export function createAtmosphere({ scene, lights, water }, defs, chapters) {
     const lerpCol = (target, x, y) =>
       target.copy(colA.setHex(x)).lerp(colB.setHex(y), f);
 
-    lerpCol(scene.background, a.v.sky, b.v.sky);
-    scene.fog.color.copy(scene.background);
-    scene.fog.near = lerp(a.v.fogNear, b.v.fogNear);
-    scene.fog.far = lerp(a.v.fogFar, b.v.fogFar);
+    // skydome uniforms
+    lerpCol(skyMat.uniforms.uTop.value,     a.v.skyTop,     b.v.skyTop);
+    lerpCol(skyMat.uniforms.uHorizon.value, a.v.skyHorizon, b.v.skyHorizon);
+
+    // 霧色跟隨地平線色,密度插值
+    scene.fog.color.copy(skyMat.uniforms.uHorizon.value);
+    scene.fog.density = lerp(a.v.fogDensity, b.v.fogDensity);
+
+    // 光照
     lights.sun.intensity = lerp(a.v.sun, b.v.sun);
     lerpCol(lights.sun.color, a.v.sunColor, b.v.sunColor);
     lights.hemi.intensity = lerp(a.v.ambient, b.v.ambient);
+
+    // 水面色
     lerpCol(water.material.color, a.v.water, b.v.water);
   }
 
