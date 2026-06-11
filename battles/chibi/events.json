@@ -235,9 +235,9 @@
           "units": ["huanggai_fleet", "cao_fleet", "wenpin_fleet", "maozhi_fleet"],
           "losses": { "cao_fleet": 41300, "huanggai_fleet": 1637, "wenpin_fleet": 1700, "maozhi_fleet": 2000 }
         },
-        { "t": 170, "t_end": 320, "type": "move", "unit": "zhouyu_fleet", "to": [-40, 60] },
-        { "t": 170, "t_end": 280, "type": "move", "unit": "ganling_fleet", "to": [-220, 160] },
-        { "t": 170, "t_end": 280, "type": "move", "unit": "handan_fleet", "to": [-60, 100] },
+        { "t": 170, "t_end": 330, "type": "move", "unit": "zhouyu_fleet", "to": [-40, -170], "camera_hint": "follow" },
+        { "t": 170, "t_end": 300, "type": "move", "unit": "ganling_fleet", "to": [-200, -130] },
+        { "t": 170, "t_end": 300, "type": "move", "unit": "handan_fleet", "to": [70, -150] },
         {
           "t": 180,
           "t_end": 360,
@@ -259,6 +259,9 @@
           },
           "fx": { "kind": "volley", "from": "zhouyu_fleet", "to": "cao_fleet", "count": 180 }
         },
+        { "t": 230, "type": "camera", "camera_hint": "none", "fx": { "kind": "volley", "from": "ganling_fleet", "to": "cao_fleet", "count": 120 } },
+        { "t": 270, "type": "camera", "camera_hint": "none", "fx": { "kind": "volley", "from": "zhouyu_fleet", "to": "wenpin_fleet", "count": 130 } },
+        { "t": 320, "type": "camera", "camera_hint": "none", "fx": { "kind": "volley", "from": "handan_fleet", "to": "maozhi_fleet", "count": 110 } },
         { "t": 360, "type": "rout", "unit": "cao_fleet" },
         { "t": 360, "t_end": 520, "type": "move", "unit": "cao_fleet", "to": [320, -420], "attrition": 133.125 },
         {

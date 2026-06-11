@@ -122,7 +122,7 @@
       { "pos": [400, -500], "radius": 190 }
     ],
     "roads": [
-      { "points": [[350, -460], [560, -580], [760, -680], [960, -760], [1160, -840]], "width": 38 }
+      { "points": [[350, -460], [560, -580], [760, -680], [960, -760], [1160, -840], [1420, -920], [1700, -990], [1960, -1040]], "width": 38 }
     ]
   },
   "units": [
@@ -132,7 +132,8 @@
       "type": "fleet",
       "label": { "zh-TW": "曹軍連環船隊", "zh-CN": "曹军连环船队", "en": "Cao's Chained Fleet", "ja": "曹軍連環船団" },
       "spawn": [0, -240],
-      "troops": 63000
+      "troops": 63000,
+      "count": 24
     },
     {
       "id": "cao_camp",
@@ -148,7 +149,8 @@
       "type": "fleet",
       "label": { "zh-TW": "周瑜水軍", "zh-CN": "周瑜水军", "en": "Zhou Yu's Navy", "ja": "周瑜水軍" },
       "spawn": [-160, 360],
-      "troops": 13500
+      "troops": 13500,
+      "count": 12
     },
     {
       "id": "huanggai_fleet",
@@ -156,7 +158,8 @@
       "type": "fleet",
       "label": { "zh-TW": "黃蓋船隊", "zh-CN": "黄盖船队", "en": "Huang Gai's Squadron", "ja": "黄蓋船団" },
       "spawn": [-280, 380],
-      "troops": 2000
+      "troops": 2000,
+      "count": 3
     },
     {
       "id": "liubei_army",
@@ -170,7 +173,7 @@
       "id": "strawboat_fleet",
       "faction": "shu",
       "type": "fleet",
-      "count": 20,
+      "count": 3,
       "label": { "zh-TW": "孔明草船隊", "zh-CN": "孔明草船队", "en": "Kongming's Straw Boats", "ja": "孔明の草船隊" },
       "spawn": [-400, 340],
       "troops": 600
@@ -189,7 +192,8 @@
       "type": "fleet",
       "label": { "zh-TW": "文聘前軍", "zh-CN": "文聘前军", "en": "Wenpin's Vanguard Fleet", "ja": "文聘前軍" },
       "spawn": [-180, -200],
-      "troops": 17000
+      "troops": 17000,
+      "count": 18
     },
     {
       "id": "maozhi_fleet",
@@ -197,7 +201,8 @@
       "type": "fleet",
       "label": { "zh-TW": "毛玠・于禁水軍", "zh-CN": "毛玠・于禁水军", "en": "Maoji & Yu Jin's Navy", "ja": "毛玠・于禁水軍" },
       "spawn": [240, -260],
-      "troops": 20000
+      "troops": 20000,
+      "count": 18
     },
     {
       "id": "zhangliao_force",
@@ -221,7 +226,8 @@
       "type": "fleet",
       "label": { "zh-TW": "甘寧隊", "zh-CN": "甘宁队", "en": "Gan Ning's Squadron", "ja": "甘寧隊" },
       "spawn": [-440, 280],
-      "troops": 6800
+      "troops": 6800,
+      "count": 6
     },
     {
       "id": "handan_fleet",
@@ -229,7 +235,8 @@
       "type": "fleet",
       "label": { "zh-TW": "韓當・周泰隊", "zh-CN": "韩当・周泰队", "en": "Han Dang & Zhou Tai's Fleet", "ja": "韓当・周泰隊" },
       "spawn": [-60, 320],
-      "troops": 7700
+      "troops": 7700,
+      "count": 6
     },
     {
       "id": "zhaoyun_force",
