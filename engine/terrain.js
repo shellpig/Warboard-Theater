@@ -29,14 +29,15 @@ export function buildTerrain(scene, def) {
   }
 
   // 依高度分層著色:河床 → 岸沙 → 平原 → 丘陵 → 岩頂
+  // 6-A:整套降飽和壓亮,向橄欖卡其灰調靠,消除「塑膠草皮感」
   const stops = [
-    { h: waterLevel - 10, c: new THREE.Color(0x2e3a2f) },
-    { h: waterLevel - 1.5, c: new THREE.Color(0x4d573e) },
-    { h: waterLevel + 2, c: new THREE.Color(0xb3a275) },
-    { h: waterLevel + 12, c: new THREE.Color(0x7d9454) },
-    { h: waterLevel + 30, c: new THREE.Color(0x687b41) },
-    { h: waterLevel + 48, c: new THREE.Color(0x796b4e) },
-    { h: waterLevel + 72, c: new THREE.Color(0x8e8679) },
+    { h: waterLevel - 10, c: new THREE.Color(0x1c2720) },
+    { h: waterLevel - 1.5, c: new THREE.Color(0x2c3826) },
+    { h: waterLevel + 2, c: new THREE.Color(0x7f7763) },
+    { h: waterLevel + 12, c: new THREE.Color(0x6e7858) },
+    { h: waterLevel + 30, c: new THREE.Color(0x5a6245) },
+    { h: waterLevel + 48, c: new THREE.Color(0x6a6052) },
+    { h: waterLevel + 72, c: new THREE.Color(0x878480) },
   ];
 
   function colorAt(h, out) {
@@ -88,9 +89,9 @@ export function buildTerrain(scene, def) {
   scene.add(ground);
 
   const waterMat = new THREE.MeshStandardMaterial({
-    color: 0x35596d,
+    color: 0x1e3444,
     transparent: true,
-    opacity: 0.84,
+    opacity: 0.90,
     roughness: 0.28,
     metalness: 0.05,
   });
@@ -244,28 +245,29 @@ function groundTexture(renderX, renderZ, waterLevel, heightAt, terrainDef) {
       const grain = (Math.sin(x * 12.9898 + z * 78.233) * 43758.5453);
       const grainV = (grain - Math.floor(grain)) * 22;
 
-      // 低頻田野 ±20
-      const field = (fieldNoise(x, z) - 0.5) * 40;
+      // 低頻田野 ±15(6-A:縮幅,配合基底降亮後不過暗)
+      const field = (fieldNoise(x, z) - 0.5) * 30;
 
-      let r = 224 + grainV + field;
-      let g = 224 + grainV + field;
-      let b = 222 + grainV;
+      // 6-A:貼圖基底自近白(224)改中灰(196),與新頂點色相乘後不過曝
+      let r = 196 + grainV + field;
+      let g = 196 + grainV + field;
+      let b = 194 + grainV;
 
       const wdist = h - waterLevel;
       if (wdist < 0) {
         // 河床
         r *= 0.78; g *= 0.88; b *= 0.92;
       } else if (wdist < 2) {
-        // 濕沙岸
-        r = 212 + grainV * 0.5;
-        g = 194 + grainV * 0.5;
-        b = 152 + grainV * 0.3;
+        // 濕沙岸(6-A:降飽和,移向灰棕調)
+        r = 182 + grainV * 0.5;
+        g = 164 + grainV * 0.5;
+        b = 128 + grainV * 0.3;
       } else if (wdist < 7) {
         // 岸線漸變帶
         const f = (wdist - 2) / 5;
-        r = r * f + (212 + grainV * 0.5) * (1 - f);
-        g = g * f + (194 + grainV * 0.5) * (1 - f);
-        b = b * f + (152 + grainV * 0.3) * (1 - f);
+        r = r * f + (182 + grainV * 0.5) * (1 - f);
+        g = g * f + (164 + grainV * 0.5) * (1 - f);
+        b = b * f + (128 + grainV * 0.3) * (1 - f);
       }
 
       img.data[p++] = Math.min(255, Math.max(0, r));
