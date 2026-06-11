@@ -42,6 +42,8 @@ export function compileTimeline(eventsDef, battle) {
   const timeMarks = []; // { p, chapter, v } time_display 步進
   const cues = []; // { p, hint, unit } 導播鏡頭指令(Phase 3 director 消費)
   const stateRestores = []; // engage t_end 的狀態還原(編譯完成後統一裁決)
+  const burns = []; // { start, end, unit?|pos?, intensity } 火源燃燒區間(effects 消費)
+  const fxShots = []; // { p, kind, … } 事件附帶一次性特效(volley / explosion)
 
   // camera_hint 省略時導播自行判斷:有單位的戰況事件自動 follow
   const AUTO_FOLLOW = new Set(["move", "engage", "fire", "rout", "defect"]);
@@ -69,6 +71,7 @@ export function compileTimeline(eventsDef, battle) {
       const pEnd = ev.t_end != null ? toP(ev.t_end) : p;
       if (ev.time_display) timeMarks.push({ p, chapter: ci, v: ev.time_display });
       addCue(ev, p);
+      if (ev.fx) fxShots.push({ p, ...ev.fx });
 
       switch (ev.type) {
         case "move": {
@@ -97,8 +100,14 @@ export function compileTimeline(eventsDef, battle) {
           break;
         }
         case "fire": {
-          for (const id of ev.units || [ev.unit]) {
-            tracks[id]?.state.push({ p, v: "fire" });
+          // 燃燒至 t_end(省略 = 燒到本章結束);pos 火源不綁單位(火海殘留原地)
+          const until = ev.t_end != null ? pEnd : meta.start + meta.len;
+          const intensity = ev.intensity ?? 1;
+          if (ev.pos) burns.push({ start: p, end: until, pos: ev.pos, intensity });
+          for (const id of ev.units || (ev.unit ? [ev.unit] : [])) {
+            if (!tracks[id]) continue;
+            tracks[id].state.push({ p, v: "fire" });
+            burns.push({ start: p, end: until, unit: id, intensity });
           }
           break;
         }
@@ -150,6 +159,8 @@ export function compileTimeline(eventsDef, battle) {
   cards.sort((a, b) => a.p - b.p);
   timeMarks.sort((a, b) => a.p - b.p);
   cues.sort((a, b) => a.p - b.p);
+  burns.sort((a, b) => a.start - b.start);
+  fxShots.sort((a, b) => a.p - b.p);
 
   function chapterIndexAt(p) {
     for (let i = chapters.length - 1; i >= 0; i--) {
@@ -162,6 +173,8 @@ export function compileTimeline(eventsDef, battle) {
     chapters,
     total,
     cues,
+    burns,
+    fxShots,
     chapterIndexAt,
     posAt: (id, p) => lerpAt(tracks[id]?.pos, p),
     troopsAt: (id, p) => Math.round(lerpAt(tracks[id]?.troops, p)),

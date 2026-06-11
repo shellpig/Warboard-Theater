@@ -93,7 +93,8 @@ function buildInfantry(group, def, colorHex, heightAt, materials) {
 }
 
 function buildFleet(group, def, colorHex, waterLevel, materials) {
-  const count = THREE.MathUtils.clamp(Math.round((def.troops || 8000) / 4000), 3, 24);
+  // count 可由資料覆寫(如草船借箭:二十艘草船但兵員僅數百)
+  const count = THREE.MathUtils.clamp(def.count ?? Math.round((def.troops || 8000) / 4000), 3, 24);
   const cols = Math.min(6, count);
   const rows = Math.ceil(count / cols);
   const hullMat = new THREE.MeshStandardMaterial({ color: 0x5a4632, roughness: 0.95 });

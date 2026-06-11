@@ -31,7 +31,8 @@ export function createScene(container) {
   controls.minDistance = 60;
   controls.maxDistance = 2600;
 
-  scene.add(new THREE.HemisphereLight(0xcfe0ee, 0x55503f, 0.9));
+  const hemi = new THREE.HemisphereLight(0xcfe0ee, 0x55503f, 0.9);
+  scene.add(hemi);
   const sun = new THREE.DirectionalLight(0xfff0d8, 1.7);
   sun.position.set(-500, 700, -350);
   scene.add(sun);
@@ -42,5 +43,5 @@ export function createScene(container) {
     renderer.setSize(container.clientWidth, container.clientHeight);
   });
 
-  return { scene, camera, renderer, controls };
+  return { scene, camera, renderer, controls, lights: { hemi, sun } };
 }

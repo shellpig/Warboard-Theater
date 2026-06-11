@@ -1,7 +1,7 @@
 // ui:部隊名牌、地名標籤(DOM overlay,worldToPx 投影)、旁白字卡、
 //    控制列(播放/速度/全域時間軸)、章節列表、鍵盤操作
 import * as THREE from "three";
-import { t, pick } from "./i18n.js";
+import { t, pick, getLang } from "./i18n.js";
 
 const SPEEDS = [0.5, 1, 2, 4];
 const SKIP_SEC = 5; // ←→ 跳時間(全域播放秒)
@@ -43,14 +43,76 @@ export function createUI({ labels, hud, card, battle, units, terrain, camera, re
     tracked.push({ el, pos: new THREE.Vector3(x, y, z) });
   }
 
-  // --- 旁白字卡(極簡版,樣式於 Phase 4 打磨)---
+  // --- 旁白字卡(lower-third:speaker 頭像 + 名字 + title/desc + quote 原文)---
+  // speaker → battle.factions[].commanders;肖像缺圖時退化為純名字
+  const commanders = {};
+  for (const f of battle.factions || []) {
+    for (const c of f.commanders || []) {
+      commanders[c.id] = {
+        name: c.name,
+        portrait: c.portrait ? `battles/${battle.id}/${c.portrait}` : null,
+        color: f.color,
+      };
+    }
+  }
+
+  const portraitImg = document.createElement("img");
+  portraitImg.className = "card-portrait";
+  portraitImg.alt = "";
+  portraitImg.addEventListener("error", () => (portraitImg.style.display = "none"));
+  const cardMain = document.createElement("div");
+  cardMain.className = "card-main";
+  const speakerEl = document.createElement("div");
+  speakerEl.className = "card-speaker";
   const cardTitle = document.createElement("div");
   cardTitle.className = "card-title";
   const cardDesc = document.createElement("div");
   cardDesc.className = "card-desc";
-  card.append(cardTitle, cardDesc);
+  const quoteEl = document.createElement("div");
+  quoteEl.className = "card-quote";
+  const quoteText = document.createElement("span");
+  quoteText.className = "quote-text";
+  const quoteSource = document.createElement("span");
+  quoteSource.className = "quote-source";
+  const quoteTrans = document.createElement("div");
+  quoteTrans.className = "quote-trans";
+  quoteEl.append(quoteText, quoteSource, quoteTrans);
+  cardMain.append(speakerEl, cardTitle, cardDesc, quoteEl);
+  card.append(portraitImg, cardMain);
   card.style.display = "none";
   let lastCard = null;
+
+  function renderCard(ev) {
+    const sp = ev.speaker ? commanders[ev.speaker] : null;
+    if (sp) {
+      speakerEl.textContent = pick(sp.name);
+      speakerEl.style.borderLeftColor = sp.color;
+      speakerEl.style.display = "";
+    } else {
+      speakerEl.style.display = "none";
+    }
+    if (sp?.portrait) {
+      portraitImg.style.display = ""; // 先恢復顯示;載入失敗由 error 事件再隱藏
+      if (portraitImg.dataset.src !== sp.portrait) {
+        portraitImg.dataset.src = sp.portrait;
+        portraitImg.src = sp.portrait;
+      }
+    } else {
+      portraitImg.style.display = "none";
+    }
+    cardTitle.textContent = pick(ev.title);
+    cardDesc.textContent = pick(ev.desc);
+    const q = ev.quote;
+    if (q?.text) {
+      // 演義原文:任何語系都顯示漢文原句;en/ja 可選譯文小字
+      quoteText.textContent = `「${q.text}」`;
+      quoteSource.textContent = q.source ? `── ${pick(q.source)}` : "";
+      quoteTrans.textContent = q.translation?.[getLang()] ?? "";
+      quoteEl.style.display = "";
+    } else {
+      quoteEl.style.display = "none";
+    }
+  }
 
   // --- 控制列 DOM ---
   const chapterRow = document.createElement("div");
@@ -165,8 +227,13 @@ export function createUI({ labels, hud, card, battle, units, terrain, camera, re
       item.el.style.transform = `translate(${px}px, ${py}px) translate(-50%, -100%)`;
     }
 
-    // 名牌內容:兵力插值 + 狀態徽章
+    // 名牌內容:兵力插值 + 狀態徽章(隱形單位連名牌一併隱藏;
+    // 投影迴圈每幀已重設 display,此處覆寫即可)
     for (const pl of plates) {
+      if (timeline.opacityAt(pl.unit.id, p) < 0.05) {
+        pl.el.style.display = "none";
+        continue;
+      }
       const n = timeline.troopsAt(pl.unit.id, p);
       if (n !== pl.lastTroops) {
         pl.lastTroops = n;
@@ -187,8 +254,7 @@ export function createUI({ labels, hud, card, battle, units, terrain, camera, re
     if (c !== lastCard) {
       lastCard = c;
       if (c) {
-        cardTitle.textContent = pick(c.ev.title);
-        cardDesc.textContent = pick(c.ev.desc);
+        renderCard(c.ev);
         card.style.display = "";
       } else {
         card.style.display = "none";

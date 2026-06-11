@@ -65,6 +65,11 @@
           "id": "liubei",
           "name": { "zh-TW": "劉備", "zh-CN": "刘备", "en": "Liu Bei", "ja": "劉備" },
           "portrait": "assets/commander_liubei.png"
+        },
+        {
+          "id": "guanyu",
+          "name": { "zh-TW": "關羽", "zh-CN": "关羽", "en": "Guan Yu", "ja": "関羽" },
+          "portrait": "assets/commander_guanyu.png"
         }
       ],
       "strength": { "zh-TW": "約 20,000", "zh-CN": "约 20,000", "en": "About 20,000", "ja": "約2万" }
@@ -138,6 +143,23 @@
       "label": { "zh-TW": "劉備軍本隊", "zh-CN": "刘备军本队", "en": "Liu Bei's Main Force", "ja": "劉備軍本隊" },
       "spawn": [500, 260],
       "troops": 20000
+    },
+    {
+      "id": "strawboat_fleet",
+      "faction": "shu",
+      "type": "fleet",
+      "count": 20,
+      "label": { "zh-TW": "孔明草船隊", "zh-CN": "孔明草船队", "en": "Kongming's Straw Boats", "ja": "孔明の草船隊" },
+      "spawn": [-200, 170],
+      "troops": 600
+    },
+    {
+      "id": "guanyu_force",
+      "faction": "shu",
+      "type": "infantry",
+      "label": { "zh-TW": "關羽伏兵", "zh-CN": "关羽伏兵", "en": "Guan Yu's Ambush", "ja": "関羽の伏兵" },
+      "spawn": [520, -360],
+      "troops": 5000
     }
   ]
 }

@@ -5,6 +5,8 @@ import { buildTerrain } from "./terrain.js";
 import { createUnits } from "./units.js";
 import { compileTimeline, createClock } from "./timeline.js";
 import { createDirector } from "./director.js";
+import { createEffects } from "./effects.js";
+import { createAtmosphere } from "./atmosphere.js";
 import { createUI } from "./ui.js";
 
 initI18n();
@@ -40,12 +42,14 @@ async function boot() {
     .filter(Boolean)
     .join("　");
 
-  const { scene, camera, renderer, controls } = createScene(stage);
+  const { scene, camera, renderer, controls, lights } = createScene(stage);
   const terrain = buildTerrain(scene, battle.terrain);
   const units = createUnits(scene, battle, terrain);
   const timeline = compileTimeline(events, battle);
   const clock = createClock(timeline.total);
   const director = createDirector({ camera, controls, units, timeline, clock, terrain });
+  const effects = createEffects(scene, { timeline, clock, terrain });
+  const atmosphere = createAtmosphere({ scene, lights, water: terrain.water }, events.atmosphere, timeline.chapters);
   const ui = createUI({
     labels,
     hud: document.getElementById("hud"),
@@ -80,9 +84,12 @@ async function boot() {
   renderer.setAnimationLoop((ms) => {
     const dt = prevMs == null ? 0 : (ms - prevMs) / 1000;
     prevMs = ms;
-    clock.tick(Math.min(dt, 0.25)); // 分頁切回時避免大步跳躍
+    const step = Math.min(dt, 0.25); // 分頁切回時避免大步跳躍
+    clock.tick(step);
     applyTime(clock.time);
-    director.update(Math.min(dt, 0.25));
+    atmosphere.update(clock.time);
+    effects.update(step);
+    director.update(step);
     controls.update();
     ui.update();
     renderer.render(scene, camera);
