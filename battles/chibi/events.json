@@ -81,6 +81,7 @@
           "type": "fire",
           "unit": "cao_fleet"
         },
+        { "t": 130, "type": "status", "unit": "huanggai_fleet", "badge": "idle" },
         {
           "t": 130,
           "type": "narration",

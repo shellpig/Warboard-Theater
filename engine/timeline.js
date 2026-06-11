@@ -40,6 +40,7 @@ export function compileTimeline(eventsDef, battle) {
 
   const cards = []; // { p, chapter, ev } narration 字卡
   const timeMarks = []; // { p, chapter, v } time_display 步進
+  const stateRestores = []; // engage t_end 的狀態還原(編譯完成後統一裁決)
 
   // --- 事件編譯 ---
   (eventsDef.chapters || []).forEach((ch, ci) => {
@@ -65,7 +66,12 @@ export function compileTimeline(eventsDef, battle) {
           for (const id of ev.units || [ev.unit]) {
             const tr = tracks[id];
             if (!tr) continue;
+            const prev = lastVal(tr.state);
             tr.state.push({ p, v: "engage" });
+            // 有 t_end 的交戰在結束點回復前一狀態;無 t_end 則持續(由後續事件改變)
+            if (ev.t_end != null) {
+              stateRestores.push({ keys: tr.state, start: p, end: pEnd, prev });
+            }
             const target = ev.losses?.[id];
             if (target != null) {
               tr.troops.push({ p, v: lastVal(tr.troops) }, { p: Math.max(pEnd, p + EPS), v: target });
@@ -113,7 +119,14 @@ export function compileTimeline(eventsDef, battle) {
     }
   });
 
-  // move 會預插 t_end 還原 key,與後續事件的 key 交錯 → 統一依 p 穩定排序
+  // engage 結束還原:區間內(含結束同點)若有其他明確狀態 key(rout/defect/status…)
+  // 表示語意已被更新,還原取消,避免蓋掉較新的狀態
+  for (const r of stateRestores) {
+    const superseded = r.keys.some((k) => k.p > r.start + EPS && k.p <= r.end + EPS);
+    if (!superseded) r.keys.push({ p: r.end, v: r.prev });
+  }
+
+  // 各事件可能交錯插入 key → 統一依 p 穩定排序
   for (const tr of Object.values(tracks)) {
     for (const keys of Object.values(tr)) keys.sort((a, b) => a.p - b.p);
   }
