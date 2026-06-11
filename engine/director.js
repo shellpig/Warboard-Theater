@@ -9,8 +9,8 @@ import * as THREE from "three";
 const FLY_SEC = 1.8;
 const FOLLOW_DIST = 600;
 const FOLLOW_HEIGHT = 340;
-const OVERVIEW_POS = new THREE.Vector3(900, 1040, 1500);
-const OVERVIEW_TGT = new THREE.Vector3(0, 30, 0);
+const OVERVIEW_POS = new THREE.Vector3(0, 1300, 600);
+const OVERVIEW_TGT = new THREE.Vector3(0, 0, 0);
 
 export function createDirector({ camera, controls, units, timeline, clock, terrain }) {
   const unitById = {};

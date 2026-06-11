@@ -148,7 +148,7 @@
       "faction": "wu",
       "type": "fleet",
       "label": { "zh-TW": "周瑜水軍", "zh-CN": "周瑜水军", "en": "Zhou Yu's Navy", "ja": "周瑜水軍" },
-      "spawn": [-160, 360],
+      "spawn": [-160, 280],
       "troops": 13500,
       "count": 12
     },
@@ -157,7 +157,7 @@
       "faction": "wu",
       "type": "fleet",
       "label": { "zh-TW": "黃蓋船隊", "zh-CN": "黄盖船队", "en": "Huang Gai's Squadron", "ja": "黄蓋船団" },
-      "spawn": [-280, 380],
+      "spawn": [-280, 300],
       "troops": 2000,
       "count": 3
     },
@@ -234,7 +234,7 @@
       "faction": "wu",
       "type": "fleet",
       "label": { "zh-TW": "韓當・周泰隊", "zh-CN": "韩当・周泰队", "en": "Han Dang & Zhou Tai's Fleet", "ja": "韓当・周泰隊" },
-      "spawn": [-60, 320],
+      "spawn": [60, 280],
       "troops": 7700,
       "count": 6
     },

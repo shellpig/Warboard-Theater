@@ -114,7 +114,7 @@
         },
         { "t": 4500, "t_end": 4900, "type": "move", "unit": "zhouyu_fleet", "to": [-200, 340] },
         { "t": 4800, "t_end": 5100, "type": "move", "unit": "ganling_fleet", "to": [-440, 260] },
-        { "t": 5200, "t_end": 5600, "type": "move", "unit": "huanggai_fleet", "to": [-300, 360] },
+        { "t": 5200, "t_end": 5600, "type": "move", "unit": "huanggai_fleet", "to": [-300, 300] },
         { "t": 5600, "t_end": 5900, "type": "move", "unit": "handan_fleet", "to": [-60, 320] },
         {
           "t": 6400,
@@ -184,7 +184,7 @@
         },
         { "t": 0, "t_end": 100, "type": "move", "unit": "wenpin_fleet", "to": [-80, -220] },
         { "t": 0, "t_end": 100, "type": "move", "unit": "maozhi_fleet", "to": [120, -250] },
-        { "t": 70, "t_end": 130, "type": "move", "unit": "huanggai_fleet", "to": [-100, -140], "camera_hint": "overview" },
+        { "t": 70, "t_end": 130, "type": "move", "unit": "huanggai_fleet", "to": [-100, -140], "camera_hint": "follow" },
         { "t": 60, "time_display": { "zh-TW": "二更", "zh-CN": "二更", "en": "Second watch", "ja": "二更" }, "type": "defect", "unit": "huanggai_fleet" },
         {
           "t": 60,
