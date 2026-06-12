@@ -1,18 +1,116 @@
 {
   "_note": "Phase 5:四語補齊(zh-TW 為準,en/ja 譯文待使用者人工校對);quote 原文任何語系皆顯示漢文,en/ja 附譯文小字",
   "atmosphere": [
-    { "chapter": "prelude", "t": 0,    "sky_top": "#7e95a8", "sky_horizon": "#a8bfcc", "fog_density": 0.0004, "sun": 1.20, "sun_color": "#f3e6cf", "ambient": 0.55, "water": "#1e3444", "wind": 1.0 },
-    { "chapter": "prelude", "t": 60,   "sky_top": "#8298a8", "sky_horizon": "#b0c4d2", "fog_density": 0.0009 },
-    { "chapter": "prelude", "t": 90,   "sky_top": "#8aa4b2", "sky_horizon": "#c0d2dc", "fog_density": 0.0014 },
-    { "chapter": "prelude", "t": 200,  "sky_top": "#7e95a8", "sky_horizon": "#a8bfcc", "fog_density": 0.0004 },
-    { "chapter": "prelude", "t": 5400, "sky_top": "#6e7f96", "sky_horizon": "#95acbc", "fog_density": 0.0005, "sun": 0.90 },
-    { "chapter": "prelude", "t": 6400, "wind": 2.5 },
-    { "chapter": "prelude", "t": 7200, "sky_top": "#35435a", "sky_horizon": "#566070", "fog_density": 0.0005, "sun": 0.50, "sun_color": "#e8c9a0", "ambient": 0.37, "water": "#182c3c" },
-    { "chapter": "fire_attack", "t": 30,  "sky_top": "#0e1520", "sky_horizon": "#1c2535", "fog_density": 0.0006, "sun": 0.20, "sun_color": "#8fa6c8", "ambient": 0.22, "water": "#0c1520" },
-    { "chapter": "fire_attack", "t": 200, "sky_top": "#1a1220", "sky_horizon": "#261828", "fog_density": 0.0007, "ambient": 0.26 },
-    { "chapter": "fire_attack", "t": 600, "sky_top": "#242c3e", "sky_horizon": "#384050", "fog_density": 0.0005, "sun": 0.32, "ambient": 0.27, "water": "#12202e", "wind": 1.6 },
-    { "chapter": "huarong", "t": 40,  "sky_top": "#4a5c7a", "sky_horizon": "#7892a8", "fog_density": 0.0005, "sun": 0.75, "sun_color": "#ffd9ae", "ambient": 0.38, "water": "#1e3a50", "wind": 1.0 },
-    { "chapter": "huarong", "t": 720, "sky_top": "#7e95a8", "sky_horizon": "#a8bfcc", "fog_density": 0.0003, "sun": 1.35, "sun_color": "#fff0d8", "ambient": 0.58, "water": "#1e3444" }
+    {
+      "chapter": "prelude",
+      "t": 0,
+      "sky_top": "#7e95a8",
+      "sky_horizon": "#a8bfcc",
+      "fog_density": 0.0004,
+      "sun": 1.2,
+      "sun_color": "#f3e6cf",
+      "ambient": 0.55,
+      "water": "#1e3444",
+      "wind": 1.0
+    },
+    {
+      "chapter": "prelude",
+      "t": 60,
+      "sky_top": "#8298a8",
+      "sky_horizon": "#b0c4d2",
+      "fog_density": 0.0009
+    },
+    {
+      "chapter": "prelude",
+      "t": 90,
+      "sky_top": "#8aa4b2",
+      "sky_horizon": "#c0d2dc",
+      "fog_density": 0.0014
+    },
+    {
+      "chapter": "prelude",
+      "t": 200,
+      "sky_top": "#7e95a8",
+      "sky_horizon": "#a8bfcc",
+      "fog_density": 0.0004
+    },
+    {
+      "chapter": "prelude",
+      "t": 5436,
+      "sky_top": "#6e7f96",
+      "sky_horizon": "#95acbc",
+      "fog_density": 0.0005,
+      "sun": 0.9
+    },
+    {
+      "chapter": "prelude",
+      "t": 6036,
+      "wind": 2.5
+    },
+    {
+      "chapter": "prelude",
+      "t": 6516,
+      "sky_top": "#35435a",
+      "sky_horizon": "#566070",
+      "fog_density": 0.0005,
+      "sun": 0.5,
+      "sun_color": "#e8c9a0",
+      "ambient": 0.37,
+      "water": "#182c3c"
+    },
+    {
+      "chapter": "fire_attack",
+      "t": 30,
+      "sky_top": "#0e1520",
+      "sky_horizon": "#1c2535",
+      "fog_density": 0.0006,
+      "sun": 0.2,
+      "sun_color": "#8fa6c8",
+      "ambient": 0.22,
+      "water": "#0c1520"
+    },
+    {
+      "chapter": "fire_attack",
+      "t": 200,
+      "sky_top": "#1a1220",
+      "sky_horizon": "#261828",
+      "fog_density": 0.0007,
+      "ambient": 0.26
+    },
+    {
+      "chapter": "fire_attack",
+      "t": 600,
+      "sky_top": "#242c3e",
+      "sky_horizon": "#384050",
+      "fog_density": 0.0005,
+      "sun": 0.32,
+      "ambient": 0.27,
+      "water": "#12202e",
+      "wind": 1.6
+    },
+    {
+      "chapter": "huarong",
+      "t": 40,
+      "sky_top": "#4a5c7a",
+      "sky_horizon": "#7892a8",
+      "fog_density": 0.0005,
+      "sun": 0.75,
+      "sun_color": "#ffd9ae",
+      "ambient": 0.38,
+      "water": "#1e3a50",
+      "wind": 1.0
+    },
+    {
+      "chapter": "huarong",
+      "t": 720,
+      "sky_top": "#7e95a8",
+      "sky_horizon": "#a8bfcc",
+      "fog_density": 0.0003,
+      "sun": 1.35,
+      "sun_color": "#fff0d8",
+      "ambient": 0.58,
+      "water": "#1e3444"
+    }
   ],
   "chapters": [
     {
@@ -24,8 +122,8 @@
         "ja": "第一章 江上に風起こる"
       },
       "bgm": "assets/bgm/prelude.mp3",
-      "duration_min": 7200,
-      "playback_sec": 90,
+      "duration_min": 6516,
+      "playback_sec": 136,
       "date_display": {
         "zh-TW": "建安十三年冬・十一月",
         "zh-CN": "建安十三年冬・十一月",
@@ -35,9 +133,19 @@
       "events": [
         {
           "t": 0,
-          "time_display": { "zh-TW": "十一月初", "zh-CN": "十一月初", "en": "Early 11th month", "ja": "十一月初め" },
+          "time_display": {
+            "zh-TW": "十一月初",
+            "zh-CN": "十一月初",
+            "en": "Early 11th month",
+            "ja": "十一月初め"
+          },
           "type": "narration",
-          "title": { "zh-TW": "大軍壓境", "zh-CN": "大军压境", "en": "The Host Descends", "ja": "大軍迫る" },
+          "title": {
+            "zh-TW": "大軍壓境",
+            "zh-CN": "大军压境",
+            "en": "The Host Descends",
+            "ja": "大軍迫る"
+          },
           "desc": {
             "zh-TW": "曹操率大軍南下,屯駐烏林,沿江紮下水寨,戰船相連;與南岸孫劉聯軍隔江對峙。",
             "zh-CN": "曹操率大军南下,屯驻乌林,沿江扎下水寨,战船相连;与南岸孙刘联军隔江对峙。",
@@ -47,21 +155,100 @@
           "camera_hint": "overview",
           "cut": true
         },
-        { "t": 0, "type": "status", "unit": "cao_camp", "badge": "camp" },
-        { "t": 300, "t_end": 800, "type": "move", "unit": "maozhi_fleet", "to": [160, -240] },
-        { "t": 0, "type": "status", "unit": "strawboat_fleet", "opacity": 0 },
-        { "t": 0, "type": "status", "unit": "guanyu_force", "opacity": 0 },
-        { "t": 0, "type": "status", "unit": "zhaoyun_force", "opacity": 0 },
-        { "t": 0, "type": "status", "unit": "zhangfei_force", "opacity": 0 },
-        { "t": 0, "type": "status", "unit": "kanze_boat", "opacity": 0 },
-        { "t": 0, "type": "status", "unit": "lvmeng_force", "opacity": 0 },
-        { "t": 0, "type": "status", "unit": "lingtong_force", "opacity": 0 },
-
-        { "t": 350,
-          "time_display": { "zh-TW": "數日後", "zh-CN": "数日后", "en": "Days later", "ja": "数日後" },
+        {
+          "_TEST_CUTIN": "臨時測試卡:約播放第1秒(t=48)出現,驗證後刪除整個物件",
+          "t": 48,
+          "type": "camera",
+          "camera_hint": "none",
+          "cut": {
+            "text": {
+              "zh-TW": "★ CUT-IN 測試 ★",
+              "zh-CN": "★ CUT-IN 测试 ★",
+              "en": "★ CUT-IN TEST ★",
+              "ja": "★ CUT-IN テスト ★"
+            },
+            "sub": {
+              "zh-TW": "看到這張＝中央字卡正常運作",
+              "zh-CN": "看到这张＝中央字卡正常运作",
+              "en": "If you see this, center cut-in works",
+              "ja": "これが見えれば中央カットインは正常"
+            }
+          }
+        },
+        {
+          "t": 0,
+          "type": "status",
+          "unit": "cao_camp",
+          "badge": "camp"
+        },
+        {
+          "t": 300,
+          "t_end": 800,
+          "type": "move",
+          "unit": "maozhi_fleet",
+          "to": [
+            160,
+            -240
+          ]
+        },
+        {
+          "t": 0,
+          "type": "status",
+          "unit": "strawboat_fleet",
+          "opacity": 0
+        },
+        {
+          "t": 0,
+          "type": "status",
+          "unit": "guanyu_force",
+          "opacity": 0
+        },
+        {
+          "t": 0,
+          "type": "status",
+          "unit": "zhaoyun_force",
+          "opacity": 0
+        },
+        {
+          "t": 0,
+          "type": "status",
+          "unit": "zhangfei_force",
+          "opacity": 0
+        },
+        {
+          "t": 0,
+          "type": "status",
+          "unit": "kanze_boat",
+          "opacity": 0
+        },
+        {
+          "t": 0,
+          "type": "status",
+          "unit": "lvmeng_force",
+          "opacity": 0
+        },
+        {
+          "t": 0,
+          "type": "status",
+          "unit": "lingtong_force",
+          "opacity": 0
+        },
+        {
+          "t": 350,
+          "time_display": {
+            "zh-TW": "數日後",
+            "zh-CN": "数日后",
+            "en": "Days later",
+            "ja": "数日後"
+          },
           "type": "narration",
           "speaker": "zhouyu",
-          "title": { "zh-TW": "三江口", "zh-CN": "三江口", "en": "Battle of Sanjiangkou", "ja": "三江口の戦い" },
+          "title": {
+            "zh-TW": "三江口",
+            "zh-CN": "三江口",
+            "en": "Battle of Sanjiangkou",
+            "ja": "三江口の戦い"
+          },
           "desc": {
             "zh-TW": "周瑜遣甘寧、韓當前出三江口試探曹軍虛實;蔡瑁、張允率水軍迎戰,雙方在江心相遇。",
             "zh-CN": "周瑜遣甘宁、韩当前出三江口试探曹军虚实;蔡瑁、张允率水军迎战,双方在江心相遇。",
@@ -71,24 +258,147 @@
           "camera_hint": "overview",
           "cut": true
         },
-        { "t": 360, "t_end": 520, "type": "move", "unit": "ganling_fleet", "to": [-240, 30] },
-        { "t": 370, "t_end": 540, "type": "move", "unit": "handan_fleet", "to": [20, 60] },
-        { "t": 400, "t_end": 560, "type": "move", "unit": "caizhang_fleet", "to": [-40, -40] },
-        { "t": 410, "t_end": 560, "type": "move", "unit": "wenpin_fleet", "to": [-200, -30], "camera_hint": "follow" },
-        { "t": 520, "t_end": 760, "type": "engage", "units": ["ganling_fleet", "handan_fleet", "caizhang_fleet", "wenpin_fleet"], "camera_hint": "follow",
-          "losses": { "ganling_fleet": 5700, "handan_fleet": 5650, "caizhang_fleet": 21500, "wenpin_fleet": 10800 } },
-        { "t": 560, "type": "camera", "camera_hint": "none", "fx": { "kind": "volley", "from": "ganling_fleet", "to": "caizhang_fleet", "count": 90 } },
-        { "t": 600, "t_end": 760, "type": "fire", "pos": [-120, -20], "intensity": 0.5 },
-        { "t": 640, "type": "camera", "camera_hint": "none", "fx": { "kind": "volley", "from": "caizhang_fleet", "to": "handan_fleet", "count": 70 } },
-        { "t": 780, "t_end": 900, "type": "move", "unit": "ganling_fleet", "to": [-440, 260] },
-        { "t": 790, "t_end": 900, "type": "move", "unit": "handan_fleet", "to": [60, 270] },
-        { "t": 800, "t_end": 900, "type": "move", "unit": "caizhang_fleet", "to": [80, -210] },
-        { "t": 800, "t_end": 900, "type": "move", "unit": "wenpin_fleet", "to": [-180, -200] },
+        {
+          "t": 360,
+          "t_end": 520,
+          "type": "move",
+          "unit": "ganling_fleet",
+          "to": [
+            -240,
+            30
+          ]
+        },
+        {
+          "t": 370,
+          "t_end": 540,
+          "type": "move",
+          "unit": "handan_fleet",
+          "to": [
+            20,
+            60
+          ]
+        },
+        {
+          "t": 400,
+          "t_end": 560,
+          "type": "move",
+          "unit": "caizhang_fleet",
+          "to": [
+            -40,
+            -40
+          ]
+        },
+        {
+          "t": 410,
+          "t_end": 560,
+          "type": "move",
+          "unit": "wenpin_fleet",
+          "to": [
+            -200,
+            -30
+          ],
+          "camera_hint": "follow"
+        },
+        {
+          "t": 520,
+          "t_end": 760,
+          "type": "engage",
+          "units": [
+            "ganling_fleet",
+            "handan_fleet",
+            "caizhang_fleet",
+            "wenpin_fleet"
+          ],
+          "camera_hint": "follow",
+          "losses": {
+            "ganling_fleet": 5700,
+            "handan_fleet": 5650,
+            "caizhang_fleet": 21500,
+            "wenpin_fleet": 10800
+          }
+        },
+        {
+          "t": 560,
+          "type": "camera",
+          "camera_hint": "none",
+          "fx": {
+            "kind": "volley",
+            "from": "ganling_fleet",
+            "to": "caizhang_fleet",
+            "count": 90
+          }
+        },
+        {
+          "t": 600,
+          "t_end": 760,
+          "type": "fire",
+          "pos": [
+            -120,
+            -20
+          ],
+          "intensity": 0.5
+        },
+        {
+          "t": 640,
+          "type": "camera",
+          "camera_hint": "none",
+          "fx": {
+            "kind": "volley",
+            "from": "caizhang_fleet",
+            "to": "handan_fleet",
+            "count": 70
+          }
+        },
+        {
+          "t": 780,
+          "t_end": 900,
+          "type": "move",
+          "unit": "ganling_fleet",
+          "to": [
+            -440,
+            260
+          ]
+        },
+        {
+          "t": 790,
+          "t_end": 900,
+          "type": "move",
+          "unit": "handan_fleet",
+          "to": [
+            60,
+            270
+          ]
+        },
+        {
+          "t": 800,
+          "t_end": 900,
+          "type": "move",
+          "unit": "caizhang_fleet",
+          "to": [
+            80,
+            -210
+          ]
+        },
+        {
+          "t": 800,
+          "t_end": 900,
+          "type": "move",
+          "unit": "wenpin_fleet",
+          "to": [
+            -180,
+            -200
+          ]
+        },
         {
           "t": 880,
           "type": "narration",
           "speaker": "zhouyu",
-          "title": { "zh-TW": "周瑜首勝", "zh-CN": "周瑜首胜", "en": "Zhou Yu's First Victory", "ja": "周瑜の初勝" },
+          "title": {
+            "zh-TW": "周瑜首勝",
+            "zh-CN": "周瑜首胜",
+            "en": "Zhou Yu's First Victory",
+            "ja": "周瑜の初勝"
+          },
           "desc": {
             "zh-TW": "南軍初戰得勝,曹軍折兵;然此不過牛刀小試,周瑜心中已有更大布局。",
             "zh-CN": "南军初战得胜,曹军折兵;然此不过小试,周瑜心中已有更大布局。",
@@ -98,13 +408,22 @@
           "camera_hint": "overview",
           "cut": true
         },
-
         {
           "t": 1300,
-          "time_display": { "zh-TW": "其後", "zh-CN": "其后", "en": "Shortly after", "ja": "その後" },
+          "time_display": {
+            "zh-TW": "其後",
+            "zh-CN": "其后",
+            "en": "Shortly after",
+            "ja": "その後"
+          },
           "type": "narration",
           "speaker": "zhouyu",
-          "title": { "zh-TW": "蔣幹盜書", "zh-CN": "蒋干盗书", "en": "Jiang Gan Steals the Letter", "ja": "蔣幹、書を盗む" },
+          "title": {
+            "zh-TW": "蔣幹盜書",
+            "zh-CN": "蒋干盗书",
+            "en": "Jiang Gan Steals the Letter",
+            "ja": "蔣幹、書を盗む"
+          },
           "desc": {
             "zh-TW": "蔣幹過江勸降,周瑜將計就計,以偽書借他之手除去曹軍水軍都督蔡瑁、張允。",
             "zh-CN": "蒋干过江劝降,周瑜将计就计,以伪书借他之手除去曹军水军都督蔡瑁、张允。",
@@ -114,10 +433,15 @@
           "cut": true
         },
         {
-          "t": 1320,
+          "t": 1348,
           "type": "narration",
           "speaker": "caocao",
-          "title": { "zh-TW": "蔡瑁張允伏誅", "zh-CN": "蔡瑁张允伏诛", "en": "Cai Mao and Zhang Yun Executed", "ja": "蔡瑁・張允、誅殺される" },
+          "title": {
+            "zh-TW": "蔡瑁張允伏誅",
+            "zh-CN": "蔡瑁张允伏诛",
+            "en": "Cai Mao and Zhang Yun Executed",
+            "ja": "蔡瑁・張允、誅殺される"
+          },
           "desc": {
             "zh-TW": "曹操見蔣幹帶回密書,以為蔡瑁、張允私通周瑜,怒不可遏,立命斬之——此乃周瑜反間之計,自毀水軍棟樑。",
             "zh-CN": "曹操见蒋干带回密书,以为蔡瑁、张允私通周瑜,怒不可遏,立命斩之——此乃周瑜反间之计,自毁水军栋梁。",
@@ -126,32 +450,120 @@
           },
           "quote": {
             "text": "操大怒曰:「蔡瑁、張允怎敢如此!」即便斬之。",
-            "source": { "zh-TW": "第四十五回", "zh-CN": "第四十五回", "en": "Chapter 45", "ja": "第四十五回" },
+            "source": {
+              "zh-TW": "第四十五回",
+              "zh-CN": "第四十五回",
+              "en": "Chapter 45",
+              "ja": "第四十五回"
+            },
             "translation": {
               "en": "Cao Cao, enraged, cried: 'How dare Cai Mao and Zhang Yun act so!' And forthwith ordered their execution.",
               "ja": "曹操は大いに怒って言った。「蔡瑁・張允め、なんたる所業！」即座に処刑を命じた。"
             }
           },
           "camera_hint": "follow",
-          "cut": { "text": { "zh-TW": "蔡瑁張允伏誅", "zh-CN": "蔡瑁张允伏诛", "en": "Cai Mao & Zhang Yun Executed", "ja": "蔡瑁・張允、誅殺" } }
+          "cut": {
+            "text": {
+              "zh-TW": "蔡瑁張允伏誅",
+              "zh-CN": "蔡瑁张允伏诛",
+              "en": "Cai Mao & Zhang Yun Executed",
+              "ja": "蔡瑁・張允、誅殺"
+            }
+          }
         },
-        { "t": 1320, "type": "status", "unit": "caizhang_fleet", "badge": "defect" },
-        { "t": 1320, "t_end": 1380, "type": "move", "unit": "maozhi_fleet", "to": [60, -215] },
-        { "t": 1340, "type": "status", "unit": "caizhang_fleet", "troops": 38000, "badge": "idle",
-          "label": { "zh-TW": "毛玠・于禁水軍", "zh-CN": "毛玠・于禁水军", "en": "Mao Jie & Yu Jin's Navy", "ja": "毛玠・于禁水軍" } },
-        { "t": 1340, "type": "status", "unit": "maozhi_fleet", "troops": 0 },
-        { "t": 1390, "type": "status", "unit": "maozhi_fleet", "opacity": 0 },
-
-        { "t": 1500, "t_end": 1800, "type": "move", "unit": "ganling_fleet", "to": [-360, 250] },
-        { "t": 1600, "t_end": 1900, "type": "move", "unit": "handan_fleet", "to": [-140, 300] },
-        { "t": 2250, "type": "status", "unit": "strawboat_fleet", "opacity": 1 },
-        { "t": 2250, "t_end": 2450, "type": "move", "unit": "strawboat_fleet", "to": [-120, -140] },
         {
-          "t": 2450,
-          "time_display": { "zh-TW": "又三日・大霧", "zh-CN": "又三日・大雾", "en": "Three days on — heavy fog", "ja": "さらに三日・濃霧" },
+          "t": 1348,
+          "type": "status",
+          "unit": "caizhang_fleet",
+          "badge": "defect"
+        },
+        {
+          "t": 1348,
+          "t_end": 1492,
+          "type": "move",
+          "unit": "maozhi_fleet",
+          "to": [
+            60,
+            -215
+          ]
+        },
+        {
+          "t": 1396,
+          "type": "status",
+          "unit": "caizhang_fleet",
+          "troops": 38000,
+          "badge": "idle",
+          "label": {
+            "zh-TW": "毛玠・于禁水軍",
+            "zh-CN": "毛玠・于禁水军",
+            "en": "Mao Jie & Yu Jin's Navy",
+            "ja": "毛玠・于禁水軍"
+          }
+        },
+        {
+          "t": 1396,
+          "type": "status",
+          "unit": "maozhi_fleet",
+          "troops": 0
+        },
+        {
+          "t": 1516,
+          "type": "status",
+          "unit": "maozhi_fleet",
+          "opacity": 0
+        },
+        {
+          "t": 1616,
+          "t_end": 1916,
+          "type": "move",
+          "unit": "ganling_fleet",
+          "to": [
+            -360,
+            250
+          ]
+        },
+        {
+          "t": 1716,
+          "t_end": 2016,
+          "type": "move",
+          "unit": "handan_fleet",
+          "to": [
+            -140,
+            300
+          ]
+        },
+        {
+          "t": 2366,
+          "type": "status",
+          "unit": "strawboat_fleet",
+          "opacity": 1
+        },
+        {
+          "t": 2366,
+          "t_end": 2566,
+          "type": "move",
+          "unit": "strawboat_fleet",
+          "to": [
+            -120,
+            -140
+          ]
+        },
+        {
+          "t": 2566,
+          "time_display": {
+            "zh-TW": "又三日・大霧",
+            "zh-CN": "又三日・大雾",
+            "en": "Three days on — heavy fog",
+            "ja": "さらに三日・濃霧"
+          },
           "type": "narration",
           "speaker": "zhugeliang",
-          "title": { "zh-TW": "草船借箭", "zh-CN": "草船借箭", "en": "Borrowing Arrows with Straw Boats", "ja": "草船借箭" },
+          "title": {
+            "zh-TW": "草船借箭",
+            "zh-CN": "草船借箭",
+            "en": "Borrowing Arrows with Straw Boats",
+            "ja": "草船借箭"
+          },
           "desc": {
             "zh-TW": "大霧鎖江,孔明以二十艘草船逼近曹軍水寨;曹軍不敢出戰,只以亂箭射之,滿載十萬枝箭而還。",
             "zh-CN": "大雾锁江,孔明以二十艘草船逼近曹军水寨;曹军不敢出战,只以乱箭射之,满载十万枝箭而还。",
@@ -160,29 +572,94 @@
           },
           "quote": {
             "text": "霧散時,船兩邊束草上排滿箭枝。",
-            "source": { "zh-TW": "第四十六回", "zh-CN": "第四十六回", "en": "Chapter 46", "ja": "第四十六回" },
+            "source": {
+              "zh-TW": "第四十六回",
+              "zh-CN": "第四十六回",
+              "en": "Chapter 46",
+              "ja": "第四十六回"
+            },
             "translation": {
               "en": "When the fog lifted, the straw bundles on both sides of the boats bristled with arrows.",
               "ja": "霧が晴れると、船の両舷の草束には矢がびっしりと並んでいた。"
             }
           },
-          "fx": { "kind": "volley", "from": "cao_fleet", "to": "strawboat_fleet", "count": 240 },
+          "fx": {
+            "kind": "volley",
+            "from": "cao_fleet",
+            "to": "strawboat_fleet",
+            "count": 240
+          },
           "camera_hint": "follow",
           "cut": true
         },
-        { "t": 2520, "t_end": 2720, "type": "move", "unit": "strawboat_fleet", "to": [-400, 340] },
-        { "t": 2760, "type": "status", "unit": "strawboat_fleet", "opacity": 0 },
-        { "t": 2900, "t_end": 3200, "type": "move", "unit": "ganling_fleet", "to": [-420, 270] },
-        { "t": 3100, "t_end": 3400, "type": "move", "unit": "liubei_army", "to": [940, 500] },
-        { "t": 3500, "t_end": 3800, "type": "move", "unit": "handan_fleet", "to": [-80, 310] },
-
-        { "t": 3560, "type": "status", "unit": "kanze_boat", "opacity": 1 },
         {
-          "t": 3580,
-          "time_display": { "zh-TW": "是夜", "zh-CN": "是夜", "en": "That night", "ja": "その夜" },
+          "t": 2636,
+          "t_end": 2836,
+          "type": "move",
+          "unit": "strawboat_fleet",
+          "to": [
+            -400,
+            340
+          ]
+        },
+        {
+          "t": 2876,
+          "type": "status",
+          "unit": "strawboat_fleet",
+          "opacity": 0
+        },
+        {
+          "t": 3016,
+          "t_end": 3316,
+          "type": "move",
+          "unit": "ganling_fleet",
+          "to": [
+            -420,
+            270
+          ]
+        },
+        {
+          "t": 3216,
+          "t_end": 3516,
+          "type": "move",
+          "unit": "liubei_army",
+          "to": [
+            940,
+            500
+          ]
+        },
+        {
+          "t": 3616,
+          "t_end": 3916,
+          "type": "move",
+          "unit": "handan_fleet",
+          "to": [
+            -80,
+            310
+          ]
+        },
+        {
+          "t": 3676,
+          "type": "status",
+          "unit": "kanze_boat",
+          "opacity": 1
+        },
+        {
+          "t": 3696,
+          "time_display": {
+            "zh-TW": "是夜",
+            "zh-CN": "是夜",
+            "en": "That night",
+            "ja": "その夜"
+          },
           "type": "narration",
           "speaker": "huanggai",
-          "title": { "zh-TW": "闞澤下書", "zh-CN": "阚泽下书", "en": "Kan Ze Delivers the Letter", "ja": "闞澤、書を届ける" },
+          "title": {
+            "zh-TW": "闞澤下書",
+            "zh-CN": "阚泽下书",
+            "en": "Kan Ze Delivers the Letter",
+            "ja": "闞澤、書を届ける"
+          },
           "desc": {
             "zh-TW": "黃蓋受杖後,闞澤趁夜獨駕小舟,穿越黑暗江面,潛入曹軍水寨,密獻詐降書,以取信於曹操。對應第四十七回。",
             "zh-CN": "黄盖受杖后,阚泽趁夜独驾小舟,穿越黑暗江面,潜入曹军水寨,密献诈降书,以取信于曹操。对应第四十七回。",
@@ -192,13 +669,41 @@
           "camera_hint": "follow",
           "cut": true
         },
-        { "t": 3580, "t_end": 3860, "type": "move", "unit": "kanze_boat", "to": [60, -160], "camera_hint": "follow" },
-        { "t": 3900, "t_end": 4120, "type": "move", "unit": "kanze_boat", "to": [-300, 360] },
-        { "t": 4160, "type": "status", "unit": "kanze_boat", "opacity": 0 },
-
         {
-          "t": 4300,
-          "time_display": { "zh-TW": "隆冬", "zh-CN": "隆冬", "en": "Deep winter", "ja": "真冬" },
+          "t": 3696,
+          "t_end": 3976,
+          "type": "move",
+          "unit": "kanze_boat",
+          "to": [
+            60,
+            -160
+          ],
+          "camera_hint": "follow"
+        },
+        {
+          "t": 4016,
+          "t_end": 4236,
+          "type": "move",
+          "unit": "kanze_boat",
+          "to": [
+            -300,
+            360
+          ]
+        },
+        {
+          "t": 4276,
+          "type": "status",
+          "unit": "kanze_boat",
+          "opacity": 0
+        },
+        {
+          "t": 4416,
+          "time_display": {
+            "zh-TW": "隆冬",
+            "zh-CN": "隆冬",
+            "en": "Deep winter",
+            "ja": "真冬"
+          },
           "type": "narration",
           "speaker": "huanggai",
           "title": {
@@ -215,13 +720,22 @@
           },
           "cut": true
         },
-
-        { "t": 4560, "type": "status", "unit": "kanze_boat", "opacity": 1 },
         {
-          "t": 4580,
+          "t": 4676,
+          "type": "status",
+          "unit": "kanze_boat",
+          "opacity": 1
+        },
+        {
+          "t": 4696,
           "type": "narration",
           "speaker": "zhugeliang",
-          "title": { "zh-TW": "連環計", "zh-CN": "连环计", "en": "The Chain Stratagem", "ja": "連環の計" },
+          "title": {
+            "zh-TW": "連環計",
+            "zh-CN": "连环计",
+            "en": "The Chain Stratagem",
+            "ja": "連環の計"
+          },
           "desc": {
             "zh-TW": "龐統借闞澤之舟再渡,面見曹操獻連環計——戰船首尾相接以鐵索鎖之,穩如平地;曹操大悅,不知已入彀中。對應第四十七〜四十八回。",
             "zh-CN": "庞统借阚泽之舟再渡,面见曹操献连环计——战船首尾相接以铁索锁之,稳如平地;曹操大悦,不知已入彀中。对应第四十七~四十八回。",
@@ -231,26 +745,131 @@
           "camera_hint": "follow",
           "cut": true
         },
-        { "t": 4580, "t_end": 4860, "type": "move", "unit": "kanze_boat", "to": [40, -180], "camera_hint": "follow" },
-        { "t": 4880, "t_end": 4980, "type": "move", "unit": "caizhang_fleet", "to": [120, -235] },
-        { "t": 4880, "t_end": 4980, "type": "move", "unit": "wenpin_fleet", "to": [-120, -235] },
-        { "t": 4880, "t_end": 4980, "type": "move", "unit": "cao_fleet", "to": [0, -238], "camera_hint": "overview" },
-        { "t": 5000, "t_end": 5220, "type": "move", "unit": "kanze_boat", "to": [-300, 360] },
-        { "t": 5260, "type": "status", "unit": "kanze_boat", "opacity": 0 },
-
-        { "t": 4500, "type": "status", "unit": "huanggai_fleet",
-          "label": { "zh-TW": "黃蓋火船隊", "zh-CN": "黄盖火船队", "en": "Huang Gai's Fire Ships", "ja": "黄蓋の火船隊" }
-        },
-        { "t": 4500, "t_end": 4900, "type": "move", "unit": "zhouyu_fleet", "to": [-200, 340] },
-        { "t": 4800, "t_end": 5100, "type": "move", "unit": "ganling_fleet", "to": [-440, 260] },
-        { "t": 5200, "t_end": 5600, "type": "move", "unit": "huanggai_fleet", "to": [-300, 300] },
-        { "t": 5600, "t_end": 5900, "type": "move", "unit": "handan_fleet", "to": [-60, 320] },
         {
-          "t": 6400,
-          "time_display": { "zh-TW": "十一月二十日", "zh-CN": "十一月二十日", "en": "20th day, 11th month", "ja": "十一月二十日" },
+          "t": 4696,
+          "t_end": 4976,
+          "type": "move",
+          "unit": "kanze_boat",
+          "to": [
+            40,
+            -180
+          ],
+          "camera_hint": "follow"
+        },
+        {
+          "t": 4996,
+          "t_end": 5096,
+          "type": "move",
+          "unit": "caizhang_fleet",
+          "to": [
+            120,
+            -235
+          ]
+        },
+        {
+          "t": 4996,
+          "t_end": 5096,
+          "type": "move",
+          "unit": "wenpin_fleet",
+          "to": [
+            -120,
+            -235
+          ]
+        },
+        {
+          "t": 4996,
+          "t_end": 5096,
+          "type": "move",
+          "unit": "cao_fleet",
+          "to": [
+            0,
+            -238
+          ],
+          "camera_hint": "overview"
+        },
+        {
+          "t": 5116,
+          "t_end": 5328,
+          "type": "move",
+          "unit": "kanze_boat",
+          "to": [
+            -300,
+            360
+          ]
+        },
+        {
+          "t": 5352,
+          "type": "status",
+          "unit": "kanze_boat",
+          "opacity": 0
+        },
+        {
+          "t": 4616,
+          "type": "status",
+          "unit": "huanggai_fleet",
+          "label": {
+            "zh-TW": "黃蓋火船隊",
+            "zh-CN": "黄盖火船队",
+            "en": "Huang Gai's Fire Ships",
+            "ja": "黄蓋の火船隊"
+          }
+        },
+        {
+          "t": 4616,
+          "t_end": 5016,
+          "type": "move",
+          "unit": "zhouyu_fleet",
+          "to": [
+            -200,
+            340
+          ]
+        },
+        {
+          "t": 4916,
+          "t_end": 5216,
+          "type": "move",
+          "unit": "ganling_fleet",
+          "to": [
+            -440,
+            260
+          ]
+        },
+        {
+          "t": 5316,
+          "t_end": 5556,
+          "type": "move",
+          "unit": "huanggai_fleet",
+          "to": [
+            -300,
+            300
+          ]
+        },
+        {
+          "t": 5556,
+          "t_end": 5736,
+          "type": "move",
+          "unit": "handan_fleet",
+          "to": [
+            -60,
+            320
+          ]
+        },
+        {
+          "t": 6036,
+          "time_display": {
+            "zh-TW": "十一月二十日",
+            "zh-CN": "十一月二十日",
+            "en": "20th day, 11th month",
+            "ja": "十一月二十日"
+          },
           "type": "narration",
           "speaker": "zhugeliang",
-          "title": { "zh-TW": "借東風", "zh-CN": "借东风", "en": "Summoning the East Wind", "ja": "東風を借りる" },
+          "title": {
+            "zh-TW": "借東風",
+            "zh-CN": "借东风",
+            "en": "Summoning the East Wind",
+            "ja": "東風を借りる"
+          },
           "desc": {
             "zh-TW": "萬事俱備,只欠東風。孔明於南屏山七星壇祭風,三更時分,東南風大起。",
             "zh-CN": "万事俱备,只欠东风。孔明于南屏山七星坛祭风,三更时分,东南风大起。",
@@ -259,21 +878,49 @@
           },
           "quote": {
             "text": "是夜東南風大起,旗腳飄西北。",
-            "source": { "zh-TW": "第四十九回", "zh-CN": "第四十九回", "en": "Chapter 49", "ja": "第四十九回" },
+            "source": {
+              "zh-TW": "第四十九回",
+              "zh-CN": "第四十九回",
+              "en": "Chapter 49",
+              "ja": "第四十九回"
+            },
             "translation": {
               "en": "That night the southeast wind rose in force; the banners streamed toward the northwest.",
               "ja": "その夜、東南の風が強く起こり、旗は西北へなびいた。"
             }
           },
-          "fx": { "kind": "ring", "pos": [-620, 800] },
+          "fx": {
+            "kind": "ring",
+            "pos": [
+              -620,
+              800
+            ]
+          },
           "cut": true
         },
-        { "t": 6400, "type": "camera", "pos": [-620, 800] },
         {
-          "t": 7050,
-          "time_display": { "zh-TW": "是夜", "zh-CN": "是夜", "en": "That night", "ja": "その夜" },
+          "t": 6036,
+          "type": "camera",
+          "pos": [
+            -620,
+            800
+          ]
+        },
+        {
+          "t": 6426,
+          "time_display": {
+            "zh-TW": "是夜",
+            "zh-CN": "是夜",
+            "en": "That night",
+            "ja": "その夜"
+          },
           "type": "narration",
-          "title": { "zh-TW": "箭在弦上", "zh-CN": "箭在弦上", "en": "The Arrow on the String", "ja": "矢は弦の上に" },
+          "title": {
+            "zh-TW": "箭在弦上",
+            "zh-CN": "箭在弦上",
+            "en": "The Arrow on the String",
+            "ja": "矢は弦の上に"
+          },
           "desc": {
             "zh-TW": "東南風急,江面湧動。周瑜傳令諸軍各依調遣,火攻之計,今夜便發。",
             "zh-CN": "东南风急,江面涌动。周瑜传令诸军各依调遣,火攻之计,今夜便发。",
@@ -296,14 +943,29 @@
       "duration_min": 600,
       "playback_sec": 150,
       "clock_start": "20:00",
-      "date_display": { "zh-TW": "決戰之夜", "zh-CN": "决战之夜", "en": "Night of the Decisive Battle", "ja": "決戦の夜" },
+      "date_display": {
+        "zh-TW": "決戰之夜",
+        "zh-CN": "决战之夜",
+        "en": "Night of the Decisive Battle",
+        "ja": "決戦の夜"
+      },
       "events": [
         {
           "t": 0,
-          "time_display": { "zh-TW": "一更", "zh-CN": "一更", "en": "First watch", "ja": "一更" },
+          "time_display": {
+            "zh-TW": "一更",
+            "zh-CN": "一更",
+            "en": "First watch",
+            "ja": "一更"
+          },
           "type": "narration",
           "speaker": "huanggai",
-          "title": { "zh-TW": "黃蓋出發", "zh-CN": "黄盖出发", "en": "Huang Gai Sets Out", "ja": "黄蓋、出撃" },
+          "title": {
+            "zh-TW": "黃蓋出發",
+            "zh-CN": "黄盖出发",
+            "en": "Huang Gai Sets Out",
+            "ja": "黄蓋、出撃"
+          },
           "desc": {
             "zh-TW": "黃蓋領二十艘火船,滿載薪草膏油,外覆青布,趁東南風直撲曹軍水寨。",
             "zh-CN": "黄盖领二十艘火船,满载薪草膏油,外覆青布,趁东南风直扑曹军水寨。",
@@ -311,15 +973,57 @@
             "ja": "黄蓋は薪草と膏油を満載し青布で覆った二十艘の火船を率い、東南の風に乗って曹軍水寨へ直進する。"
           }
         },
-        { "t": 0, "t_end": 100, "type": "move", "unit": "wenpin_fleet", "to": [-80, -220] },
-        { "t": 0, "t_end": 100, "type": "move", "unit": "caizhang_fleet", "to": [120, -250] },
-        { "t": 70, "t_end": 130, "type": "move", "unit": "huanggai_fleet", "to": [-100, -140], "camera_hint": "follow" },
-        { "t": 80, "t_end": 150, "type": "move", "unit": "ganling_fleet", "to": [-260, 40] },
+        {
+          "t": 0,
+          "t_end": 100,
+          "type": "move",
+          "unit": "wenpin_fleet",
+          "to": [
+            -80,
+            -220
+          ]
+        },
+        {
+          "t": 0,
+          "t_end": 100,
+          "type": "move",
+          "unit": "caizhang_fleet",
+          "to": [
+            120,
+            -250
+          ]
+        },
+        {
+          "t": 70,
+          "t_end": 130,
+          "type": "move",
+          "unit": "huanggai_fleet",
+          "to": [
+            -100,
+            -140
+          ],
+          "camera_hint": "follow"
+        },
+        {
+          "t": 80,
+          "t_end": 150,
+          "type": "move",
+          "unit": "ganling_fleet",
+          "to": [
+            -260,
+            40
+          ]
+        },
         {
           "t": 110,
           "type": "narration",
           "speaker": "zhouyu",
-          "title": { "zh-TW": "甘寧斬蔡中", "zh-CN": "甘宁斩蔡中", "en": "Gan Ning Kills Cai Zhong", "ja": "甘寧、蔡中を斬る" },
+          "title": {
+            "zh-TW": "甘寧斬蔡中",
+            "zh-CN": "甘宁斩蔡中",
+            "en": "Gan Ning Kills Cai Zhong",
+            "ja": "甘寧、蔡中を斬る"
+          },
           "desc": {
             "zh-TW": "甘寧識破曹營詐降內應蔡中,趁黃蓋詐降船隊接近之際領軍前出奇襲,突入江心夾擊曹軍水寨。",
             "zh-CN": "甘宁识破曹营诈降内应蔡中,趁黄盖诈降船队接近之际领军前出奇袭,突入江心夹击曹军水寨。",
@@ -327,14 +1031,46 @@
             "ja": "甘寧は曹軍内の内通者・蔡中の企みを見抜き、黄蓋の偽降船が接近するのを機に突撃をかけ、江心から曹軍水寨を側面から強打した。"
           },
           "camera_hint": "follow",
-          "cut": { "text": { "zh-TW": "甘寧斬蔡中", "zh-CN": "甘宁斩蔡中", "en": "Gan Ning Kills Cai Zhong", "ja": "甘寧、蔡中を斬る" } }
+          "cut": {
+            "text": {
+              "zh-TW": "甘寧斬蔡中",
+              "zh-CN": "甘宁斩蔡中",
+              "en": "Gan Ning Kills Cai Zhong",
+              "ja": "甘寧、蔡中を斬る"
+            }
+          }
         },
-        { "t": 110, "type": "camera", "camera_hint": "none", "fx": { "kind": "volley", "from": "ganling_fleet", "to": "caizhang_fleet", "count": 80 } },
-        { "t": 60, "time_display": { "zh-TW": "二更", "zh-CN": "二更", "en": "Second watch", "ja": "二更" }, "type": "defect", "unit": "huanggai_fleet" },
+        {
+          "t": 110,
+          "type": "camera",
+          "camera_hint": "none",
+          "fx": {
+            "kind": "volley",
+            "from": "ganling_fleet",
+            "to": "caizhang_fleet",
+            "count": 80
+          }
+        },
+        {
+          "t": 60,
+          "time_display": {
+            "zh-TW": "二更",
+            "zh-CN": "二更",
+            "en": "Second watch",
+            "ja": "二更"
+          },
+          "type": "defect",
+          "unit": "huanggai_fleet"
+        },
         {
           "t": 60,
           "type": "narration",
-          "title": { "zh-TW": "詐降接近", "zh-CN": "诈降接近", "en": "The False Surrender Draws Near", "ja": "偽降、接近す" },
+          "title": {
+            "zh-TW": "詐降接近",
+            "zh-CN": "诈降接近",
+            "en": "The False Surrender Draws Near",
+            "ja": "偽降、接近す"
+          },
           "desc": {
             "zh-TW": "曹軍望見船隊打著降旗,皆出寨觀望,指言黃蓋來降,毫無防備。",
             "zh-CN": "曹军望见船队打着降旗,皆出寨观望,指言黄盖来降,毫无防备。",
@@ -344,18 +1080,44 @@
         },
         {
           "t": 130,
-          "time_display": { "zh-TW": "三更", "zh-CN": "三更", "en": "Third watch", "ja": "三更" },
+          "time_display": {
+            "zh-TW": "三更",
+            "zh-CN": "三更",
+            "en": "Third watch",
+            "ja": "三更"
+          },
           "type": "fire",
           "unit": "cao_fleet",
-          "fx": { "kind": "explosion", "unit": "cao_fleet" }
+          "fx": {
+            "kind": "explosion",
+            "unit": "cao_fleet"
+          }
         },
-        { "t": 130, "type": "fire", "pos": [0, -240], "intensity": 1.4 },
-        { "t": 130, "type": "status", "unit": "huanggai_fleet", "badge": "idle" },
+        {
+          "t": 130,
+          "type": "fire",
+          "pos": [
+            0,
+            -240
+          ],
+          "intensity": 1.4
+        },
+        {
+          "t": 130,
+          "type": "status",
+          "unit": "huanggai_fleet",
+          "badge": "idle"
+        },
         {
           "t": 130,
           "type": "narration",
           "speaker": "huanggai",
-          "title": { "zh-TW": "火燒連環船", "zh-CN": "火烧连环船", "en": "Burning the Chained Ships", "ja": "連環の船を焼く" },
+          "title": {
+            "zh-TW": "火燒連環船",
+            "zh-CN": "火烧连环船",
+            "en": "Burning the Chained Ships",
+            "ja": "連環の船を焼く"
+          },
           "desc": {
             "zh-TW": "火船一齊點著,撞入曹軍水寨;戰船鐵索相連,無處逃避,火逐風飛,一派通紅。",
             "zh-CN": "火船一齐点着,撞入曹军水寨;战船铁索相连,无处逃避,火逐风飞,一派通红。",
@@ -364,22 +1126,63 @@
           },
           "quote": {
             "text": "火趁風威,風助火勢,船如箭發,煙焰漲天。",
-            "source": { "zh-TW": "第四十九回", "zh-CN": "第四十九回", "en": "Chapter 49", "ja": "第四十九回" },
+            "source": {
+              "zh-TW": "第四十九回",
+              "zh-CN": "第四十九回",
+              "en": "Chapter 49",
+              "ja": "第四十九回"
+            },
             "translation": {
               "en": "The fire rode the wind's fury, the wind fanned the blaze; ships shot forth like arrows, and smoke and flame filled the sky.",
               "ja": "火は風の威に乗じ、風は火の勢いを助け、船は矢のごとく走り、煙焔は天に漲った。"
             }
           }
         },
-        { "t": 165, "type": "fire", "pos": [110, -210], "intensity": 0.9 },
-        { "t": 200, "type": "fire", "pos": [-110, -270], "intensity": 0.9 },
-        { "t": 205, "type": "camera", "camera_hint": "none", "fx": { "kind": "volley", "from": "caizhang_fleet", "to": "huanggai_fleet", "count": 60 } },
-        { "t": 210, "type": "status", "unit": "huanggai_fleet", "badge": "rout" },
+        {
+          "t": 165,
+          "type": "fire",
+          "pos": [
+            110,
+            -210
+          ],
+          "intensity": 0.9
+        },
+        {
+          "t": 200,
+          "type": "fire",
+          "pos": [
+            -110,
+            -270
+          ],
+          "intensity": 0.9
+        },
+        {
+          "t": 205,
+          "type": "camera",
+          "camera_hint": "none",
+          "fx": {
+            "kind": "volley",
+            "from": "caizhang_fleet",
+            "to": "huanggai_fleet",
+            "count": 60
+          }
+        },
+        {
+          "t": 210,
+          "type": "status",
+          "unit": "huanggai_fleet",
+          "badge": "rout"
+        },
         {
           "t": 210,
           "type": "narration",
           "speaker": "huanggai",
-          "title": { "zh-TW": "黃蓋中箭", "zh-CN": "黄盖中箭", "en": "Huang Gai Is Shot", "ja": "黄蓋、矢に中る" },
+          "title": {
+            "zh-TW": "黃蓋中箭",
+            "zh-CN": "黄盖中箭",
+            "en": "Huang Gai Is Shot",
+            "ja": "黄蓋、矢に中る"
+          },
           "desc": {
             "zh-TW": "曹將張遼見黃蓋火船突入,引弓急射,黃蓋身中數箭落入江中;幸韓當駕船趕至,將其救起。",
             "zh-CN": "曹将张辽见黄盖火船突入,引弓急射,黄盖身中数箭落入江中;幸韩当驾船赶至,将其救起。",
@@ -387,52 +1190,193 @@
             "ja": "黄蓋の火船が突入するや、曹将・張遼が矢を放ち、黄蓋は数本の矢を受けて川へ落ちた。幸い韓当が急ぎ舟を走らせ、これを救い上げた。"
           },
           "camera_hint": "follow",
-          "cut": { "text": { "zh-TW": "黃蓋中箭落水", "zh-CN": "黄盖中箭落水", "en": "Huang Gai Shot — Man Overboard!", "ja": "黄蓋、矢に中り落水！" } }
+          "cut": {
+            "text": {
+              "zh-TW": "黃蓋中箭落水",
+              "zh-CN": "黄盖中箭落水",
+              "en": "Huang Gai Shot — Man Overboard!",
+              "ja": "黄蓋、矢に中り落水！"
+            }
+          }
         },
-        { "t": 220, "t_end": 260, "type": "move", "unit": "handan_fleet", "to": [-70, -148] },
-        { "t": 260, "type": "status", "unit": "huanggai_fleet", "badge": "idle" },
+        {
+          "t": 220,
+          "t_end": 260,
+          "type": "move",
+          "unit": "handan_fleet",
+          "to": [
+            -70,
+            -148
+          ]
+        },
+        {
+          "t": 260,
+          "type": "status",
+          "unit": "huanggai_fleet",
+          "badge": "idle"
+        },
         {
           "t": 150,
           "t_end": 360,
           "type": "engage",
-          "units": ["huanggai_fleet", "cao_fleet", "wenpin_fleet", "caizhang_fleet"],
-          "losses": { "cao_fleet": 32800, "huanggai_fleet": 1470, "wenpin_fleet": 1200, "caizhang_fleet": 3800 }
+          "units": [
+            "huanggai_fleet",
+            "cao_fleet",
+            "wenpin_fleet",
+            "caizhang_fleet"
+          ],
+          "losses": {
+            "cao_fleet": 32800,
+            "huanggai_fleet": 1470,
+            "wenpin_fleet": 1200,
+            "caizhang_fleet": 3800
+          }
         },
-        { "t": 170, "t_end": 330, "type": "move", "unit": "zhouyu_fleet", "to": [-40, -170], "camera_hint": "follow" },
-        { "t": 170, "t_end": 300, "type": "move", "unit": "ganling_fleet", "to": [-200, -130] },
-        { "t": 170, "t_end": 300, "type": "move", "unit": "handan_fleet", "to": [70, -150] },
+        {
+          "t": 170,
+          "t_end": 330,
+          "type": "move",
+          "unit": "zhouyu_fleet",
+          "to": [
+            -40,
+            -170
+          ],
+          "camera_hint": "follow"
+        },
+        {
+          "t": 170,
+          "t_end": 300,
+          "type": "move",
+          "unit": "ganling_fleet",
+          "to": [
+            -200,
+            -130
+          ]
+        },
+        {
+          "t": 170,
+          "t_end": 300,
+          "type": "move",
+          "unit": "handan_fleet",
+          "to": [
+            70,
+            -150
+          ]
+        },
         {
           "t": 180,
           "t_end": 360,
           "type": "engage",
-          "units": ["zhouyu_fleet", "ganling_fleet", "handan_fleet"],
-          "losses": { "zhouyu_fleet": 8100, "ganling_fleet": 5400, "handan_fleet": 5350 }
+          "units": [
+            "zhouyu_fleet",
+            "ganling_fleet",
+            "handan_fleet"
+          ],
+          "losses": {
+            "zhouyu_fleet": 8100,
+            "ganling_fleet": 5400,
+            "handan_fleet": 5350
+          }
         },
         {
           "t": 180,
-          "time_display": { "zh-TW": "三更過半", "zh-CN": "三更过半", "en": "Midway through the third watch", "ja": "三更過ぎ" },
+          "time_display": {
+            "zh-TW": "三更過半",
+            "zh-CN": "三更过半",
+            "en": "Midway through the third watch",
+            "ja": "三更過ぎ"
+          },
           "type": "narration",
           "speaker": "zhouyu",
-          "title": { "zh-TW": "周瑜總攻", "zh-CN": "周瑜总攻", "en": "Zhou Yu's General Assault", "ja": "周瑜、総攻撃" },
+          "title": {
+            "zh-TW": "周瑜總攻",
+            "zh-CN": "周瑜总攻",
+            "en": "Zhou Yu's General Assault",
+            "ja": "周瑜、総攻撃"
+          },
           "desc": {
             "zh-TW": "周瑜率水軍主力乘勢進擊,箭如飛蝗,鼓聲震天,曹軍水寨全面崩潰。",
             "zh-CN": "周瑜率水军主力乘势进击,箭如飞蝗,鼓声震天,曹军水寨全面崩溃。",
             "en": "Zhou Yu drives the main fleet forward on the tide of fire; arrows fall like locusts, drums shake the heavens, and Cao's naval camp collapses entirely.",
             "ja": "周瑜は水軍主力を率いて勢いに乗じて進撃。矢は飛蝗のごとく、鼓声は天を震わせ、曹軍水寨は総崩れとなった。"
           },
-          "fx": { "kind": "volley", "from": "zhouyu_fleet", "to": "cao_fleet", "count": 180 }
+          "fx": {
+            "kind": "volley",
+            "from": "zhouyu_fleet",
+            "to": "cao_fleet",
+            "count": 180
+          }
         },
-        { "t": 230, "type": "camera", "camera_hint": "none", "fx": { "kind": "volley", "from": "ganling_fleet", "to": "cao_fleet", "count": 120 } },
-        { "t": 270, "type": "camera", "camera_hint": "none", "fx": { "kind": "volley", "from": "zhouyu_fleet", "to": "wenpin_fleet", "count": 130 } },
-        { "t": 320, "type": "camera", "camera_hint": "none", "fx": { "kind": "volley", "from": "handan_fleet", "to": "caizhang_fleet", "count": 110 } },
-        { "t": 360, "type": "rout", "unit": "cao_fleet" },
-        { "t": 360, "t_end": 520, "type": "move", "unit": "cao_fleet", "to": [320, -420], "attrition": 105 },
-        { "t": 360, "type": "status", "unit": "lvmeng_force", "opacity": 1 },
-        { "t": 360, "type": "status", "unit": "lingtong_force", "opacity": 1 },
+        {
+          "t": 230,
+          "type": "camera",
+          "camera_hint": "none",
+          "fx": {
+            "kind": "volley",
+            "from": "ganling_fleet",
+            "to": "cao_fleet",
+            "count": 120
+          }
+        },
+        {
+          "t": 270,
+          "type": "camera",
+          "camera_hint": "none",
+          "fx": {
+            "kind": "volley",
+            "from": "zhouyu_fleet",
+            "to": "wenpin_fleet",
+            "count": 130
+          }
+        },
+        {
+          "t": 320,
+          "type": "camera",
+          "camera_hint": "none",
+          "fx": {
+            "kind": "volley",
+            "from": "handan_fleet",
+            "to": "caizhang_fleet",
+            "count": 110
+          }
+        },
+        {
+          "t": 360,
+          "type": "rout",
+          "unit": "cao_fleet"
+        },
+        {
+          "t": 360,
+          "t_end": 520,
+          "type": "move",
+          "unit": "cao_fleet",
+          "to": [
+            320,
+            -420
+          ],
+          "attrition": 105
+        },
+        {
+          "t": 360,
+          "type": "status",
+          "unit": "lvmeng_force",
+          "opacity": 1
+        },
+        {
+          "t": 360,
+          "type": "status",
+          "unit": "lingtong_force",
+          "opacity": 1
+        },
         {
           "t": 365,
           "type": "narration",
-          "title": { "zh-TW": "諸路登陸", "zh-CN": "诸路登陆", "en": "All Forces Go Ashore", "ja": "諸路、上陸" },
+          "title": {
+            "zh-TW": "諸路登陸",
+            "zh-CN": "诸路登陆",
+            "en": "All Forces Go Ashore",
+            "ja": "諸路、上陸"
+          },
           "desc": {
             "zh-TW": "水寨既潰,周瑜遣呂蒙、淩統、太史慈諸路由江面登上北岸,多路夾擊烏林本陣,逼曹操棄營。",
             "zh-CN": "水寨既溃,周瑜遣吕蒙、凌统、太史慈诸路由江面登上北岸,多路夹击乌林本阵,逼曹操弃营。",
@@ -440,22 +1384,66 @@
             "ja": "水寨が崩れると、周瑜は呂蒙・淩統・太史慈を各路から北岸に上陸させ、烏林本陣を多方面から圧迫して曹操に営を棄てさせた。"
           },
           "camera_hint": "overview",
-          "cut": { "text": { "zh-TW": "諸路登陸", "zh-CN": "诸路登陆", "en": "All Forces Go Ashore", "ja": "諸路、上陸" } }
+          "cut": {
+            "text": {
+              "zh-TW": "諸路登陸",
+              "zh-CN": "诸路登陆",
+              "en": "All Forces Go Ashore",
+              "ja": "諸路、上陸"
+            }
+          }
         },
-        { "t": 365, "t_end": 470, "type": "move", "unit": "lvmeng_force", "to": [300, -440] },
-        { "t": 375, "t_end": 480, "type": "move", "unit": "lingtong_force", "to": [500, -460] },
         {
-          "t": 480, "t_end": 600,
+          "t": 365,
+          "t_end": 470,
+          "type": "move",
+          "unit": "lvmeng_force",
+          "to": [
+            300,
+            -440
+          ]
+        },
+        {
+          "t": 375,
+          "t_end": 480,
+          "type": "move",
+          "unit": "lingtong_force",
+          "to": [
+            500,
+            -460
+          ]
+        },
+        {
+          "t": 480,
+          "t_end": 600,
           "type": "engage",
-          "units": ["lvmeng_force", "lingtong_force", "cao_camp"],
+          "units": [
+            "lvmeng_force",
+            "lingtong_force",
+            "cao_camp"
+          ],
           "camera_hint": "follow",
-          "losses": { "cao_camp": 58000, "lvmeng_force": 3600, "lingtong_force": 2700 }
+          "losses": {
+            "cao_camp": 58000,
+            "lvmeng_force": 3600,
+            "lingtong_force": 2700
+          }
         },
         {
           "t": 360,
-          "time_display": { "zh-TW": "四更", "zh-CN": "四更", "en": "Fourth watch", "ja": "四更" },
+          "time_display": {
+            "zh-TW": "四更",
+            "zh-CN": "四更",
+            "en": "Fourth watch",
+            "ja": "四更"
+          },
           "type": "narration",
-          "title": { "zh-TW": "曹軍潰走", "zh-CN": "曹军溃走", "en": "Cao's Army Routs", "ja": "曹軍、潰走" },
+          "title": {
+            "zh-TW": "曹軍潰走",
+            "zh-CN": "曹军溃走",
+            "en": "Cao's Army Routs",
+            "ja": "曹軍、潰走"
+          },
           "desc": {
             "zh-TW": "連環船陷於火海,曹操在張遼等護衛下棄船登岸,殘部向烏林潰退。",
             "zh-CN": "连环船陷于火海,曹操在张辽等护卫下弃船登岸,残部向乌林溃退。",
@@ -463,23 +1451,80 @@
             "ja": "連環の船は火海に沈み、曹操は張遼らに護られて船を捨てて岸に上がり、残兵は烏林へ潰走した。"
           }
         },
-        { "t": 520, "type": "status", "unit": "cao_fleet", "troops": 16000 },
-        { "t": 470, "type": "fire", "unit": "cao_camp", "intensity": 0.7 },
+        {
+          "t": 520,
+          "type": "status",
+          "unit": "cao_fleet",
+          "troops": 16000
+        },
+        {
+          "t": 470,
+          "type": "fire",
+          "unit": "cao_camp",
+          "intensity": 0.7
+        },
         {
           "t": 480,
-          "time_display": { "zh-TW": "五更", "zh-CN": "五更", "en": "Fifth watch", "ja": "五更" },
+          "time_display": {
+            "zh-TW": "五更",
+            "zh-CN": "五更",
+            "en": "Fifth watch",
+            "ja": "五更"
+          },
           "type": "status",
           "unit": "cao_camp",
           "badge": "withdraw"
         },
-        { "t": 480, "t_end": 600, "type": "move", "unit": "cao_camp", "to": [640, -640], "attrition": 8.75 },
-        { "t": 480, "t_end": 600, "type": "move", "unit": "zhangliao_force", "to": [480, -560], "attrition": 5 },
-        { "t": 480, "t_end": 600, "type": "move", "unit": "xuhuang_force", "to": [540, -580], "attrition": 5 },
+        {
+          "t": 480,
+          "t_end": 600,
+          "type": "move",
+          "unit": "cao_camp",
+          "to": [
+            640,
+            -640
+          ],
+          "attrition": 8.75
+        },
+        {
+          "t": 480,
+          "t_end": 600,
+          "type": "move",
+          "unit": "zhangliao_force",
+          "to": [
+            480,
+            -560
+          ],
+          "attrition": 5
+        },
+        {
+          "t": 480,
+          "t_end": 600,
+          "type": "move",
+          "unit": "xuhuang_force",
+          "to": [
+            540,
+            -580
+          ],
+          "attrition": 5
+        },
         {
           "t": 480,
           "type": "narration",
-          "title": { "zh-TW": "棄營北走", "zh-CN": "弃营北走", "en": "Abandoning Camp Northward", "ja": "営を棄てて北へ" },
-          "cut": { "text": { "zh-TW": "張遼護主", "zh-CN": "张辽护主", "en": "Zhang Liao Guards the Lord", "ja": "張遼、主を護る" } },
+          "title": {
+            "zh-TW": "棄營北走",
+            "zh-CN": "弃营北走",
+            "en": "Abandoning Camp Northward",
+            "ja": "営を棄てて北へ"
+          },
+          "cut": {
+            "text": {
+              "zh-TW": "張遼護主",
+              "zh-CN": "张辽护主",
+              "en": "Zhang Liao Guards the Lord",
+              "ja": "張遼、主を護る"
+            }
+          },
           "desc": {
             "zh-TW": "烏林本陣亦遭火延燒,曹操引殘軍棄營,取小路往華容道而走。",
             "zh-CN": "乌林本阵亦遭火延烧,曹操引残军弃营,取小路往华容道而走。",
@@ -501,13 +1546,28 @@
       "duration_min": 720,
       "playback_sec": 60,
       "clock_start": "05:00",
-      "date_display": { "zh-TW": "翌日", "zh-CN": "翌日", "en": "The Next Day", "ja": "翌日" },
+      "date_display": {
+        "zh-TW": "翌日",
+        "zh-CN": "翌日",
+        "en": "The Next Day",
+        "ja": "翌日"
+      },
       "events": [
         {
           "t": 0,
-          "time_display": { "zh-TW": "黎明", "zh-CN": "黎明", "en": "Daybreak", "ja": "黎明" },
+          "time_display": {
+            "zh-TW": "黎明",
+            "zh-CN": "黎明",
+            "en": "Daybreak",
+            "ja": "黎明"
+          },
           "type": "narration",
-          "title": { "zh-TW": "敗走華容道", "zh-CN": "败走华容道", "en": "Flight along the Huarong Trail", "ja": "華容道へ敗走" },
+          "title": {
+            "zh-TW": "敗走華容道",
+            "zh-CN": "败走华容道",
+            "en": "Flight along the Huarong Trail",
+            "ja": "華容道へ敗走"
+          },
           "desc": {
             "zh-TW": "天色微明,曹操殘部冒雨穿行華容小道,人馬飢疲,泥濘難行。",
             "zh-CN": "天色微明,曹操残部冒雨穿行华容小道,人马饥疲,泥泞难行。",
@@ -515,19 +1575,77 @@
             "ja": "夜明け、曹操の残兵は雨の中、華容の小道を進む。人馬は飢え疲れ、泥濘に足を取られた。"
           }
         },
-        { "t": 0, "t_end": 600, "type": "move", "unit": "cao_camp", "to": [900, -760] },
-        { "t": 0, "t_end": 240, "type": "status", "unit": "cao_camp", "attrition": 14.375 },
-        { "t": 0, "t_end": 500, "type": "move", "unit": "zhangliao_force", "to": [860, -720] },
-        { "t": 0, "t_end": 600, "type": "status", "unit": "zhangliao_force", "attrition": 8 },
-        { "t": 0, "t_end": 500, "type": "move", "unit": "xuhuang_force", "to": [900, -740] },
-        { "t": 0, "t_end": 600, "type": "status", "unit": "xuhuang_force", "attrition": 8 },
-        { "t": 60, "t_end": 360, "type": "move", "unit": "liubei_army", "to": [860, -580] },
-
+        {
+          "t": 0,
+          "t_end": 600,
+          "type": "move",
+          "unit": "cao_camp",
+          "to": [
+            900,
+            -760
+          ]
+        },
+        {
+          "t": 0,
+          "t_end": 240,
+          "type": "status",
+          "unit": "cao_camp",
+          "attrition": 14.375
+        },
+        {
+          "t": 0,
+          "t_end": 500,
+          "type": "move",
+          "unit": "zhangliao_force",
+          "to": [
+            860,
+            -720
+          ]
+        },
+        {
+          "t": 0,
+          "t_end": 600,
+          "type": "status",
+          "unit": "zhangliao_force",
+          "attrition": 8
+        },
+        {
+          "t": 0,
+          "t_end": 500,
+          "type": "move",
+          "unit": "xuhuang_force",
+          "to": [
+            900,
+            -740
+          ]
+        },
+        {
+          "t": 0,
+          "t_end": 600,
+          "type": "status",
+          "unit": "xuhuang_force",
+          "attrition": 8
+        },
+        {
+          "t": 60,
+          "t_end": 360,
+          "type": "move",
+          "unit": "liubei_army",
+          "to": [
+            860,
+            -580
+          ]
+        },
         {
           "t": 20,
           "type": "narration",
           "speaker": "zhugeliang",
-          "title": { "zh-TW": "智算華容", "zh-CN": "智算华容", "en": "The Prophecy of Huarong", "ja": "華容を算す" },
+          "title": {
+            "zh-TW": "智算華容",
+            "zh-CN": "智算华容",
+            "en": "The Prophecy of Huarong",
+            "ja": "華容を算す"
+          },
           "desc": {
             "zh-TW": "孔明料定曹操必走華容小道,已遣趙雲、張飛分路設伏,雲長守最後隘口——三路等候,只待曹操自投羅網。",
             "zh-CN": "孔明料定曹操必走华容小道,已遣赵云、张飞分路设伏,云长守最后隘口——三路等候,只待曹操自投罗网。",
@@ -536,12 +1654,16 @@
           },
           "cut": true
         },
-
         {
           "t": 120,
           "type": "narration",
           "speaker": "caocao",
-          "title": { "zh-TW": "曹操一笑", "zh-CN": "曹操一笑", "en": "Cao Cao's First Laugh", "ja": "曹操、一笑す" },
+          "title": {
+            "zh-TW": "曹操一笑",
+            "zh-CN": "曹操一笑",
+            "en": "Cao Cao's First Laugh",
+            "ja": "曹操、一笑す"
+          },
           "desc": {
             "zh-TW": "曹操望前路無伏,放聲大笑:「周瑜無謀,諸葛少智！若於此設兵,吾輩皆休矣!」言未盡——趙雲引軍殺出!",
             "zh-CN": "曹操望前路无伏,放声大笑:「周瑜无谋,诸葛少智！若于此设兵,吾辈皆休矣!」言未尽——赵云引军杀出!",
@@ -550,30 +1672,73 @@
           },
           "quote": {
             "text": "操大笑曰:「周瑜無謀,諸葛亮少智！」",
-            "source": { "zh-TW": "第五十回", "zh-CN": "第五十回", "en": "Chapter 50", "ja": "第五十回" },
+            "source": {
+              "zh-TW": "第五十回",
+              "zh-CN": "第五十回",
+              "en": "Chapter 50",
+              "ja": "第五十回"
+            },
             "translation": {
               "en": "Cao Cao laughed aloud: 'Zhou Yu has no strategy, Zhuge Liang has little wit!'",
               "ja": "操は大笑いして言った。「周瑜は無謀、諸葛亮は少智！」"
             }
           },
           "camera_hint": "follow",
-          "cut": { "text": { "zh-TW": "一笑——趙雲殺出!", "zh-CN": "一笑——赵云杀出!", "en": "First Laugh — Zhao Yun Strikes!", "ja": "一笑——趙雲、突出!" } }
+          "cut": {
+            "text": {
+              "zh-TW": "一笑——趙雲殺出!",
+              "zh-CN": "一笑——赵云杀出!",
+              "en": "First Laugh — Zhao Yun Strikes!",
+              "ja": "一笑——趙雲、突出!"
+            }
+          }
         },
-        { "t": 120, "type": "status", "unit": "zhaoyun_force", "opacity": 1 },
-        { "t": 120, "t_end": 200, "type": "move", "unit": "zhaoyun_force", "to": [820, -700], "camera_hint": "follow" },
         {
-          "t": 160, "t_end": 280,
-          "type": "engage",
-          "units": ["cao_camp", "zhaoyun_force"],
-          "losses": { "cao_camp": 47000, "zhaoyun_force": 2900 }
+          "t": 120,
+          "type": "status",
+          "unit": "zhaoyun_force",
+          "opacity": 1
         },
-
+        {
+          "t": 120,
+          "t_end": 200,
+          "type": "move",
+          "unit": "zhaoyun_force",
+          "to": [
+            820,
+            -700
+          ],
+          "camera_hint": "follow"
+        },
+        {
+          "t": 160,
+          "t_end": 280,
+          "type": "engage",
+          "units": [
+            "cao_camp",
+            "zhaoyun_force"
+          ],
+          "losses": {
+            "cao_camp": 47000,
+            "zhaoyun_force": 2900
+          }
+        },
         {
           "t": 240,
-          "time_display": { "zh-TW": "上午", "zh-CN": "上午", "en": "Morning", "ja": "午前" },
+          "time_display": {
+            "zh-TW": "上午",
+            "zh-CN": "上午",
+            "en": "Morning",
+            "ja": "午前"
+          },
           "type": "narration",
           "speaker": "caocao",
-          "title": { "zh-TW": "曹操二笑", "zh-CN": "曹操二笑", "en": "Cao Cao's Second Laugh", "ja": "曹操、再笑す" },
+          "title": {
+            "zh-TW": "曹操二笑",
+            "zh-CN": "曹操二笑",
+            "en": "Cao Cao's Second Laugh",
+            "ja": "曹操、再笑す"
+          },
           "desc": {
             "zh-TW": "甩開趙雲,殘部再行一程,曹操忍不住二度大笑:「彼等才智有限——」話音未落,張飛一聲霹靂殺出!",
             "zh-CN": "甩开赵云,残部再行一程,曹操忍不住二度大笑:「彼等才智有限——」话音未落,张飞一声霹雳杀出!",
@@ -581,24 +1746,62 @@
             "ja": "趙雲をかわした残部がまた進む。曹操は思わず再笑した。「彼奴らも所詮——」と言い終わらぬうち、張飛が雷のごとく叫びながら飛び出した！"
           },
           "camera_hint": "follow",
-          "cut": { "text": { "zh-TW": "二笑——張飛殺出!", "zh-CN": "二笑——张飞杀出!", "en": "Second Laugh — Zhang Fei Strikes!", "ja": "二笑——張飛、突出!" } }
+          "cut": {
+            "text": {
+              "zh-TW": "二笑——張飛殺出!",
+              "zh-CN": "二笑——张飞杀出!",
+              "en": "Second Laugh — Zhang Fei Strikes!",
+              "ja": "二笑——張飛、突出!"
+            }
+          }
         },
-        { "t": 240, "type": "status", "unit": "zhangfei_force", "opacity": 1 },
-        { "t": 240, "t_end": 320, "type": "move", "unit": "zhangfei_force", "to": [1010, -745], "camera_hint": "follow" },
         {
-          "t": 280, "t_end": 400,
-          "type": "engage",
-          "units": ["cao_camp", "zhangfei_force"],
-          "losses": { "cao_camp": 39000, "zhangfei_force": 3000 }
+          "t": 240,
+          "type": "status",
+          "unit": "zhangfei_force",
+          "opacity": 1
         },
-
-        { "t": 420, "t_end": 600, "type": "status", "unit": "cao_camp", "attrition": 31.35 },
-
+        {
+          "t": 240,
+          "t_end": 320,
+          "type": "move",
+          "unit": "zhangfei_force",
+          "to": [
+            1010,
+            -745
+          ],
+          "camera_hint": "follow"
+        },
+        {
+          "t": 280,
+          "t_end": 400,
+          "type": "engage",
+          "units": [
+            "cao_camp",
+            "zhangfei_force"
+          ],
+          "losses": {
+            "cao_camp": 39000,
+            "zhangfei_force": 3000
+          }
+        },
+        {
+          "t": 420,
+          "t_end": 600,
+          "type": "status",
+          "unit": "cao_camp",
+          "attrition": 31.35
+        },
         {
           "t": 430,
           "type": "narration",
           "speaker": "caocao",
-          "title": { "zh-TW": "曹操三笑", "zh-CN": "曹操三笑", "en": "Cao Cao's Third Laugh", "ja": "曹操、三たび笑す" },
+          "title": {
+            "zh-TW": "曹操三笑",
+            "zh-CN": "曹操三笑",
+            "en": "Cao Cao's Third Laugh",
+            "ja": "曹操、三たび笑す"
+          },
           "desc": {
             "zh-TW": "掙脫張飛,進入最窄隘口;曹操喘定,三度大笑:「今若有伏兵,真死無疑——呼哈!」此笑未落——關雲長橫刀攔路,凜然而立。",
             "zh-CN": "挣脱张飞,进入最窄隘口;曹操喘定,三度大笑:「今若有伏兵,真死无疑——呼哈!」此笑未落——关云长横刀拦路,凛然而立。",
@@ -606,17 +1809,48 @@
             "ja": "張飛をかわし最狭の隘路へ。息を整えた曹操は三度笑った。「今ここに伏兵があれば本当に終わりだ——ははは！」その笑いも消えぬうち——関雲長が刀を横たえて凛然と立ちはだかった。"
           },
           "camera_hint": "follow",
-          "cut": { "text": { "zh-TW": "三笑——關羽攔路!", "zh-CN": "三笑——关羽拦路!", "en": "Third Laugh — Guan Yu Bars the Way!", "ja": "三笑——関羽、道を塞ぐ!" } }
+          "cut": {
+            "text": {
+              "zh-TW": "三笑——關羽攔路!",
+              "zh-CN": "三笑——关羽拦路!",
+              "en": "Third Laugh — Guan Yu Bars the Way!",
+              "ja": "三笑——関羽、道を塞ぐ!"
+            }
+          }
         },
-
-        { "t": 450, "type": "status", "unit": "guanyu_force", "opacity": 1 },
-        { "t": 450, "t_end": 520, "type": "move", "unit": "guanyu_force", "to": [1040, -640], "camera_hint": "follow" },
+        {
+          "t": 450,
+          "type": "status",
+          "unit": "guanyu_force",
+          "opacity": 1
+        },
+        {
+          "t": 450,
+          "t_end": 520,
+          "type": "move",
+          "unit": "guanyu_force",
+          "to": [
+            1040,
+            -640
+          ],
+          "camera_hint": "follow"
+        },
         {
           "t": 480,
-          "time_display": { "zh-TW": "午後", "zh-CN": "午后", "en": "Afternoon", "ja": "午後" },
+          "time_display": {
+            "zh-TW": "午後",
+            "zh-CN": "午后",
+            "en": "Afternoon",
+            "ja": "午後"
+          },
           "type": "narration",
           "speaker": "guanyu",
-          "title": { "zh-TW": "雲長攔路", "zh-CN": "云长拦路", "en": "Yunchang Bars the Way", "ja": "雲長、道を塞ぐ" },
+          "title": {
+            "zh-TW": "雲長攔路",
+            "zh-CN": "云长拦路",
+            "en": "Yunchang Bars the Way",
+            "ja": "雲長、道を塞ぐ"
+          },
           "desc": {
             "zh-TW": "華容道狹處,關雲長提青龍刀、跨赤兔馬,引五百校刀手攔住去路;曹軍皆膽寒。",
             "zh-CN": "华容道狭处,关云长提青龙刀、跨赤兔马,引五百校刀手拦住去路;曹军皆胆寒。",
@@ -628,7 +1862,12 @@
         {
           "t": 540,
           "type": "narration",
-          "title": { "zh-TW": "關羽義釋", "zh-CN": "关羽义释", "en": "Guan Yu's Mercy", "ja": "関羽、義もて見逃す" },
+          "title": {
+            "zh-TW": "關羽義釋",
+            "zh-CN": "关羽义释",
+            "en": "Guan Yu's Mercy",
+            "ja": "関羽、義もて見逃す"
+          },
           "desc": {
             "zh-TW": "曹操親自哀告,以舊日之恩相求;雲長義重如山,終勒回馬頭,放曹操一行過去。",
             "zh-CN": "曹操亲自哀告,以旧日之恩相求;云长义重如山,终勒回马头,放曹操一行过去。",
@@ -637,7 +1876,12 @@
           },
           "quote": {
             "text": "雲長回身時,曹操已與眾將過去了。",
-            "source": { "zh-TW": "第五十回", "zh-CN": "第五十回", "en": "Chapter 50", "ja": "第五十回" },
+            "source": {
+              "zh-TW": "第五十回",
+              "zh-CN": "第五十回",
+              "en": "Chapter 50",
+              "ja": "第五十回"
+            },
             "translation": {
               "en": "By the time Yunchang turned back, Cao Cao and his generals had already passed.",
               "ja": "雲長が振り返ったとき、曹操と諸将はすでに通り過ぎていた。"
@@ -645,12 +1889,31 @@
           },
           "cut": true
         },
-        { "t": 550, "t_end": 580, "type": "move", "unit": "guanyu_force", "to": [1040, -600] },
+        {
+          "t": 550,
+          "t_end": 580,
+          "type": "move",
+          "unit": "guanyu_force",
+          "to": [
+            1040,
+            -600
+          ]
+        },
         {
           "t": 700,
-          "time_display": { "zh-TW": "日暮", "zh-CN": "日暮", "en": "Dusk", "ja": "日暮れ" },
+          "time_display": {
+            "zh-TW": "日暮",
+            "zh-CN": "日暮",
+            "en": "Dusk",
+            "ja": "日暮れ"
+          },
           "type": "narration",
-          "title": { "zh-TW": "三分天下", "zh-CN": "三分天下", "en": "The Land Split in Three", "ja": "天下三分" },
+          "title": {
+            "zh-TW": "三分天下",
+            "zh-CN": "三分天下",
+            "en": "The Land Split in Three",
+            "ja": "天下三分"
+          },
           "desc": {
             "zh-TW": "曹操敗歸江陵,自此無力南顧;孫權保有江東,劉備進取荊州,鼎足三分之勢自此而成。",
             "zh-CN": "曹操败归江陵,自此无力南顾;孙权保有江东,刘备进取荆州,鼎足三分之势自此而成。",

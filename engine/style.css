@@ -438,6 +438,13 @@ body.menu #status-msg {
   pointer-events: none;
   white-space: nowrap;
   display: none;
+  padding: 18px 46px;
+  background: var(--panel);
+  border-top: 2px solid var(--accent);
+  border-bottom: 2px solid var(--accent);
+  border-radius: 4px;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 8px 34px rgba(0, 0, 0, 0.55);
 }
 
 #cut-in .cut-text {
