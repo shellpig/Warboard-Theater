@@ -23,7 +23,7 @@ export function createAtmosphere({ scene, lights, water, skydome }, defs, chapte
     sun:        lights.sun.intensity,
     sunColor:   lights.sun.color.getHex(),
     ambient:    lights.hemi.intensity,
-    water:      water.material.color.getHex(),
+    waterDeep:  water.material.uniforms.uDeep.value.getHex(),
   };
 
   const keys = [];
@@ -40,7 +40,7 @@ export function createAtmosphere({ scene, lights, water, skydome }, defs, chapte
       sun:        d.sun ?? cur.sun,
       sunColor:   d.sun_color != null ? new THREE.Color(d.sun_color).getHex() : cur.sunColor,
       ambient:    d.ambient ?? cur.ambient,
-      water:      d.water != null ? new THREE.Color(d.water).getHex() : cur.water,
+      waterDeep:  d.water != null ? new THREE.Color(d.water).getHex() : cur.waterDeep,
     };
     keys.push({ p: ch.start + (d.t / ch.durationMin) * ch.len, v: cur });
   }
@@ -77,8 +77,13 @@ export function createAtmosphere({ scene, lights, water, skydome }, defs, chapte
     lerpCol(lights.sun.color, a.v.sunColor, b.v.sunColor);
     lights.hemi.intensity = lerp(a.v.ambient, b.v.ambient);
 
-    // 水面色
-    lerpCol(water.material.color, a.v.water, b.v.water);
+    // 水面 shader — uDeep 插值，uLit 由 uDeep 衍生（波峰亮色）
+    lerpCol(water.material.uniforms.uDeep.value, a.v.waterDeep, b.v.waterDeep);
+    const lit = water.material.uniforms.uLit.value;
+    lit.copy(water.material.uniforms.uDeep.value).multiplyScalar(1.6);
+    lit.r = Math.min(1, lit.r);
+    lit.g = Math.min(1, lit.g);
+    lit.b = Math.min(1, lit.b);
   }
 
   return { update };
