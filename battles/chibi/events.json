@@ -312,8 +312,24 @@
           }
         },
         { "t": 0, "t_end": 100, "type": "move", "unit": "wenpin_fleet", "to": [-80, -220] },
-        { "t": 0, "t_end": 100, "type": "move", "unit": "maozhi_fleet", "to": [120, -250] },
+        { "t": 0, "t_end": 100, "type": "move", "unit": "caizhang_fleet", "to": [120, -250] },
         { "t": 70, "t_end": 130, "type": "move", "unit": "huanggai_fleet", "to": [-100, -140], "camera_hint": "follow" },
+        { "t": 80, "t_end": 150, "type": "move", "unit": "ganling_fleet", "to": [-260, 40] },
+        {
+          "t": 110,
+          "type": "narration",
+          "speaker": "zhouyu",
+          "title": { "zh-TW": "甘寧斬蔡中", "zh-CN": "甘宁斩蔡中", "en": "Gan Ning Kills Cai Zhong", "ja": "甘寧、蔡中を斬る" },
+          "desc": {
+            "zh-TW": "甘寧識破曹營詐降內應蔡中,趁黃蓋詐降船隊接近之際領軍前出奇襲,突入江心夾擊曹軍水寨。",
+            "zh-CN": "甘宁识破曹营诈降内应蔡中,趁黄盖诈降船队接近之际领军前出奇袭,突入江心夹击曹军水寨。",
+            "en": "Gan Ning sees through the scheme of Cai Zhong, a double agent in Cao's camp, and leads a sudden attack just as Huang Gai's fire ships draw near, striking the naval camp from the flank.",
+            "ja": "甘寧は曹軍内の内通者・蔡中の企みを見抜き、黄蓋の偽降船が接近するのを機に突撃をかけ、江心から曹軍水寨を側面から強打した。"
+          },
+          "camera_hint": "follow",
+          "cut": { "text": { "zh-TW": "甘寧斬蔡中", "zh-CN": "甘宁斩蔡中", "en": "Gan Ning Kills Cai Zhong", "ja": "甘寧、蔡中を斬る" } }
+        },
+        { "t": 110, "type": "camera", "camera_hint": "none", "fx": { "kind": "volley", "from": "ganling_fleet", "to": "caizhang_fleet", "count": 80 } },
         { "t": 60, "time_display": { "zh-TW": "二更", "zh-CN": "二更", "en": "Second watch", "ja": "二更" }, "type": "defect", "unit": "huanggai_fleet" },
         {
           "t": 60,
@@ -357,12 +373,30 @@
         },
         { "t": 165, "type": "fire", "pos": [110, -210], "intensity": 0.9 },
         { "t": 200, "type": "fire", "pos": [-110, -270], "intensity": 0.9 },
+        { "t": 205, "type": "camera", "camera_hint": "none", "fx": { "kind": "volley", "from": "caizhang_fleet", "to": "huanggai_fleet", "count": 60 } },
+        { "t": 210, "type": "status", "unit": "huanggai_fleet", "badge": "rout" },
+        {
+          "t": 210,
+          "type": "narration",
+          "speaker": "huanggai",
+          "title": { "zh-TW": "黃蓋中箭", "zh-CN": "黄盖中箭", "en": "Huang Gai Is Shot", "ja": "黄蓋、矢に中る" },
+          "desc": {
+            "zh-TW": "曹將張遼見黃蓋火船突入,引弓急射,黃蓋身中數箭落入江中;幸韓當駕船趕至,將其救起。",
+            "zh-CN": "曹将张辽见黄盖火船突入,引弓急射,黄盖身中数箭落入江中;幸韩当驾船赶至,将其救起。",
+            "en": "As Huang Gai's fire ships break through, Cao's general Zhang Liao draws his bow and looses; Huang Gai is struck by several arrows and falls into the river. Han Dang races his boat forward and pulls him out.",
+            "ja": "黄蓋の火船が突入するや、曹将・張遼が矢を放ち、黄蓋は数本の矢を受けて川へ落ちた。幸い韓当が急ぎ舟を走らせ、これを救い上げた。"
+          },
+          "camera_hint": "follow",
+          "cut": { "text": { "zh-TW": "黃蓋中箭落水", "zh-CN": "黄盖中箭落水", "en": "Huang Gai Shot — Man Overboard!", "ja": "黄蓋、矢に中り落水！" } }
+        },
+        { "t": 220, "t_end": 260, "type": "move", "unit": "handan_fleet", "to": [-70, -148] },
+        { "t": 260, "type": "status", "unit": "huanggai_fleet", "badge": "idle" },
         {
           "t": 150,
           "t_end": 360,
           "type": "engage",
-          "units": ["huanggai_fleet", "cao_fleet", "wenpin_fleet", "maozhi_fleet"],
-          "losses": { "cao_fleet": 41300, "huanggai_fleet": 1637, "wenpin_fleet": 1700, "maozhi_fleet": 2000 }
+          "units": ["huanggai_fleet", "cao_fleet", "wenpin_fleet", "caizhang_fleet"],
+          "losses": { "cao_fleet": 41300, "huanggai_fleet": 1637, "wenpin_fleet": 1700, "caizhang_fleet": 2000 }
         },
         { "t": 170, "t_end": 330, "type": "move", "unit": "zhouyu_fleet", "to": [-40, -170], "camera_hint": "follow" },
         { "t": 170, "t_end": 300, "type": "move", "unit": "ganling_fleet", "to": [-200, -130] },
@@ -390,9 +424,33 @@
         },
         { "t": 230, "type": "camera", "camera_hint": "none", "fx": { "kind": "volley", "from": "ganling_fleet", "to": "cao_fleet", "count": 120 } },
         { "t": 270, "type": "camera", "camera_hint": "none", "fx": { "kind": "volley", "from": "zhouyu_fleet", "to": "wenpin_fleet", "count": 130 } },
-        { "t": 320, "type": "camera", "camera_hint": "none", "fx": { "kind": "volley", "from": "handan_fleet", "to": "maozhi_fleet", "count": 110 } },
+        { "t": 320, "type": "camera", "camera_hint": "none", "fx": { "kind": "volley", "from": "handan_fleet", "to": "caizhang_fleet", "count": 110 } },
         { "t": 360, "type": "rout", "unit": "cao_fleet" },
         { "t": 360, "t_end": 520, "type": "move", "unit": "cao_fleet", "to": [320, -420], "attrition": 133.125 },
+        { "t": 360, "type": "status", "unit": "lvmeng_force", "opacity": 1 },
+        { "t": 360, "type": "status", "unit": "lingtong_force", "opacity": 1 },
+        {
+          "t": 365,
+          "type": "narration",
+          "title": { "zh-TW": "諸路登陸", "zh-CN": "诸路登陆", "en": "All Forces Go Ashore", "ja": "諸路、上陸" },
+          "desc": {
+            "zh-TW": "水寨既潰,周瑜遣呂蒙、淩統、太史慈諸路由江面登上北岸,多路夾擊烏林本陣,逼曹操棄營。",
+            "zh-CN": "水寨既溃,周瑜遣吕蒙、凌统、太史慈诸路由江面登上北岸,多路夹击乌林本阵,逼曹操弃营。",
+            "en": "With the naval camp broken, Zhou Yu sends Lü Meng, Ling Tong, and Taishi Ci on separate landings to the north shore, converging to squeeze Cao's Wulin camp and force his retreat.",
+            "ja": "水寨が崩れると、周瑜は呂蒙・淩統・太史慈を各路から北岸に上陸させ、烏林本陣を多方面から圧迫して曹操に営を棄てさせた。"
+          },
+          "camera_hint": "overview",
+          "cut": { "text": { "zh-TW": "諸路登陸", "zh-CN": "诸路登陆", "en": "All Forces Go Ashore", "ja": "諸路、上陸" } }
+        },
+        { "t": 365, "t_end": 470, "type": "move", "unit": "lvmeng_force", "to": [300, -440] },
+        { "t": 375, "t_end": 480, "type": "move", "unit": "lingtong_force", "to": [500, -460] },
+        {
+          "t": 480, "t_end": 600,
+          "type": "engage",
+          "units": ["lvmeng_force", "lingtong_force", "cao_camp"],
+          "camera_hint": "follow",
+          "losses": { "cao_camp": 58000, "lvmeng_force": 3600, "lingtong_force": 2700 }
+        },
         {
           "t": 360,
           "time_display": { "zh-TW": "四更", "zh-CN": "四更", "en": "Fourth watch", "ja": "四更" },
@@ -415,12 +473,13 @@
           "badge": "withdraw"
         },
         { "t": 480, "t_end": 600, "type": "move", "unit": "cao_camp", "to": [640, -640], "attrition": 8.75 },
-        { "t": 480, "t_end": 600, "type": "move", "unit": "zhangliao_force", "to": [500, -580], "attrition": 5 },
+        { "t": 480, "t_end": 600, "type": "move", "unit": "zhangliao_force", "to": [480, -560], "attrition": 5 },
         { "t": 480, "t_end": 600, "type": "move", "unit": "xuhuang_force", "to": [540, -580], "attrition": 5 },
         {
           "t": 480,
           "type": "narration",
           "title": { "zh-TW": "棄營北走", "zh-CN": "弃营北走", "en": "Abandoning Camp Northward", "ja": "営を棄てて北へ" },
+          "cut": { "text": { "zh-TW": "張遼護主", "zh-CN": "张辽护主", "en": "Zhang Liao Guards the Lord", "ja": "張遼、主を護る" } },
           "desc": {
             "zh-TW": "烏林本陣亦遭火延燒,曹操引殘軍棄營,取小路往華容道而走。",
             "zh-CN": "乌林本阵亦遭火延烧,曹操引残军弃营,取小路往华容道而走。",
