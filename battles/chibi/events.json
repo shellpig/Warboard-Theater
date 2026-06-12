@@ -48,15 +48,57 @@
           "cut": true
         },
         { "t": 0, "type": "status", "unit": "cao_camp", "badge": "camp" },
-        { "t": 200, "t_end": 700, "type": "move", "unit": "wenpin_fleet", "to": [-280, -210] },
         { "t": 300, "t_end": 800, "type": "move", "unit": "maozhi_fleet", "to": [160, -240] },
         { "t": 0, "type": "status", "unit": "strawboat_fleet", "opacity": 0 },
         { "t": 0, "type": "status", "unit": "guanyu_force", "opacity": 0 },
         { "t": 0, "type": "status", "unit": "zhaoyun_force", "opacity": 0 },
         { "t": 0, "type": "status", "unit": "zhangfei_force", "opacity": 0 },
+
+        { "t": 350,
+          "time_display": { "zh-TW": "數日後", "zh-CN": "数日后", "en": "Days later", "ja": "数日後" },
+          "type": "narration",
+          "speaker": "zhouyu",
+          "title": { "zh-TW": "三江口", "zh-CN": "三江口", "en": "Battle of Sanjiangkou", "ja": "三江口の戦い" },
+          "desc": {
+            "zh-TW": "周瑜遣甘寧、韓當前出三江口試探曹軍虛實;蔡瑁、張允率水軍迎戰,雙方在江心相遇。",
+            "zh-CN": "周瑜遣甘宁、韩当前出三江口试探曹军虚实;蔡瑁、张允率水军迎战,双方在江心相遇。",
+            "en": "Zhou Yu sends Gan Ning and Han Dang forward to probe Cao's strength at Sanjiangkou. Cai Mao and Zhang Yun lead the navy out to meet them; the two sides clash in midstream.",
+            "ja": "周瑜は甘寧・韓当を三江口に前出させ曹軍の虚実を探らせる。蔡瑁・張允が水軍を率いて迎撃し、双方は江心で激突した。"
+          },
+          "camera_hint": "overview",
+          "cut": true
+        },
+        { "t": 360, "t_end": 520, "type": "move", "unit": "ganling_fleet", "to": [-240, 30] },
+        { "t": 370, "t_end": 540, "type": "move", "unit": "handan_fleet", "to": [20, 60] },
+        { "t": 400, "t_end": 560, "type": "move", "unit": "caizhang_fleet", "to": [-40, -40] },
+        { "t": 410, "t_end": 560, "type": "move", "unit": "wenpin_fleet", "to": [-200, -30], "camera_hint": "follow" },
+        { "t": 520, "t_end": 760, "type": "engage", "units": ["ganling_fleet", "handan_fleet", "caizhang_fleet", "wenpin_fleet"], "camera_hint": "follow",
+          "losses": { "ganling_fleet": 5700, "handan_fleet": 5650, "caizhang_fleet": 21500, "wenpin_fleet": 10800 } },
+        { "t": 560, "type": "camera", "camera_hint": "none", "fx": { "kind": "volley", "from": "ganling_fleet", "to": "caizhang_fleet", "count": 90 } },
+        { "t": 600, "t_end": 760, "type": "fire", "pos": [-120, -20], "intensity": 0.5 },
+        { "t": 640, "type": "camera", "camera_hint": "none", "fx": { "kind": "volley", "from": "caizhang_fleet", "to": "handan_fleet", "count": 70 } },
+        { "t": 780, "t_end": 900, "type": "move", "unit": "ganling_fleet", "to": [-440, 260] },
+        { "t": 790, "t_end": 900, "type": "move", "unit": "handan_fleet", "to": [60, 270] },
+        { "t": 800, "t_end": 900, "type": "move", "unit": "caizhang_fleet", "to": [80, -210] },
+        { "t": 800, "t_end": 900, "type": "move", "unit": "wenpin_fleet", "to": [-180, -200] },
+        {
+          "t": 880,
+          "type": "narration",
+          "speaker": "zhouyu",
+          "title": { "zh-TW": "周瑜首勝", "zh-CN": "周瑜首胜", "en": "Zhou Yu's First Victory", "ja": "周瑜の初勝" },
+          "desc": {
+            "zh-TW": "南軍初戰得勝,曹軍折兵;然此不過牛刀小試,周瑜心中已有更大布局。",
+            "zh-CN": "南军初战得胜,曹军折兵;然此不过小试,周瑜心中已有更大布局。",
+            "en": "The southern forces win this opening skirmish and deal Cao's navy a blow — yet this is only a trial run; in Zhou Yu's mind, a grander scheme is already taking shape.",
+            "ja": "南軍は初戦を制し、曹軍に損害を与えた。しかしこれは小手調べに過ぎず、周瑜の胸中にはすでに大きな謀が描かれていた。"
+          },
+          "camera_hint": "overview",
+          "cut": true
+        },
+
         {
           "t": 1300,
-          "time_display": { "zh-TW": "數日後", "zh-CN": "数日后", "en": "Days later", "ja": "数日後" },
+          "time_display": { "zh-TW": "其後", "zh-CN": "其后", "en": "Shortly after", "ja": "その後" },
           "type": "narration",
           "speaker": "zhouyu",
           "title": { "zh-TW": "蔣幹盜書", "zh-CN": "蒋干盗书", "en": "Jiang Gan Steals the Letter", "ja": "蔣幹、書を盗む" },
@@ -65,8 +107,38 @@
             "zh-CN": "蒋干过江劝降,周瑜将计就计,以伪书借他之手除去曹军水军都督蔡瑁、张允。",
             "en": "Jiang Gan crosses the river to urge surrender. Zhou Yu turns the ploy around: a forged letter, carried back by Jiang Gan, makes Cao Cao execute his naval commanders Cai Mao and Zhang Yun.",
             "ja": "蔣幹が降伏勧告に江を渡るが、周瑜は計を逆手に取り、偽の密書をその手に持ち帰らせ、曹軍水軍都督の蔡瑁・張允を葬り去る。"
-          }
+          },
+          "cut": true
         },
+        {
+          "t": 1320,
+          "type": "narration",
+          "speaker": "caocao",
+          "title": { "zh-TW": "蔡瑁張允伏誅", "zh-CN": "蔡瑁张允伏诛", "en": "Cai Mao and Zhang Yun Executed", "ja": "蔡瑁・張允、誅殺される" },
+          "desc": {
+            "zh-TW": "曹操見蔣幹帶回密書,以為蔡瑁、張允私通周瑜,怒不可遏,立命斬之——此乃周瑜反間之計,自毀水軍棟樑。",
+            "zh-CN": "曹操见蒋干带回密书,以为蔡瑁、张允私通周瑜,怒不可遏,立命斩之——此乃周瑜反间之计,自毁水军栋梁。",
+            "en": "Cao Cao sees the forged letter Jiang Gan brought back and believes Cai Mao and Zhang Yun have secretly gone over to Zhou Yu. In rage, he orders them beheaded — walking straight into Zhou Yu's counter-spy trap, destroying his own finest naval commanders.",
+            "ja": "蔣幹の持ち帰った偽書を見た曹操は、蔡瑁・張允が周瑜に内通していると思い込み、怒りのあまり即座に斬首を命じた——これぞ周瑜の反間の計、自ら水軍の柱を折った。"
+          },
+          "quote": {
+            "text": "操大怒曰:「蔡瑁、張允怎敢如此!」即便斬之。",
+            "source": { "zh-TW": "第四十五回", "zh-CN": "第四十五回", "en": "Chapter 45", "ja": "第四十五回" },
+            "translation": {
+              "en": "Cao Cao, enraged, cried: 'How dare Cai Mao and Zhang Yun act so!' And forthwith ordered their execution.",
+              "ja": "曹操は大いに怒って言った。「蔡瑁・張允め、なんたる所業！」即座に処刑を命じた。"
+            }
+          },
+          "camera_hint": "follow",
+          "cut": { "text": { "zh-TW": "蔡瑁張允伏誅", "zh-CN": "蔡瑁张允伏诛", "en": "Cai Mao & Zhang Yun Executed", "ja": "蔡瑁・張允、誅殺" } }
+        },
+        { "t": 1320, "type": "status", "unit": "caizhang_fleet", "badge": "defect" },
+        { "t": 1320, "t_end": 1380, "type": "move", "unit": "maozhi_fleet", "to": [60, -215] },
+        { "t": 1340, "type": "status", "unit": "caizhang_fleet", "troops": 38000, "badge": "idle",
+          "label": { "zh-TW": "毛玠・于禁水軍", "zh-CN": "毛玠・于禁水军", "en": "Mao Jie & Yu Jin's Navy", "ja": "毛玠・于禁水軍" } },
+        { "t": 1340, "type": "status", "unit": "maozhi_fleet", "troops": 0 },
+        { "t": 1390, "type": "status", "unit": "maozhi_fleet", "opacity": 0 },
+
         { "t": 1500, "t_end": 1800, "type": "move", "unit": "ganling_fleet", "to": [-360, 250] },
         { "t": 1600, "t_end": 1900, "type": "move", "unit": "handan_fleet", "to": [-140, 300] },
         { "t": 2250, "type": "status", "unit": "strawboat_fleet", "opacity": 1 },

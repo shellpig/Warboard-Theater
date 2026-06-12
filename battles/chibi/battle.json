@@ -132,7 +132,7 @@
       "type": "fleet",
       "label": { "zh-TW": "曹軍連環船隊", "zh-CN": "曹军连环船队", "en": "Cao's Chained Fleet", "ja": "曹軍連環船団" },
       "spawn": [0, -240],
-      "troops": 63000,
+      "troops": 50000,
       "count": 24
     },
     {
@@ -192,8 +192,17 @@
       "type": "fleet",
       "label": { "zh-TW": "文聘前軍", "zh-CN": "文聘前军", "en": "Wenpin's Vanguard Fleet", "ja": "文聘前軍" },
       "spawn": [-180, -200],
-      "troops": 17000,
+      "troops": 12000,
       "count": 18
+    },
+    {
+      "id": "caizhang_fleet",
+      "faction": "wei",
+      "type": "fleet",
+      "label": { "zh-TW": "蔡瑁・張允水軍", "zh-CN": "蔡瑁・张允水军", "en": "Cai Mao & Zhang Yun's Navy", "ja": "蔡瑁・張允水軍" },
+      "spawn": [80, -210],
+      "troops": 24000,
+      "count": 16
     },
     {
       "id": "maozhi_fleet",
@@ -201,7 +210,7 @@
       "type": "fleet",
       "label": { "zh-TW": "毛玠・于禁水軍", "zh-CN": "毛玠・于禁水军", "en": "Maoji & Yu Jin's Navy", "ja": "毛玠・于禁水軍" },
       "spawn": [240, -260],
-      "troops": 20000,
+      "troops": 14000,
       "count": 18
     },
     {
