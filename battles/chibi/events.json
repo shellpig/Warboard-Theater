@@ -60,6 +60,11 @@
     },
     {
       "chapter": "prelude",
+      "t": 6400,
+      "wind": 1.0
+    },
+    {
+      "chapter": "prelude",
       "t": 6536,
       "wind": 2.5
     },
@@ -919,6 +924,30 @@
           ]
         },
         {
+          "t": 6616,
+          "type": "camera",
+          "fx": {
+            "kind": "ring",
+            "pos": [-620, 800]
+          }
+        },
+        {
+          "t": 6696,
+          "type": "camera",
+          "fx": {
+            "kind": "ring",
+            "pos": [-620, 800]
+          }
+        },
+        {
+          "t": 6776,
+          "type": "camera",
+          "fx": {
+            "kind": "ring",
+            "pos": [-620, 800]
+          }
+        },
+        {
           "t": 6926,
           "time_display": {
             "zh-TW": "是夜",
@@ -1436,6 +1465,16 @@
           "unit": "cao_fleet"
         },
         {
+          "t": 370,
+          "type": "rout",
+          "unit": "wenpin_fleet"
+        },
+        {
+          "t": 375,
+          "type": "rout",
+          "unit": "maozhi_fleet"
+        },
+        {
           "t": 360,
           "t_end": 520,
           "type": "move",
@@ -1546,6 +1585,45 @@
           "type": "status",
           "unit": "cao_fleet",
           "troops": 16000
+        },
+        {
+          "t": 370,
+          "t_end": 410,
+          "type": "status",
+          "unit": "wenpin_fleet",
+          "pulse": { "cycles": 8, "min": 0.2 }
+        },
+        {
+          "t": 410,
+          "type": "status",
+          "unit": "wenpin_fleet",
+          "opacity": 0
+        },
+        {
+          "t": 375,
+          "t_end": 415,
+          "type": "status",
+          "unit": "maozhi_fleet",
+          "pulse": { "cycles": 8, "min": 0.2 }
+        },
+        {
+          "t": 415,
+          "type": "status",
+          "unit": "maozhi_fleet",
+          "opacity": 0
+        },
+        {
+          "t": 525,
+          "t_end": 565,
+          "type": "status",
+          "unit": "cao_fleet",
+          "pulse": { "cycles": 8, "min": 0.2 }
+        },
+        {
+          "t": 565,
+          "type": "status",
+          "unit": "cao_fleet",
+          "opacity": 0
         },
         {
           "t": 470,
@@ -1667,64 +1745,137 @@
         },
         {
           "t": 0,
-          "t_end": 600,
+          "t_end": 230,
           "type": "move",
           "unit": "cao_camp",
           "to": [
-            900,
-            -760
+            1060,
+            -810
+          ]
+        },
+        {
+          "t": 240,
+          "t_end": 450,
+          "type": "move",
+          "unit": "cao_camp",
+          "to": [
+            1340,
+            -890
+          ]
+        },
+        {
+          "t": 560,
+          "t_end": 700,
+          "type": "move",
+          "unit": "cao_camp",
+          "to": [
+            1700,
+            -990
           ]
         },
         {
           "t": 0,
-          "t_end": 240,
+          "t_end": 160,
           "type": "status",
           "unit": "cao_camp",
           "attrition": 14.375
         },
         {
           "t": 0,
-          "t_end": 500,
+          "t_end": 230,
           "type": "move",
           "unit": "zhangliao_force",
           "to": [
-            860,
-            -720
+            1020,
+            -790
+          ]
+        },
+        {
+          "t": 240,
+          "t_end": 450,
+          "type": "move",
+          "unit": "zhangliao_force",
+          "to": [
+            1300,
+            -870
+          ]
+        },
+        {
+          "t": 560,
+          "t_end": 700,
+          "type": "move",
+          "unit": "zhangliao_force",
+          "to": [
+            1660,
+            -970
           ]
         },
         {
           "t": 0,
-          "t_end": 600,
+          "t_end": 700,
           "type": "status",
           "unit": "zhangliao_force",
           "attrition": 8
         },
         {
           "t": 0,
-          "t_end": 500,
+          "t_end": 230,
           "type": "move",
           "unit": "xuhuang_force",
           "to": [
-            900,
-            -740
+            1100,
+            -830
+          ]
+        },
+        {
+          "t": 240,
+          "t_end": 450,
+          "type": "move",
+          "unit": "xuhuang_force",
+          "to": [
+            1380,
+            -910
+          ]
+        },
+        {
+          "t": 560,
+          "t_end": 700,
+          "type": "move",
+          "unit": "xuhuang_force",
+          "to": [
+            1740,
+            -1010
           ]
         },
         {
           "t": 0,
-          "t_end": 600,
+          "t_end": 700,
           "type": "status",
           "unit": "xuhuang_force",
           "attrition": 8
         },
         {
           "t": 60,
-          "t_end": 360,
+          "t_end": 120,
           "type": "move",
           "unit": "liubei_army",
           "to": [
             860,
             -580
           ]
+        },
+        {
+          "t": 90,
+          "t_end": 120,
+          "type": "status",
+          "unit": "liubei_army",
+          "pulse": { "cycles": 4, "min": 0.25 }
+        },
+        {
+          "t": 120,
+          "type": "status",
+          "unit": "liubei_army",
+          "opacity": 0
         },
         {
           "t": 20,
@@ -1802,14 +1953,32 @@
           "type": "move",
           "unit": "zhaoyun_force",
           "to": [
-            820,
-            -700
+            780,
+            -690
           ],
           "camera_hint": "follow"
         },
         {
           "t": 160,
-          "t_end": 280,
+          "type": "status",
+          "unit": "cao_camp",
+          "badge": "engage"
+        },
+        {
+          "t": 160,
+          "type": "status",
+          "unit": "zhangliao_force",
+          "badge": "engage"
+        },
+        {
+          "t": 160,
+          "type": "status",
+          "unit": "xuhuang_force",
+          "badge": "engage"
+        },
+        {
+          "t": 160,
+          "t_end": 240,
           "type": "engage",
           "units": [
             "cao_camp",
@@ -1817,7 +1986,7 @@
           ],
           "losses": {
             "cao_camp": 47000,
-            "zhaoyun_force": 2900
+            "zhaoyun_force": 2600
           }
         },
         {
@@ -1860,18 +2029,18 @@
         },
         {
           "t": 240,
-          "t_end": 320,
+          "t_end": 300,
           "type": "move",
           "unit": "zhangfei_force",
           "to": [
-            1010,
-            -745
+            1080,
+            -810
           ],
           "camera_hint": "follow"
         },
         {
           "t": 280,
-          "t_end": 400,
+          "t_end": 420,
           "type": "engage",
           "units": [
             "cao_camp",
@@ -1879,15 +2048,33 @@
           ],
           "losses": {
             "cao_camp": 39000,
-            "zhangfei_force": 3000
+            "zhangfei_force": 2200
           }
         },
         {
-          "t": 420,
-          "t_end": 600,
+          "t": 560,
           "type": "status",
           "unit": "cao_camp",
-          "attrition": 31.35
+          "badge": "idle"
+        },
+        {
+          "t": 560,
+          "type": "status",
+          "unit": "zhangliao_force",
+          "badge": "idle"
+        },
+        {
+          "t": 560,
+          "type": "status",
+          "unit": "xuhuang_force",
+          "badge": "idle"
+        },
+        {
+          "t": 480,
+          "t_end": 700,
+          "type": "status",
+          "unit": "cao_camp",
+          "attrition": 31
         },
         {
           "t": 430,
@@ -1923,12 +2110,12 @@
         },
         {
           "t": 450,
-          "t_end": 520,
+          "t_end": 510,
           "type": "move",
           "unit": "guanyu_force",
           "to": [
-            1040,
-            -640
+            1370,
+            -905
           ],
           "camera_hint": "follow"
         },
@@ -2006,8 +2193,8 @@
           "type": "move",
           "unit": "guanyu_force",
           "to": [
-            1040,
-            -600
+            1420,
+            -840
           ]
         },
         {

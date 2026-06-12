@@ -189,8 +189,8 @@
       "faction": "shu",
       "type": "infantry",
       "label": { "zh-TW": "關羽伏兵", "zh-CN": "关羽伏兵", "en": "Guan Yu's Ambush", "ja": "関羽の伏兵" },
-      "spawn": [1040, -720],
-      "troops": 5000
+      "spawn": [1400, -860],
+      "troops": 2500
     },
     {
       "id": "wenpin_fleet",
@@ -284,15 +284,15 @@
       "type": "infantry",
       "label": { "zh-TW": "趙雲伏兵", "zh-CN": "赵云伏兵", "en": "Zhao Yun's Ambush", "ja": "趙雲の伏兵" },
       "spawn": [740, -640],
-      "troops": 3200
+      "troops": 2900
     },
     {
       "id": "zhangfei_force",
       "faction": "shu",
       "type": "infantry",
       "label": { "zh-TW": "張飛伏兵", "zh-CN": "张飞伏兵", "en": "Zhang Fei's Ambush", "ja": "張飛の伏兵" },
-      "spawn": [960, -710],
-      "troops": 3300
+      "spawn": [1120, -770],
+      "troops": 2500
     }
   ]
 }

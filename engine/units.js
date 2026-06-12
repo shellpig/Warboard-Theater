@@ -9,7 +9,7 @@ const HULL_GEO = new THREE.BoxGeometry(4, 2, 12);
 const DECK_GEO = new THREE.BoxGeometry(2.6, 1.6, 5.2);
 const SAIL_GEO = new THREE.PlaneGeometry(4.5, 6);
 const POLE_GEO = new THREE.CylinderGeometry(0.16, 0.16, 1, 6);
-const FLAG_GEO = new THREE.PlaneGeometry(7, 4.2, 8, 3); // 多段以支援 vertex shader 波動
+const FLAG_GEO = new THREE.PlaneGeometry(21, 12.6, 8, 3); // 多段以支援 vertex shader 波動
 
 // 全局共享 uniforms：uTime / uWind / uAmbient 由 main.js 每幀更新
 export const flagUniforms = {
@@ -154,8 +154,8 @@ function buildFlag(poleH, colorHex, char, materials) {
         vUv = uv;
         vec3 pos = position;
         // t: 0 = 旗根（靠旗桿），1 = 旗梢；振幅二次方漸增
-        float t   = (pos.x + 3.5) / 7.0;
-        float amp = t * t * 1.8 * uWind;
+        float t   = (pos.x + 10.5) / 21.0;
+        float amp = t * t * 5.4 * uWind;
         float spd = uTime * 2.5 * uWind;
         float wave = sin(pos.x * 0.90 + spd)
                    + sin(pos.x * 1.75 - spd * 1.4 + 1.0) * 0.38;
@@ -187,7 +187,7 @@ function buildFlag(poleH, colorHex, char, materials) {
   pole.scale.y = poleH;
   pole.position.set(0, poleH / 2, 0);
   const flag = new THREE.Mesh(FLAG_GEO, flagMat);
-  flag.position.set(3.5, poleH - 2.5, 0);
+  flag.position.set(10.5, poleH - 6.3, 0);
   flagGroup.add(pole, flag);
   return flagGroup;
 }
