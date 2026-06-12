@@ -343,32 +343,95 @@
         { "t": 0, "t_end": 500, "type": "move", "unit": "xuhuang_force", "to": [900, -740] },
         { "t": 0, "t_end": 600, "type": "status", "unit": "xuhuang_force", "attrition": 8 },
         { "t": 60, "t_end": 360, "type": "move", "unit": "liubei_army", "to": [860, -580] },
-        { "t": 140, "type": "status", "unit": "zhaoyun_force", "opacity": 1 },
-        { "t": 140, "t_end": 200, "type": "move", "unit": "zhaoyun_force", "to": [800, -680] },
-        { "t": 200, "type": "status", "unit": "zhangfei_force", "opacity": 1 },
-        { "t": 200, "t_end": 260, "type": "move", "unit": "zhangfei_force", "to": [1000, -720] },
+
         {
-          "t": 240,
-          "t_end": 420,
-          "type": "engage",
-          "units": ["cao_camp", "zhaoyun_force", "zhangfei_force"],
-          "losses": { "cao_camp": 53170, "zhaoyun_force": 2900, "zhangfei_force": 3000 }
+          "t": 20,
+          "type": "narration",
+          "speaker": "zhugeliang",
+          "title": { "zh-TW": "智算華容", "zh-CN": "智算华容", "en": "The Prophecy of Huarong", "ja": "華容を算す" },
+          "desc": {
+            "zh-TW": "孔明料定曹操必走華容小道,已遣趙雲、張飛分路設伏,雲長守最後隘口——三路等候,只待曹操自投羅網。",
+            "zh-CN": "孔明料定曹操必走华容小道,已遣赵云、张飞分路设伏,云长守最后隘口——三路等候,只待曹操自投罗网。",
+            "en": "Kongming foresaw Cao Cao's flight along this very path: Zhao Yun, Zhang Fei, and Guan Yu wait in three successive ambushes — Cao Cao walks straight into the trap.",
+            "ja": "孔明は曹操が必ずこの小道を行くと読み、趙雲・張飛を各路に伏せ、雲長に最後の隘口を守らせた——三路で待ち受け、曹操が自ら罠に飛び込んでくるのを待つのみ。"
+          },
+          "cut": true
         },
+
+        {
+          "t": 120,
+          "type": "narration",
+          "speaker": "caocao",
+          "title": { "zh-TW": "曹操一笑", "zh-CN": "曹操一笑", "en": "Cao Cao's First Laugh", "ja": "曹操、一笑す" },
+          "desc": {
+            "zh-TW": "曹操望前路無伏,放聲大笑:「周瑜無謀,諸葛少智！若於此設兵,吾輩皆休矣!」言未盡——趙雲引軍殺出!",
+            "zh-CN": "曹操望前路无伏,放声大笑:「周瑜无谋,诸葛少智！若于此设兵,吾辈皆休矣!」言未尽——赵云引军杀出!",
+            "en": "Seeing no ambush ahead, Cao Cao laughs aloud: 'Zhou Yu is witless, Zhuge Liang has no wits — if they'd placed troops here, we'd be finished!' His words are not done when Zhao Yun charges out.",
+            "ja": "前路に伏兵なしと見た曹操は高笑いした。「周瑜は無謀、諸葛は少智！ここに兵を置けばわれらは終わりだったのに！」と言い終わらぬうち——趙雲が軍を率いて突出した！"
+          },
+          "quote": {
+            "text": "操大笑曰:「周瑜無謀,諸葛亮少智！」",
+            "source": { "zh-TW": "第五十回", "zh-CN": "第五十回", "en": "Chapter 50", "ja": "第五十回" },
+            "translation": {
+              "en": "Cao Cao laughed aloud: 'Zhou Yu has no strategy, Zhuge Liang has little wit!'",
+              "ja": "操は大笑いして言った。「周瑜は無謀、諸葛亮は少智！」"
+            }
+          },
+          "camera_hint": "follow",
+          "cut": { "text": { "zh-TW": "一笑——趙雲殺出!", "zh-CN": "一笑——赵云杀出!", "en": "First Laugh — Zhao Yun Strikes!", "ja": "一笑——趙雲、突出!" } }
+        },
+        { "t": 120, "type": "status", "unit": "zhaoyun_force", "opacity": 1 },
+        { "t": 120, "t_end": 200, "type": "move", "unit": "zhaoyun_force", "to": [820, -700], "camera_hint": "follow" },
+        {
+          "t": 160, "t_end": 280,
+          "type": "engage",
+          "units": ["cao_camp", "zhaoyun_force"],
+          "losses": { "cao_camp": 47000, "zhaoyun_force": 2900 }
+        },
+
         {
           "t": 240,
           "time_display": { "zh-TW": "上午", "zh-CN": "上午", "en": "Morning", "ja": "午前" },
           "type": "narration",
-          "speaker": "zhugeliang",
-          "title": { "zh-TW": "三道伏兵", "zh-CN": "三道伏兵", "en": "Three Ambushes", "ja": "三段の伏兵" },
+          "speaker": "caocao",
+          "title": { "zh-TW": "曹操二笑", "zh-CN": "曹操二笑", "en": "Cao Cao's Second Laugh", "ja": "曹操、再笑す" },
           "desc": {
-            "zh-TW": "孔明早已料定曹操敗走之路:趙雲、張飛接連截殺,曹軍且戰且走,兵力折損大半。",
-            "zh-CN": "孔明早已料定曹操败走之路:赵云、张飞接连截杀,曹军且战且走,兵力折损大半。",
-            "en": "Kongming foresaw every road of Cao Cao's flight: Zhao Yun and Zhang Fei strike in turn, and the retreating army fights its way through, losing well over half its strength.",
-            "ja": "孔明は曹操の逃走路を読み切っていた。趙雲・張飛が相次いで襲いかかり、曹軍は戦いながら逃れ、兵力の大半を失った。"
-          }
+            "zh-TW": "甩開趙雲,殘部再行一程,曹操忍不住二度大笑:「彼等才智有限——」話音未落,張飛一聲霹靂殺出!",
+            "zh-CN": "甩开赵云,残部再行一程,曹操忍不住二度大笑:「彼等才智有限——」话音未落,张飞一声霹雳杀出!",
+            "en": "Shaking free from Zhao Yun, the column presses on. Cao Cao cannot resist a second laugh: 'Their wits have limits—' Before he finishes, Zhang Fei bursts out with a thunderous cry.",
+            "ja": "趙雲をかわした残部がまた進む。曹操は思わず再笑した。「彼奴らも所詮——」と言い終わらぬうち、張飛が雷のごとく叫びながら飛び出した！"
+          },
+          "camera_hint": "follow",
+          "cut": { "text": { "zh-TW": "二笑——張飛殺出!", "zh-CN": "二笑——张飞杀出!", "en": "Second Laugh — Zhang Fei Strikes!", "ja": "二笑——張飛、突出!" } }
         },
+        { "t": 240, "type": "status", "unit": "zhangfei_force", "opacity": 1 },
+        { "t": 240, "t_end": 320, "type": "move", "unit": "zhangfei_force", "to": [1010, -745], "camera_hint": "follow" },
+        {
+          "t": 280, "t_end": 400,
+          "type": "engage",
+          "units": ["cao_camp", "zhangfei_force"],
+          "losses": { "cao_camp": 39000, "zhangfei_force": 3000 }
+        },
+
         { "t": 420, "t_end": 600, "type": "status", "unit": "cao_camp", "attrition": 31.35 },
+
+        {
+          "t": 430,
+          "type": "narration",
+          "speaker": "caocao",
+          "title": { "zh-TW": "曹操三笑", "zh-CN": "曹操三笑", "en": "Cao Cao's Third Laugh", "ja": "曹操、三たび笑す" },
+          "desc": {
+            "zh-TW": "掙脫張飛,進入最窄隘口;曹操喘定,三度大笑:「今若有伏兵,真死無疑——呼哈!」此笑未落——關雲長橫刀攔路,凜然而立。",
+            "zh-CN": "挣脱张飞,进入最窄隘口;曹操喘定,三度大笑:「今若有伏兵,真死无疑——呼哈!」此笑未落——关云长横刀拦路,凛然而立。",
+            "en": "Breaking free from Zhang Fei, the remnant enters the narrowest pass. Catching his breath, Cao Cao laughs a third time: 'If there were an ambush here now, we'd truly be done—Ha!' The laugh dies — Guan Yunchang stands blade-drawn across the path.",
+            "ja": "張飛をかわし最狭の隘路へ。息を整えた曹操は三度笑った。「今ここに伏兵があれば本当に終わりだ——ははは！」その笑いも消えぬうち——関雲長が刀を横たえて凛然と立ちはだかった。"
+          },
+          "camera_hint": "follow",
+          "cut": { "text": { "zh-TW": "三笑——關羽攔路!", "zh-CN": "三笑——关羽拦路!", "en": "Third Laugh — Guan Yu Bars the Way!", "ja": "三笑——関羽、道を塞ぐ!" } }
+        },
+
         { "t": 450, "type": "status", "unit": "guanyu_force", "opacity": 1 },
+        { "t": 450, "t_end": 520, "type": "move", "unit": "guanyu_force", "to": [1040, -640], "camera_hint": "follow" },
         {
           "t": 480,
           "time_display": { "zh-TW": "午後", "zh-CN": "午后", "en": "Afternoon", "ja": "午後" },
@@ -380,7 +443,8 @@
             "zh-CN": "华容道狭处,关云长提青龙刀、跨赤兔马,引五百校刀手拦住去路;曹军皆胆寒。",
             "en": "At the narrowest point of the trail stands Guan Yunchang, Green Dragon Blade in hand, astride Red Hare, five hundred swordsmen at his back; Cao's men lose all heart.",
             "ja": "華容道の隘路に、関雲長が青龍刀を提げ赤兎馬に跨り、五百の校刀手を従えて立ち塞がる。曹軍は皆、胆を冷やした。"
-          }
+          },
+          "cut": true
         },
         {
           "t": 540,
@@ -399,7 +463,8 @@
               "en": "By the time Yunchang turned back, Cao Cao and his generals had already passed.",
               "ja": "雲長が振り返ったとき、曹操と諸将はすでに通り過ぎていた。"
             }
-          }
+          },
+          "cut": true
         },
         { "t": 550, "t_end": 580, "type": "move", "unit": "guanyu_force", "to": [1040, -600] },
         {
@@ -413,7 +478,8 @@
             "en": "Cao Cao retreats to Jiangling, never again to press south. Sun Quan holds the Southland, Liu Bei takes Jingzhou — and the tripod of the Three Kingdoms is set.",
             "ja": "曹操は江陵へ敗れ帰り、もはや南下の力はない。孫権は江東を保ち、劉備は荊州を取り、天下三分の鼎立がここに定まった。"
           },
-          "camera_hint": "overview"
+          "camera_hint": "overview",
+          "cut": true
         }
       ]
     }
