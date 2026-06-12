@@ -396,7 +396,7 @@
           "t_end": 360,
           "type": "engage",
           "units": ["huanggai_fleet", "cao_fleet", "wenpin_fleet", "caizhang_fleet"],
-          "losses": { "cao_fleet": 41300, "huanggai_fleet": 1637, "wenpin_fleet": 1700, "caizhang_fleet": 2000 }
+          "losses": { "cao_fleet": 32800, "huanggai_fleet": 1470, "wenpin_fleet": 1200, "caizhang_fleet": 3800 }
         },
         { "t": 170, "t_end": 330, "type": "move", "unit": "zhouyu_fleet", "to": [-40, -170], "camera_hint": "follow" },
         { "t": 170, "t_end": 300, "type": "move", "unit": "ganling_fleet", "to": [-200, -130] },
@@ -426,7 +426,7 @@
         { "t": 270, "type": "camera", "camera_hint": "none", "fx": { "kind": "volley", "from": "zhouyu_fleet", "to": "wenpin_fleet", "count": 130 } },
         { "t": 320, "type": "camera", "camera_hint": "none", "fx": { "kind": "volley", "from": "handan_fleet", "to": "caizhang_fleet", "count": 110 } },
         { "t": 360, "type": "rout", "unit": "cao_fleet" },
-        { "t": 360, "t_end": 520, "type": "move", "unit": "cao_fleet", "to": [320, -420], "attrition": 133.125 },
+        { "t": 360, "t_end": 520, "type": "move", "unit": "cao_fleet", "to": [320, -420], "attrition": 105 },
         { "t": 360, "type": "status", "unit": "lvmeng_force", "opacity": 1 },
         { "t": 360, "type": "status", "unit": "lingtong_force", "opacity": 1 },
         {
@@ -463,7 +463,7 @@
             "ja": "連環の船は火海に沈み、曹操は張遼らに護られて船を捨てて岸に上がり、残兵は烏林へ潰走した。"
           }
         },
-        { "t": 520, "type": "status", "unit": "cao_fleet", "troops": 20000 },
+        { "t": 520, "type": "status", "unit": "cao_fleet", "troops": 16000 },
         { "t": 470, "type": "fire", "unit": "cao_camp", "intensity": 0.7 },
         {
           "t": 480,
