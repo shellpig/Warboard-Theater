@@ -9,7 +9,7 @@
 import * as THREE from "three";
 
 export function createAtmosphere({ scene, lights, water, skydome }, defs, chapters) {
-  if (!defs?.length) return { update() {} };
+  if (!defs?.length) return { update() {}, wind: 1.0 };
 
   const skyMat = skydome.material;
   const byId = {};
@@ -24,6 +24,7 @@ export function createAtmosphere({ scene, lights, water, skydome }, defs, chapte
     sunColor:   lights.sun.color.getHex(),
     ambient:    lights.hemi.intensity,
     waterDeep:  water.material.uniforms.uDeep.value.getHex(),
+    wind:       1.0,
   };
 
   const keys = [];
@@ -41,6 +42,7 @@ export function createAtmosphere({ scene, lights, water, skydome }, defs, chapte
       sunColor:   d.sun_color != null ? new THREE.Color(d.sun_color).getHex() : cur.sunColor,
       ambient:    d.ambient ?? cur.ambient,
       waterDeep:  d.water != null ? new THREE.Color(d.water).getHex() : cur.waterDeep,
+      wind:       d.wind ?? cur.wind,
     };
     keys.push({ p: ch.start + (d.t / ch.durationMin) * ch.len, v: cur });
   }
@@ -49,6 +51,7 @@ export function createAtmosphere({ scene, lights, water, skydome }, defs, chapte
 
   const colA = new THREE.Color();
   const colB = new THREE.Color();
+  let windValue = 1.0;
 
   function update(p) {
     let a = keys[0];
@@ -84,7 +87,10 @@ export function createAtmosphere({ scene, lights, water, skydome }, defs, chapte
     lit.r = Math.min(1, lit.r);
     lit.g = Math.min(1, lit.g);
     lit.b = Math.min(1, lit.b);
+
+    // 風力插值（供旗幟 shader 使用）
+    windValue = lerp(a.v.wind, b.v.wind);
   }
 
-  return { update };
+  return { update, get wind() { return windValue; } };
 }

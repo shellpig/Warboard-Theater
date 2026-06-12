@@ -9,7 +9,14 @@ const HULL_GEO = new THREE.BoxGeometry(4, 2, 12);
 const DECK_GEO = new THREE.BoxGeometry(2.6, 1.6, 5.2);
 const SAIL_GEO = new THREE.PlaneGeometry(4.5, 6);
 const POLE_GEO = new THREE.CylinderGeometry(0.16, 0.16, 1, 6);
-const FLAG_GEO = new THREE.PlaneGeometry(7, 4.2);
+const FLAG_GEO = new THREE.PlaneGeometry(7, 4.2, 8, 3); // 多段以支援 vertex shader 波動
+
+// 全局共享 uniforms：uTime / uWind / uAmbient 由 main.js 每幀更新
+export const flagUniforms = {
+  uTime:    { value: 0 },
+  uWind:    { value: 1.0 },
+  uAmbient: { value: 1.0 },
+};
 
 export function createUnits(scene, battle, terrain) {
   const { heightAt, waterLevel } = terrain;
@@ -126,11 +133,56 @@ function buildFleet(group, def, colorHex, waterLevel, materials) {
 function buildFlag(poleH, colorHex, char, materials) {
   const flagGroup = new THREE.Group();
   const poleMat = new THREE.MeshStandardMaterial({ color: 0x3a3128 });
-  const flagMat = new THREE.MeshBasicMaterial({
-    map: flagTexture(colorHex, char),
+  materials.push(poleMat);
+
+  // 每面旗幟自有 uOpacity（各單位獨立淡入淡出）；uTime/uWind/uAmbient 共用全域引用
+  const uOpacity = { value: 1.0 };
+  const flagMat = new THREE.ShaderMaterial({
+    uniforms: {
+      uTime:    flagUniforms.uTime,
+      uWind:    flagUniforms.uWind,
+      uAmbient: flagUniforms.uAmbient,
+      uMap:     { value: flagTexture(colorHex, char) },
+      uOpacity: uOpacity,
+    },
+    vertexShader: /* glsl */`
+      uniform float uTime;
+      uniform float uWind;
+      varying vec2  vUv;
+
+      void main() {
+        vUv = uv;
+        vec3 pos = position;
+        // t: 0 = 旗根（靠旗桿），1 = 旗梢；振幅二次方漸增
+        float t   = (pos.x + 3.5) / 7.0;
+        float amp = t * t * 1.8 * uWind;
+        float spd = uTime * 2.5 * uWind;
+        float wave = sin(pos.x * 0.90 + spd)
+                   + sin(pos.x * 1.75 - spd * 1.4 + 1.0) * 0.38;
+        pos.z += wave * amp;
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+      }
+    `,
+    fragmentShader: /* glsl */`
+      uniform sampler2D uMap;
+      uniform float     uAmbient;
+      uniform float     uOpacity;
+      varying vec2      vUv;
+
+      void main() {
+        vec4 col  = texture2D(uMap, vUv);
+        col.rgb  *= clamp(uAmbient, 0.35, 1.2);
+        col.a    *= uOpacity;
+        gl_FragColor = col;
+      }
+    `,
     side: THREE.DoubleSide,
+    transparent: true,
   });
-  materials.push(poleMat, flagMat);
+
+  // 代理讓 setOpacity 迴圈（m.opacity = v）能更新旗幟 shader 的 uOpacity
+  materials.push({ set opacity(v) { uOpacity.value = v; } });
+
   const pole = new THREE.Mesh(POLE_GEO, poleMat);
   pole.scale.y = poleH;
   pole.position.set(0, poleH / 2, 0);

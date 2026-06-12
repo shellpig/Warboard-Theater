@@ -2,7 +2,7 @@
 import { initI18n, getLang, t, pick, createLangSwitcher } from "./i18n.js";
 import { createScene } from "./scene.js";
 import { buildTerrain } from "./terrain.js";
-import { createUnits } from "./units.js";
+import { createUnits, flagUniforms } from "./units.js";
 import { compileTimeline, createClock } from "./timeline.js";
 import { createDirector } from "./director.js";
 import { createEffects } from "./effects.js";
@@ -92,6 +92,9 @@ async function boot() {
     applyTime(clock.time);
     terrain.water.material.uniforms.uTime.value = clock.time * 1.5;
     atmosphere.update(clock.time);
+    flagUniforms.uTime.value    = clock.time;
+    flagUniforms.uWind.value    = atmosphere.wind;
+    flagUniforms.uAmbient.value = Math.min(1.2, lights.hemi.intensity * 2.2);
     effects.update(step);
     audio.update(step);
     director.update(step);

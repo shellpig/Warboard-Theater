@@ -1,16 +1,17 @@
 {
   "_note": "Phase 5:四語補齊(zh-TW 為準,en/ja 譯文待使用者人工校對);quote 原文任何語系皆顯示漢文,en/ja 附譯文小字",
   "atmosphere": [
-    { "chapter": "prelude", "t": 0,    "sky_top": "#7e95a8", "sky_horizon": "#a8bfcc", "fog_density": 0.0004, "sun": 1.20, "sun_color": "#f3e6cf", "ambient": 0.55, "water": "#1e3444" },
+    { "chapter": "prelude", "t": 0,    "sky_top": "#7e95a8", "sky_horizon": "#a8bfcc", "fog_density": 0.0004, "sun": 1.20, "sun_color": "#f3e6cf", "ambient": 0.55, "water": "#1e3444", "wind": 1.0 },
     { "chapter": "prelude", "t": 60,   "sky_top": "#8298a8", "sky_horizon": "#b0c4d2", "fog_density": 0.0009 },
     { "chapter": "prelude", "t": 90,   "sky_top": "#8aa4b2", "sky_horizon": "#c0d2dc", "fog_density": 0.0014 },
     { "chapter": "prelude", "t": 200,  "sky_top": "#7e95a8", "sky_horizon": "#a8bfcc", "fog_density": 0.0004 },
     { "chapter": "prelude", "t": 5400, "sky_top": "#6e7f96", "sky_horizon": "#95acbc", "fog_density": 0.0005, "sun": 0.90 },
+    { "chapter": "prelude", "t": 6400, "wind": 2.5 },
     { "chapter": "prelude", "t": 7200, "sky_top": "#35435a", "sky_horizon": "#566070", "fog_density": 0.0005, "sun": 0.50, "sun_color": "#e8c9a0", "ambient": 0.37, "water": "#182c3c" },
     { "chapter": "fire_attack", "t": 30,  "sky_top": "#0e1520", "sky_horizon": "#1c2535", "fog_density": 0.0006, "sun": 0.20, "sun_color": "#8fa6c8", "ambient": 0.22, "water": "#0c1520" },
     { "chapter": "fire_attack", "t": 200, "sky_top": "#1a1220", "sky_horizon": "#261828", "fog_density": 0.0007, "ambient": 0.26 },
-    { "chapter": "fire_attack", "t": 600, "sky_top": "#242c3e", "sky_horizon": "#384050", "fog_density": 0.0005, "sun": 0.32, "ambient": 0.27, "water": "#12202e" },
-    { "chapter": "huarong", "t": 40,  "sky_top": "#4a5c7a", "sky_horizon": "#7892a8", "fog_density": 0.0005, "sun": 0.75, "sun_color": "#ffd9ae", "ambient": 0.38, "water": "#1e3a50" },
+    { "chapter": "fire_attack", "t": 600, "sky_top": "#242c3e", "sky_horizon": "#384050", "fog_density": 0.0005, "sun": 0.32, "ambient": 0.27, "water": "#12202e", "wind": 1.6 },
+    { "chapter": "huarong", "t": 40,  "sky_top": "#4a5c7a", "sky_horizon": "#7892a8", "fog_density": 0.0005, "sun": 0.75, "sun_color": "#ffd9ae", "ambient": 0.38, "water": "#1e3a50", "wind": 1.0 },
     { "chapter": "huarong", "t": 720, "sky_top": "#7e95a8", "sky_horizon": "#a8bfcc", "fog_density": 0.0003, "sun": 1.35, "sun_color": "#fff0d8", "ambient": 0.58, "water": "#1e3444" }
   ],
   "chapters": [
