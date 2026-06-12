@@ -11,6 +11,12 @@
   "date_display": { "zh-TW": "建安十三年冬", "zh-CN": "建安十三年冬", "en": "Winter, 208 CE", "ja": "建安十三年冬" },
   "duration_label": { "zh-TW": "約一夜", "zh-CN": "约一夜", "en": "About one night", "ja": "約一夜" },
   "narrative_basis": { "zh-TW": "三國演義", "zh-CN": "三国演义", "en": "Romance of the Three Kingdoms", "ja": "三国志演義" },
+  "overview": {
+    "zh-TW": "建安十三年秋,曹操平定北方,揮師南下;荊州劉琮不戰而降,劉備敗走夏口。曹操盡得荊州水軍,號稱八十萬,順江東進。孫權納周瑜、魯肅之議,與劉備結盟,聯軍五萬溯江而上——兩軍相遇於赤壁。",
+    "zh-CN": "建安十三年秋,曹操平定北方,挥师南下;荆州刘琮不战而降,刘备败走夏口。曹操尽得荆州水军,号称八十万,顺江东进。孙权纳周瑜、鲁肃之议,与刘备结盟,联军五万溯江而上——两军相遇于赤壁。",
+    "en": "In the autumn of 208, having pacified the north, Cao Cao marched south. Liu Cong of Jingzhou surrendered without a fight, and Liu Bei fled to Xiakou. With Jingzhou's navy in hand, Cao Cao — claiming 800,000 men — advanced east along the Yangtze. Heeding Zhou Yu and Lu Su, Sun Quan allied with Liu Bei; their combined 50,000 sailed upriver. The two hosts met at Red Cliffs.",
+    "ja": "建安十三年秋、北方を平定した曹操は大軍を南へ進めた。荊州の劉琮は戦わずして降り、劉備は夏口へ敗走。荊州水軍を手に入れた曹操は八十万と号して長江を東へ下る。孫権は周瑜・魯粛の議を容れて劉備と同盟し、連合軍五万が江を遡る——両軍は赤壁で相まみえた。"
+  },
   "factions": [
     {
       "id": "wei",

@@ -751,9 +751,18 @@ body.cinema .cine-bar {
   justify-content: center;
   gap: 12px;
   text-align: center;
-  background: radial-gradient(ellipse at center, rgba(8, 11, 17, 0.5), rgba(5, 8, 12, 0.9));
+  background: radial-gradient(ellipse at center, rgba(8, 11, 17, 0.65), rgba(5, 8, 12, 0.9));
   pointer-events: auto;
   transition: opacity 0.9s;
+}
+
+/* 片頭期間名牌/地名層半隱(body.title-on 由 ui.js 切換) */
+#labels {
+  transition: opacity 0.9s;
+}
+
+body.title-on #labels {
+  opacity: 0.25;
 }
 
 #title-screen.hidden {
@@ -775,6 +784,27 @@ body.cinema .cine-bar {
   opacity: 0.85;
   letter-spacing: 0.12em;
   color: var(--accent);
+}
+
+#title-screen .ts-basis {
+  padding: 5px 16px;
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  text-indent: 0.18em;
+  color: var(--accent);
+  border: 1px solid rgba(201, 168, 106, 0.55);
+  border-radius: 2px;
+  background: rgba(12, 16, 24, 0.35);
+}
+
+#title-screen .ts-overview {
+  max-width: 640px;
+  margin: 4px 0 0;
+  font-size: 17px;
+  line-height: 1.8;
+  letter-spacing: 0.06em;
+  opacity: 0.88;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.8);
 }
 
 #title-screen .meta-line {

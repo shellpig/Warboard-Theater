@@ -354,6 +354,12 @@ export function createUI({ labels, hud, card, battle, units, terrain, camera, re
     const sub = document.createElement("div");
     sub.className = "sub";
     sub.textContent = pick(battle.subtitle);
+    const basisBadge = document.createElement("div");
+    basisBadge.className = "ts-basis";
+    basisBadge.textContent = t("based_on", { src: pick(battle.narrative_basis) });
+    const overview = document.createElement("p");
+    overview.className = "ts-overview";
+    overview.textContent = pick(battle.overview) || "";
     const metaLine = document.createElement("div");
     metaLine.className = "meta-line";
     metaLine.textContent = pick(battle.date_display);
@@ -384,9 +390,12 @@ export function createUI({ labels, hud, card, battle, units, terrain, camera, re
       clock.play();
       audio.unlock?.();
     });
-    titleScreen.append(metaLine, h1, sub, factionRow, startBtn);
+    titleScreen.append(metaLine, h1, sub, basisBadge);
+    if (overview.textContent) titleScreen.append(overview); // overview 為選填欄位
+    titleScreen.append(factionRow, startBtn);
   }
   let titleShown = true;
+  document.body.classList.add("title-on"); // 片頭期間名牌層半隱
 
   // --- 結算 end card:勝負、交戰時間、雙方損失、關鍵轉折、重新觀看 ---
   const endScreen = document.getElementById("end-screen");
@@ -582,6 +591,7 @@ export function createUI({ labels, hud, card, battle, units, terrain, camera, re
     if (titleShown && (clock.playing || p > 0.001)) {
       titleShown = false;
       titleScreen.classList.add("hidden");
+      document.body.classList.remove("title-on");
     }
 
     // 結算:抵達終點顯示;seek 離開即收起
