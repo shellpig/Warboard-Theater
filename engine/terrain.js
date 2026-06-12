@@ -25,6 +25,9 @@ export function buildTerrain(scene, def) {
       const bankFloor = Math.min(15, bankDist / 25);
       y = Math.max(y, bankFloor);
     }
+    // fbm 起伏：幅度 ±4 世界單位（約山丘高度 7%），水面附近線性衰減以保護岸線不破碎
+    const attn = Math.max(0, Math.min(1, (y - waterLevel) / 8));
+    y += (fbmNoise(x, z) - 0.5) * 8 * attn;
     return y;
   }
 
@@ -56,6 +59,25 @@ export function buildTerrain(scene, def) {
     return s - Math.floor(s);
   };
 
+  // 平滑值噪聲：對 hash01 格點做雙線性插值，產生連貫起伏（固定 seed，確定性）
+  const smoothNoise = (wx, wz, freq) => {
+    const fx = wx * freq, fz = wz * freq;
+    const ix = Math.floor(fx), iz = Math.floor(fz);
+    const ux = fx - ix, uz = fz - iz;
+    const sx = ux * ux * (3 - 2 * ux), sz = uz * uz * (3 - 2 * uz);
+    const a = hash01(ix,     iz    ), b = hash01(ix + 1, iz    );
+    const c = hash01(ix,     iz + 1), d = hash01(ix + 1, iz + 1);
+    return a + sx * (b - a) + sz * (c - a + sx * (a - b - c + d));
+  };
+
+  // 3-octave fbm：基礎波長 ~700 世界單位；回傳 [0, 1]
+  const fbmNoise = (wx, wz) => {
+    const f = 1 / 700;
+    return (smoothNoise(wx, wz, f)       * 1.00
+          + smoothNoise(wx, wz, f * 2)   * 0.50
+          + smoothNoise(wx, wz, f * 4)   * 0.25) / 1.75;
+  };
+
   // 地形向外延伸每邊(render mesh = 2×),避免使用者看到邊界空曠
   const renderX = sizeX * 2;
   const renderZ = sizeZ * 2;
@@ -70,7 +92,10 @@ export function buildTerrain(scene, def) {
     const h = heightAt(x, z);
     pos.setY(i, h);
     colorAt(h, tmp);
-    const b = 0.92 + 0.16 * hash01(x, z);
+    // 混合低頻平滑色塊（田野斑塊感）與高頻白噪（椒鹽顆粒感），避免與貼圖 fieldNoise（~1600 單位）打架
+    const macro = smoothNoise(x, z, 1 / 380);
+    const micro = hash01(x, z);
+    const b = 0.92 + 0.08 * macro + 0.08 * micro;
     colors[i * 3] = tmp.r * b;
     colors[i * 3 + 1] = tmp.g * b;
     colors[i * 3 + 2] = tmp.b * b;
