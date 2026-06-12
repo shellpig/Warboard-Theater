@@ -555,7 +555,7 @@ export function createUI({ labels, hud, card, battle, units, terrain, camera, re
     {
       const cut = timeline.cutAt(p);
       if (cut && cut.alpha >= 0.01) {
-        cutInEl.style.display = "";
+        cutInEl.style.display = "block"; // CSS 預設為 display:none,需顯式覆寫(不可用 "" 否則回退成隱藏)
         cutInEl.style.opacity = cut.alpha;
         if (cut.text !== lastCutText) {
           lastCutText = cut.text;

@@ -436,9 +436,10 @@ body.menu #status-msg {
   transform: translateX(-50%) translateY(-50%);
   text-align: center;
   pointer-events: none;
-  white-space: nowrap;
+  white-space: normal;
+  max-width: 58vw;
   display: none;
-  padding: 18px 46px;
+  padding: 9px 22px;
   background: var(--panel);
   border-top: 2px solid var(--accent);
   border-bottom: 2px solid var(--accent);
@@ -449,10 +450,11 @@ body.menu #status-msg {
 
 #cut-in .cut-text {
   display: block;
-  font-size: 44px;
+  font-size: 22px;
   font-weight: 600;
-  letter-spacing: 0.32em;
-  text-indent: 0.32em;
+  letter-spacing: 0.06em;
+  text-indent: 0;
+  line-height: 1.45;
   color: #fff;
   text-shadow:
     0 2px 14px rgba(0, 0, 0, 0.95),

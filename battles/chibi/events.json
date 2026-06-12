@@ -36,7 +36,7 @@
     },
     {
       "chapter": "prelude",
-      "t": 5436,
+      "t": 5936,
       "sky_top": "#6e7f96",
       "sky_horizon": "#95acbc",
       "fog_density": 0.0005,
@@ -44,12 +44,12 @@
     },
     {
       "chapter": "prelude",
-      "t": 6036,
+      "t": 6536,
       "wind": 2.5
     },
     {
       "chapter": "prelude",
-      "t": 6516,
+      "t": 7016,
       "sky_top": "#35435a",
       "sky_horizon": "#566070",
       "fog_density": 0.0005,
@@ -122,8 +122,8 @@
         "ja": "第一章 江上に風起こる"
       },
       "bgm": "assets/bgm/prelude.mp3",
-      "duration_min": 6516,
-      "playback_sec": 136,
+      "duration_min": 7016,
+      "playback_sec": 146,
       "date_display": {
         "zh-TW": "建安十三年冬・十一月",
         "zh-CN": "建安十三年冬・十一月",
@@ -153,25 +153,12 @@
             "ja": "曹操は大軍を率いて南下し、烏林に駐屯。江沿いに水寨を築いて戦船を連ね、南岸の孫劉連合軍と長江を挟んで対峙する。"
           },
           "camera_hint": "overview",
-          "cut": true
-        },
-        {
-          "_TEST_CUTIN": "臨時測試卡:約播放第1秒(t=48)出現,驗證後刪除整個物件",
-          "t": 48,
-          "type": "camera",
-          "camera_hint": "none",
           "cut": {
             "text": {
-              "zh-TW": "★ CUT-IN 測試 ★",
-              "zh-CN": "★ CUT-IN 测试 ★",
-              "en": "★ CUT-IN TEST ★",
-              "ja": "★ CUT-IN テスト ★"
-            },
-            "sub": {
-              "zh-TW": "看到這張＝中央字卡正常運作",
-              "zh-CN": "看到这张＝中央字卡正常运作",
-              "en": "If you see this, center cut-in works",
-              "ja": "これが見えれば中央カットインは正常"
+              "zh-TW": "曹操二十萬大軍壓到江邊,孫劉聯軍隔江死守",
+              "zh-CN": "曹操二十万大军压到江边,孙刘联军隔江死守",
+              "en": "Cao Cao's 200,000 reach the river; the allies dig in on the far bank",
+              "ja": "曹操の二十万の大軍が江岸に迫り、孫劉連合軍が対岸で守りを固める"
             }
           }
         },
@@ -256,7 +243,14 @@
             "ja": "周瑜は甘寧・韓当を三江口に前出させ曹軍の虚実を探らせる。蔡瑁・張允が水軍を率いて迎撃し、双方は江心で激突した。"
           },
           "camera_hint": "overview",
-          "cut": true
+          "cut": {
+            "text": {
+              "zh-TW": "兩軍水師首度交鋒,孫劉試探出曹軍虛實",
+              "zh-CN": "两军水师首度交锋,孙刘试探出曹军虚实",
+              "en": "The two navies clash for the first time as the allies probe Cao's strength",
+              "ja": "両軍の水軍が初めて衝突し、孫劉が曹軍の実力を探る"
+            }
+          }
         },
         {
           "t": 360,
@@ -406,7 +400,14 @@
             "ja": "南軍は初戦を制し、曹軍に損害を与えた。しかしこれは小手調べに過ぎず、周瑜の胸中にはすでに大きな謀が描かれていた。"
           },
           "camera_hint": "overview",
-          "cut": true
+          "cut": {
+            "text": {
+              "zh-TW": "首戰孫劉得勝,曹操水軍吃了悶虧",
+              "zh-CN": "首战孙刘得胜,曹操水军吃了闷亏",
+              "en": "The allies win the opening battle and bloody Cao's navy",
+              "ja": "緒戦は孫劉が勝ち、曹操の水軍が痛手を負う"
+            }
+          }
         },
         {
           "t": 1300,
@@ -430,91 +431,18 @@
             "en": "Jiang Gan crosses the river to urge surrender. Zhou Yu turns the ploy around: a forged letter, carried back by Jiang Gan, makes Cao Cao execute his naval commanders Cai Mao and Zhang Yun.",
             "ja": "蔣幹が降伏勧告に江を渡るが、周瑜は計を逆手に取り、偽の密書をその手に持ち帰らせ、曹軍水軍都督の蔡瑁・張允を葬り去る。"
           },
-          "cut": true
-        },
-        {
-          "t": 1348,
-          "type": "narration",
-          "speaker": "caocao",
-          "title": {
-            "zh-TW": "蔡瑁張允伏誅",
-            "zh-CN": "蔡瑁张允伏诛",
-            "en": "Cai Mao and Zhang Yun Executed",
-            "ja": "蔡瑁・張允、誅殺される"
-          },
-          "desc": {
-            "zh-TW": "曹操見蔣幹帶回密書,以為蔡瑁、張允私通周瑜,怒不可遏,立命斬之——此乃周瑜反間之計,自毀水軍棟樑。",
-            "zh-CN": "曹操见蒋干带回密书,以为蔡瑁、张允私通周瑜,怒不可遏,立命斩之——此乃周瑜反间之计,自毁水军栋梁。",
-            "en": "Cao Cao sees the forged letter Jiang Gan brought back and believes Cai Mao and Zhang Yun have secretly gone over to Zhou Yu. In rage, he orders them beheaded — walking straight into Zhou Yu's counter-spy trap, destroying his own finest naval commanders.",
-            "ja": "蔣幹の持ち帰った偽書を見た曹操は、蔡瑁・張允が周瑜に内通していると思い込み、怒りのあまり即座に斬首を命じた——これぞ周瑜の反間の計、自ら水軍の柱を折った。"
-          },
-          "quote": {
-            "text": "操大怒曰:「蔡瑁、張允怎敢如此!」即便斬之。",
-            "source": {
-              "zh-TW": "第四十五回",
-              "zh-CN": "第四十五回",
-              "en": "Chapter 45",
-              "ja": "第四十五回"
-            },
-            "translation": {
-              "en": "Cao Cao, enraged, cried: 'How dare Cai Mao and Zhang Yun act so!' And forthwith ordered their execution.",
-              "ja": "曹操は大いに怒って言った。「蔡瑁・張允め、なんたる所業！」即座に処刑を命じた。"
-            }
-          },
-          "camera_hint": "follow",
           "cut": {
             "text": {
-              "zh-TW": "蔡瑁張允伏誅",
-              "zh-CN": "蔡瑁张允伏诛",
-              "en": "Cai Mao & Zhang Yun Executed",
-              "ja": "蔡瑁・張允、誅殺"
+              "zh-TW": "曹操派來的說客中計,偷走一封周瑜故意留的假信",
+              "zh-CN": "曹操派来的说客中计,偷走一封周瑜故意留的假信",
+              "en": "Cao's envoy takes the bait and steals a forged letter Zhou Yu left for him",
+              "ja": "曹操の使者が罠にかかり、周瑜がわざと残した偽の手紙を盗み出す"
             }
           }
         },
         {
-          "t": 1348,
-          "type": "status",
-          "unit": "caizhang_fleet",
-          "badge": "defect"
-        },
-        {
-          "t": 1348,
-          "t_end": 1492,
-          "type": "move",
-          "unit": "maozhi_fleet",
-          "to": [
-            60,
-            -215
-          ]
-        },
-        {
-          "t": 1396,
-          "type": "status",
-          "unit": "caizhang_fleet",
-          "troops": 38000,
-          "badge": "idle",
-          "label": {
-            "zh-TW": "毛玠・于禁水軍",
-            "zh-CN": "毛玠・于禁水军",
-            "en": "Mao Jie & Yu Jin's Navy",
-            "ja": "毛玠・于禁水軍"
-          }
-        },
-        {
-          "t": 1396,
-          "type": "status",
-          "unit": "maozhi_fleet",
-          "troops": 0
-        },
-        {
-          "t": 1516,
-          "type": "status",
-          "unit": "maozhi_fleet",
-          "opacity": 0
-        },
-        {
-          "t": 1616,
-          "t_end": 1916,
+          "t": 2116,
+          "t_end": 2416,
           "type": "move",
           "unit": "ganling_fleet",
           "to": [
@@ -523,8 +451,8 @@
           ]
         },
         {
-          "t": 1716,
-          "t_end": 2016,
+          "t": 2216,
+          "t_end": 2516,
           "type": "move",
           "unit": "handan_fleet",
           "to": [
@@ -533,14 +461,14 @@
           ]
         },
         {
-          "t": 2366,
+          "t": 2866,
           "type": "status",
           "unit": "strawboat_fleet",
           "opacity": 1
         },
         {
-          "t": 2366,
-          "t_end": 2566,
+          "t": 2866,
+          "t_end": 3066,
           "type": "move",
           "unit": "strawboat_fleet",
           "to": [
@@ -549,7 +477,7 @@
           ]
         },
         {
-          "t": 2566,
+          "t": 3066,
           "time_display": {
             "zh-TW": "又三日・大霧",
             "zh-CN": "又三日・大雾",
@@ -590,11 +518,18 @@
             "count": 240
           },
           "camera_hint": "follow",
-          "cut": true
+          "cut": {
+            "text": {
+              "zh-TW": "諸葛亮趁大霧,用草船向曹營「借」走十萬支箭",
+              "zh-CN": "诸葛亮趁大雾,用草船向曹营「借」走十万支箭",
+              "en": "Under heavy fog, Zhuge Liang \"borrows\" 100,000 arrows with straw boats",
+              "ja": "濃霧に乗じ、諸葛亮が藁舟で曹営から十万本の矢を「借りる」"
+            }
+          }
         },
         {
-          "t": 2636,
-          "t_end": 2836,
+          "t": 3136,
+          "t_end": 3336,
           "type": "move",
           "unit": "strawboat_fleet",
           "to": [
@@ -603,14 +538,14 @@
           ]
         },
         {
-          "t": 2876,
+          "t": 3376,
           "type": "status",
           "unit": "strawboat_fleet",
           "opacity": 0
         },
         {
-          "t": 3016,
-          "t_end": 3316,
+          "t": 3516,
+          "t_end": 3816,
           "type": "move",
           "unit": "ganling_fleet",
           "to": [
@@ -619,8 +554,8 @@
           ]
         },
         {
-          "t": 3216,
-          "t_end": 3516,
+          "t": 3716,
+          "t_end": 4016,
           "type": "move",
           "unit": "liubei_army",
           "to": [
@@ -629,8 +564,8 @@
           ]
         },
         {
-          "t": 3616,
-          "t_end": 3916,
+          "t": 4116,
+          "t_end": 4416,
           "type": "move",
           "unit": "handan_fleet",
           "to": [
@@ -639,13 +574,13 @@
           ]
         },
         {
-          "t": 3676,
+          "t": 4176,
           "type": "status",
           "unit": "kanze_boat",
           "opacity": 1
         },
         {
-          "t": 3696,
+          "t": 4196,
           "time_display": {
             "zh-TW": "是夜",
             "zh-CN": "是夜",
@@ -667,11 +602,18 @@
             "ja": "黄蓋の杖刑の後、闞澤は夜、単身で小舟を漕いで暗い江面を渡り、曹軍水寨に潜入。曹操の信を得るべく、偽りの降伏文書を密かに届けた。第四十七回。"
           },
           "camera_hint": "follow",
-          "cut": true
+          "cut": {
+            "text": {
+              "zh-TW": "孫吳一方詐降,使者冒死渡江把假降書送進曹營",
+              "zh-CN": "孙吴一方诈降,使者冒死渡江把假降书送进曹营",
+              "en": "Faking surrender, an allied envoy risks his life to deliver the false letter",
+              "ja": "偽りの降伏のため、使者が命がけで江を渡り偽の降伏状を曹営へ届ける"
+            }
+          }
         },
         {
-          "t": 3696,
-          "t_end": 3976,
+          "t": 4196,
+          "t_end": 4476,
           "type": "move",
           "unit": "kanze_boat",
           "to": [
@@ -681,8 +623,8 @@
           "camera_hint": "follow"
         },
         {
-          "t": 4016,
-          "t_end": 4236,
+          "t": 4516,
+          "t_end": 4736,
           "type": "move",
           "unit": "kanze_boat",
           "to": [
@@ -691,13 +633,13 @@
           ]
         },
         {
-          "t": 4276,
+          "t": 4776,
           "type": "status",
           "unit": "kanze_boat",
           "opacity": 0
         },
         {
-          "t": 4416,
+          "t": 4916,
           "time_display": {
             "zh-TW": "隆冬",
             "zh-CN": "隆冬",
@@ -718,16 +660,23 @@
             "en": "Huang Gai volunteers for a flogging and secretly sends a letter of feigned surrender; Pang Tong then offers the chain stratagem, and Cao's warships are bound together with iron chains, steady as solid ground.",
             "ja": "黄蓋は自ら杖刑を受けて偽りの降伏文書を密かに送り、龐統はさらに連環の計を献じる。曹軍の戦船はことごとく鉄鎖で繋がれ、平地のごとく安定した。"
           },
-          "cut": true
+          "cut": {
+            "text": {
+              "zh-TW": "周瑜當眾痛打黃蓋演苦肉計,再誘曹操把戰船鎖成一片",
+              "zh-CN": "周瑜当众痛打黄盖演苦肉计,再诱曹操把战船锁成一片",
+              "en": "Zhou Yu flogs Huang Gai as a ruse, then lures Cao into chaining his ships",
+              "ja": "周瑜が黄蓋を打つ苦肉の計を演じ、曹操に戦船を鎖で繋がせる"
+            }
+          }
         },
         {
-          "t": 4676,
+          "t": 5176,
           "type": "status",
           "unit": "kanze_boat",
           "opacity": 1
         },
         {
-          "t": 4696,
+          "t": 5196,
           "type": "narration",
           "speaker": "zhugeliang",
           "title": {
@@ -743,11 +692,18 @@
             "ja": "龐統は闞澤の小舟を借りて再び渡り、曹操に連環の計を献じた——戦船を首尾相接して鉄鎖で固定すれば平地のごとし。曹操は大いに喜び、すでに罠に踏み込んでいることに気づかなかった。第四十七～四十八回。"
           },
           "camera_hint": "follow",
-          "cut": true
+          "cut": {
+            "text": {
+              "zh-TW": "曹軍把戰船用鐵鏈全連起來,穩如平地、卻再難逃火",
+              "zh-CN": "曹军把战船用铁链全连起来,稳如平地、却再难逃火",
+              "en": "Cao chains all his ships together—steady as land, but now a firetrap",
+              "ja": "曹軍が全船を鉄の鎖で繋ぎ、地のように安定するが火には逃げ場を失う"
+            }
+          }
         },
         {
-          "t": 4696,
-          "t_end": 4976,
+          "t": 5196,
+          "t_end": 5476,
           "type": "move",
           "unit": "kanze_boat",
           "to": [
@@ -757,18 +713,18 @@
           "camera_hint": "follow"
         },
         {
-          "t": 4996,
-          "t_end": 5096,
+          "t": 5496,
+          "t_end": 5596,
           "type": "move",
-          "unit": "caizhang_fleet",
+          "unit": "maozhi_fleet",
           "to": [
             120,
             -235
           ]
         },
         {
-          "t": 4996,
-          "t_end": 5096,
+          "t": 5496,
+          "t_end": 5596,
           "type": "move",
           "unit": "wenpin_fleet",
           "to": [
@@ -777,8 +733,8 @@
           ]
         },
         {
-          "t": 4996,
-          "t_end": 5096,
+          "t": 5496,
+          "t_end": 5596,
           "type": "move",
           "unit": "cao_fleet",
           "to": [
@@ -788,8 +744,8 @@
           "camera_hint": "overview"
         },
         {
-          "t": 5116,
-          "t_end": 5328,
+          "t": 5616,
+          "t_end": 5828,
           "type": "move",
           "unit": "kanze_boat",
           "to": [
@@ -798,13 +754,13 @@
           ]
         },
         {
-          "t": 5352,
+          "t": 5852,
           "type": "status",
           "unit": "kanze_boat",
           "opacity": 0
         },
         {
-          "t": 4616,
+          "t": 5116,
           "type": "status",
           "unit": "huanggai_fleet",
           "label": {
@@ -815,8 +771,8 @@
           }
         },
         {
-          "t": 4616,
-          "t_end": 5016,
+          "t": 5116,
+          "t_end": 5516,
           "type": "move",
           "unit": "zhouyu_fleet",
           "to": [
@@ -825,8 +781,8 @@
           ]
         },
         {
-          "t": 4916,
-          "t_end": 5216,
+          "t": 5416,
+          "t_end": 5716,
           "type": "move",
           "unit": "ganling_fleet",
           "to": [
@@ -835,8 +791,8 @@
           ]
         },
         {
-          "t": 5316,
-          "t_end": 5556,
+          "t": 5816,
+          "t_end": 6056,
           "type": "move",
           "unit": "huanggai_fleet",
           "to": [
@@ -845,8 +801,8 @@
           ]
         },
         {
-          "t": 5556,
-          "t_end": 5736,
+          "t": 6056,
+          "t_end": 6236,
           "type": "move",
           "unit": "handan_fleet",
           "to": [
@@ -855,7 +811,7 @@
           ]
         },
         {
-          "t": 6036,
+          "t": 6536,
           "time_display": {
             "zh-TW": "十一月二十日",
             "zh-CN": "十一月二十日",
@@ -896,10 +852,17 @@
               800
             ]
           },
-          "cut": true
+          "cut": {
+            "text": {
+              "zh-TW": "諸葛亮等到冬夜罕見的東南風,火攻萬事俱備",
+              "zh-CN": "诸葛亮等到冬夜罕见的东南风,火攻万事俱备",
+              "en": "A rare winter southeast wind rises—all is ready for the fire attack",
+              "ja": "冬には珍しい東南の風が吹き、火攻めの準備がすべて整う"
+            }
+          }
         },
         {
-          "t": 6036,
+          "t": 6536,
           "type": "camera",
           "pos": [
             -620,
@@ -907,7 +870,7 @@
           ]
         },
         {
-          "t": 6426,
+          "t": 6926,
           "time_display": {
             "zh-TW": "是夜",
             "zh-CN": "是夜",
@@ -928,6 +891,84 @@
             "ja": "東南の風は急を告げ、江面は波立つ。周瑜は諸軍に下知を伝え、火攻めの計は今夜決行と定めた。"
           },
           "camera_hint": "overview"
+        },
+        {
+          "t": 1700,
+          "type": "narration",
+          "speaker": "caocao",
+          "title": {
+            "zh-TW": "蔡瑁張允伏誅",
+            "zh-CN": "蔡瑁张允伏诛",
+            "en": "Cai Mao and Zhang Yun Executed",
+            "ja": "蔡瑁・張允、誅殺される"
+          },
+          "desc": {
+            "zh-TW": "曹操見蔣幹帶回密書,以為蔡瑁、張允私通周瑜,怒不可遏,立命斬之——此乃周瑜反間之計,自毀水軍棟樑。",
+            "zh-CN": "曹操见蒋干带回密书,以为蔡瑁、张允私通周瑜,怒不可遏,立命斩之——此乃周瑜反间之计,自毁水军栋梁。",
+            "en": "Cao Cao sees the forged letter Jiang Gan brought back and believes Cai Mao and Zhang Yun have secretly gone over to Zhou Yu. In rage, he orders them beheaded — walking straight into Zhou Yu's counter-spy trap, destroying his own finest naval commanders.",
+            "ja": "蔣幹の持ち帰った偽書を見た曹操は、蔡瑁・張允が周瑜に内通していると思い込み、怒りのあまり即座に斬首を命じた——これぞ周瑜の反間の計、自ら水軍の柱を折った。"
+          },
+          "quote": {
+            "text": "操大怒曰:「蔡瑁、張允怎敢如此!」即便斬之。",
+            "source": {
+              "zh-TW": "第四十五回",
+              "zh-CN": "第四十五回",
+              "en": "Chapter 45",
+              "ja": "第四十五回"
+            },
+            "translation": {
+              "en": "Cao Cao, enraged, cried: 'How dare Cai Mao and Zhang Yun act so!' And forthwith ordered their execution.",
+              "ja": "曹操は大いに怒って言った。「蔡瑁・張允め、なんたる所業！」即座に処刑を命じた。"
+            }
+          },
+          "camera_hint": "follow",
+          "cut": {
+            "text": {
+              "zh-TW": "曹操誤信假信,親手斬了自己最會水戰的兩名主將",
+              "zh-CN": "曹操误信假信,亲手斩了自己最会水战的两名主将",
+              "en": "Fooled by the letter, Cao executes his two best naval commanders",
+              "ja": "偽の手紙を信じた曹操が、水戦に最も長けた二人の主将を自ら処刑する"
+            }
+          }
+        },
+        {
+          "t": 1760,
+          "t_end": 1900,
+          "type": "status",
+          "unit": "caizhang_fleet",
+          "pulse": {
+            "cycles": 4,
+            "min": 0.25
+          }
+        },
+        {
+          "t": 1900,
+          "t_end": 2000,
+          "type": "status",
+          "unit": "caizhang_fleet",
+          "opacity": 0
+        },
+        {
+          "t": 2050,
+          "type": "status",
+          "unit": "caizhang_fleet",
+          "troops": 0
+        },
+        {
+          "t": 1800,
+          "t_end": 2050,
+          "type": "move",
+          "unit": "maozhi_fleet",
+          "to": [
+            80,
+            -210
+          ]
+        },
+        {
+          "t": 2050,
+          "type": "status",
+          "unit": "maozhi_fleet",
+          "troops": 38000
         }
       ]
     },
@@ -987,7 +1028,7 @@
           "t": 0,
           "t_end": 100,
           "type": "move",
-          "unit": "caizhang_fleet",
+          "unit": "maozhi_fleet",
           "to": [
             120,
             -250
@@ -1033,10 +1074,10 @@
           "camera_hint": "follow",
           "cut": {
             "text": {
-              "zh-TW": "甘寧斬蔡中",
-              "zh-CN": "甘宁斩蔡中",
-              "en": "Gan Ning Kills Cai Zhong",
-              "ja": "甘寧、蔡中を斬る"
+              "zh-TW": "孫吳前鋒識破內奸並斬殺,渡江火攻的路打開了",
+              "zh-CN": "孙吴前锋识破内奸并斩杀,渡江火攻的路打开了",
+              "en": "The allied vanguard kills Cao's spy, clearing the way for the fire attack",
+              "ja": "孫呉の先鋒が内通者を見破って斬り、火攻めへの道が開ける"
             }
           }
         },
@@ -1047,7 +1088,7 @@
           "fx": {
             "kind": "volley",
             "from": "ganling_fleet",
-            "to": "caizhang_fleet",
+            "to": "maozhi_fleet",
             "count": 80
           }
         },
@@ -1162,7 +1203,7 @@
           "camera_hint": "none",
           "fx": {
             "kind": "volley",
-            "from": "caizhang_fleet",
+            "from": "maozhi_fleet",
             "to": "huanggai_fleet",
             "count": 60
           }
@@ -1192,10 +1233,10 @@
           "camera_hint": "follow",
           "cut": {
             "text": {
-              "zh-TW": "黃蓋中箭落水",
-              "zh-CN": "黄盖中箭落水",
-              "en": "Huang Gai Shot — Man Overboard!",
-              "ja": "黄蓋、矢に中り落水！"
+              "zh-TW": "黃蓋駕火船衝向曹營,中箭落水被同袍救起",
+              "zh-CN": "黄盖驾火船冲向曹营,中箭落水被同袍救起",
+              "en": "Huang Gai charges in with fireships, is shot, falls overboard, and is rescued",
+              "ja": "黄蓋が火船で突入するが矢に当たって落水し、味方に救い上げられる"
             }
           }
         },
@@ -1223,13 +1264,13 @@
             "huanggai_fleet",
             "cao_fleet",
             "wenpin_fleet",
-            "caizhang_fleet"
+            "maozhi_fleet"
           ],
           "losses": {
             "cao_fleet": 32800,
             "huanggai_fleet": 1470,
             "wenpin_fleet": 1200,
-            "caizhang_fleet": 3800
+            "maozhi_fleet": 3800
           }
         },
         {
@@ -1336,7 +1377,7 @@
           "fx": {
             "kind": "volley",
             "from": "handan_fleet",
-            "to": "caizhang_fleet",
+            "to": "maozhi_fleet",
             "count": 110
           }
         },
@@ -1386,10 +1427,10 @@
           "camera_hint": "overview",
           "cut": {
             "text": {
-              "zh-TW": "諸路登陸",
-              "zh-CN": "诸路登陆",
-              "en": "All Forces Go Ashore",
-              "ja": "諸路、上陸"
+              "zh-TW": "曹軍水寨燒成火海,聯軍各路趁勢登岸進攻",
+              "zh-CN": "曹军水寨烧成火海,联军各路趁势登岸进攻",
+              "en": "Cao's naval camp burns; allied columns storm ashore from every side",
+              "ja": "曹軍の水寨が火の海となり、連合軍が各方面から上陸して攻め込む"
             }
           }
         },
@@ -1519,10 +1560,10 @@
           },
           "cut": {
             "text": {
-              "zh-TW": "張遼護主",
-              "zh-CN": "张辽护主",
-              "en": "Zhang Liao Guards the Lord",
-              "ja": "張遼、主を護る"
+              "zh-TW": "曹操大營也起火,大將張遼拚死護他棄營逃命",
+              "zh-CN": "曹操大营也起火,大将张辽拼死护他弃营逃命",
+              "en": "His main camp ablaze, Cao flees as Zhang Liao fights to shield him",
+              "ja": "本陣にも火が回り、張遼が必死に守る中、曹操が陣を捨てて逃げる"
             }
           },
           "desc": {
@@ -1652,7 +1693,14 @@
             "en": "Kongming foresaw Cao Cao's flight along this very path: Zhao Yun, Zhang Fei, and Guan Yu wait in three successive ambushes — Cao Cao walks straight into the trap.",
             "ja": "孔明は曹操が必ずこの小道を行くと読み、趙雲・張飛を各路に伏せ、雲長に最後の隘口を守らせた——三路で待ち受け、曹操が自ら罠に飛び込んでくるのを待つのみ。"
           },
-          "cut": true
+          "cut": {
+            "text": {
+              "zh-TW": "諸葛亮算準曹操逃跑的小路,沿途埋下三道伏兵",
+              "zh-CN": "诸葛亮算准曹操逃跑的小路,沿途埋下三道伏兵",
+              "en": "Zhuge Liang predicts Cao's escape route and lays three ambushes along it",
+              "ja": "諸葛亮が曹操の逃げ道を読み切り、道沿いに三つの伏兵を置く"
+            }
+          }
         },
         {
           "t": 120,
@@ -1686,10 +1734,10 @@
           "camera_hint": "follow",
           "cut": {
             "text": {
-              "zh-TW": "一笑——趙雲殺出!",
-              "zh-CN": "一笑——赵云杀出!",
-              "en": "First Laugh — Zhao Yun Strikes!",
-              "ja": "一笑——趙雲、突出!"
+              "zh-TW": "曹操笑這裡沒伏兵——話沒說完,趙雲殺出",
+              "zh-CN": "曹操笑这里没伏兵——话没说完,赵云杀出",
+              "en": "Cao laughs that there's no ambush here—then Zhao Yun bursts out",
+              "ja": "曹操が「伏兵などいない」と笑った途端、趙雲が躍り出る"
             }
           }
         },
@@ -1748,10 +1796,10 @@
           "camera_hint": "follow",
           "cut": {
             "text": {
-              "zh-TW": "二笑——張飛殺出!",
-              "zh-CN": "二笑——张飞杀出!",
-              "en": "Second Laugh — Zhang Fei Strikes!",
-              "ja": "二笑——張飛、突出!"
+              "zh-TW": "曹操再笑對手無能——張飛又攔住去路",
+              "zh-CN": "曹操再笑对手无能——张飞又拦住去路",
+              "en": "Cao laughs again at his foes—then Zhang Fei blocks the road",
+              "ja": "曹操が再び敵を嘲笑うと、今度は張飛が道を塞ぐ"
             }
           }
         },
@@ -1811,10 +1859,10 @@
           "camera_hint": "follow",
           "cut": {
             "text": {
-              "zh-TW": "三笑——關羽攔路!",
-              "zh-CN": "三笑——关羽拦路!",
-              "en": "Third Laugh — Guan Yu Bars the Way!",
-              "ja": "三笑——関羽、道を塞ぐ!"
+              "zh-TW": "曹操三笑自己命大——關羽已橫刀堵在隘口",
+              "zh-CN": "曹操三笑自己命大——关羽已横刀堵在隘口",
+              "en": "Cao laughs a third time at his luck—but Guan Yu already bars the pass",
+              "ja": "曹操が三たび命運を笑うが、関羽がすでに刀を構えて隘路を塞いでいる"
             }
           }
         },
@@ -1857,7 +1905,14 @@
             "en": "At the narrowest point of the trail stands Guan Yunchang, Green Dragon Blade in hand, astride Red Hare, five hundred swordsmen at his back; Cao's men lose all heart.",
             "ja": "華容道の隘路に、関雲長が青龍刀を提げ赤兎馬に跨り、五百の校刀手を従えて立ち塞がる。曹軍は皆、胆を冷やした。"
           },
-          "cut": true
+          "cut": {
+            "text": {
+              "zh-TW": "最後關口,關羽攔住去路,曹軍嚇得不敢動",
+              "zh-CN": "最后关口,关羽拦住去路,曹军吓得不敢动",
+              "en": "At the final pass Guan Yu blocks the way; Cao's men freeze in fear",
+              "ja": "最後の関で関羽が立ちはだかり、曹軍は恐れて動けなくなる"
+            }
+          }
         },
         {
           "t": 540,
@@ -1887,7 +1942,14 @@
               "ja": "雲長が振り返ったとき、曹操と諸将はすでに通り過ぎていた。"
             }
           },
-          "cut": true
+          "cut": {
+            "text": {
+              "zh-TW": "關羽念在舊情,放走了走投無路的曹操",
+              "zh-CN": "关羽念在旧情,放走了走投无路的曹操",
+              "en": "Out of old loyalty, Guan Yu lets the cornered Cao Cao go",
+              "ja": "関羽が昔の恩義を思い、追い詰められた曹操を見逃す"
+            }
+          }
         },
         {
           "t": 550,
@@ -1921,7 +1983,14 @@
             "ja": "曹操は江陵へ敗れ帰り、もはや南下の力はない。孫権は江東を保ち、劉備は荊州を取り、天下三分の鼎立がここに定まった。"
           },
           "camera_hint": "overview",
-          "cut": true
+          "cut": {
+            "text": {
+              "zh-TW": "這一戰之後,天下分成魏、蜀、吳三國",
+              "zh-CN": "这一战之后,天下分成魏、蜀、吴三国",
+              "en": "After this battle, the realm splits into Three Kingdoms—Wei, Shu, and Wu",
+              "ja": "この戦いの後、天下は魏・蜀・呉の三国に分かれる"
+            }
+          }
         }
       ]
     }

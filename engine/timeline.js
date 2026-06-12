@@ -38,6 +38,7 @@ export function compileTimeline(eventsDef, battle) {
       state: [{ p: 0, v: "idle" }],
       opacity: [{ p: 0, v: 1 }],
       name: [{ p: 0, v: u.label }],
+      pulse: [],
     };
   }
 
@@ -143,9 +144,16 @@ export function compileTimeline(eventsDef, battle) {
           }
           if (ev.badge) tr.state.push({ p, v: ev.badge });
           if (ev.opacity != null) {
-            tr.opacity.push({ p: p - EPS, v: lastVal(tr.opacity) }, { p, v: ev.opacity });
+            if (ev.t_end != null) {
+              tr.opacity.push({ p, v: lastVal(tr.opacity) }, { p: pEnd, v: ev.opacity });
+            } else {
+              tr.opacity.push({ p: p - EPS, v: lastVal(tr.opacity) }, { p, v: ev.opacity });
+            }
           }
           if (ev.label) tr.name.push({ p, v: ev.label });
+          if (ev.pulse && ev.t_end != null) {
+            tr.pulse.push({ p, pEnd, cycles: ev.pulse.cycles || 3, min: ev.pulse.min ?? 0.2 });
+          }
           break;
         }
         case "narration":
@@ -199,7 +207,20 @@ export function compileTimeline(eventsDef, battle) {
       if (s === "idle" && movingAt(tracks[id]?.pos, p)) return "advance";
       return s;
     },
-    opacityAt: (id, p) => lerpAt(tracks[id]?.opacity, p),
+    opacityAt(id, p) {
+      let v = lerpAt(tracks[id]?.opacity, p);
+      const pls = tracks[id]?.pulse;
+      if (pls) {
+        for (const q of pls) {
+          if (p >= q.p && p <= q.pEnd) {
+            const t = (p - q.p) / (q.pEnd - q.p);
+            v *= q.min + (1 - q.min) * (0.5 + 0.5 * Math.cos(t * q.cycles * 2 * Math.PI));
+            break;
+          }
+        }
+      }
+      return v;
+    },
     // 目前章節內最後一張字卡(跨章 seek 不殘留上一章字卡)
     cardAt(p) {
       const ci = chapterIndexAt(p);
