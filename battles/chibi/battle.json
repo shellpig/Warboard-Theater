@@ -149,7 +149,7 @@
       "type": "fleet",
       "label": { "zh-TW": "周瑜水軍", "zh-CN": "周瑜水军", "en": "Zhou Yu's Navy", "ja": "周瑜水軍" },
       "spawn": [-160, 280],
-      "troops": 13500,
+      "troops": 9000,
       "count": 12
     },
     {
@@ -158,7 +158,7 @@
       "type": "fleet",
       "label": { "zh-TW": "黃蓋船隊", "zh-CN": "黄盖船队", "en": "Huang Gai's Squadron", "ja": "黄蓋船団" },
       "spawn": [-280, 300],
-      "troops": 2000,
+      "troops": 1800,
       "count": 3
     },
     {
@@ -235,7 +235,7 @@
       "type": "fleet",
       "label": { "zh-TW": "甘寧隊", "zh-CN": "甘宁队", "en": "Gan Ning's Squadron", "ja": "甘寧隊" },
       "spawn": [-440, 280],
-      "troops": 6800,
+      "troops": 6000,
       "count": 6
     },
     {
@@ -244,8 +244,33 @@
       "type": "fleet",
       "label": { "zh-TW": "韓當・周泰隊", "zh-CN": "韩当・周泰队", "en": "Han Dang & Zhou Tai's Fleet", "ja": "韓当・周泰隊" },
       "spawn": [60, 280],
-      "troops": 7700,
+      "troops": 6000,
       "count": 6
+    },
+    {
+      "id": "kanze_boat",
+      "faction": "wu",
+      "type": "fleet",
+      "label": { "zh-TW": "闞澤小舟", "zh-CN": "阚泽小舟", "en": "Kan Ze's Skiff", "ja": "闞澤の小舟" },
+      "spawn": [-300, 360],
+      "troops": 200,
+      "count": 2
+    },
+    {
+      "id": "lvmeng_force",
+      "faction": "wu",
+      "type": "infantry",
+      "label": { "zh-TW": "呂蒙隊", "zh-CN": "吕蒙队", "en": "Lü Meng's Force", "ja": "呂蒙隊" },
+      "spawn": [-120, 320],
+      "troops": 4000
+    },
+    {
+      "id": "lingtong_force",
+      "faction": "wu",
+      "type": "infantry",
+      "label": { "zh-TW": "淩統・太史慈隊", "zh-CN": "凌统・太史慈队", "en": "Ling Tong & Taishi Ci's Force", "ja": "凌統・太史慈隊" },
+      "spawn": [120, 340],
+      "troops": 3000
     },
     {
       "id": "zhaoyun_force",
