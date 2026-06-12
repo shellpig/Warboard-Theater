@@ -15,24 +15,40 @@
     },
     {
       "chapter": "prelude",
-      "t": 60,
-      "sky_top": "#8298a8",
-      "sky_horizon": "#b0c4d2",
-      "fog_density": 0.0009
+      "t": 2700,
+      "fog_density": 0.0004
     },
     {
       "chapter": "prelude",
-      "t": 90,
-      "sky_top": "#8aa4b2",
-      "sky_horizon": "#c0d2dc",
-      "fog_density": 0.0014
+      "t": 2900,
+      "sky_top": "#96a8b6",
+      "sky_horizon": "#bcccd8",
+      "fog_density": 0.0012,
+      "sun": 0.85
     },
     {
       "chapter": "prelude",
-      "t": 200,
+      "t": 3000,
+      "sky_top": "#a0b0bc",
+      "sky_horizon": "#c8d6e0",
+      "fog_density": 0.0018,
+      "sun": 0.65
+    },
+    {
+      "chapter": "prelude",
+      "t": 3200,
+      "sky_top": "#96a8b6",
+      "sky_horizon": "#bcccd8",
+      "fog_density": 0.0010,
+      "sun": 0.85
+    },
+    {
+      "chapter": "prelude",
+      "t": 3400,
       "sky_top": "#7e95a8",
       "sky_horizon": "#a8bfcc",
-      "fog_density": 0.0004
+      "fog_density": 0.0004,
+      "sun": 1.2
     },
     {
       "chapter": "prelude",
@@ -731,6 +747,39 @@
             -120,
             -235
           ]
+        },
+        {
+          "t": 5496,
+          "type": "status",
+          "unit": "cao_fleet",
+          "label": {
+            "zh-TW": "曹軍連環船隊",
+            "zh-CN": "曹军连环船队",
+            "en": "Cao's Chained Fleet",
+            "ja": "曹軍連環船団"
+          }
+        },
+        {
+          "t": 5496,
+          "type": "status",
+          "unit": "wenpin_fleet",
+          "label": {
+            "zh-TW": "文聘連環前軍",
+            "zh-CN": "文聘连环前军",
+            "en": "Wenpin's Chained Vanguard",
+            "ja": "文聘連環前軍"
+          }
+        },
+        {
+          "t": 5496,
+          "type": "status",
+          "unit": "maozhi_fleet",
+          "label": {
+            "zh-TW": "毛玠・于禁連環水軍",
+            "zh-CN": "毛玠・于禁连环水军",
+            "en": "Maoji & Yu Jin's Chained Navy",
+            "ja": "毛玠・于禁連環水軍"
+          }
         },
         {
           "t": 5496,

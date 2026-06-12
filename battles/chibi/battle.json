@@ -136,7 +136,7 @@
       "id": "cao_fleet",
       "faction": "wei",
       "type": "fleet",
-      "label": { "zh-TW": "曹軍連環船隊", "zh-CN": "曹军连环船队", "en": "Cao's Chained Fleet", "ja": "曹軍連環船団" },
+      "label": { "zh-TW": "曹軍水軍", "zh-CN": "曹军水军", "en": "Cao's Navy", "ja": "曹軍水軍" },
       "spawn": [0, -240],
       "troops": 50000,
       "count": 24
