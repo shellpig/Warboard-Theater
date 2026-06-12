@@ -11,7 +11,7 @@ import * as THREE from "three";
 const FIRE_MAX = 9000;
 const SMOKE_MAX = 3500;
 const SHOT_MAX = 1500;
-const LIGHT_POOL = 3;
+const LIGHT_POOL = 5;
 const WIND = [-7, -9]; // 東南風:煙向西北飄(x = 東、z = 南)
 const VOLLEY_DUR = 2.4; // 箭雨總時長(播放秒,含齊射散佈)
 const EXPLOSION_DUR = 1.0;
@@ -115,7 +115,7 @@ export function createEffects(scene, { timeline, clock, terrain }) {
   }
   let glowTex = null;
 
-  function updateGlow(idx, a, b, now) {
+  function updateGlow(idx, a, b, p) {
     if (!a.onWater) return;
     let g = glows[idx];
     if (!g) {
@@ -132,7 +132,7 @@ export function createEffects(scene, { timeline, clock, terrain }) {
       scene.add(g);
       glows[idx] = g;
     }
-    const flick = 0.85 + 0.15 * Math.sin(now * 9 + idx * 2.1) * Math.sin(now * 4.7 + idx);
+    const flick = 0.85 + 0.15 * Math.sin(p * 9 + idx * 2.1) * Math.sin(p * 4.7 + idx);
     g.visible = true;
     g.position.set(a.x, terrain.waterLevel + 0.6, a.z);
     const s = 156 * Math.sqrt(b.intensity) * flick;
@@ -241,10 +241,7 @@ export function createEffects(scene, { timeline, clock, terrain }) {
     }
   }
 
-  let now = 0; // 實際時間累計(火焰閃爍用,暫停時仍持續)
-
   function update(dt) {
-    now += dt;
     const p = clock.time;
 
     // 持續火源:發射 + 水面火光 + 光源需求
@@ -258,8 +255,8 @@ export function createEffects(scene, { timeline, clock, terrain }) {
       const a = anchorOf(b, p);
       if (!a) return;
       emitBurn(b, idx, a, dt);
-      updateGlow(idx, a, b, now);
-      const flick = 0.8 + 0.2 * Math.sin(now * 11 + idx * 3.7) * Math.sin(now * 5.3 + idx);
+      updateGlow(idx, a, b, p);
+      const flick = 0.8 + 0.2 * Math.sin(p * 11 + idx * 3.7) * Math.sin(p * 5.3 + idx);
       lightDemands.push({ x: a.x, y: a.y + 30, z: a.z, w: b.intensity * flick });
     });
 
@@ -290,8 +287,15 @@ export function createEffects(scene, { timeline, clock, terrain }) {
     }
     shots.end();
 
-    // 點光源池:分配給最強的前 N 個火光
+    // 水面映火:整體火勢餵 uGlow shader uniform（江面橙紅映照）
     lightDemands.sort((a, b) => b.w - a.w);
+    let totalGlow = 0;
+    for (const d of lightDemands) totalGlow += d.w;
+    if (terrain.water.material.uniforms?.uGlow != null) {
+      terrain.water.material.uniforms.uGlow.value = Math.min(totalGlow * 0.3, 1.0);
+    }
+
+    // 點光源池:分配給最強的前 N 個火光
     for (let i = 0; i < LIGHT_POOL; i++) {
       const d = lightDemands[i];
       const l = lights[i];
