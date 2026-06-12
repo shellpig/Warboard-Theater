@@ -399,14 +399,16 @@
 
 ---
 
-## 八、實作順序與 commit 切分(每步獨立 commit、各自瀏覽器驗收)
+## 八、子階段 7-A ~ 7-F(每階段獨立 commit、各自瀏覽器驗收後再進下一階段)
 
-1. **引擎地基**:1-A 中央 cut-in(timeline `cutAt` + ui `#cut-in` + css + html)＋ 1-B status 改名(timeline `labelAt` + ui 名牌重構)。先在既有事件補幾個 `cut` 與一個 `label` 測試,驗收淡入淡出、改名、任意 seek 確定性。
-2. **D 曹操三笑**(純資料、零新單位、風險最低):改寫尾聲三道伏兵為三笑三拍。
-3. **B1 三江口 + 反間計換帥**:加 `caizhang_fleet`、三江口事件、t=1320 換帥(改名 + maozhi 併入)。
-4. **新單位 + B3/B4**:加 `kanze_boat`、闞澤下書、龐統連環;同步落實 2-A/2-B 全部兵力改值。
-5. **C 火攻加料**:C1/C2/C3/C4 + 第二章 maozhi→caizhang 引用改寫 + 新增 `lvmeng_force`/`lingtong_force`。
-6. **重算 + 驗收**:依第六節重算所有 losses/attrition;實跑回填 `.verify_phase5.py` line 64;三章整跑 + 任意 seek。
+> 命名比照 Phase 6(6-A ~ 6-F)往例。**7-A 是地基,必須最先**;7-B 純資料、零新單位,正好驗證 7-A;其餘依「第一章 → 跨章兵力 → 第二章」相依順序;7-F 收尾(損失數字須實跑才知,不能先算)。
+
+- **7-A 引擎地基**:1-A 中央 cut-in(timeline `cutAt` + ui `#cut-in` + css + html)＋ 1-B status 改名(timeline `labelAt` + ui 名牌重構)。先在既有事件補幾個 `cut` 與一個 `label` 測試,驗收淡入淡出、改名、任意 seek 確定性。
+- **7-B 曹操三笑**(純資料、零新單位、風險最低):改寫尾聲三道伏兵為三笑三拍(第五節 D1–D4)。
+- **7-C 三江口 + 反間計換帥**:加 `caizhang_fleet`、三江口事件(3-1)、t=1320 換帥(3-2,改名 + maozhi 併入)。
+- **7-D 新單位 + 闞澤龐統**:加 `kanze_boat`、闞澤下書(3-4)、龐統連環(3-6);同步落實第二節 2-A/2-B 全部兵力改值。
+- **7-E 火攻加料**:C1/C2/C3/C4(第四節)+ 第二章 maozhi→caizhang 引用改寫(4-B)+ 新增 `lvmeng_force`/`lingtong_force`。
+- **7-F 重算 + 驗收**:依第六節重算所有 losses/attrition;實跑回填 `.verify_phase5.py` line 64;三章整跑 + 任意 seek。
 
 ---
 
