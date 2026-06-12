@@ -88,16 +88,63 @@ export function buildTerrain(scene, def) {
   const ground = new THREE.Mesh(geo, groundMat);
   scene.add(ground);
 
-  const waterMat = new THREE.MeshStandardMaterial({
-    color: 0x1e3444,
+  const waterMat = new THREE.ShaderMaterial({
+    uniforms: {
+      uTime:  { value: 0 },
+      uDeep:  { value: new THREE.Color(0x1e3444) },
+      uLit:   { value: new THREE.Color(0x2a4e6a) },
+      uGlow:  { value: 0 },
+      uHalfX: { value: renderX / 2 },
+      uHalfZ: { value: renderZ / 2 },
+    },
+    vertexShader: /* glsl */`
+      uniform float uTime;
+      varying float vWave;
+      varying vec3  vWorldPos;
+
+      void main() {
+        vec3 pos = position;
+        float w1 = sin(pos.x * 0.025  + pos.z * 0.018  + uTime * 1.10) * 1.50;
+        float w2 = sin(pos.x * 0.040  - pos.z * 0.030  + uTime * 1.70) * 0.80;
+        float w3 = sin(pos.x * 0.014  + pos.z * 0.038  - uTime * 0.90) * 0.40;
+        float wave = w1 + w2 + w3;
+        pos.y += wave;
+        vWave     = wave / 5.4 + 0.5;
+        vec4 wp   = modelMatrix * vec4(pos, 1.0);
+        vWorldPos = wp.xyz;
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+      }
+    `,
+    fragmentShader: /* glsl */`
+      uniform vec3  uDeep;
+      uniform vec3  uLit;
+      uniform float uGlow;
+      uniform float uHalfX;
+      uniform float uHalfZ;
+
+      varying float vWave;
+      varying vec3  vWorldPos;
+
+      void main() {
+        vec3 col = mix(uDeep, uLit, clamp(vWave, 0.0, 1.0));
+        col += uGlow * vec3(0.55, 0.18, 0.02) * (1.0 - vWave * 0.4);
+
+        float nx = abs(vWorldPos.x) / uHalfX;
+        float nz = abs(vWorldPos.z) / uHalfZ;
+        float et = clamp((max(nx, nz) - 0.65) / 0.35, 0.0, 1.0);
+        if (et > 0.0) {
+          float noise = fract(sin(dot(vWorldPos.xz * 0.009,
+                                     vec2(127.1, 311.7))) * 43758.5453);
+          et = clamp(et + (noise - 0.5) * 0.85, 0.0, 1.0);
+        }
+        gl_FragColor = vec4(col, 0.90 * (1.0 - et * et * et));
+      }
+    `,
     transparent: true,
-    opacity: 0.90,
-    roughness: 0.28,
-    metalness: 0.05,
+    depthWrite: false,
   });
-  applyEdgeFade(waterMat, renderX / 2, renderZ / 2);
   const water = new THREE.Mesh(
-    new THREE.PlaneGeometry(renderX, renderZ).rotateX(-Math.PI / 2),
+    new THREE.PlaneGeometry(renderX, renderZ, 120, 80).rotateX(-Math.PI / 2),
     waterMat
   );
   water.position.y = waterLevel;

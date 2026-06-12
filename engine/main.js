@@ -90,6 +90,7 @@ async function boot() {
     const step = Math.min(dt, 0.25); // 分頁切回時避免大步跳躍
     clock.tick(step);
     applyTime(clock.time);
+    terrain.water.material.uniforms.uTime.value = clock.time * 400;
     atmosphere.update(clock.time);
     effects.update(step);
     audio.update(step);
