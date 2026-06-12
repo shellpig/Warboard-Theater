@@ -29,7 +29,7 @@ export function compileTimeline(eventsDef, battle) {
   }
   const total = cursor;
 
-  // --- 每單位軌道初始化(spawn / troops / 可見)---
+  // --- 每單位軌道初始化(spawn / troops / 可見 / 名稱)---
   const tracks = {};
   for (const u of battle.units || []) {
     tracks[u.id] = {
@@ -37,6 +37,7 @@ export function compileTimeline(eventsDef, battle) {
       troops: [{ p: 0, v: u.troops || 0 }],
       state: [{ p: 0, v: "idle" }],
       opacity: [{ p: 0, v: 1 }],
+      name: [{ p: 0, v: u.label }],
     };
   }
 
@@ -46,6 +47,11 @@ export function compileTimeline(eventsDef, battle) {
   const stateRestores = []; // engage t_end 的狀態還原(編譯完成後統一裁決)
   const burns = []; // { start, end, unit?|pos?, intensity } 火源燃燒區間(effects 消費)
   const fxShots = []; // { p, kind, … } 事件附帶一次性特效(volley / explosion)
+  const cuts = []; // { p, chapter, text, sub } 中央 cut-in 橋段標題(Phase 7)
+
+  const CUT_HOLD = 2.6; // cut-in 停留秒數(全域播放秒)
+  const CUT_IN = 0.4;   // 淡入秒數
+  const CUT_OUT = 0.6;  // 淡出秒數
 
   // camera_hint 省略時導播自行判斷:有單位的戰況事件自動 follow
   const AUTO_FOLLOW = new Set(["move", "engage", "fire", "rout", "defect"]);
@@ -74,6 +80,11 @@ export function compileTimeline(eventsDef, battle) {
       if (ev.time_display) timeMarks.push({ p, chapter: ci, v: ev.time_display });
       addCue(ev, p);
       if (ev.fx) fxShots.push({ p, ...ev.fx });
+      if (ev.cut) {
+        const text = ev.cut === true ? ev.title : (ev.cut.text ?? ev.title);
+        const sub = ev.cut === true ? null : (ev.cut.sub ?? null);
+        if (text) cuts.push({ p, chapter: ci, text, sub });
+      }
 
       switch (ev.type) {
         case "move": {
@@ -134,6 +145,7 @@ export function compileTimeline(eventsDef, battle) {
           if (ev.opacity != null) {
             tr.opacity.push({ p: p - EPS, v: lastVal(tr.opacity) }, { p, v: ev.opacity });
           }
+          if (ev.label) tr.name.push({ p, v: ev.label });
           break;
         }
         case "narration":
@@ -164,6 +176,7 @@ export function compileTimeline(eventsDef, battle) {
   cues.sort((a, b) => a.p - b.p);
   burns.sort((a, b) => a.start - b.start);
   fxShots.sort((a, b) => a.p - b.p);
+  cuts.sort((a, b) => a.p - b.p);
 
   function chapterIndexAt(p) {
     for (let i = chapters.length - 1; i >= 0; i--) {
@@ -196,6 +209,30 @@ export function compileTimeline(eventsDef, battle) {
         if (c.chapter === ci) found = c;
       }
       return found;
+    },
+    // 中央 cut-in:在目前章節內找最近一個觸發點 p0 使 p ∈ [p0, p0+CUT_HOLD]
+    // 回傳 { text, sub, alpha } 或 null;alpha 由淡入/淡出曲線純函數求得
+    cutAt(p) {
+      const ci = chapterIndexAt(p);
+      for (let i = cuts.length - 1; i >= 0; i--) {
+        const c = cuts[i];
+        if (c.p > p) continue;          // 未來的 cut
+        const d = p - c.p;
+        if (d > CUT_HOLD) break;        // 超出窗口,之前的 cut 距離更遠
+        if (c.chapter !== ci) continue; // 不同章節不殘留
+        const alpha =
+          Math.min(d / CUT_IN, 1) *
+          Math.min((CUT_HOLD - d) / CUT_OUT, 1);
+        return { text: c.text, sub: c.sub, alpha };
+      }
+      return null;
+    },
+    // 單位名稱 step 軌道(status.label 變更後即生效,確定性)
+    // 回傳四語物件或字串,由 ui 端 pick() 取語系
+    labelAt(id, p) {
+      const keys = tracks[id]?.name;
+      if (!keys) return "";
+      return stepAt(keys, p);
     },
     // 模擬時刻(當日分鐘數,跨夜取模):章節 clock_start + 章內經過分鐘;
     // 未定義 clock_start 的章節(如跨多日的鋪陳章)回傳 null

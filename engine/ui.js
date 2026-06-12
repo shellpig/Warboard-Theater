@@ -9,6 +9,12 @@ const SKIP_SEC = 5; // ←→ 跳時間(全域播放秒)
 export function createUI({ labels, hud, card, battle, units, terrain, camera, renderer, timeline, clock, director, audio }) {
   const tracked = [];
 
+  // --- 中央 cut-in ---
+  const cutInEl = document.getElementById("cut-in");
+  const cutTextEl = cutInEl.querySelector(".cut-text");
+  const cutSubEl = cutInEl.querySelector(".cut-sub");
+  let lastCutText = null; // 避免每幀寫 DOM
+
   // --- 部隊名牌 ---
   const plates = [];
   for (const u of units) {
@@ -17,18 +23,20 @@ export function createUI({ labels, hud, card, battle, units, terrain, camera, re
     el.style.borderLeftColor = u.color;
     const name = document.createElement("div");
     name.className = "name";
-    name.textContent = u.label;
-    const troops = document.createElement("div");
-    troops.className = "troops";
+    const nameSpan = document.createElement("span");
+    nameSpan.className = "plate-name";
+    nameSpan.textContent = u.label;  // 初始值;update() 每幀由 labelAt 驅動
     const badge = document.createElement("span");
     badge.className = "badge";
-    name.appendChild(badge);
+    name.append(nameSpan, badge);
+    const troops = document.createElement("div");
+    troops.className = "troops";
     el.append(name, troops);
     el.style.display = "none";
     el.addEventListener("click", () => director.flyToUnit(u.id)); // 點名牌飛鏡頭
     labels.appendChild(el);
     tracked.push({ el, pos: u.anchor });
-    plates.push({ unit: u, el, troopsEl: troops, badgeEl: badge, lastTroops: -1, lastState: "" });
+    plates.push({ unit: u, el, troopsEl: troops, badgeEl: badge, nameEl: nameSpan, lastName: "", lastTroops: -1, lastState: "" });
   }
 
   // --- 地名標籤 ---
@@ -495,12 +503,17 @@ export function createUI({ labels, hud, card, battle, units, terrain, camera, re
       item.el.style.transform = `translate(${px}px, ${py}px) translate(-50%, -100%)`;
     }
 
-    // 名牌內容:兵力插值 + 狀態徽章(隱形單位連名牌一併隱藏;
-    // 投影迴圈每幀已重設 display,此處覆寫即可)
+    // 名牌內容:名稱(labelAt)+ 兵力插值 + 狀態徽章
+    // (隱形單位連名牌一併隱藏;投影迴圈每幀已重設 display,此處覆寫即可)
     for (const pl of plates) {
       if (timeline.opacityAt(pl.unit.id, p) < 0.05) {
         pl.el.style.display = "none";
         continue;
+      }
+      const nm = pick(timeline.labelAt(pl.unit.id, p));
+      if (nm !== pl.lastName) {
+        pl.lastName = nm;
+        pl.nameEl.textContent = nm;
       }
       const n = timeline.troopsAt(pl.unit.id, p);
       if (n !== pl.lastTroops) {
@@ -526,6 +539,25 @@ export function createUI({ labels, hud, card, battle, units, terrain, camera, re
         card.style.display = "";
       } else {
         card.style.display = "none";
+      }
+    }
+
+    // 中央 cut-in:純函數透明度,seek/倒帶確定性
+    {
+      const cut = timeline.cutAt(p);
+      if (cut && cut.alpha >= 0.01) {
+        cutInEl.style.display = "";
+        cutInEl.style.opacity = cut.alpha;
+        if (cut.text !== lastCutText) {
+          lastCutText = cut.text;
+          cutTextEl.textContent = pick(cut.text) || "";
+          cutSubEl.textContent = cut.sub ? pick(cut.sub) : "";
+        }
+      } else {
+        if (cutInEl.style.display !== "none") {
+          cutInEl.style.display = "none";
+          lastCutText = null;
+        }
       }
     }
 

@@ -44,7 +44,8 @@
             "en": "Cao Cao leads his host south and encamps at Wulin, raising a riverside naval camp with warships moored line on line, facing the Sun-Liu allies across the Yangtze.",
             "ja": "曹操は大軍を率いて南下し、烏林に駐屯。江沿いに水寨を築いて戦船を連ね、南岸の孫劉連合軍と長江を挟んで対峙する。"
           },
-          "camera_hint": "overview"
+          "camera_hint": "overview",
+          "cut": true
         },
         { "t": 0, "type": "status", "unit": "cao_camp", "badge": "camp" },
         { "t": 200, "t_end": 700, "type": "move", "unit": "wenpin_fleet", "to": [-280, -210] },
@@ -91,7 +92,8 @@
             }
           },
           "fx": { "kind": "volley", "from": "cao_fleet", "to": "strawboat_fleet", "count": 240 },
-          "camera_hint": "follow"
+          "camera_hint": "follow",
+          "cut": true
         },
         { "t": 2520, "t_end": 2720, "type": "move", "unit": "strawboat_fleet", "to": [-400, 340] },
         { "t": 2760, "type": "status", "unit": "strawboat_fleet", "opacity": 0 },
@@ -115,6 +117,9 @@
             "en": "Huang Gai volunteers for a flogging and secretly sends a letter of feigned surrender; Pang Tong then offers the chain stratagem, and Cao's warships are bound together with iron chains, steady as solid ground.",
             "ja": "黄蓋は自ら杖刑を受けて偽りの降伏文書を密かに送り、龐統はさらに連環の計を献じる。曹軍の戦船はことごとく鉄鎖で繋がれ、平地のごとく安定した。"
           }
+        },
+        { "t": 4500, "type": "status", "unit": "huanggai_fleet",
+          "label": { "zh-TW": "黃蓋火船隊", "zh-CN": "黄盖火船队", "en": "Huang Gai's Fire Ships", "ja": "黄蓋の火船隊" }
         },
         { "t": 4500, "t_end": 4900, "type": "move", "unit": "zhouyu_fleet", "to": [-200, 340] },
         { "t": 4800, "t_end": 5100, "type": "move", "unit": "ganling_fleet", "to": [-440, 260] },
@@ -140,7 +145,8 @@
               "ja": "その夜、東南の風が強く起こり、旗は西北へなびいた。"
             }
           },
-          "fx": { "kind": "ring", "pos": [-620, 800] }
+          "fx": { "kind": "ring", "pos": [-620, 800] },
+          "cut": true
         },
         { "t": 6400, "type": "camera", "pos": [-620, 800] },
         {
