@@ -50,7 +50,7 @@ export function compileTimeline(eventsDef, battle) {
   const fxShots = []; // { p, kind, … } 事件附帶一次性特效(volley / explosion)
   const cuts = []; // { p, chapter, text, sub } 中央 cut-in 橋段標題(Phase 7)
 
-  const CUT_HOLD = 2.6; // cut-in 停留秒數(全域播放秒)
+  const CUT_HOLD = 3.5; // cut-in 停留秒數(全域播放秒)
   const CUT_IN = 0.4;   // 淡入秒數
   const CUT_OUT = 0.6;  // 淡出秒數
 
