@@ -722,7 +722,7 @@ body.cinema .cine-bar {
 #time-panel {
   position: absolute;
   top: 64px;
-  right: 24px;
+  right: 384px;
   min-width: 132px;
   text-align: right;
   background: var(--panel);

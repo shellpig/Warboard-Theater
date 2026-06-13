@@ -297,6 +297,7 @@ export function createUI({ labels, hud, card, battle, units, terrain, camera, re
   }
 
   let wmLastTotals = [-1, -1];
+  let wmWidthLocked = false;
   function updateWarMeter(p) {
     if (wmSides.length !== 2) return;
     let grand = 0;
@@ -314,6 +315,10 @@ export function createUI({ labels, hud, card, battle, units, terrain, camera, re
     wmNums.forEach((n, i) => (n.textContent = sideTotals[i].toLocaleString()));
     for (const { seg, f } of wmSegs) {
       seg.style.width = grand > 0 ? `${(f._cur / grand) * 100}%` : "0%";
+    }
+    if (!wmWidthLocked) {
+      wmWidthLocked = true;
+      wmNums.forEach(n => { n.style.minWidth = n.offsetWidth + "px"; });
     }
   }
 
