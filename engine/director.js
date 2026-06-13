@@ -6,7 +6,8 @@
 // - 點名牌 → flyToUnit;倒帶 seek 只重置 cue 游標,不瞬移鏡頭
 import * as THREE from "three";
 
-const FLY_SEC = 1.8;
+const FLY_SEC = 3.0;
+const FLY_SEC_LONG = 4.0;
 const FOLLOW_DIST = 600;
 const FOLLOW_HEIGHT = 340;
 const OVERVIEW_POS = new THREE.Vector3(900, 1040, 1500);
@@ -43,36 +44,39 @@ export function createDirector({ camera, controls, units, timeline, clock, terra
     return pos;
   }
 
-  function beginFly(toTgt, toPos, unit) {
+  function beginFly(toTgt, toPos, unit, duration) {
     fly = {
       fromPos: camera.position.clone(),
       fromTgt: controls.target.clone(),
       toPos,
       toTgt,
       t: 0,
+      duration: duration || FLY_SEC,
     };
     followUnit = unit || null;
     state = "fly";
   }
 
-  function flyToUnit(id) {
+  function flyToUnit(id, dur) {
     const u = unitById[id];
     if (!u) return;
     const tgt = focusOf(u);
-    beginFly(tgt, frameTarget(tgt), u);
+    beginFly(tgt, frameTarget(tgt), u, dur);
   }
 
   // 定點運鏡(camera 事件的 pos):飛抵後不跟隨
-  function flyToPos([x, z]) {
+  function flyToPos([x, z], dur) {
     const y = Math.max(terrain.heightAt(x, z), terrain.waterLevel) + 10;
     const tgt = new THREE.Vector3(x, y, z);
-    beginFly(tgt, frameTarget(tgt), null);
+    beginFly(tgt, frameTarget(tgt), null, dur);
   }
 
   function applyCue(cue) {
-    if (cue.hint === "overview") beginFly(OVERVIEW_TGT.clone(), OVERVIEW_POS.clone(), null);
-    else if (cue.hint === "pos") flyToPos(cue.pos);
-    else flyToUnit(cue.unit);
+    const useLong = cue.hint === "overview" || cue.hint === "pos" || state === "idle";
+    const dur = useLong ? FLY_SEC_LONG : FLY_SEC;
+    if (cue.hint === "overview") beginFly(OVERVIEW_TGT.clone(), OVERVIEW_POS.clone(), null, dur);
+    else if (cue.hint === "pos") flyToPos(cue.pos, dur);
+    else flyToUnit(cue.unit, dur);
   }
 
   const easeInOut = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
@@ -96,7 +100,7 @@ export function createDirector({ camera, controls, units, timeline, clock, terra
     lastP = p;
 
     if (fly) {
-      fly.t = Math.min(1, fly.t + dt / FLY_SEC);
+      fly.t = Math.min(1, fly.t + dt / fly.duration);
       const e = easeInOut(fly.t);
       camera.position.lerpVectors(fly.fromPos, fly.toPos, e);
       controls.target.lerpVectors(fly.fromTgt, fly.toTgt, e);

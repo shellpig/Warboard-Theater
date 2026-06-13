@@ -197,7 +197,13 @@
           "to": [
             160,
             -240
-          ]
+          ],
+          "camera_hint": "none"
+        },
+        {
+          "t": 300,
+          "type": "camera",
+          "pos": [-115, 5]
         },
         {
           "t": 0,
@@ -263,7 +269,7 @@
             "en": "Zhou Yu sends Gan Ning and Han Dang forward to probe Cao's strength at Sanjiangkou. Cai Mao and Zhang Yun lead the navy out to meet them; the two sides clash in midstream.",
             "ja": "周瑜は甘寧・韓当を三江口に前出させ曹軍の虚実を探らせる。蔡瑁・張允が水軍を率いて迎撃し、双方は江心で激突した。"
           },
-          "camera_hint": "overview",
+          "camera_hint": "none",
           "cut": {
             "text": {
               "zh-TW": "兩軍水師首度交鋒,孫劉試探出曹軍虛實",
@@ -281,7 +287,8 @@
           "to": [
             -240,
             30
-          ]
+          ],
+          "camera_hint": "none"
         },
         {
           "t": 370,
@@ -291,7 +298,8 @@
           "to": [
             20,
             60
-          ]
+          ],
+          "camera_hint": "none"
         },
         {
           "t": 400,
@@ -301,7 +309,8 @@
           "to": [
             -40,
             -40
-          ]
+          ],
+          "camera_hint": "none"
         },
         {
           "t": 410,
@@ -312,7 +321,7 @@
             -200,
             -30
           ],
-          "camera_hint": "follow"
+          "camera_hint": "none"
         },
         {
           "t": 520,
